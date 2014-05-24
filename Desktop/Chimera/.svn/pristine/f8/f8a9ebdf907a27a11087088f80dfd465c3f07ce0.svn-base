@@ -1,0 +1,5 @@
+We can either make them alphabetic by parent, or sort by cost then alphabetic by parent, which is how the 
+demos are. Let me know which you prefer.
+
+Alternatively, we could (since I did it by scale) have big lines indicating what "threshold they are crossing.
+So it's clearly marked (or possibly lightly shaded) from zone to zone, where each zone is a requisite score in x school.
