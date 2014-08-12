@@ -9,3 +9,4 @@ c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\Charac
 c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.pdb
 C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.AddNewSkill.resources
 C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.CB.resources
+C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.RemoveSkill.resources

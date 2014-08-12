@@ -31,26 +31,34 @@ Partial Class CB
         Me.RadioButton3 = New System.Windows.Forms.RadioButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.Attributes = New System.Windows.Forms.TabPage()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.ArraysGroup = New System.Windows.Forms.GroupBox()
         Me.RadioButton6 = New System.Windows.Forms.RadioButton()
         Me.RadioButton5 = New System.Windows.Forms.RadioButton()
         Me.RadioButton4 = New System.Windows.Forms.RadioButton()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.AttrGroup = New System.Windows.Forms.GroupBox()
+        Me.A8 = New System.Windows.Forms.Label()
+        Me.a7 = New System.Windows.Forms.Label()
+        Me.a6 = New System.Windows.Forms.Label()
+        Me.a5 = New System.Windows.Forms.Label()
+        Me.a4 = New System.Windows.Forms.Label()
+        Me.a3 = New System.Windows.Forms.Label()
+        Me.a2 = New System.Windows.Forms.Label()
+        Me.a1 = New System.Windows.Forms.Label()
+        Me.lckbox = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.spdbox = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox8 = New System.Windows.Forms.TextBox()
+        Me.chabox = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.wisbox = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.intbox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.dexbox = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.conbox = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.strbox = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Skills = New System.Windows.Forms.TabPage()
         Me.Label9 = New System.Windows.Forms.Label()
@@ -95,12 +103,14 @@ Partial Class CB
         Me.Talents = New System.Windows.Forms.TabPage()
         Me.Spells = New System.Windows.Forms.TabPage()
         Me.homebrewed = New System.Windows.Forms.CheckBox()
+        Me.CustomArray = New System.Windows.Forms.RadioButton()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.TabControl1.SuspendLayout()
         Me.Race.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.Attributes.SuspendLayout()
-        Me.GroupBox3.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
+        Me.ArraysGroup.SuspendLayout()
+        Me.AttrGroup.SuspendLayout()
         Me.Skills.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.SuspendLayout()
@@ -199,27 +209,28 @@ Partial Class CB
         '
         'Attributes
         '
-        Me.Attributes.Controls.Add(Me.GroupBox3)
-        Me.Attributes.Controls.Add(Me.GroupBox2)
-        Me.Attributes.Location = New System.Drawing.Point(124, 4)
+        Me.Attributes.Controls.Add(Me.ArraysGroup)
+        Me.Attributes.Controls.Add(Me.AttrGroup)
+        Me.Attributes.Location = New System.Drawing.Point(84, 4)
         Me.Attributes.Name = "Attributes"
         Me.Attributes.Padding = New System.Windows.Forms.Padding(3)
-        Me.Attributes.Size = New System.Drawing.Size(559, 350)
+        Me.Attributes.Size = New System.Drawing.Size(599, 350)
         Me.Attributes.TabIndex = 1
         Me.Attributes.Text = "Attributes"
         Me.Attributes.UseVisualStyleBackColor = True
         '
-        'GroupBox3
+        'ArraysGroup
         '
-        Me.GroupBox3.Controls.Add(Me.RadioButton6)
-        Me.GroupBox3.Controls.Add(Me.RadioButton5)
-        Me.GroupBox3.Controls.Add(Me.RadioButton4)
-        Me.GroupBox3.Location = New System.Drawing.Point(343, 20)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(318, 242)
-        Me.GroupBox3.TabIndex = 1
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Arrays"
+        Me.ArraysGroup.Controls.Add(Me.CustomArray)
+        Me.ArraysGroup.Controls.Add(Me.RadioButton6)
+        Me.ArraysGroup.Controls.Add(Me.RadioButton5)
+        Me.ArraysGroup.Controls.Add(Me.RadioButton4)
+        Me.ArraysGroup.Location = New System.Drawing.Point(343, 20)
+        Me.ArraysGroup.Name = "ArraysGroup"
+        Me.ArraysGroup.Size = New System.Drawing.Size(318, 242)
+        Me.ArraysGroup.TabIndex = 1
+        Me.ArraysGroup.TabStop = False
+        Me.ArraysGroup.Text = "Arrays"
         '
         'RadioButton6
         '
@@ -254,37 +265,110 @@ Partial Class CB
         Me.RadioButton4.Text = "30 30 30 20 20 10 10 10"
         Me.RadioButton4.UseVisualStyleBackColor = True
         '
-        'GroupBox2
+        'AttrGroup
         '
-        Me.GroupBox2.Controls.Add(Me.TextBox6)
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.TextBox7)
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.TextBox8)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.TextBox9)
-        Me.GroupBox2.Controls.Add(Me.Label8)
-        Me.GroupBox2.Controls.Add(Me.TextBox4)
-        Me.GroupBox2.Controls.Add(Me.Label3)
-        Me.GroupBox2.Controls.Add(Me.TextBox5)
-        Me.GroupBox2.Controls.Add(Me.Label4)
-        Me.GroupBox2.Controls.Add(Me.TextBox3)
-        Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Location = New System.Drawing.Point(18, 20)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(310, 242)
-        Me.GroupBox2.TabIndex = 0
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Attributes"
+        Me.AttrGroup.Controls.Add(Me.A8)
+        Me.AttrGroup.Controls.Add(Me.a7)
+        Me.AttrGroup.Controls.Add(Me.a6)
+        Me.AttrGroup.Controls.Add(Me.a5)
+        Me.AttrGroup.Controls.Add(Me.a4)
+        Me.AttrGroup.Controls.Add(Me.a3)
+        Me.AttrGroup.Controls.Add(Me.a2)
+        Me.AttrGroup.Controls.Add(Me.a1)
+        Me.AttrGroup.Controls.Add(Me.lckbox)
+        Me.AttrGroup.Controls.Add(Me.Label5)
+        Me.AttrGroup.Controls.Add(Me.spdbox)
+        Me.AttrGroup.Controls.Add(Me.Label6)
+        Me.AttrGroup.Controls.Add(Me.chabox)
+        Me.AttrGroup.Controls.Add(Me.Label7)
+        Me.AttrGroup.Controls.Add(Me.wisbox)
+        Me.AttrGroup.Controls.Add(Me.Label8)
+        Me.AttrGroup.Controls.Add(Me.intbox)
+        Me.AttrGroup.Controls.Add(Me.Label3)
+        Me.AttrGroup.Controls.Add(Me.dexbox)
+        Me.AttrGroup.Controls.Add(Me.Label4)
+        Me.AttrGroup.Controls.Add(Me.conbox)
+        Me.AttrGroup.Controls.Add(Me.Label2)
+        Me.AttrGroup.Controls.Add(Me.strbox)
+        Me.AttrGroup.Controls.Add(Me.Label1)
+        Me.AttrGroup.Location = New System.Drawing.Point(18, 20)
+        Me.AttrGroup.Name = "AttrGroup"
+        Me.AttrGroup.Size = New System.Drawing.Size(310, 242)
+        Me.AttrGroup.TabIndex = 0
+        Me.AttrGroup.TabStop = False
+        Me.AttrGroup.Text = "Attributes"
         '
-        'TextBox6
+        'A8
         '
-        Me.TextBox6.Location = New System.Drawing.Point(149, 205)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(28, 20)
-        Me.TextBox6.TabIndex = 15
+        Me.A8.AutoSize = True
+        Me.A8.Location = New System.Drawing.Point(196, 212)
+        Me.A8.Name = "A8"
+        Me.A8.Size = New System.Drawing.Size(0, 13)
+        Me.A8.TabIndex = 23
+        '
+        'a7
+        '
+        Me.a7.AutoSize = True
+        Me.a7.Location = New System.Drawing.Point(196, 186)
+        Me.a7.Name = "a7"
+        Me.a7.Size = New System.Drawing.Size(0, 13)
+        Me.a7.TabIndex = 22
+        '
+        'a6
+        '
+        Me.a6.AutoSize = True
+        Me.a6.Location = New System.Drawing.Point(196, 160)
+        Me.a6.Name = "a6"
+        Me.a6.Size = New System.Drawing.Size(0, 13)
+        Me.a6.TabIndex = 21
+        '
+        'a5
+        '
+        Me.a5.AutoSize = True
+        Me.a5.Location = New System.Drawing.Point(196, 134)
+        Me.a5.Name = "a5"
+        Me.a5.Size = New System.Drawing.Size(0, 13)
+        Me.a5.TabIndex = 20
+        '
+        'a4
+        '
+        Me.a4.AutoSize = True
+        Me.a4.Location = New System.Drawing.Point(196, 108)
+        Me.a4.Name = "a4"
+        Me.a4.Size = New System.Drawing.Size(0, 13)
+        Me.a4.TabIndex = 19
+        '
+        'a3
+        '
+        Me.a3.AutoSize = True
+        Me.a3.Location = New System.Drawing.Point(196, 82)
+        Me.a3.Name = "a3"
+        Me.a3.Size = New System.Drawing.Size(0, 13)
+        Me.a3.TabIndex = 18
+        '
+        'a2
+        '
+        Me.a2.AutoSize = True
+        Me.a2.Location = New System.Drawing.Point(196, 56)
+        Me.a2.Name = "a2"
+        Me.a2.Size = New System.Drawing.Size(0, 13)
+        Me.a2.TabIndex = 17
+        '
+        'a1
+        '
+        Me.a1.AutoSize = True
+        Me.a1.Location = New System.Drawing.Point(196, 30)
+        Me.a1.Name = "a1"
+        Me.a1.Size = New System.Drawing.Size(0, 13)
+        Me.a1.TabIndex = 16
+        '
+        'lckbox
+        '
+        Me.lckbox.AllowDrop = True
+        Me.lckbox.Location = New System.Drawing.Point(149, 205)
+        Me.lckbox.Name = "lckbox"
+        Me.lckbox.Size = New System.Drawing.Size(28, 20)
+        Me.lckbox.TabIndex = 15
         '
         'Label5
         '
@@ -295,12 +379,13 @@ Partial Class CB
         Me.Label5.TabIndex = 14
         Me.Label5.Text = "Luck"
         '
-        'TextBox7
+        'spdbox
         '
-        Me.TextBox7.Location = New System.Drawing.Point(149, 179)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(28, 20)
-        Me.TextBox7.TabIndex = 13
+        Me.spdbox.AllowDrop = True
+        Me.spdbox.Location = New System.Drawing.Point(149, 179)
+        Me.spdbox.Name = "spdbox"
+        Me.spdbox.Size = New System.Drawing.Size(28, 20)
+        Me.spdbox.TabIndex = 13
         '
         'Label6
         '
@@ -311,12 +396,13 @@ Partial Class CB
         Me.Label6.TabIndex = 12
         Me.Label6.Text = "Speed"
         '
-        'TextBox8
+        'chabox
         '
-        Me.TextBox8.Location = New System.Drawing.Point(149, 153)
-        Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(28, 20)
-        Me.TextBox8.TabIndex = 11
+        Me.chabox.AllowDrop = True
+        Me.chabox.Location = New System.Drawing.Point(149, 153)
+        Me.chabox.Name = "chabox"
+        Me.chabox.Size = New System.Drawing.Size(28, 20)
+        Me.chabox.TabIndex = 11
         '
         'Label7
         '
@@ -327,12 +413,13 @@ Partial Class CB
         Me.Label7.TabIndex = 10
         Me.Label7.Text = "Charisma"
         '
-        'TextBox9
+        'wisbox
         '
-        Me.TextBox9.Location = New System.Drawing.Point(149, 127)
-        Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(28, 20)
-        Me.TextBox9.TabIndex = 9
+        Me.wisbox.AllowDrop = True
+        Me.wisbox.Location = New System.Drawing.Point(149, 127)
+        Me.wisbox.Name = "wisbox"
+        Me.wisbox.Size = New System.Drawing.Size(28, 20)
+        Me.wisbox.TabIndex = 9
         '
         'Label8
         '
@@ -343,12 +430,13 @@ Partial Class CB
         Me.Label8.TabIndex = 8
         Me.Label8.Text = "Wisdom"
         '
-        'TextBox4
+        'intbox
         '
-        Me.TextBox4.Location = New System.Drawing.Point(149, 101)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(28, 20)
-        Me.TextBox4.TabIndex = 7
+        Me.intbox.AllowDrop = True
+        Me.intbox.Location = New System.Drawing.Point(149, 101)
+        Me.intbox.Name = "intbox"
+        Me.intbox.Size = New System.Drawing.Size(28, 20)
+        Me.intbox.TabIndex = 7
         '
         'Label3
         '
@@ -359,12 +447,13 @@ Partial Class CB
         Me.Label3.TabIndex = 6
         Me.Label3.Text = "Intelligence"
         '
-        'TextBox5
+        'dexbox
         '
-        Me.TextBox5.Location = New System.Drawing.Point(149, 75)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(28, 20)
-        Me.TextBox5.TabIndex = 5
+        Me.dexbox.AllowDrop = True
+        Me.dexbox.Location = New System.Drawing.Point(149, 75)
+        Me.dexbox.Name = "dexbox"
+        Me.dexbox.Size = New System.Drawing.Size(28, 20)
+        Me.dexbox.TabIndex = 5
         '
         'Label4
         '
@@ -375,12 +464,13 @@ Partial Class CB
         Me.Label4.TabIndex = 4
         Me.Label4.Text = "Dexterity"
         '
-        'TextBox3
+        'conbox
         '
-        Me.TextBox3.Location = New System.Drawing.Point(149, 49)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(28, 20)
-        Me.TextBox3.TabIndex = 3
+        Me.conbox.AllowDrop = True
+        Me.conbox.Location = New System.Drawing.Point(149, 49)
+        Me.conbox.Name = "conbox"
+        Me.conbox.Size = New System.Drawing.Size(28, 20)
+        Me.conbox.TabIndex = 3
         '
         'Label2
         '
@@ -391,12 +481,13 @@ Partial Class CB
         Me.Label2.TabIndex = 2
         Me.Label2.Text = "Constitution"
         '
-        'TextBox2
+        'strbox
         '
-        Me.TextBox2.Location = New System.Drawing.Point(149, 23)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(28, 20)
-        Me.TextBox2.TabIndex = 1
+        Me.strbox.AllowDrop = True
+        Me.strbox.Location = New System.Drawing.Point(149, 23)
+        Me.strbox.Name = "strbox"
+        Me.strbox.Size = New System.Drawing.Size(28, 20)
+        Me.strbox.TabIndex = 1
         '
         'Label1
         '
@@ -409,14 +500,15 @@ Partial Class CB
         '
         'Skills
         '
+        Me.Skills.Controls.Add(Me.Button2)
         Me.Skills.Controls.Add(Me.Label9)
         Me.Skills.Controls.Add(Me.Button1)
         Me.Skills.Controls.Add(Me.count)
         Me.Skills.Controls.Add(Me.GroupBox4)
-        Me.Skills.Location = New System.Drawing.Point(124, 4)
+        Me.Skills.Location = New System.Drawing.Point(84, 4)
         Me.Skills.Name = "Skills"
         Me.Skills.Padding = New System.Windows.Forms.Padding(3)
-        Me.Skills.Size = New System.Drawing.Size(559, 350)
+        Me.Skills.Size = New System.Drawing.Size(599, 350)
         Me.Skills.TabIndex = 2
         Me.Skills.Text = "Skills"
         Me.Skills.UseVisualStyleBackColor = True
@@ -844,18 +936,18 @@ Partial Class CB
         '
         'Talents
         '
-        Me.Talents.Location = New System.Drawing.Point(124, 4)
+        Me.Talents.Location = New System.Drawing.Point(84, 4)
         Me.Talents.Name = "Talents"
-        Me.Talents.Size = New System.Drawing.Size(559, 350)
+        Me.Talents.Size = New System.Drawing.Size(599, 350)
         Me.Talents.TabIndex = 3
         Me.Talents.Text = "Talents"
         Me.Talents.UseVisualStyleBackColor = True
         '
         'Spells
         '
-        Me.Spells.Location = New System.Drawing.Point(124, 4)
+        Me.Spells.Location = New System.Drawing.Point(84, 4)
         Me.Spells.Name = "Spells"
-        Me.Spells.Size = New System.Drawing.Size(559, 350)
+        Me.Spells.Size = New System.Drawing.Size(599, 350)
         Me.Spells.TabIndex = 4
         Me.Spells.Text = "Spells"
         Me.Spells.UseVisualStyleBackColor = True
@@ -871,6 +963,26 @@ Partial Class CB
         Me.homebrewed.Text = "HOMEBREWED"
         Me.homebrewed.UseVisualStyleBackColor = True
         '
+        'CustomArray
+        '
+        Me.CustomArray.AutoSize = True
+        Me.CustomArray.Location = New System.Drawing.Point(19, 106)
+        Me.CustomArray.Name = "CustomArray"
+        Me.CustomArray.Size = New System.Drawing.Size(60, 17)
+        Me.CustomArray.TabIndex = 3
+        Me.CustomArray.TabStop = True
+        Me.CustomArray.Text = "Custom"
+        Me.CustomArray.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(441, 214)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(130, 36)
+        Me.Button2.TabIndex = 40
+        Me.Button2.Text = "Remove Skill"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'CB
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -885,10 +997,10 @@ Partial Class CB
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.Attributes.ResumeLayout(False)
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
+        Me.ArraysGroup.ResumeLayout(False)
+        Me.ArraysGroup.PerformLayout()
+        Me.AttrGroup.ResumeLayout(False)
+        Me.AttrGroup.PerformLayout()
         Me.Skills.ResumeLayout(False)
         Me.Skills.PerformLayout()
         Me.GroupBox4.ResumeLayout(False)
@@ -909,23 +1021,23 @@ Partial Class CB
     Friend WithEvents RadioButton1 As System.Windows.Forms.RadioButton
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents GroupBox3 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
+    Friend WithEvents ArraysGroup As System.Windows.Forms.GroupBox
+    Friend WithEvents AttrGroup As System.Windows.Forms.GroupBox
+    Friend WithEvents lckbox As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
+    Friend WithEvents spdbox As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TextBox8 As System.Windows.Forms.TextBox
+    Friend WithEvents chabox As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
-    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
+    Friend WithEvents wisbox As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents intbox As System.Windows.Forms.TextBox
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents dexbox As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents conbox As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents strbox As System.Windows.Forms.TextBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents RadioButton6 As System.Windows.Forms.RadioButton
     Friend WithEvents RadioButton5 As System.Windows.Forms.RadioButton
@@ -970,5 +1082,15 @@ Partial Class CB
     Friend WithEvents CheckBox18 As System.Windows.Forms.CheckBox
     Friend WithEvents homebrewed As System.Windows.Forms.CheckBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents A8 As System.Windows.Forms.Label
+    Friend WithEvents a7 As System.Windows.Forms.Label
+    Friend WithEvents a6 As System.Windows.Forms.Label
+    Friend WithEvents a5 As System.Windows.Forms.Label
+    Friend WithEvents a4 As System.Windows.Forms.Label
+    Friend WithEvents a3 As System.Windows.Forms.Label
+    Friend WithEvents a2 As System.Windows.Forms.Label
+    Friend WithEvents a1 As System.Windows.Forms.Label
+    Friend WithEvents CustomArray As System.Windows.Forms.RadioButton
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 End Class

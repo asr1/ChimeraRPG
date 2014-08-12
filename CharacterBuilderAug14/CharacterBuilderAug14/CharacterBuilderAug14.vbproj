@@ -98,6 +98,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="RemoveSkill.Designer.vb">
+      <DependentUpon>RemoveSkill.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RemoveSkill.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddNewSkill.resx">
@@ -111,6 +117,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RemoveSkill.resx">
+      <DependentUpon>RemoveSkill.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
