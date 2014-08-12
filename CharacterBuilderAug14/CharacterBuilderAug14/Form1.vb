@@ -39,13 +39,26 @@
     Private Sub check_homebrew()
         'If we chose too many skills
         If CInt(Me.count.Text) < 0 Or
-            Not legal_attr_avg() Then
-
+            Not legal_attr_avg() Or
+            custom_skills() Then
             homebrewed.Checked = True
         Else
             homebrewed.Checked = False
         End If
     End Sub
+
+    'returns true if one or more custom skills have been selected, false otherwise.
+    Private Function custom_skills() As Boolean
+        If Me.blank1.Checked = True Or
+            Me.Blank2.Checked = True Or
+            Me.blank3.Checked = True Or
+            Me.blank4.Checked = True Or
+            Me.blank5.Checked = True Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 
     'Returns true if the attributes have been completed legally or have not been completed
     'Returns false if the attributes have been completed illegally.
@@ -194,6 +207,13 @@
     End Sub
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        RemoveSkill.Show()
+        If Not Me.blank1.Text = "" Or
+            Not Me.Blank2.Text = "" Or
+            Not Me.blank3.Text = "" Or
+            Not Me.blank4.Text = "" Or
+            Not Me.blank5.Text = "" Then
+            RemoveSkill.Show()
+        End If
+
     End Sub
 End Class

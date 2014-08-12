@@ -4,7 +4,9 @@
         Me.Hide()
     End Sub
 
-    Private Sub RemoveSkill_shown(sender As Object, e As EventArgs) Handles Me.Shown
+    Private Sub RemoveSkill_load(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
+        CustomSkills.Items.Clear()
+        CustomSkills.SelectedValue = -1
         If Not CB.blank1.Text = "" Then
             CustomSkills.Items.Add(CB.blank1.Text)
         End If
@@ -50,7 +52,8 @@
                 CB.blank5.Visible = False
             End If
         End If
-        CustomSkills.Items.Remove(CustomSkills.SelectedIndex)
+        CustomSkills.Items.Clear()
         Me.Hide()
     End Sub
+
 End Class
