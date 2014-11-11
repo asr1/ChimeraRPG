@@ -1,0 +1,15 @@
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\bin\Debug\CharacterBuilderAug14.exe.config
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\bin\Debug\CharacterBuilderAug14.exe
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\bin\Debug\CharacterBuilderAug14.pdb
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\bin\Debug\CharacterBuilderAug14.xml
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.Resources.resources
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.vbproj.GenerateResource.Cache
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.exe
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.xml
+c:\users\alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.pdb
+C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.AddNewSkill.resources
+C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.CB.resources
+C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.RemoveSkill.resources
+C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\bin\Debug\itextsharp.dll
+C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\bin\Debug\itextsharp.xml
+C:\Users\Alex\documents\visual studio 2012\Projects\CharacterBuilderAug14\CharacterBuilderAug14\obj\Debug\CharacterBuilderAug14.vbprojResolveAssemblyReference.cache
