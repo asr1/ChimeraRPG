@@ -1,8 +1,0 @@
-Fatigued
-Exhausted
-enfeebled
-crippled
-maimed
-Dreasoned?
-
-Note that these only need to be added if we need new ones.
