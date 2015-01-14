@@ -1,0 +1,42 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-dark">
+      <h1 class="title">Chapters</h1>
+    </ion-header-bar>
+    <ion-content class="content-dark">
+      <ion-list>
+        <ion-item nav-clear menu-close href="#/app/chapter1">
+          Creation
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/chapter2">
+          Talents
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/chapter3">
+          Spells
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/chapter4">
+          Combat
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/chapter5">
+          Adventuring
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/chapter6">
+          Reference
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

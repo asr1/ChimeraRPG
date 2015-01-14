@@ -1,0 +1,551 @@
+<ion-view view-title="Adventuring">
+  <ion-content>
+<h1 id="combat-western-style-page-break-before-always-">Combat </h1>
+<p>Combat consists of a series of rounds, comprised of a series of turns.
+All combatants alternate taking turns until everyone has gone. Once all
+combatants have taken a turn, one round has passed, and the next one
+starts, continuing in the same order of turns. A round is generally
+considered to take about six seconds of game time to complete.</p>
+
+<p><strong>Determining Turn Order:</strong>Figuring out which character gets to take a
+turn first in combat is determined by initiative. Initiative is a
+character’s initiative modifier (which is equal to their Speed modifier</p>
+<ul>
+<li>any bonuses they may have) + a d20 roll. The creature with the highest
+total initiative score goes first, following in turn. If a tie occurs,
+the character with the higher modifier takes the first action. If two or
+more characters got the same initiative and have the same modifier, a
+reroll will occur between them to determine which of them goes first.</li>
+</ul>
+
+<p><strong>Taking a Turn**</strong>:<strong>**</strong>On a turn, a character has 3 actions: a move
+action, a minor action, and a standard action. A move action is used for
+actions such as standing, walking, running, etc. A standard action is
+for things such as attacking, charging, or casting a spell, and a minor
+action can be used for stowing or drawing a weapon or potion. A free
+action can be used for simple things that require little or no focus or
+attention. As many free actions as are reasonable can be taken in any
+one turn. Examples of free actions include: speaking a short sentence,
+dropping a weapon or item, and turning around in your square. Once each
+round, a character may take an immediate reaction, such as an
+opportunity attack.</p>
+<p>For a complete list of actions, see Actions in Combat.</p>
+<p>An action can be traded down, but never up. For example, a character can
+take a move action instead of a standard, or a minor instead of a move,
+but may not take a standard instead of a minor. See the table below for
+all legal combinations.</p>
+
+<ol>
+<li><p>Take any ongoing damage</p>
+</li>
+<li><p>Regenerate magic points or hit points if applicable.</p>
+</li>
+<li><p>Take a standard, move, and minor action.</p>
+</li>
+<li><p>Make any necessary saving throws.
+</p>
+<hr>
+<p>1          2       3       4
+Standard   Move    Move    Minor
+Move       Move    Minor   Minor
+Minor      Minor   Minor   Minor</p>
+<hr>
+</li>
+</ol>
+
+<p><strong>Order of Events**</strong>:<strong>**</strong>When a turn starts, a character immediately
+takes any ongoing damage (or magic drain) they are suffering from, then
+regenerates hit points or magic points (as applicable). The character
+then may take their turn as normal, sustaining powers after all actions
+have been taken, and making saving throws at the end. No further actions
+may be made once a character makes a saving throw.</p>
+<h2 id="actions-in-combat-western-style-page-break-before-always-">Actions in Combat {.western style=&quot;page-break-before: always&quot;}</h2>
+<p>7 <strong>Actions in Combat</strong></p>
+<hr>
+<p>  Activate Truth                  Minor</p>
+<p>  Attack                          Standard</p>
+<p>  Block                           Standard</p>
+<p>  Bull Rush                       Standard</p>
+<p>  Cast Spell§†                    Standard†</p>
+<p>  Catch Potion§                   Minor</p>
+<p>  Charge                          Standard</p>
+<p>  Delay                           Standard</p>
+<p>  Disarm                          Standard</p>
+<p>  Draw Weapon/Item§               Minor</p>
+<p>  Drink potion                    Minor</p>
+<p>  Drop Object                     Free</p>
+<p>  End Truth                       Free</p>
+<p>  Fall Prone                      Minor</p>
+<p>  Grab§                           Standard</p>
+<p>  Grant Saving Throw (to ally)    Standard</p>
+<p>  Heal§                           Standard</p>
+<p>  Intimidate                      Standard</p>
+<p>  Mount§/Dismount                 Move</p>
+<p>  Move                            Move</p>
+<p>  Opportunity attack              Immediate Reaction</p>
+<p>  Pick up object§                 Minor</p>
+<p>  Ready an Action                 Depends</p>
+<p>  Recharge Enlightenment Points   Standard</p>
+<p>  Stand                           Move</p>
+<p>  Stow Weapon/Item                Minor</p>
+<p>  Sustain                         If a power says sustain (Minor, Standard, or Move) then you must give up that action to retain the effects of the power. 
+                                  Alternatively, if a power says sustain (number), no action is required, but you must lose a number of magic points equal to the number in order to maintain the benefit. If you do not have enough points, the benefit is lost.</p>
+<pre><code>                              All Truths are sustain(cost of the Truths cast).
+
+                              Sustaining a grab is a minor action.
+
+                              Note: You can sustain a spell and cast another on the same turn.
+</code></pre><p>  Talk                            Free</p>
+<p>  Throw Creature/Large Object     Standard</p>
+<p>  Throw Potion/Small Object       Minor</p>
+<hr>
+<p>†Exceptions may apply, see specific spell</p>
+<p>§Requires free hand</p>
+
+<p><strong>Attacking:</strong> To attack a creature, use the appropriate weapon school
+(Melee Weapon, Ranged, or Unarmed) and take its modifier (score/10).
+Roll a d20, adding in this modifier, and compare it to the appropriate
+defense (AC for Melee Weapon, Unarmed, and Ranged. Spells may target
+other defenses). If your number is equal to or greater than the defense,
+you hit, and can calculate damage. If you roll a 20, you score a
+critical hit.</p>
+<p>For spells, the concept is identical, but the school’s modifier is used
+instead.</p>
+
+<p><strong>Attacking Beyond Range:</strong>Characters can make attacks outside of the
+maximum Range for any attack, spell or Truths that references Range
+(Range is equal to 2 times a character’s modifier for the appropriate
+skill). Each 5-foot square that is outside of the character’s Range
+incurs a -2 penalty to the attack roll. For example, if Thalia the
+pirate wants to throw her trident at a mermaid that is 6 squares away,
+and has a Ranged score of 27, her maximum Range is 4 (2 x Ranged
+modifier of 2), so she would have a -4 penalty to the attack. If her
+Ranged modifier was 3, she would not have a penalty.</p>
+
+<p><strong>Blocking:<em>**</em></strong>As a standard action, a creature can choose to block.
+Until the beginning of the blocking creature’s next turn, whenever the
+creature is attacked by a melee (including unarmed) or ranged weapon, it
+can make a Block check by rolling a d20 and adding in its Block
+modifier, as well as any other bonuses (such as a +1 for a shield). Each
+time the creature is attacked after the first time, it takes a -3
+penalty to Block checks. Flanking does not grant a bonus to Block
+checks.</p>
+<p>For example, suppose Bliqwik the squid chooses to block on its turn. On
+the monster’s turn, two merman choose to attack Bliqwik. The first
+merman rolls a 14. If Bliqwik rolls a 15 or higher on his block check,
+the attack misses, and he gets a tally in block. The second merman rolls
+a 9. Bliqwik rolls an 11, but takes a -3 penalty (as this was the second
+time he was attacked) for a total of 8. Since 8 does not hit Bliqwik’s
+AC, he is still missed by the attack, but gets a tally in the armor that
+he is wearing instead. If another monster were to attack Bliqwik, he
+would suffer a -6 penalty to the roll. If he chooses to block again on
+his next turn, the penalty resets to zero.</p>
+
+<p><strong>Bull Rush:<em>**</em></strong>A character can charge, and, instead of making a
+regular attack roll, can make an Unarmed Attack roll vs. the target’s
+Fortitude. A successful hit deals no damage, but instead pushes the
+target back one square, and the attacker ends in the square the creature
+just exited. While the charge may provoke opportunity attacks, the
+pushing and movement does not.</p>
+
+<p><strong>Charge:<em>**</em></strong>As a standard action a character can move at least two
+squares (up to its movement) in a straight line into an unoccupied
+square adjacent to a creature and make an attack. The square entered
+must be the closest unoccupied square adjacent to the target that is
+between the attacker and target.</p>
+
+<p><strong>Combat advantage:<em>**</em></strong>If a creature cannot operate as well as it
+should be in combat, it grants combat advantage. Any creature who has
+combat advantage on another creature will have a +2 to attack rolls
+against that creature. Combat advantage is granted when:</p>
+<ul>
+<li><p>A creature is being flanked</p>
+</li>
+<li><p>A creature is prone (Combat Advantage is not granted to Ranged
+attacks here, they are actually at a -1)</p>
+</li>
+<li><p>A creature is unaware of the attacker’s presence</p>
+</li>
+<li><p>A creature is taken by surprise.</p>
+</li>
+</ul>
+
+<p><strong>Cover/Concealment**</strong>:<strong>**</strong>Sometimes, battlefields are obstructed. If
+an attacker does not have a clear path to a target, they take a -2
+penalty to the attack roll, and the target is considered to have partial
+cover. Examples of this would include light fog, furniture covering half
+of the target’s body, etc. If a target is completely concealed, the
+attacker takes a -5 penalty to the attack roll. This would be caused by
+thick, dense fog, a complete lack of light, the target being invisible,
+etc. If a target has an ally standing adjacent to him between the target
+and the attacker, the target has cover. However, if an attacker is
+attacking through an ally’s square, the target does not get cover.</p>
+
+<p><strong>Critical Hits**</strong>:<strong>**</strong>Rolling a 20 on an attack roll results in a
+critical hit. Critical hits always hit, even if rolling a 20 would
+generally miss. If an attack that is not a spell results in a critical
+hit, maximum damage is dealt, and damage can be rolled again and added
+in. For example, if Grog the Viking does 1d6 times 3, he would roll the
+d6, multiply by 3, and then add in 18 damage (where 18 is 6 times 3, the
+maximum result of a d6 times 3).</p>
+<p>If a critical hit is achieved on a spell, the caster can cast the spell
+an additional time at no cost, targeting an additional valid creature.</p>
+
+<p><strong>Damage**</strong>:<strong>**</strong>To calculate damage, roll the appropriate damage die,
+then multiply by the modifier of the skill being used to attack with
+(Unarmed Combat, Melee Weapon or Ranged).</p>
+<p>Melee weapons deal d4 for damage die, multiplied by the modifier of the
+Melee Weapon skill. If the weapon is wielded two-handed, increase the
+damage die by one. The damage die can be further increased by the use of
+Talents.</p>
+<hr>
+<p>  d2*   <strong>d4</strong>   d6   d8   2d4   d10   d12   2d6   2d8   d20   2d10   etc.</p>
+<hr>
+<p>*for a d2, a coin can be used, assigning one side a value of 1, the
+other a value of 2. Alternatively, high/low or even/odd on any other die
+can simulate the results of a d2.
+
+Ranged Weapons follow the same rules, but a bow or crossbow is
+considered to be 2-handed, the use of a sling, or just an arm to throw
+things counts as one-handed.</p>
+<p>Unarmed Combat cannot be wielded two-handed, but instead, proficient
+unarmed combatants can make multiple attacks in each round. Unarmed
+combat does a d2, and is not modified by size.. See Unarmed Combat in
+Skills (page 38) for more information.</p>
+<p>All improvised weapons deal a d4.</p>
+
+<p><strong>Delay</strong>:<em>**</em>A character who does not wish to take actions on their
+initiative order can choose to delay until after another character’s
+turn. Delaying moves the character to a new position in the initiative
+order. To delay until after a specific action, see Ready an Action.
+Delaying cannot delay harmful effects, such as ongoing damage, nor can
+they prolong beneficial effects, such as a sustain (minor). Ongoing
+damage and sustains must be dealt with before a character delays.</p>
+
+<p><strong>Disarm:</strong> A character can take a -2 penalty to an attack roll to
+target an item held by an opponent. If the attack hits the wielder’s
+Reflex, the item is knocked to the ground. Any character can retrieve an
+adjacent object as a minor action. Any damage is dealt to the object,
+not the wielder.</p>
+
+<p><strong>Dual Wielding:<em>**</em></strong>A character wielding two weapons takes a -2 to
+attack with the off-hand weapon, and grants combat advantage. He may
+only make one attack per round, unless specifically allowed to do
+otherwise.</p>
+<p><strong>Rounding Down:</strong>Unless otherwise specified, whenever dividing a
+number, round down. Even if your Destruction score is 29, your modifier
+is 2. If you are dividing 35 by 2, you get 17.</p>
+<p>
+</p>
+
+<p><strong>Flanking</strong>:<em>**</em>When two allied creatures are on opposite sides of an
+enemy, they are considered to be flanking the enemy, and it grants
+combat advantage to the two allies.</p>
+<p><strong>Ledges:</strong> A creature that is being pushed, Bull Rushed, or slid off a
+ledge can make a saving throw. On a success, the character falls prone
+instead of moving off the ledge.</p>
+<p>
+</p>
+
+<p><strong>Grab/Grapple:<em>**</em></strong>Grabbing a creature is done by making an Unarmed
+Combat attack roll vs. the target’s Reflex. When grabbed, a creature is
+restrained until escape. Sustaining a grab is a minor action. A grabbed
+creature can be subjected to forced movement, and if this movement
+slides the grabbed creature out of reach of the grabber, the grab ends.</p>
+
+<p><strong>Heal:</strong> As a standard action, you can make a dc 11 heal check to grant
+hit points equal to 1d4 times your Heal modifier to yourself or an
+adjacent creature. This can be done a number of times per day equal to
+three times your Heal modifier.</p>
+
+<p><strong>Intimidate:<em>**</em></strong>In combat, interaction can be used to frighten
+enemies into running away, or frighten creatures into allowing player
+characters to use them as mounts. This is done by making an interaction
+check vs. Will on a bloodied creature. GMs may limit how often this can
+be attempted against one creature.</p>
+
+<p><strong>Mount:<em>**</em></strong>A creature can mount a willing beast and ride it into
+combat. If a creature is mounted, the rider and the mount get a total of
+one turn. All creatures not mounted grant combat advantage to creatures
+riding mounts. When targeting mounted creatures, an attacker must choose
+to attack either the mount or the rider. If the rider is hit, he will
+fall off of the mount. If the mount dies, the rider will land prone in
+an unoccupied square next to the mount’s body. It is a move action to
+mount/dismount a mount. If a mounted creature is hit by a ranged attack
+(not spell), the creature must immediately make a saving throw to avoid
+being knocked prone. They may add their ride/drive modifier to the roll.</p>
+
+<p><strong>Multiple Attacks</strong>:<em>**</em>When an attack (usually a spell) targets
+multiple people, different attack rolls are used for each target, but
+only one damage roll is made, and applied to all targets. With unarmed
+combat, different attacks are made, so both attack and damage rolls are
+separate.</p>
+
+<p><strong>Opportunity Attacks:</strong>Few creatures fight fairly. If an opportunity or
+weakness presents itself in combat, opponents may make an attack against
+the disadvantaged foe. Opportunity attacks can be made with either melee
+weapon or unarmed attack, they cannot be made with ranged or spells. If
+unarmed attack is used, only one attack can be made. Each creature can
+only make one opportunity attack per round. Opportunity attacks can be
+made when:</p>
+<ul>
+<li><p>A creature leaves a square adjacent to an enemy without shifting</p>
+</li>
+<li><p>A creature casts a ranged spell or makes a ranged attack roll while
+adjacent to an enemy</p>
+</li>
+<li><p>A creature takes off into the air while adjacent to an enemy</p>
+</li>
+<li><p>A marked creature makes an attack not including the creature that
+marked it.</p>
+</li>
+</ul>
+<p>Opportunity attacks are <strong>not</strong>made when:</p>
+<ul>
+<li><p>A creature is pulled, pushed, or slid past an enemy</p>
+</li>
+<li><p>A creature teleports</p>
+</li>
+<li><p>Throwing a creature</p>
+</li>
+<li><p>A creature, not of its own volition, flies past/over another</p>
+</li>
+</ul>
+
+<p><strong>Ready an Action:<em>**</em></strong>A character can choose to ready an action or
+wait to initiate an action until a trigger occurs. For example,
+Character A can wait to strike until Character B enters a certain
+square, or makes an attack. Readying an action costs the action of the
+actions being readied (readying a standard action takes that standard
+action, etc.). If the trigger does not occur (Character B never enters
+the specified square or makes an attack), than the action is lost. If
+the provoking action does occur, the triggered action happens after that
+action is completed.</p>
+<p><strong>Throwing:<em>**</em></strong>You may throw an object or creature that you are
+currently grabbing, providing you are strong enough to lift it. If you
+throw a creature, it falls prone. If it is thrown into a wall, or other
+hazard, it takes 1d10 damage. To throw an object/creature, make a Ranged
+attack roll vs. the thrown target’s Reflex. If it hits, your attack roll
+divided by two is the number of feet you can throw them. Throwing a
+target ends a grab.</p>
+<h2 id="attacking-with-objects-western-">Attacking (With) Objects {.western}</h2>
+<hr>
+<p>  <strong>Size</strong>     <strong>Hit Points</strong>   <strong>Example</strong>
+  Handheld     10               Stick, broom
+  Two-handed   20               Vacuum, Fence Post
+  Huge         50               Door, Dresser, Refrigerator</p>
+<hr>
+<p>
+</p>
+
+<p><strong>Object Health:</strong>Objects can be attacked (or attacked with), and doing
+so reduces their long-term durability. Objects cannot be targeted with
+attacks vs. Fortitude or Will, and an attack vs. Reflex always hits.
+When attacking with an object, it takes one half of the damage inflicted
+with it. While some objects will break sooner (a bottle shatters once it
+has been hit), most objects can be used for several attacks before
+breaking. Damage is calculated using improvised weapon rules. Use the
+following table,
+considering any material multipliers, to determine hit points:</p>
+<hr>
+<p>  <strong>Material</strong>   <strong>Modifier</strong>
+  Glass          .5
+  Wood           1
+  Metal          2
+  Reinforced     1.5</p>
+<hr>
+<p>
+</p>
+
+
+
+
+
+
+<h2 id="status-effects-western-">Status Effects {.western}</h2>
+<p>During combat, characters will suffer from various status effects. A
+complete list of status effects can be found in the glossary, but many
+of the more common ones are outlined here:</p>
+
+<p><strong>Saving Throw:</strong>At the end of its turn, if a creature is affected by
+something labeled (save ends), it can make a saving throw. To do this,
+the player rolls a d20, and on a result of 11 or higher, the effect
+ends. Other times, a fear saving throw may be required by the GM in
+order to act or avoid fleeing. These operate in the same way, except the
+difficulty is set by the GM, and the player adds their character’s
+Discipline modifier to the roll.</p>
+
+
+<p><strong>Blinded:</strong>A blinded creature cannot see, and takes a -5 penalty to
+attack rolls and the following skills: Acrobatics, Block, Engineering,
+Melee Weapon, Perception, Sleight of Hand, Ride/Drive, Security and
+Unarmed Combat.</p>
+
+<p><strong>Combat advantage:</strong>If a creature cannot operate as well as it should
+be in combat, it grants combat advantage. Creatures attacking creatures
+who are granting combat advantage gain a +2 to the attack roll. Combat
+advantage is granted when:</p>
+<p><strong>Status Effects:</strong>A character cannot suffer from two identical status
+effects at one time. For example, a character who is blinded cannot
+become blinded again, although some GMs may rule that the character may
+have two make two saving throws if (and only if) the cause of the
+blindness is different. (If a character has acid sprayed in their eyes
+and then is subject to a harsh blow, they may have to save twice).</p>
+<p>
+</p>
+<ul>
+<li><p>Creatures are flanking</p>
+</li>
+<li><p>A creature is prone (Ranged attacks are at a -1 to attack a prone
+creature; Combat Advantage is not granted)</p>
+</li>
+<li><p>A creature is unaware of the attacker’s presence</p>
+</li>
+<li><p>A creature is taken by surprise.</p>
+</li>
+</ul>
+
+<p><strong>Confused:</strong> A confused character treats all creatures as enemies. A
+confused creature grants combat advantage and cannot flank. If it
+chooses to attack, it will randomly attack one of the closest creatures
+to it.</p>
+
+<p><strong>Dazed:</strong>A dazed character can take one action on its turn; either a
+standard, a move, or a minor action. A dazed character cannot make
+opportunity attacks. If a power is sustain minor, the action can be used
+to sustain. If a power is sustain (number), the sustain can be completed
+without expending its one action allowed for that turn. Free actions can
+be taken normally. A dazed creature grants combat advantage and cannot
+flank.
+
+<strong>Deafened:</strong>A deafened creature cannot hear, and takes a -2 penalty to
+Interaction, Perception, and Sense Motive Checks.</p>
+
+<p><strong>Dispelled</strong>: A creature that is dispelled cannot regenerate magic.</p>
+
+<p><strong>Disrupted</strong>: A disrupted creature cannot attack or cast offensive
+spells.</p>
+
+<p><strong>Dominated:</strong>A dominated creature acts like a dazed one in that they
+can make one action on their turn, and cannot make opportunity attacks.
+A dominated creature is controlled by another creature, the dominator.
+The dominated creature can take no actions by itself, but rather the
+dominator chooses one action for it to take. This one action can be a
+move, minor, or standard. No powers or effects (except grabbing) can be
+sustained while a creature is dominated. A dominated creature grants
+combat advantage and cannot flank.</p>
+
+<p><strong>Dying:</strong>A dying creature has zero hit points and is unconscious and
+helpless. Successful attacks on the dying immediately kill the target. A
+dying creature must be stabilized before they can be healed.</p>
+
+<p><strong>Grabbed:</strong> When grabbed, a creature is restrained until escape. A
+grabbed creature can be subjected to forced movement, and if this
+movement slides the grabbed creature out of reach of the grabber, the
+grab ends.</p>
+
+<p><strong>Helpless:</strong>Any attack rolls against a helpless creature automatically
+deal maximum damage, but do not count as critical hits, or gain the
+additional damage die awarded for a critical hit.</p>
+
+<p><strong>Immobilized:</strong>An immobilized creature cannot move, fly, or shift, but
+can still teleport, and be subjected to forced movement.</p>
+<p><strong>Improvised Damage:</strong>While some damage is standardized, there will be
+times when characters will take actions that are not explicitly
+outlined. In order to deal with these situations, provided here are
+examples of common threats, and their appropriate damage conversions.
+<strong>Fire:</strong> d6/round
+<strong>Metal Spikes:</strong> d10/round
+<strong>Landed Upon by Object:</strong>For every ten feet an object falls, roll 1d6
+per hundred lbs. the object weigh.
+<strong>Falling Damage:</strong>A character takes 1d10 damage for every 10 feet they
+fall. Additional damage may be applied if they land on sharp rocks or
+spikes.</p>
+<p>
+</p>
+
+<p><strong>Intangible:</strong>A creature that is intangible takes half damage from
+non-magical attacks and double damage from damage-dealing spells.
+Healing spells restore twice as much hit points, and spells with
+non-sustaining durations last twice as long.</p>
+
+<p><strong>Invisible:</strong>An invisible creature cannot be seen, and thus gets a +5
+bonus to stealth check rolls to hide from the sighted. Creatures unaware
+of an invisible creature’s presence or exact location grant combat
+advantage to the invisible creature. Invisible features have total
+concealment against creatures that cannot see them.
+
+<strong>Marked:</strong>A marked creature is thoroughly intimidated by the creature
+that marked it. Marked creatures take a -2 penalty to attack rolls
+against creatures other than the creature that marked it. In addition,
+if a marked creature makes an attack that does not include the marker,
+the marker may make an opportunity attack against the marked creature. A
+mark ends when the marker falls unconscious or dies.</p>
+
+<p><strong>Petrify:</strong>A petrified creature is turned to stone. It is considered to
+be unconscious, and is oblivious to events around it. It does not age,
+and gains resist 40 to all damage.
+
+<strong>Phasing:</strong>A creature that is phasing can pass through solid objects
+such as walls. A phasing creature cannot pick up or hold items unless
+those items are also phasing. All items worn by a creature that becomes
+phasing also become phasing. A phasing creature deals half damage in
+melee and unarmed attacks to creatures that are not phasing.</p>
+
+<p><strong>Prone:</strong>A creature lying down is considered to be prone. A character
+can drop prone as a minor action. A prone creature:</p>
+<ul>
+<li><p>Grants combat advantage to melee attacks,</p>
+</li>
+<li><p>Gains a +2 bonus to defenses against ranged attacks</p>
+</li>
+<li><p>Takes a -2 penalty to attack rolls.</p>
+</li>
+</ul>
+
+<p><strong>Restrained:</strong>A restrained creature cannot move, fly, shift, or
+teleport, but can be subjected to forced movement.</p>
+
+<p><strong>Slowed:</strong>A slowed creature is considered to have a movement of two.</p>
+
+<p><strong>Stunned:</strong>A stunned character can take no actions, including
+opportunity attacks and free actions, and is unable to sustain any
+powers or effects. A stunned creature grants combat advantage and cannot
+flank.
+
+<strong>Surprised:</strong>Surprised creatures grant combat advantage. A creature is
+surprised if it doesn&#39;t have enough time to prepare for an attack, or if
+it doesn’t know from what direction an attack will come. An invisible
+attacker is surprising its target only if the target cannot hear, feel,
+or otherwise accurately determine the location of the attacker.</p>
+
+<p><strong>Unconscious:</strong>An unconscious creature is considered to be helpless,
+and is oblivious to events around it.</p>
+
+<p><strong>Weakened:</strong>A weakened character deals half damage on all attacks and
+spells, and heals half as many hit points on spells that heal.</p>
+<h2 id="death-dying-and-the-unconscious-condition-western-">Death, Dying, and the Unconscious Condition {.western}</h2>
+<p>It is not uncommon for adventurers, especially new ones, to die.
+Outlined below are the rules for dealing with character death.</p>
+<p>If damage dealt to a character is greater than or equal to their
+remaining hit points, that character is dropped to zero hit points and
+falls unconscious. No matter how many points of damage are dealt, the
+character never goes to negative hit points, but rather remains at zero.</p>
+<p>Once a character is unconscious, they may take no actions, and if any
+further damage is dealt to them, they will immediately die. A dying
+character can be stabilized (brought to one hp) if another creature
+performs a heal check on them. A dying creature must be stabilized
+before they can be healed.</p>
+<p>Most monsters will not attack an unconscious character until other
+threats against it are eliminated, except in some cases, such as if an
+adventurer takes a mother’s egg, or tries to harm its child.
+ Death is not always permanent, especially for adventurers. In addition
+to certain spells, your GM may offer ways for a character to be brought
+back to life, such as divine intervention, or a return as a ghost.
+ Note that a character who takes damage while sleeping is not
+immediately killed, as they are not at zero hit points. Rather, the
+attack deals maximum damage (but not a critical reroll) and immediately
+awakens the character. Some cases (such as a magical or supernaturally
+originated sleep) may not result in the character awakening.</p>
+  </ion-content>
+</ion-view>
