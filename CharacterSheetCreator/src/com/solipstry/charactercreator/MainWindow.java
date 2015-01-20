@@ -74,6 +74,8 @@ public class MainWindow extends JFrame
 	private JTextField txtAttribute7;
 	private JTextField txtAttribute8;
 	
+	private Character character;
+	
 	public static void main(String args[])
 	{
 		MainWindow window = new MainWindow();
@@ -85,6 +87,8 @@ public class MainWindow extends JFrame
 	 */
 	public MainWindow()
 	{
+		character = new Character();
+		
 		setTitle("Solipstry Character Creator");
 		
 		//TODO Prompt user to save work before exiting
@@ -202,6 +206,18 @@ public class MainWindow extends JFrame
 		txtBackground.setBounds(200, 290, 200, 20);
 		detailsPanel.add(txtBackground);
 		txtBackground.setColumns(10);
+		
+		JButton btnDetailsNext = new JButton("Next");
+		btnDetailsNext.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent arg0) 
+			{
+				updateCharacterDetails();
+				tabbedPane.setSelectedIndex(1);
+			}
+		});
+		btnDetailsNext.setBounds(496, 309, 89, 23);
+		detailsPanel.add(btnDetailsNext);
 		
 		tabbedPane.addTab("Attributes", null, attributesPanel, "Character attributes");
 		
@@ -368,53 +384,32 @@ public class MainWindow extends JFrame
 		txtCharisma.setBounds(134, 46, 86, 20);
 		attributesPanel.add(txtCharisma);
 		txtCharisma.setColumns(10);
-		txtCharisma.getDocument().addDocumentListener(new DocumentListener()
-		{
-			public void changedUpdate(DocumentEvent e)
-			{
-				//TODO Update skills, etc
-			}
-			
-			public void removeUpdate(DocumentEvent e) {}
-			public void insertUpdate(DocumentEvent e) {}
-		});
-		
+
 		txtConstitution = new JTextField();
 		txtConstitution.setBounds(134, 71, 86, 20);
 		attributesPanel.add(txtConstitution);
 		txtConstitution.setColumns(10);
-		txtConstitution.getDocument().addDocumentListener(new DocumentListener()
-		{
-			public void changedUpdate(DocumentEvent e)
-			{
-				//TODO Update skills, etc
-				lblHp.setText(Integer.toString((int) Math.floor(1.5 * Integer.parseInt(txtConstitution.getText()))));
-			}
-			
-			public void removeUpdate(DocumentEvent e) {}
-			public void insertUpdate(DocumentEvent e) {}
-		});
-		
+
 		txtDexterity = new JTextField();
 		txtDexterity.setBounds(134, 96, 86, 20);
 		attributesPanel.add(txtDexterity);
 		txtDexterity.setColumns(10);
-		
+
 		txtIntelligence = new JTextField();
 		txtIntelligence.setBounds(134, 121, 86, 20);
 		attributesPanel.add(txtIntelligence);
 		txtIntelligence.setColumns(10);
-		
+
 		txtLuck = new JTextField();
 		txtLuck.setBounds(134, 146, 86, 20);
 		attributesPanel.add(txtLuck);
 		txtLuck.setColumns(10);
-		
+
 		txtSpeed = new JTextField();
 		txtSpeed.setBounds(134, 171, 86, 20);
 		attributesPanel.add(txtSpeed);
 		txtSpeed.setColumns(10);
-		
+
 		txtStrength = new JTextField();
 		txtStrength.setBounds(134, 196, 86, 20);
 		attributesPanel.add(txtStrength);
@@ -562,4 +557,20 @@ public class MainWindow extends JFrame
 		lblInitiative.setBounds(703, 200, 100, 14);
 		contentPane.add(lblInitiative);
 	}	
+	
+	/**
+	 * Updates the character object with the information on the details tab
+	 */
+	private void updateCharacterDetails()
+	{
+		character.name = txtName.getText();
+		character._class = txtClass.getText();
+		character.race = txtRace.getText();
+		character.height = txtHeight.getText();
+		character.weight = txtWeight.getText();
+		character.age = txtAge.getText();
+		character.occupation = txtOccupation.getText();
+		character.aspiration = txtAspiration.getText();
+		character.background = txtBackground.getText();
+	}
 }
