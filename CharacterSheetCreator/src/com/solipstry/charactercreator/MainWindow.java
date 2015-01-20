@@ -424,6 +424,7 @@ public class MainWindow extends JFrame
 		txtWisdom.setColumns(10);
 		
 		txtAttribute1 = new JTextField();
+		txtAttribute1.setEditable(false);
 		txtAttribute1.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute1.setBounds(304, 46, 86, 20);
 		attributesPanel.add(txtAttribute1);
@@ -431,6 +432,7 @@ public class MainWindow extends JFrame
 		txtAttribute1.setDragEnabled(true);
 		
 		txtAttribute2 = new JTextField();
+		txtAttribute2.setEditable(false);
 		txtAttribute2.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute2.setBounds(304, 71, 86, 20);
 		attributesPanel.add(txtAttribute2);
@@ -438,6 +440,7 @@ public class MainWindow extends JFrame
 		txtAttribute2.setDragEnabled(true);
 		
 		txtAttribute3 = new JTextField();
+		txtAttribute3.setEditable(false);
 		txtAttribute3.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute3.setBounds(304, 96, 86, 20);
 		attributesPanel.add(txtAttribute3);
@@ -445,6 +448,7 @@ public class MainWindow extends JFrame
 		txtAttribute3.setDragEnabled(true);
 		
 		txtAttribute4 = new JTextField();
+		txtAttribute4.setEditable(false);
 		txtAttribute4.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute4.setBounds(304, 121, 86, 20);
 		attributesPanel.add(txtAttribute4);
@@ -452,6 +456,7 @@ public class MainWindow extends JFrame
 		txtAttribute4.setDragEnabled(true);
 		
 		txtAttribute5 = new JTextField();
+		txtAttribute5.setEditable(false);
 		txtAttribute5.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute5.setBounds(304, 146, 86, 20);
 		attributesPanel.add(txtAttribute5);
@@ -459,6 +464,7 @@ public class MainWindow extends JFrame
 		txtAttribute5.setDragEnabled(true);
 		
 		txtAttribute6 = new JTextField();
+		txtAttribute6.setEditable(false);
 		txtAttribute6.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute6.setBounds(304, 171, 86, 20);
 		attributesPanel.add(txtAttribute6);
@@ -466,6 +472,7 @@ public class MainWindow extends JFrame
 		txtAttribute6.setDragEnabled(true);
 		
 		txtAttribute7 = new JTextField();
+		txtAttribute7.setEditable(false);
 		txtAttribute7.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute7.setBounds(304, 196, 86, 20);
 		attributesPanel.add(txtAttribute7);
@@ -473,6 +480,7 @@ public class MainWindow extends JFrame
 		txtAttribute7.setDragEnabled(true);
 		
 		txtAttribute8 = new JTextField();
+		txtAttribute8.setEditable(false);
 		txtAttribute8.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute8.setBounds(304, 221, 86, 20);
 		attributesPanel.add(txtAttribute8);
