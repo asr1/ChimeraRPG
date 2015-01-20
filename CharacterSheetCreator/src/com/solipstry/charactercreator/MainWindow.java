@@ -1,17 +1,17 @@
 package com.solipstry.charactercreator;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.JCheckBox;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 
 public class MainWindow extends JFrame
 {
-
 	private JPanel contentPane;
 	
 	//Shows whether the user is creating a homebrewed character
@@ -49,7 +49,7 @@ public class MainWindow extends JFrame
 	{
 		//TODO Prompt user to save work before exiting
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 400);
+		setBounds(100, 100, 750, 400);
 		setResizable(false);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -87,14 +87,85 @@ public class MainWindow extends JFrame
 		chkHomebrew.setEnabled(false);
 		contentPane.add(chkHomebrew);
 		
+		//TODO Put number and name on same line
 		JLabel lblHpName = new JLabel("HP");
-		lblHpName.setBounds(603, 11, 46, 14);
+		lblHpName.setBounds(603, 20, 100, 14);
 		contentPane.add(lblHpName);
 		
 		lblHp = new JLabel("0");
-		lblHp.setBounds(603, 25, 46, 14);
+		lblHp.setBounds(703, 20, 100, 14);
 		contentPane.add(lblHp);
 		
+		JLabel lblMagicPointsName = new JLabel("Magic Points");
+		lblMagicPointsName.setBounds(603, 40, 100, 14);
+		contentPane.add(lblMagicPointsName);
 		
+		lblMagicPoints = new JLabel("0");
+		lblMagicPoints.setBounds(703, 40, 100, 14);
+		contentPane.add(lblMagicPoints);
+		
+		JLabel lblMagicRegenName = new JLabel("Magic Regen");
+		lblMagicRegenName.setBounds(603, 60, 100, 14);
+		contentPane.add(lblMagicRegenName);
+		
+		lblMagicRegen = new JLabel("0");
+		lblMagicRegen.setBounds(703, 60, 100, 14);
+		contentPane.add(lblMagicRegen);
+		
+		JLabel lblAcName = new JLabel("AC");
+		lblAcName.setBounds(603, 80, 100, 14);
+		contentPane.add(lblAcName);
+		
+		lblAc = new JLabel("0");
+		lblAc.setBounds(703, 80, 100, 14);
+		contentPane.add(lblAc);
+		
+		JLabel lblReflexName = new JLabel("Reflex");
+		lblReflexName.setBounds(603, 100, 100, 14);
+		contentPane.add(lblReflexName);
+		
+		lblReflex = new JLabel("0");
+		lblReflex.setBounds(703, 100, 100, 14);
+		contentPane.add(lblReflex);
+		
+		JLabel lblWillName = new JLabel("Will");
+		lblWillName.setBounds(603, 120, 100, 14);
+		contentPane.add(lblWillName);
+		
+		lblWill = new JLabel("0");
+		lblWill.setBounds(703, 120, 100, 14);
+		contentPane.add(lblWill);
+		
+		JLabel lblFortitudeName = new JLabel("Fortitude");
+		lblFortitudeName.setBounds(603, 140, 100, 14);
+		contentPane.add(lblFortitudeName);
+		
+		lblFortitude = new JLabel("0");
+		lblFortitude.setBounds(703, 140, 100, 14);
+		contentPane.add(lblFortitude);
+		
+		JLabel lblFortuneName = new JLabel("Fortune Points");
+		lblFortuneName.setBounds(603, 160, 100, 14);
+		contentPane.add(lblFortuneName);
+		
+		lblFortune = new JLabel("0");
+		lblFortune.setBounds(703, 160, 100, 14);
+		contentPane.add(lblFortune);
+		
+		JLabel lblMovementName = new JLabel("Movement");
+		lblMovementName.setBounds(603, 180, 100, 14);
+		contentPane.add(lblMovementName);
+		
+		lblMovement = new JLabel("0");
+		lblMovement.setBounds(703, 180, 100, 14);
+		contentPane.add(lblMovement);
+		
+		JLabel lblInitiativeName = new JLabel("Initiative");
+		lblInitiativeName.setBounds(603, 200, 100, 14);
+		contentPane.add(lblInitiativeName);
+		
+		lblInitiative = new JLabel("0");
+		lblInitiative.setBounds(703, 200, 100, 14);
+		contentPane.add(lblInitiative);
 	}	
 }
