@@ -372,7 +372,7 @@ public class MainWindow extends JFrame
 		{
 			public void changedUpdate(DocumentEvent e)
 			{
-				
+				//TODO Update skills, etc
 			}
 			
 			public void removeUpdate(DocumentEvent e) {}
@@ -383,6 +383,17 @@ public class MainWindow extends JFrame
 		txtConstitution.setBounds(134, 71, 86, 20);
 		attributesPanel.add(txtConstitution);
 		txtConstitution.setColumns(10);
+		txtConstitution.getDocument().addDocumentListener(new DocumentListener()
+		{
+			public void changedUpdate(DocumentEvent e)
+			{
+				//TODO Update skills, etc
+				lblHp.setText(Integer.toString((int) Math.floor(1.5 * Integer.parseInt(txtConstitution.getText()))));
+			}
+			
+			public void removeUpdate(DocumentEvent e) {}
+			public void insertUpdate(DocumentEvent e) {}
+		});
 		
 		txtDexterity = new JTextField();
 		txtDexterity.setBounds(134, 96, 86, 20);
