@@ -13,6 +13,8 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import java.awt.Color;
+import javax.swing.UIManager;
 
 public class MainWindow extends JFrame
 {
@@ -75,6 +77,7 @@ public class MainWindow extends JFrame
 	private JTextField txtAttribute8;
 	
 	private Character character;
+	private JButton btnAttrNext;
 	
 	public static void main(String args[])
 	{
@@ -421,52 +424,72 @@ public class MainWindow extends JFrame
 		txtWisdom.setColumns(10);
 		
 		txtAttribute1 = new JTextField();
+		txtAttribute1.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute1.setBounds(304, 46, 86, 20);
 		attributesPanel.add(txtAttribute1);
 		txtAttribute1.setColumns(10);
 		txtAttribute1.setDragEnabled(true);
 		
 		txtAttribute2 = new JTextField();
+		txtAttribute2.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute2.setBounds(304, 71, 86, 20);
 		attributesPanel.add(txtAttribute2);
 		txtAttribute2.setColumns(10);
 		txtAttribute2.setDragEnabled(true);
 		
 		txtAttribute3 = new JTextField();
+		txtAttribute3.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute3.setBounds(304, 96, 86, 20);
 		attributesPanel.add(txtAttribute3);
 		txtAttribute3.setColumns(10);
 		txtAttribute3.setDragEnabled(true);
 		
 		txtAttribute4 = new JTextField();
+		txtAttribute4.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute4.setBounds(304, 121, 86, 20);
 		attributesPanel.add(txtAttribute4);
 		txtAttribute4.setColumns(10);
 		txtAttribute4.setDragEnabled(true);
 		
 		txtAttribute5 = new JTextField();
+		txtAttribute5.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute5.setBounds(304, 146, 86, 20);
 		attributesPanel.add(txtAttribute5);
 		txtAttribute5.setColumns(10);
 		txtAttribute5.setDragEnabled(true);
 		
 		txtAttribute6 = new JTextField();
+		txtAttribute6.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute6.setBounds(304, 171, 86, 20);
 		attributesPanel.add(txtAttribute6);
 		txtAttribute6.setColumns(10);
 		txtAttribute6.setDragEnabled(true);
 		
 		txtAttribute7 = new JTextField();
+		txtAttribute7.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute7.setBounds(304, 196, 86, 20);
 		attributesPanel.add(txtAttribute7);
 		txtAttribute7.setColumns(10);
 		txtAttribute7.setDragEnabled(true);
 		
 		txtAttribute8 = new JTextField();
+		txtAttribute8.setBackground(UIManager.getColor("Label.background"));
 		txtAttribute8.setBounds(304, 221, 86, 20);
 		attributesPanel.add(txtAttribute8);
 		txtAttribute8.setColumns(10);
 		txtAttribute8.setDragEnabled(true);
+		
+		btnAttrNext = new JButton("Next");
+		btnAttrNext.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				updateCharacterAttributes();
+				tabbedPane.setSelectedIndex(2);
+			}
+		});
+		btnAttrNext.setBounds(496, 309, 89, 23);
+		attributesPanel.add(btnAttrNext);
 		
 		tabbedPane.addTab("Skills", null, skillsPanel, "Character skills");
 		tabbedPane.addTab("Talents", null, talentsPanel, "Character talents");
@@ -572,5 +595,50 @@ public class MainWindow extends JFrame
 		character.occupation = txtOccupation.getText();
 		character.aspiration = txtAspiration.getText();
 		character.background = txtBackground.getText();
+	}
+	
+	/**
+	 * Updates the information about the character that is affected by attributes
+	 */
+	private void updateCharacterAttributes()
+	{
+		character.charisma = Integer.parseInt(txtCharisma.getText());
+		character.constitution = Integer.parseInt(txtConstitution.getText());
+		character.dexterity = Integer.parseInt(txtDexterity.getText());
+		character.intelligence = Integer.parseInt(txtIntelligence.getText());
+		character.luck = Integer.parseInt(txtLuck.getText());
+		character.speed = Integer.parseInt(txtSpeed.getText());
+		character.wisdom = Integer.parseInt(txtWisdom.getText());
+		
+		//Check if the character sheet is homebrewed
+		if(character.charisma < 3 || character.charisma > 30 ||
+				character.constitution < 3 || character.constitution > 30 ||
+				character.dexterity < 3 || character.dexterity > 30 ||
+				character.intelligence < 3 || character.intelligence > 30 ||
+				character.luck < 3 || character.luck > 30 ||
+				character.speed < 3 || character.speed > 30 ||
+				character.wisdom < 3 || character.wisdom > 30)
+		{
+			chkHomebrew.setSelected(true);
+		}
+		
+		//Calculate derived traits
+		character.movement = 3 + Character.getModifier(character.speed);
+		character.hp = (int) Math.floor(1.5 * character.constitution);
+		character.magicPoints = 5 * character.wisdom;
+		character.magicRegen = character.intelligence;
+		character.fortunePoints = Character.getModifier(character.luck);
+		character.initiative = Character.getModifier(character.speed);
+		character.fortitude = 10 + Character.getModifier(character.constitution);
+		character.will = 10 + Character.getModifier(character.wisdom);
+		
+		//Display the information in the quick view
+		lblMovement.setText(Integer.toString(character.movement));
+		lblHp.setText(Integer.toString(character.hp));
+		lblMagicPoints.setText(Integer.toString(character.magicPoints));
+		lblMagicRegen.setText(Integer.toString(character.magicRegen));
+		lblFortune.setText(Integer.toString(character.fortunePoints));
+		lblFortitude.setText(Integer.toString(character.fortitude));
+		lblWill.setText(Integer.toString(character.will));
 	}
 }

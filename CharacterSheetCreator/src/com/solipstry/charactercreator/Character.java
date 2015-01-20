@@ -1,6 +1,7 @@
 package com.solipstry.charactercreator;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
@@ -19,6 +20,40 @@ public class Character
 		spells = new HashSet<Spell>();
 		talents = new HashSet<Talent>();
 		equipment = new ArrayList<String>();
+		skills = new HashMap<Skill, Integer>();
+		
+		//All skills are 10 by default
+		skills.put(Skill.ACROBATICS, 10);
+		skills.put(Skill.ALTERATION, 10);
+		skills.put(Skill.ATHLETICS, 10);
+		skills.put(Skill.BLOCK, 10);
+		skills.put(Skill.CHEMISTRY, 10);
+		skills.put(Skill.CONJURATION, 10);
+		skills.put(Skill.CRAFT, 10);
+		skills.put(Skill.DESTRUCTION, 10);
+		skills.put(Skill.DISCIPLINE, 10);
+		skills.put(Skill.DISGUISE, 10);
+		skills.put(Skill.ENDURANCE, 10);
+		skills.put(Skill.ENGINEERING, 10);
+		skills.put(Skill.ENLIGHTENMENT, 10);
+		skills.put(Skill.ESCAPE, 10);
+		skills.put(Skill.HEAVY_ARMOR, 10);
+		skills.put(Skill.INTERACTION, 10);
+		skills.put(Skill.KNOWLEDGE, 10);
+		skills.put(Skill.LANGUAGE, 10);
+		skills.put(Skill.LIGHT_ARMOR, 10);
+		skills.put(Skill.MEDICINE, 10);
+		skills.put(Skill.MELEE_WEAPON, 10);
+		skills.put(Skill.NATURE, 10);
+		skills.put(Skill.PERCEPTION, 10);
+		skills.put(Skill.RANGED_COMBAT, 10);
+		skills.put(Skill.RESTORATION, 10);
+		skills.put(Skill.RIDE, 10);
+		skills.put(Skill.SECURITY, 10);
+		skills.put(Skill.SENSE_MOTIVE, 10);
+		skills.put(Skill.SLEIGHT_OF_HAND, 10);
+		skills.put(Skill.STEALTH, 10);
+		skills.put(Skill.UNARMED_COMBAT, 10);
 	}
 	
 	/** The character's name */
@@ -82,7 +117,7 @@ public class Character
 	public int strength;
 	
 	/** The character's wisdom */
-	public int widsom;
+	public int wisdom;
 	
 	/** The character's armor class */
 	public int ac;
@@ -119,6 +154,12 @@ public class Character
 	
 	/** The character's equipment */
 	public ArrayList<String> equipment;
+	
+	/** Any custom skills the character has */
+	public CustomSkill customSkills[] = new CustomSkill[5];
+	
+	/** Any custom spells the character has */
+	public ArrayList<CustomSpell> customSpells = new ArrayList<CustomSpell>();
 	
 	/** 
 	 * Calculates the modifier for the given integer value.
