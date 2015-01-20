@@ -11,6 +11,8 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class MainWindow extends JFrame
 {
@@ -366,6 +368,16 @@ public class MainWindow extends JFrame
 		txtCharisma.setBounds(134, 46, 86, 20);
 		attributesPanel.add(txtCharisma);
 		txtCharisma.setColumns(10);
+		txtCharisma.getDocument().addDocumentListener(new DocumentListener()
+		{
+			public void changedUpdate(DocumentEvent e)
+			{
+				
+			}
+			
+			public void removeUpdate(DocumentEvent e) {}
+			public void insertUpdate(DocumentEvent e) {}
+		});
 		
 		txtConstitution = new JTextField();
 		txtConstitution.setBounds(134, 71, 86, 20);
