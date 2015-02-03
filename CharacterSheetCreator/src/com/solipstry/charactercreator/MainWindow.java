@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
@@ -249,14 +250,88 @@ public class MainWindow extends JFrame
 	 */
 	private void updateCharacterAttributes()
 	{
-		character.charisma = Integer.parseInt(txtCharisma.getText());
-		character.constitution = Integer.parseInt(txtConstitution.getText());
-		character.dexterity = Integer.parseInt(txtDexterity.getText());
-		character.intelligence = Integer.parseInt(txtIntelligence.getText());
-		character.luck = Integer.parseInt(txtLuck.getText());
-		character.speed = Integer.parseInt(txtSpeed.getText());
-		character.wisdom = Integer.parseInt(txtWisdom.getText());
+		boolean invalidInput = false;
 		
+		try
+		{
+			character.charisma = Integer.parseInt(txtCharisma.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.charisma = 0;
+			invalidInput = true;
+		}
+		
+		try
+		{
+			character.constitution = Integer.parseInt(txtConstitution.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.constitution = 0;
+			invalidInput = true;
+		}
+		
+		
+		try
+		{
+			character.dexterity = Integer.parseInt(txtDexterity.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.dexterity = 0;
+			invalidInput = true;
+		}
+		
+		
+		try 
+		{
+			character.intelligence = Integer.parseInt(txtIntelligence.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			 character.intelligence = 0;
+			 invalidInput = true;
+		}
+		
+		
+		try
+		{
+			character.luck = Integer.parseInt(txtLuck.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.luck = 0;
+			invalidInput = true;
+		}
+		
+		try
+		{
+			character.speed = Integer.parseInt(txtSpeed.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.speed = 0;
+			invalidInput = true;
+		}
+		
+		
+		try
+		{
+			character.wisdom = Integer.parseInt(txtWisdom.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.wisdom = 0;
+			invalidInput = true;
+		}
+		
+		//Notify user of invalid input
+		if(invalidInput)
+		{
+			JOptionPane.showMessageDialog(null, "Please enter integer values only", "Invalid Input", JOptionPane.INFORMATION_MESSAGE);
+		}
+        
 		//Calculate derived traits
 		character.movement = 3 + Character.getModifier(character.speed);
 		character.hp = (int) Math.floor(1.5 * character.constitution);
