@@ -1,7 +1,10 @@
 package com.solipstry.charactercreator;
 
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -10,11 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import java.awt.Color;
+import javax.swing.TransferHandler;
 import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
 
 public class MainWindow extends JFrame
 {
@@ -23,6 +24,8 @@ public class MainWindow extends JFrame
 	//Shows whether the user is creating a homebrewed character
 	private JCheckBox chkHomebrew;
 
+	private final JTabbedPane tabbedPane;
+	
 	//Panels for use in the tabbedPane
 	private JPanel detailsPanel;
 	private JPanel attributesPanel;
@@ -67,14 +70,14 @@ public class MainWindow extends JFrame
 	private JTextField txtSpeed;
 	private JTextField txtStrength;
 	private JTextField txtWisdom;
-	private JTextField txtAttribute1;
-	private JTextField txtAttribute2;
-	private JTextField txtAttribute3;
-	private JTextField txtAttribute4;
-	private JTextField txtAttribute5;
-	private JTextField txtAttribute6;
-	private JTextField txtAttribute7;
-	private JTextField txtAttribute8;
+	private JButton btnAttribute1;
+	private JButton btnAttribute2;
+	private JButton btnAttribute3;
+	private JButton btnAttribute4;
+	private JButton btnAttribute5;
+	private JButton btnAttribute6;
+	private JButton btnAttribute7;
+	private JButton btnAttribute8;
 	
 	private Character character;
 	private JButton btnAttrNext;
@@ -107,7 +110,7 @@ public class MainWindow extends JFrame
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.setBounds(0, 0, 600, 371);
 		contentPane.add(tabbedPane);
 
@@ -127,8 +130,168 @@ public class MainWindow extends JFrame
 		spellsPanel = new JPanel();
 		spellsPanel.setLayout(null);
 		
-		tabbedPane.addTab("Details", null, detailsPanel, "Character details");
+		setupDetailsPanel();
+		setupAttributesPanel();
+		setupSkillsPanel();
+		setupTalentsPanel();
+		setupSpellsPanel();
 		
+		tabbedPane.addTab("Details", null, detailsPanel, "Character details");
+		tabbedPane.addTab("Attributes", null, attributesPanel, "Character attributes");
+		tabbedPane.addTab("Skills", null, skillsPanel, "Character skills");
+		tabbedPane.addTab("Talents", null, talentsPanel, "Character talents");
+		tabbedPane.addTab("Spells", null, spellsPanel, "Character spells");
+		
+		chkHomebrew = new JCheckBox("Homebrew");
+		chkHomebrew.setBounds(600, 341, 131, 23);
+		chkHomebrew.setEnabled(false);
+		contentPane.add(chkHomebrew);
+		
+		JLabel lblHpName = new JLabel("HP");
+		lblHpName.setBounds(603, 20, 100, 14);
+		contentPane.add(lblHpName);
+		
+		lblHp = new JLabel("0");
+		lblHp.setBounds(703, 20, 100, 14);
+		contentPane.add(lblHp);
+		
+		JLabel lblMagicPointsName = new JLabel("Magic Points");
+		lblMagicPointsName.setBounds(603, 40, 100, 14);
+		contentPane.add(lblMagicPointsName);
+		
+		lblMagicPoints = new JLabel("0");
+		lblMagicPoints.setBounds(703, 40, 100, 14);
+		contentPane.add(lblMagicPoints);
+		
+		JLabel lblMagicRegenName = new JLabel("Magic Regen");
+		lblMagicRegenName.setBounds(603, 60, 100, 14);
+		contentPane.add(lblMagicRegenName);
+		
+		lblMagicRegen = new JLabel("0");
+		lblMagicRegen.setBounds(703, 60, 100, 14);
+		contentPane.add(lblMagicRegen);
+		
+		JLabel lblAcName = new JLabel("AC");
+		lblAcName.setBounds(603, 80, 100, 14);
+		contentPane.add(lblAcName);
+		
+		lblAc = new JLabel("0");
+		lblAc.setBounds(703, 80, 100, 14);
+		contentPane.add(lblAc);
+		
+		JLabel lblReflexName = new JLabel("Reflex");
+		lblReflexName.setBounds(603, 100, 100, 14);
+		contentPane.add(lblReflexName);
+		
+		lblReflex = new JLabel("0");
+		lblReflex.setBounds(703, 100, 100, 14);
+		contentPane.add(lblReflex);
+		
+		JLabel lblWillName = new JLabel("Will");
+		lblWillName.setBounds(603, 120, 100, 14);
+		contentPane.add(lblWillName);
+		
+		lblWill = new JLabel("0");
+		lblWill.setBounds(703, 120, 100, 14);
+		contentPane.add(lblWill);
+		
+		JLabel lblFortitudeName = new JLabel("Fortitude");
+		lblFortitudeName.setBounds(603, 140, 100, 14);
+		contentPane.add(lblFortitudeName);
+		
+		lblFortitude = new JLabel("0");
+		lblFortitude.setBounds(703, 140, 100, 14);
+		contentPane.add(lblFortitude);
+		
+		JLabel lblFortuneName = new JLabel("Fortune");
+		lblFortuneName.setBounds(603, 160, 100, 14);
+		contentPane.add(lblFortuneName);
+		
+		lblFortune = new JLabel("0");
+		lblFortune.setBounds(703, 160, 100, 14);
+		contentPane.add(lblFortune);
+		
+		JLabel lblMovementName = new JLabel("Movement");
+		lblMovementName.setBounds(603, 180, 100, 14);
+		contentPane.add(lblMovementName);
+		
+		lblMovement = new JLabel("0");
+		lblMovement.setBounds(703, 180, 100, 14);
+		contentPane.add(lblMovement);
+		
+		JLabel lblInitiativeName = new JLabel("Initiative");
+		lblInitiativeName.setBounds(603, 200, 100, 14);
+		contentPane.add(lblInitiativeName);
+		
+		lblInitiative = new JLabel("0");
+		lblInitiative.setBounds(703, 200, 100, 14);
+		contentPane.add(lblInitiative);
+	}	
+	
+	/**
+	 * Updates the character object with the information on the details tab
+	 */
+	private void updateCharacterDetails()
+	{
+		character.name = txtName.getText();
+		character._class = txtClass.getText();
+		character.race = txtRace.getText();
+		character.height = txtHeight.getText();
+		character.weight = txtWeight.getText();
+		character.age = txtAge.getText();
+		character.occupation = txtOccupation.getText();
+		character.aspiration = txtAspiration.getText();
+		character.background = txtBackground.getText();
+	}
+	
+	/**
+	 * Updates the information about the character that is affected by attributes
+	 */
+	private void updateCharacterAttributes()
+	{
+		character.charisma = Integer.parseInt(txtCharisma.getText());
+		character.constitution = Integer.parseInt(txtConstitution.getText());
+		character.dexterity = Integer.parseInt(txtDexterity.getText());
+		character.intelligence = Integer.parseInt(txtIntelligence.getText());
+		character.luck = Integer.parseInt(txtLuck.getText());
+		character.speed = Integer.parseInt(txtSpeed.getText());
+		character.wisdom = Integer.parseInt(txtWisdom.getText());
+		
+		//Check if the character sheet is homebrewed
+		if(character.charisma < 3 || character.charisma > 30 ||
+				character.constitution < 3 || character.constitution > 30 ||
+				character.dexterity < 3 || character.dexterity > 30 ||
+				character.intelligence < 3 || character.intelligence > 30 ||
+				character.luck < 3 || character.luck > 30 ||
+				character.speed < 3 || character.speed > 30 ||
+				character.wisdom < 3 || character.wisdom > 30)
+		{
+			chkHomebrew.setSelected(true);
+		}
+		
+		//Calculate derived traits
+		character.movement = 3 + Character.getModifier(character.speed);
+		character.hp = (int) Math.floor(1.5 * character.constitution);
+		character.magicPoints = 5 * character.wisdom;
+		character.magicRegen = character.intelligence;
+		character.fortunePoints = Character.getModifier(character.luck);
+		character.initiative = Character.getModifier(character.speed);
+		character.fortitude = 10 + Character.getModifier(character.constitution);
+		character.will = 10 + Character.getModifier(character.wisdom);
+		
+		//Display the information in the quick view
+		lblMovement.setText(Integer.toString(character.movement));
+		lblHp.setText(Integer.toString(character.hp));
+		lblMagicPoints.setText(Integer.toString(character.magicPoints));
+		lblMagicRegen.setText(Integer.toString(character.magicRegen));
+		lblFortune.setText(Integer.toString(character.fortunePoints));
+		lblFortitude.setText(Integer.toString(character.fortitude));
+		lblWill.setText(Integer.toString(character.will));
+	}
+	
+	private void setupDetailsPanel()
+	{
+
 		JLabel lblName = new JLabel("Name");
 		lblName.setBounds(90, 43, 100, 14);
 		detailsPanel.add(lblName);
@@ -221,29 +384,30 @@ public class MainWindow extends JFrame
 		});
 		btnDetailsNext.setBounds(496, 309, 89, 23);
 		detailsPanel.add(btnDetailsNext);
-		
-		tabbedPane.addTab("Attributes", null, attributesPanel, "Character attributes");
-		
+	}
+	
+	private void setupAttributesPanel()
+	{
 		JButton btnAll20 = new JButton("All 20");
 		btnAll20.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtAttribute1.setVisible(true);
-				txtAttribute2.setVisible(true);
-				txtAttribute3.setVisible(true);
-				txtAttribute4.setVisible(true);
-				txtAttribute5.setVisible(true);
-				txtAttribute6.setVisible(true);
-				txtAttribute7.setVisible(true);
-				txtAttribute8.setVisible(true);
+				btnAttribute1.setVisible(true);
+				btnAttribute2.setVisible(true);
+				btnAttribute3.setVisible(true);
+				btnAttribute4.setVisible(true);
+				btnAttribute5.setVisible(true);
+				btnAttribute6.setVisible(true);
+				btnAttribute7.setVisible(true);
+				btnAttribute8.setVisible(true);
 				
-				txtAttribute1.setText("20");
-				txtAttribute2.setText("20");
-				txtAttribute3.setText("20");
-				txtAttribute4.setText("20");
-				txtAttribute5.setText("20");
-				txtAttribute6.setText("20");
-				txtAttribute7.setText("20");
-				txtAttribute8.setText("20");
+				btnAttribute1.setText("20");
+				btnAttribute2.setText("20");
+				btnAttribute3.setText("20");
+				btnAttribute4.setText("20");
+				btnAttribute5.setText("20");
+				btnAttribute6.setText("20");
+				btnAttribute7.setText("20");
+				btnAttribute8.setText("20");
 				
 				txtCharisma.setText("");
 				txtConstitution.setText("");
@@ -255,29 +419,29 @@ public class MainWindow extends JFrame
 				txtWisdom.setText("");
 			}
 		});
-		btnAll20.setBounds(427, 11, 158, 23);
+		btnAll20.setBounds(359, 11, 196, 23);
 		attributesPanel.add(btnAll20);
 		
 		JButton btnOption1 = new JButton("30 30 20 20 20 20 10 10");
 		btnOption1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtAttribute1.setVisible(true);
-				txtAttribute2.setVisible(true);
-				txtAttribute3.setVisible(true);
-				txtAttribute4.setVisible(true);
-				txtAttribute5.setVisible(true);
-				txtAttribute6.setVisible(true);
-				txtAttribute7.setVisible(true);
-				txtAttribute8.setVisible(true);
+				btnAttribute1.setVisible(true);
+				btnAttribute2.setVisible(true);
+				btnAttribute3.setVisible(true);
+				btnAttribute4.setVisible(true);
+				btnAttribute5.setVisible(true);
+				btnAttribute6.setVisible(true);
+				btnAttribute7.setVisible(true);
+				btnAttribute8.setVisible(true);
 				
-				txtAttribute1.setText("30");
-				txtAttribute2.setText("30");
-				txtAttribute3.setText("20");
-				txtAttribute4.setText("20");
-				txtAttribute5.setText("20");
-				txtAttribute6.setText("20");
-				txtAttribute7.setText("10");
-				txtAttribute8.setText("10");
+				btnAttribute1.setText("30");
+				btnAttribute2.setText("30");
+				btnAttribute3.setText("20");
+				btnAttribute4.setText("20");
+				btnAttribute5.setText("20");
+				btnAttribute6.setText("20");
+				btnAttribute7.setText("10");
+				btnAttribute8.setText("10");
 				
 				txtCharisma.setText("");
 				txtConstitution.setText("");
@@ -289,29 +453,29 @@ public class MainWindow extends JFrame
 				txtWisdom.setText("");
 			}
 		});
-		btnOption1.setBounds(427, 45, 158, 23);
+		btnOption1.setBounds(359, 44, 196, 23);
 		attributesPanel.add(btnOption1);
 		
 		JButton btnOption2 = new JButton("30 30 30 20 20 10 10 10");
 		btnOption2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtAttribute1.setVisible(true);
-				txtAttribute2.setVisible(true);
-				txtAttribute3.setVisible(true);
-				txtAttribute4.setVisible(true);
-				txtAttribute5.setVisible(true);
-				txtAttribute6.setVisible(true);
-				txtAttribute7.setVisible(true);
-				txtAttribute8.setVisible(true);
+				btnAttribute1.setVisible(true);
+				btnAttribute2.setVisible(true);
+				btnAttribute3.setVisible(true);
+				btnAttribute4.setVisible(true);
+				btnAttribute5.setVisible(true);
+				btnAttribute6.setVisible(true);
+				btnAttribute7.setVisible(true);
+				btnAttribute8.setVisible(true);
 				
-				txtAttribute1.setText("30");
-				txtAttribute2.setText("30");
-				txtAttribute3.setText("30");
-				txtAttribute4.setText("20");
-				txtAttribute5.setText("20");
-				txtAttribute6.setText("10");
-				txtAttribute7.setText("10");
-				txtAttribute8.setText("10");
+				btnAttribute1.setText("30");
+				btnAttribute2.setText("30");
+				btnAttribute3.setText("30");
+				btnAttribute4.setText("20");
+				btnAttribute5.setText("20");
+				btnAttribute6.setText("10");
+				btnAttribute7.setText("10");
+				btnAttribute8.setText("10");
 				
 				txtCharisma.setText("");
 				txtConstitution.setText("");
@@ -323,20 +487,20 @@ public class MainWindow extends JFrame
 				txtWisdom.setText("");
 			}
 		});
-		btnOption2.setBounds(427, 79, 158, 23);
+		btnOption2.setBounds(359, 79, 196, 23);
 		attributesPanel.add(btnOption2);
 		
 		JButton btnRolled = new JButton("I rolled my attributes");
 		btnRolled.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtAttribute1.setVisible(false);
-				txtAttribute2.setVisible(false);
-				txtAttribute3.setVisible(false);
-				txtAttribute4.setVisible(false);
-				txtAttribute5.setVisible(false);
-				txtAttribute6.setVisible(false);
-				txtAttribute7.setVisible(false);
-				txtAttribute8.setVisible(false);
+				btnAttribute1.setVisible(false);
+				btnAttribute2.setVisible(false);
+				btnAttribute3.setVisible(false);
+				btnAttribute4.setVisible(false);
+				btnAttribute5.setVisible(false);
+				btnAttribute6.setVisible(false);
+				btnAttribute7.setVisible(false);
+				btnAttribute8.setVisible(false);
 				
 				txtCharisma.setText("");
 				txtConstitution.setText("");
@@ -348,7 +512,7 @@ public class MainWindow extends JFrame
 				txtWisdom.setText("");
 			}
 		});
-		btnRolled.setBounds(427, 113, 158, 23);
+		btnRolled.setBounds(359, 115, 196, 23);
 		attributesPanel.add(btnRolled);
 		
 		lblCharisma = new JLabel("Charisma");
@@ -423,69 +587,181 @@ public class MainWindow extends JFrame
 		attributesPanel.add(txtWisdom);
 		txtWisdom.setColumns(10);
 		
-		txtAttribute1 = new JTextField();
-		txtAttribute1.setEditable(false);
-		txtAttribute1.setBackground(UIManager.getColor("Label.background"));
-		txtAttribute1.setBounds(304, 46, 86, 20);
-		attributesPanel.add(txtAttribute1);
-		txtAttribute1.setColumns(10);
-		txtAttribute1.setDragEnabled(true);
+		btnAttribute1 = new JButton();
+		btnAttribute1.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute1.setBounds(253, 46, 86, 20);
+		btnAttribute1.setVisible(false);
+		btnAttribute1.setFocusPainted(false);
+		btnAttribute1.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute1.setContentAreaFilled(false);
+		btnAttribute1.setBorderPainted(false);
+		btnAttribute1.setOpaque(false);
+		TransferHandler transfer1 = new TransferHandler("text");
+		btnAttribute1.setTransferHandler(transfer1);
+		btnAttribute1.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handle = button.getTransferHandler();
+				handle.exportAsDrag(button, e, TransferHandler.COPY);
+			}
+		});
+		attributesPanel.add(btnAttribute1);
 		
-		txtAttribute2 = new JTextField();
-		txtAttribute2.setEditable(false);
-		txtAttribute2.setBackground(UIManager.getColor("Label.background"));
-		txtAttribute2.setBounds(304, 71, 86, 20);
-		attributesPanel.add(txtAttribute2);
-		txtAttribute2.setColumns(10);
-		txtAttribute2.setDragEnabled(true);
+		btnAttribute2 = new JButton();
+		btnAttribute2.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute2.setBounds(253, 71, 86, 20);
+		btnAttribute2.setVisible(false);
+		btnAttribute2.setFocusPainted(false);
+		btnAttribute2.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute2.setContentAreaFilled(false);
+		btnAttribute2.setBorderPainted(false);
+		btnAttribute2.setOpaque(false);
+		TransferHandler transfer2 = new TransferHandler("text");
+		btnAttribute2.setTransferHandler(transfer2);
+		btnAttribute2.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handle = button.getTransferHandler();
+				handle.exportAsDrag(button, e, TransferHandler.COPY);
+			}
+		});
+		attributesPanel.add(btnAttribute2);
 		
-		txtAttribute3 = new JTextField();
-		txtAttribute3.setEditable(false);
-		txtAttribute3.setBackground(UIManager.getColor("Label.background"));
-		txtAttribute3.setBounds(304, 96, 86, 20);
-		attributesPanel.add(txtAttribute3);
-		txtAttribute3.setColumns(10);
-		txtAttribute3.setDragEnabled(true);
+		btnAttribute3 = new JButton();
+		btnAttribute3.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute3.setBounds(253, 96, 86, 20);
+		btnAttribute3.setVisible(false);
+		btnAttribute3.setFocusPainted(false);
+		btnAttribute3.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute3.setContentAreaFilled(false);
+		btnAttribute3.setBorderPainted(false);
+		btnAttribute3.setOpaque(false);
+		TransferHandler transfer3 = new TransferHandler("text");
+		btnAttribute3.setTransferHandler(transfer3);
+		btnAttribute3.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handle = button.getTransferHandler();
+				handle.exportAsDrag(button, e, TransferHandler.COPY);
+			}
+		});
+		attributesPanel.add(btnAttribute3);
 		
-		txtAttribute4 = new JTextField();
-		txtAttribute4.setEditable(false);
-		txtAttribute4.setBackground(UIManager.getColor("Label.background"));
-		txtAttribute4.setBounds(304, 121, 86, 20);
-		attributesPanel.add(txtAttribute4);
-		txtAttribute4.setColumns(10);
-		txtAttribute4.setDragEnabled(true);
+		btnAttribute4 = new JButton();
+		btnAttribute4.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute4.setBounds(253, 121, 86, 20);
+		btnAttribute4.setVisible(false);
+		btnAttribute4.setFocusPainted(false);
+		btnAttribute4.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute4.setContentAreaFilled(false);
+		btnAttribute4.setBorderPainted(false);
+		btnAttribute4.setOpaque(false);
+		TransferHandler transfer4 = new TransferHandler("text");
+		btnAttribute4.setTransferHandler(transfer4);
+		btnAttribute4.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handle = button.getTransferHandler();
+				handle.exportAsDrag(button, e, TransferHandler.COPY);
+			}
+		});
+		attributesPanel.add(btnAttribute4);
 		
-		txtAttribute5 = new JTextField();
-		txtAttribute5.setEditable(false);
-		txtAttribute5.setBackground(UIManager.getColor("Label.background"));
-		txtAttribute5.setBounds(304, 146, 86, 20);
-		attributesPanel.add(txtAttribute5);
-		txtAttribute5.setColumns(10);
-		txtAttribute5.setDragEnabled(true);
+		btnAttribute5 = new JButton();
+		btnAttribute5.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute5.setBounds(253, 146, 86, 20);
+		btnAttribute5.setVisible(false);
+		btnAttribute5.setFocusPainted(false);
+		btnAttribute5.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute5.setContentAreaFilled(false);
+		btnAttribute5.setBorderPainted(false);
+		btnAttribute5.setOpaque(false);
+		TransferHandler transfer5 = new TransferHandler("text");
+		btnAttribute5.setTransferHandler(transfer5);
+		btnAttribute5.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handle = button.getTransferHandler();
+				handle.exportAsDrag(button, e, TransferHandler.COPY);
+			}
+		});
+		attributesPanel.add(btnAttribute5);
 		
-		txtAttribute6 = new JTextField();
-		txtAttribute6.setEditable(false);
-		txtAttribute6.setBackground(UIManager.getColor("Label.background"));
-		txtAttribute6.setBounds(304, 171, 86, 20);
-		attributesPanel.add(txtAttribute6);
-		txtAttribute6.setColumns(10);
-		txtAttribute6.setDragEnabled(true);
+		btnAttribute6 = new JButton();
+		btnAttribute6.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute6.setBounds(253, 171, 86, 20);
+		btnAttribute6.setVisible(false);
+		btnAttribute6.setFocusPainted(false);
+		btnAttribute6.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute6.setContentAreaFilled(false);
+		btnAttribute6.setBorderPainted(false);
+		btnAttribute6.setOpaque(false);
+		TransferHandler transfer6 = new TransferHandler("text");
+		btnAttribute6.setTransferHandler(transfer6);
+		btnAttribute6.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handle = button.getTransferHandler();
+				handle.exportAsDrag(button, e, TransferHandler.COPY);
+			}
+		});
+		attributesPanel.add(btnAttribute6);
 		
-		txtAttribute7 = new JTextField();
-		txtAttribute7.setEditable(false);
-		txtAttribute7.setBackground(UIManager.getColor("Label.background"));
-		txtAttribute7.setBounds(304, 196, 86, 20);
-		attributesPanel.add(txtAttribute7);
-		txtAttribute7.setColumns(10);
-		txtAttribute7.setDragEnabled(true);
+		btnAttribute7 = new JButton();
+		btnAttribute7.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute7.setBounds(253, 196, 86, 20);
+		btnAttribute7.setVisible(false);
+		btnAttribute7.setFocusPainted(false);
+		btnAttribute7.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute7.setContentAreaFilled(false);
+		btnAttribute7.setBorderPainted(false);
+		btnAttribute7.setOpaque(false);
+		TransferHandler transfer7 = new TransferHandler("text");
+		btnAttribute7.setTransferHandler(transfer7);
+		btnAttribute7.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handle = button.getTransferHandler();
+				handle.exportAsDrag(button, e, TransferHandler.COPY);
+			}
+		});
+		attributesPanel.add(btnAttribute7);
 		
-		txtAttribute8 = new JTextField();
-		txtAttribute8.setEditable(false);
-		txtAttribute8.setBackground(UIManager.getColor("Label.background"));
-		txtAttribute8.setBounds(304, 221, 86, 20);
-		attributesPanel.add(txtAttribute8);
-		txtAttribute8.setColumns(10);
-		txtAttribute8.setDragEnabled(true);
+		btnAttribute8 = new JButton();
+		btnAttribute8.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute8.setBounds(253, 221, 86, 20);
+		btnAttribute8.setVisible(false);
+		btnAttribute8.setFocusPainted(false);
+		btnAttribute8.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute8.setContentAreaFilled(false);
+		btnAttribute8.setBorderPainted(false);
+		btnAttribute8.setOpaque(false);
+		TransferHandler transfer8 = new TransferHandler("text");
+		btnAttribute8.setTransferHandler(transfer8);
+		btnAttribute8.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handle = button.getTransferHandler();
+				handle.exportAsDrag(button, e, TransferHandler.COPY);
+			}
+		});
+		attributesPanel.add(btnAttribute8);
 		
 		btnAttrNext = new JButton("Next");
 		btnAttrNext.addActionListener(new ActionListener() 
@@ -498,155 +774,20 @@ public class MainWindow extends JFrame
 		});
 		btnAttrNext.setBounds(496, 309, 89, 23);
 		attributesPanel.add(btnAttrNext);
-		
-		tabbedPane.addTab("Skills", null, skillsPanel, "Character skills");
-		tabbedPane.addTab("Talents", null, talentsPanel, "Character talents");
-		tabbedPane.addTab("Spells", null, spellsPanel, "Character spells");
-		
-		chkHomebrew = new JCheckBox("Homebrew");
-		chkHomebrew.setBounds(600, 341, 97, 23);
-		chkHomebrew.setEnabled(false);
-		contentPane.add(chkHomebrew);
-		
-		JLabel lblHpName = new JLabel("HP");
-		lblHpName.setBounds(603, 20, 100, 14);
-		contentPane.add(lblHpName);
-		
-		lblHp = new JLabel("0");
-		lblHp.setBounds(703, 20, 100, 14);
-		contentPane.add(lblHp);
-		
-		JLabel lblMagicPointsName = new JLabel("Magic Points");
-		lblMagicPointsName.setBounds(603, 40, 100, 14);
-		contentPane.add(lblMagicPointsName);
-		
-		lblMagicPoints = new JLabel("0");
-		lblMagicPoints.setBounds(703, 40, 100, 14);
-		contentPane.add(lblMagicPoints);
-		
-		JLabel lblMagicRegenName = new JLabel("Magic Regen");
-		lblMagicRegenName.setBounds(603, 60, 100, 14);
-		contentPane.add(lblMagicRegenName);
-		
-		lblMagicRegen = new JLabel("0");
-		lblMagicRegen.setBounds(703, 60, 100, 14);
-		contentPane.add(lblMagicRegen);
-		
-		JLabel lblAcName = new JLabel("AC");
-		lblAcName.setBounds(603, 80, 100, 14);
-		contentPane.add(lblAcName);
-		
-		lblAc = new JLabel("0");
-		lblAc.setBounds(703, 80, 100, 14);
-		contentPane.add(lblAc);
-		
-		JLabel lblReflexName = new JLabel("Reflex");
-		lblReflexName.setBounds(603, 100, 100, 14);
-		contentPane.add(lblReflexName);
-		
-		lblReflex = new JLabel("0");
-		lblReflex.setBounds(703, 100, 100, 14);
-		contentPane.add(lblReflex);
-		
-		JLabel lblWillName = new JLabel("Will");
-		lblWillName.setBounds(603, 120, 100, 14);
-		contentPane.add(lblWillName);
-		
-		lblWill = new JLabel("0");
-		lblWill.setBounds(703, 120, 100, 14);
-		contentPane.add(lblWill);
-		
-		JLabel lblFortitudeName = new JLabel("Fortitude");
-		lblFortitudeName.setBounds(603, 140, 100, 14);
-		contentPane.add(lblFortitudeName);
-		
-		lblFortitude = new JLabel("0");
-		lblFortitude.setBounds(703, 140, 100, 14);
-		contentPane.add(lblFortitude);
-		
-		JLabel lblFortuneName = new JLabel("Fortune Points");
-		lblFortuneName.setBounds(603, 160, 100, 14);
-		contentPane.add(lblFortuneName);
-		
-		lblFortune = new JLabel("0");
-		lblFortune.setBounds(703, 160, 100, 14);
-		contentPane.add(lblFortune);
-		
-		JLabel lblMovementName = new JLabel("Movement");
-		lblMovementName.setBounds(603, 180, 100, 14);
-		contentPane.add(lblMovementName);
-		
-		lblMovement = new JLabel("0");
-		lblMovement.setBounds(703, 180, 100, 14);
-		contentPane.add(lblMovement);
-		
-		JLabel lblInitiativeName = new JLabel("Initiative");
-		lblInitiativeName.setBounds(603, 200, 100, 14);
-		contentPane.add(lblInitiativeName);
-		
-		lblInitiative = new JLabel("0");
-		lblInitiative.setBounds(703, 200, 100, 14);
-		contentPane.add(lblInitiative);
-	}	
-	
-	/**
-	 * Updates the character object with the information on the details tab
-	 */
-	private void updateCharacterDetails()
-	{
-		character.name = txtName.getText();
-		character._class = txtClass.getText();
-		character.race = txtRace.getText();
-		character.height = txtHeight.getText();
-		character.weight = txtWeight.getText();
-		character.age = txtAge.getText();
-		character.occupation = txtOccupation.getText();
-		character.aspiration = txtAspiration.getText();
-		character.background = txtBackground.getText();
 	}
 	
-	/**
-	 * Updates the information about the character that is affected by attributes
-	 */
-	private void updateCharacterAttributes()
+	private void setupSkillsPanel()
 	{
-		character.charisma = Integer.parseInt(txtCharisma.getText());
-		character.constitution = Integer.parseInt(txtConstitution.getText());
-		character.dexterity = Integer.parseInt(txtDexterity.getText());
-		character.intelligence = Integer.parseInt(txtIntelligence.getText());
-		character.luck = Integer.parseInt(txtLuck.getText());
-		character.speed = Integer.parseInt(txtSpeed.getText());
-		character.wisdom = Integer.parseInt(txtWisdom.getText());
 		
-		//Check if the character sheet is homebrewed
-		if(character.charisma < 3 || character.charisma > 30 ||
-				character.constitution < 3 || character.constitution > 30 ||
-				character.dexterity < 3 || character.dexterity > 30 ||
-				character.intelligence < 3 || character.intelligence > 30 ||
-				character.luck < 3 || character.luck > 30 ||
-				character.speed < 3 || character.speed > 30 ||
-				character.wisdom < 3 || character.wisdom > 30)
-		{
-			chkHomebrew.setSelected(true);
-		}
+	}
+	
+	private void setupTalentsPanel()
+	{
 		
-		//Calculate derived traits
-		character.movement = 3 + Character.getModifier(character.speed);
-		character.hp = (int) Math.floor(1.5 * character.constitution);
-		character.magicPoints = 5 * character.wisdom;
-		character.magicRegen = character.intelligence;
-		character.fortunePoints = Character.getModifier(character.luck);
-		character.initiative = Character.getModifier(character.speed);
-		character.fortitude = 10 + Character.getModifier(character.constitution);
-		character.will = 10 + Character.getModifier(character.wisdom);
+	}
+	
+	private void setupSpellsPanel()
+	{
 		
-		//Display the information in the quick view
-		lblMovement.setText(Integer.toString(character.movement));
-		lblHp.setText(Integer.toString(character.hp));
-		lblMagicPoints.setText(Integer.toString(character.magicPoints));
-		lblMagicRegen.setText(Integer.toString(character.magicRegen));
-		lblFortune.setText(Integer.toString(character.fortunePoints));
-		lblFortitude.setText(Integer.toString(character.fortitude));
-		lblWill.setText(Integer.toString(character.will));
 	}
 }
