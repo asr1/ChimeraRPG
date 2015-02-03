@@ -386,6 +386,191 @@ public class MainWindow extends JFrame
 		btnAttribute7 = new JButton();
 		btnAttribute8 = new JButton();
 		
+		btnAttribute1.setBounds(232, 43, 86, 20);
+		btnAttribute1.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute1.setFocusPainted(false);
+		btnAttribute1.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute1.setContentAreaFilled(false);
+		btnAttribute1.setOpaque(false);
+		TransferHandler transfer1 = new TransferHandler("text");
+		btnAttribute1.setTransferHandler(transfer1);
+		btnAttribute1.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute2.setBounds(232, 68, 86, 20);
+		btnAttribute2.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute2.setFocusPainted(false);
+		btnAttribute2.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute2.setContentAreaFilled(false);
+		btnAttribute2.setOpaque(false);
+		TransferHandler transfer2 = new TransferHandler("text");
+		btnAttribute2.setTransferHandler(transfer2);
+		btnAttribute2.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute3.setBounds(232, 93, 86, 20);
+		btnAttribute3.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute3.setFocusPainted(false);
+		btnAttribute3.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute3.setContentAreaFilled(false);
+		btnAttribute3.setOpaque(false);
+		TransferHandler transfer3 = new TransferHandler("text");
+		btnAttribute3.setTransferHandler(transfer3);
+		btnAttribute3.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute4.setBounds(232, 118, 86, 20);
+		btnAttribute4.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute4.setFocusPainted(false);
+		btnAttribute4.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute4.setContentAreaFilled(false);
+		btnAttribute4.setOpaque(false);
+		TransferHandler transfer4 = new TransferHandler("text");
+		btnAttribute4.setTransferHandler(transfer4);
+		btnAttribute4.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute5.setBounds(232, 143, 86, 20);
+		btnAttribute5.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute5.setFocusPainted(false);
+		btnAttribute5.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute5.setContentAreaFilled(false);
+		btnAttribute5.setOpaque(false);
+		TransferHandler transfer5 = new TransferHandler("text");
+		btnAttribute5.setTransferHandler(transfer5);
+		btnAttribute5.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute6.setBounds(232, 168, 86, 20);
+		btnAttribute6.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute6.setFocusPainted(false);
+		btnAttribute6.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute6.setContentAreaFilled(false);
+		btnAttribute6.setOpaque(false);
+		TransferHandler transfer6 = new TransferHandler("text");
+		btnAttribute6.setTransferHandler(transfer6);
+		btnAttribute6.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute7.setBounds(232, 193, 86, 20);
+		btnAttribute7.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute7.setFocusPainted(false);
+		btnAttribute7.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute7.setContentAreaFilled(false);
+		btnAttribute7.setOpaque(false);
+		TransferHandler transfer7 = new TransferHandler("text");
+		btnAttribute7.setTransferHandler(transfer7);
+		btnAttribute7.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute8.setBounds(232, 221, 86, 20);
+		btnAttribute8.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute8.setFocusPainted(false);
+		btnAttribute8.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute8.setContentAreaFilled(false);
+		btnAttribute8.setOpaque(false);
+		TransferHandler transfer8 = new TransferHandler("text");
+		btnAttribute8.setTransferHandler(transfer8);
+		btnAttribute8.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		attributesPanel.add(btnAttribute1);
+		attributesPanel.add(btnAttribute2);
+		attributesPanel.add(btnAttribute3);
+		attributesPanel.add(btnAttribute4);
+		attributesPanel.add(btnAttribute5);
+		attributesPanel.add(btnAttribute6);
+		attributesPanel.add(btnAttribute7);
+		attributesPanel.add(btnAttribute8);
+		
 		txtCharisma = new JTextField();
 		txtConstitution = new JTextField();
 		txtDexterity = new JTextField();
@@ -426,7 +611,7 @@ public class MainWindow extends JFrame
 			}
 		});
 		btnAll20.setBounds(359, 11, 196, 23);
-//		btnAll20.doClick();
+		btnAll20.doClick();
 		attributesPanel.add(btnAll20);
 		
 		JButton btnOption1 = new JButton("30 30 20 20 20 20 10 10");
