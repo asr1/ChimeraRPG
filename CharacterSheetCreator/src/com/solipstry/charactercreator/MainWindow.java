@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.TransferHandler;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 public class MainWindow extends JFrame
 {
@@ -82,6 +83,11 @@ public class MainWindow extends JFrame
 	
 	private Character character;
 	private JButton btnAttrNext;
+	private JTextField txtCustomSkill1Name;
+	private JTextField txtCustomSkill2Name;
+	private JTextField txtCustomSkill3Name;
+	private JTextField txtCustomSkill4Name;
+	private JTextField txtCustomSkill5Name;
 	
 	public static void main(String args[])
 	{
@@ -140,6 +146,190 @@ public class MainWindow extends JFrame
 		tabbedPane.addTab("Details", null, detailsPanel, "Character details");
 		tabbedPane.addTab("Attributes", null, attributesPanel, "Character attributes");
 		tabbedPane.addTab("Skills", null, skillsPanel, "Character skills");
+		
+		JCheckBox chckbxAlteration = new JCheckBox("Alteration");
+		chckbxAlteration.setBounds(6, 33, 97, 23);
+		skillsPanel.add(chckbxAlteration);
+		
+		JCheckBox chckbxAcrobatics = new JCheckBox("Acrobatics");
+		chckbxAcrobatics.setBounds(6, 7, 97, 23);
+		skillsPanel.add(chckbxAcrobatics);
+		
+		JCheckBox chckbxAthletics = new JCheckBox("Athletics");
+		chckbxAthletics.setBounds(6, 59, 97, 23);
+		skillsPanel.add(chckbxAthletics);
+		
+		JCheckBox chckbxBlock = new JCheckBox("Block");
+		chckbxBlock.setBounds(6, 85, 97, 23);
+		skillsPanel.add(chckbxBlock);
+		
+		JCheckBox chckbxChemistry = new JCheckBox("Chemistry");
+		chckbxChemistry.setBounds(6, 111, 97, 23);
+		skillsPanel.add(chckbxChemistry);
+		
+		JCheckBox chckbxConjuration = new JCheckBox("Conjuration");
+		chckbxConjuration.setBounds(6, 137, 97, 23);
+		skillsPanel.add(chckbxConjuration);
+		
+		JCheckBox chckbxCraft = new JCheckBox("Craft");
+		chckbxCraft.setBounds(6, 163, 97, 23);
+		skillsPanel.add(chckbxCraft);
+		
+		JCheckBox chckbxDestruction = new JCheckBox("Destruction");
+		chckbxDestruction.setBounds(6, 189, 97, 23);
+		skillsPanel.add(chckbxDestruction);
+		
+		JCheckBox chckbxDiscipline = new JCheckBox("Discipline");
+		chckbxDiscipline.setBounds(6, 215, 97, 23);
+		skillsPanel.add(chckbxDiscipline);
+		
+		JCheckBox chckbxDisguise = new JCheckBox("Disguise");
+		chckbxDisguise.setBounds(6, 241, 97, 23);
+		skillsPanel.add(chckbxDisguise);
+		
+		JCheckBox chckbxEndurance = new JCheckBox("Endurance");
+		chckbxEndurance.setBounds(6, 267, 97, 23);
+		skillsPanel.add(chckbxEndurance);
+		
+		JCheckBox chckbxEngineering = new JCheckBox("Engineering");
+		chckbxEngineering.setBounds(6, 293, 97, 23);
+		skillsPanel.add(chckbxEngineering);
+		
+		JCheckBox chckbxEnlightenment = new JCheckBox("Enlightenment");
+		chckbxEnlightenment.setBounds(105, 7, 118, 23);
+		skillsPanel.add(chckbxEnlightenment);
+		
+		JCheckBox chckbxEscape = new JCheckBox("Escape");
+		chckbxEscape.setBounds(105, 33, 97, 23);
+		skillsPanel.add(chckbxEscape);
+		
+		JCheckBox chckbxHeavyArmor = new JCheckBox("Heavy Armor");
+		chckbxHeavyArmor.setBounds(105, 59, 118, 23);
+		skillsPanel.add(chckbxHeavyArmor);
+		
+		JCheckBox chckbxInteraction = new JCheckBox("Interaction");
+		chckbxInteraction.setBounds(105, 85, 97, 23);
+		skillsPanel.add(chckbxInteraction);
+		
+		JCheckBox chckbxKnowledge = new JCheckBox("Knowledge");
+		chckbxKnowledge.setBounds(105, 111, 97, 23);
+		skillsPanel.add(chckbxKnowledge);
+		
+		JCheckBox chckbxLanguage = new JCheckBox("Language");
+		chckbxLanguage.setBounds(105, 137, 97, 23);
+		skillsPanel.add(chckbxLanguage);
+		
+		JCheckBox chckbxLightArmor = new JCheckBox("Light Armor");
+		chckbxLightArmor.setBounds(105, 163, 97, 23);
+		skillsPanel.add(chckbxLightArmor);
+		
+		JCheckBox chckbxMedicine = new JCheckBox("Medicine");
+		chckbxMedicine.setBounds(105, 189, 97, 23);
+		skillsPanel.add(chckbxMedicine);
+		
+		JCheckBox chckbxMeleeWeapon = new JCheckBox("Melee Weapon");
+		chckbxMeleeWeapon.setBounds(105, 215, 118, 23);
+		skillsPanel.add(chckbxMeleeWeapon);
+		
+		JCheckBox chckbxNature = new JCheckBox("Nature");
+		chckbxNature.setBounds(105, 241, 97, 23);
+		skillsPanel.add(chckbxNature);
+		
+		JCheckBox chckbxPerception = new JCheckBox("Perception");
+		chckbxPerception.setBounds(105, 267, 97, 23);
+		skillsPanel.add(chckbxPerception);
+		
+		JCheckBox chckbxRangedCombat = new JCheckBox("Ranged Combat");
+		chckbxRangedCombat.setBounds(105, 293, 118, 23);
+		skillsPanel.add(chckbxRangedCombat);
+		
+		JCheckBox chckbxRestoration = new JCheckBox("Restoration");
+		chckbxRestoration.setBounds(225, 7, 97, 23);
+		skillsPanel.add(chckbxRestoration);
+		
+		JCheckBox chckbxRide = new JCheckBox("Ride");
+		chckbxRide.setBounds(225, 33, 97, 23);
+		skillsPanel.add(chckbxRide);
+		
+		JCheckBox chckbxSecurity = new JCheckBox("Security");
+		chckbxSecurity.setBounds(225, 59, 97, 23);
+		skillsPanel.add(chckbxSecurity);
+		
+		JCheckBox chckbxSenseMotive = new JCheckBox("Sense Motive");
+		chckbxSenseMotive.setBounds(225, 85, 149, 23);
+		skillsPanel.add(chckbxSenseMotive);
+		
+		JCheckBox chckbxSleightOfHand = new JCheckBox("Sleight of Hand");
+		chckbxSleightOfHand.setBounds(225, 111, 162, 23);
+		skillsPanel.add(chckbxSleightOfHand);
+		
+		JCheckBox chckbxStealth = new JCheckBox("Stealth");
+		chckbxStealth.setBounds(225, 137, 97, 23);
+		skillsPanel.add(chckbxStealth);
+		
+		JCheckBox chckbxUnarmedCombat = new JCheckBox("Unarmed Combat");
+		chckbxUnarmedCombat.setBounds(225, 163, 173, 23);
+		skillsPanel.add(chckbxUnarmedCombat);
+		
+		JCheckBox chckbxCustomSkill1 = new JCheckBox("");
+		chckbxCustomSkill1.setBounds(225, 189, 21, 23);
+		skillsPanel.add(chckbxCustomSkill1);
+		
+		JCheckBox chckbxCustomSkill2 = new JCheckBox("");
+		chckbxCustomSkill2.setBounds(225, 215, 21, 23);
+		skillsPanel.add(chckbxCustomSkill2);
+		
+		JCheckBox chckbxCustomSkill3 = new JCheckBox("");
+		chckbxCustomSkill3.setBounds(225, 241, 21, 23);
+		skillsPanel.add(chckbxCustomSkill3);
+		
+		JCheckBox chckbxCustomSkill4 = new JCheckBox("");
+		chckbxCustomSkill4.setBounds(225, 267, 21, 23);
+		skillsPanel.add(chckbxCustomSkill4);
+		
+		JCheckBox chckbxCustomSkill5 = new JCheckBox("");
+		chckbxCustomSkill5.setBounds(225, 293, 21, 23);
+		skillsPanel.add(chckbxCustomSkill5);
+		
+		txtCustomSkill1Name = new JTextField();
+		txtCustomSkill1Name.setText("Custom Skill");
+		txtCustomSkill1Name.setColumns(10);
+		txtCustomSkill1Name.setBounds(252, 192, 200, 20);
+		skillsPanel.add(txtCustomSkill1Name);
+		
+		txtCustomSkill2Name = new JTextField();
+		txtCustomSkill2Name.setText("Custom Skill");
+		txtCustomSkill2Name.setColumns(10);
+		txtCustomSkill2Name.setBounds(252, 216, 200, 20);
+		skillsPanel.add(txtCustomSkill2Name);
+		
+		txtCustomSkill3Name = new JTextField();
+		txtCustomSkill3Name.setText("Custom Skill");
+		txtCustomSkill3Name.setColumns(10);
+		txtCustomSkill3Name.setBounds(252, 242, 200, 20);
+		skillsPanel.add(txtCustomSkill3Name);
+		
+		txtCustomSkill4Name = new JTextField();
+		txtCustomSkill4Name.setText("Custom Skill");
+		txtCustomSkill4Name.setColumns(10);
+		txtCustomSkill4Name.setBounds(252, 268, 200, 20);
+		skillsPanel.add(txtCustomSkill4Name);
+		
+		txtCustomSkill5Name = new JTextField();
+		txtCustomSkill5Name.setText("Custom Skill");
+		txtCustomSkill5Name.setColumns(10);
+		txtCustomSkill5Name.setBounds(252, 296, 200, 20);
+		skillsPanel.add(txtCustomSkill5Name);
+		
+		JLabel lblSkillsInstructions = new JLabel("Instructions:");
+		lblSkillsInstructions.setVerticalAlignment(SwingConstants.TOP);
+		lblSkillsInstructions.setBounds(368, 11, 217, 97);
+		skillsPanel.add(lblSkillsInstructions);
+		JLabel lblSkillsInstructions2 = new JLabel("Select 5 skills to have a base score of 25");
+		lblSkillsInstructions2.setVerticalAlignment(SwingConstants.TOP);
+		lblSkillsInstructions2.setBounds(368,25,217,97);
+		skillsPanel.add(lblSkillsInstructions2);
+		
 		tabbedPane.addTab("Talents", null, talentsPanel, "Character talents");
 		tabbedPane.addTab("Spells", null, spellsPanel, "Character spells");
 		
