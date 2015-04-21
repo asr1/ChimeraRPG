@@ -8,27 +8,27 @@ namespace Solipstry_Character_Creator
 {
     class Character
     {
-        private string name;
-        private string _class;
-        private string race;
-        private string height;
-        private string weight;
-        private string occupation;
-        private string aspiration;
-        private string background;
+        public string name;
+        public string _class;
+        public string race;
+        public string height;
+        public string weight;
+        public string occupation;
+        public string aspiration;
+        public string background;
 
-        private string size; //Small, medium, large, ...
+        public string size; //Small, medium, large, ...
 
-        private int[] skills = new int[36];
+        public int[] skills = new int[36];
 
-        private int charisma;
-        private int constitution;
-        private int dexterity;
-        private int intelligence;
-        private int luck;
-        private int speed;
-        private int strength;
-        private int wisdom;
+        public int charisma;
+        public int constitution;
+        public int dexterity;
+        public int intelligence;
+        public int luck;
+        public int speed;
+        public int strength;
+        public int wisdom;
 
         /// <summary>
         /// Calculates the character's AC if using heavy armor
