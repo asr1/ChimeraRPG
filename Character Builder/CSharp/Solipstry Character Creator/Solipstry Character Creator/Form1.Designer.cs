@@ -35,10 +35,29 @@
             this.tabSkills = new System.Windows.Forms.TabPage();
             this.tabTalents = new System.Windows.Forms.TabPage();
             this.tabSpells = new System.Windows.Forms.TabPage();
+            this.lblName = new System.Windows.Forms.Label();
+            this.lblClass = new System.Windows.Forms.Label();
+            this.lblRace = new System.Windows.Forms.Label();
+            this.lblHeight = new System.Windows.Forms.Label();
+            this.lblWeight = new System.Windows.Forms.Label();
+            this.lblAge = new System.Windows.Forms.Label();
+            this.lblOccupation = new System.Windows.Forms.Label();
+            this.lblAspiration = new System.Windows.Forms.Label();
+            this.lblBackground = new System.Windows.Forms.Label();
+            this.txtBackground = new System.Windows.Forms.TextBox();
+            this.txtAspiration = new System.Windows.Forms.TextBox();
+            this.txtOccupation = new System.Windows.Forms.TextBox();
+            this.txtAge = new System.Windows.Forms.TextBox();
+            this.txtWeight = new System.Windows.Forms.TextBox();
+            this.txtHeight = new System.Windows.Forms.TextBox();
+            this.txtRace = new System.Windows.Forms.TextBox();
+            this.txtClass = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.tabInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -70,6 +89,24 @@
             // 
             // tabInfo
             // 
+            this.tabInfo.Controls.Add(this.txtName);
+            this.tabInfo.Controls.Add(this.txtClass);
+            this.tabInfo.Controls.Add(this.txtRace);
+            this.tabInfo.Controls.Add(this.txtHeight);
+            this.tabInfo.Controls.Add(this.txtWeight);
+            this.tabInfo.Controls.Add(this.txtAge);
+            this.tabInfo.Controls.Add(this.txtOccupation);
+            this.tabInfo.Controls.Add(this.txtAspiration);
+            this.tabInfo.Controls.Add(this.txtBackground);
+            this.tabInfo.Controls.Add(this.lblBackground);
+            this.tabInfo.Controls.Add(this.lblAspiration);
+            this.tabInfo.Controls.Add(this.lblOccupation);
+            this.tabInfo.Controls.Add(this.lblAge);
+            this.tabInfo.Controls.Add(this.lblWeight);
+            this.tabInfo.Controls.Add(this.lblHeight);
+            this.tabInfo.Controls.Add(this.lblRace);
+            this.tabInfo.Controls.Add(this.lblClass);
+            this.tabInfo.Controls.Add(this.lblName);
             this.tabInfo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabInfo.Location = new System.Drawing.Point(4, 22);
             this.tabInfo.Name = "tabInfo";
@@ -116,6 +153,150 @@
             this.tabSpells.Text = "Spells";
             this.tabSpells.UseVisualStyleBackColor = true;
             // 
+            // lblName
+            // 
+            this.lblName.AutoSize = true;
+            this.lblName.Location = new System.Drawing.Point(40, 50);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(35, 13);
+            this.lblName.TabIndex = 0;
+            this.lblName.Text = "Name";
+            // 
+            // lblClass
+            // 
+            this.lblClass.AutoSize = true;
+            this.lblClass.Location = new System.Drawing.Point(40, 76);
+            this.lblClass.Name = "lblClass";
+            this.lblClass.Size = new System.Drawing.Size(32, 13);
+            this.lblClass.TabIndex = 1;
+            this.lblClass.Text = "Class";
+            // 
+            // lblRace
+            // 
+            this.lblRace.AutoSize = true;
+            this.lblRace.Location = new System.Drawing.Point(40, 102);
+            this.lblRace.Name = "lblRace";
+            this.lblRace.Size = new System.Drawing.Size(33, 13);
+            this.lblRace.TabIndex = 2;
+            this.lblRace.Text = "Race";
+            // 
+            // lblHeight
+            // 
+            this.lblHeight.AutoSize = true;
+            this.lblHeight.Location = new System.Drawing.Point(40, 128);
+            this.lblHeight.Name = "lblHeight";
+            this.lblHeight.Size = new System.Drawing.Size(38, 13);
+            this.lblHeight.TabIndex = 3;
+            this.lblHeight.Text = "Height";
+            // 
+            // lblWeight
+            // 
+            this.lblWeight.AutoSize = true;
+            this.lblWeight.Location = new System.Drawing.Point(40, 154);
+            this.lblWeight.Name = "lblWeight";
+            this.lblWeight.Size = new System.Drawing.Size(41, 13);
+            this.lblWeight.TabIndex = 4;
+            this.lblWeight.Text = "Weight";
+            // 
+            // lblAge
+            // 
+            this.lblAge.AutoSize = true;
+            this.lblAge.Location = new System.Drawing.Point(40, 180);
+            this.lblAge.Name = "lblAge";
+            this.lblAge.Size = new System.Drawing.Size(26, 13);
+            this.lblAge.TabIndex = 5;
+            this.lblAge.Text = "Age";
+            // 
+            // lblOccupation
+            // 
+            this.lblOccupation.AutoSize = true;
+            this.lblOccupation.Location = new System.Drawing.Point(40, 206);
+            this.lblOccupation.Name = "lblOccupation";
+            this.lblOccupation.Size = new System.Drawing.Size(62, 13);
+            this.lblOccupation.TabIndex = 6;
+            this.lblOccupation.Text = "Occupation";
+            // 
+            // lblAspiration
+            // 
+            this.lblAspiration.AutoSize = true;
+            this.lblAspiration.Location = new System.Drawing.Point(40, 232);
+            this.lblAspiration.Name = "lblAspiration";
+            this.lblAspiration.Size = new System.Drawing.Size(53, 13);
+            this.lblAspiration.TabIndex = 7;
+            this.lblAspiration.Text = "Aspiration";
+            // 
+            // lblBackground
+            // 
+            this.lblBackground.AutoSize = true;
+            this.lblBackground.Location = new System.Drawing.Point(40, 258);
+            this.lblBackground.Name = "lblBackground";
+            this.lblBackground.Size = new System.Drawing.Size(65, 13);
+            this.lblBackground.TabIndex = 8;
+            this.lblBackground.Text = "Background";
+            // 
+            // txtBackground
+            // 
+            this.txtBackground.Location = new System.Drawing.Point(125, 255);
+            this.txtBackground.Name = "txtBackground";
+            this.txtBackground.Size = new System.Drawing.Size(154, 20);
+            this.txtBackground.TabIndex = 9;
+            // 
+            // txtAspiration
+            // 
+            this.txtAspiration.Location = new System.Drawing.Point(125, 229);
+            this.txtAspiration.Name = "txtAspiration";
+            this.txtAspiration.Size = new System.Drawing.Size(154, 20);
+            this.txtAspiration.TabIndex = 10;
+            // 
+            // txtOccupation
+            // 
+            this.txtOccupation.Location = new System.Drawing.Point(125, 203);
+            this.txtOccupation.Name = "txtOccupation";
+            this.txtOccupation.Size = new System.Drawing.Size(154, 20);
+            this.txtOccupation.TabIndex = 11;
+            // 
+            // txtAge
+            // 
+            this.txtAge.Location = new System.Drawing.Point(125, 177);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(154, 20);
+            this.txtAge.TabIndex = 12;
+            // 
+            // txtWeight
+            // 
+            this.txtWeight.Location = new System.Drawing.Point(125, 151);
+            this.txtWeight.Name = "txtWeight";
+            this.txtWeight.Size = new System.Drawing.Size(154, 20);
+            this.txtWeight.TabIndex = 13;
+            // 
+            // txtHeight
+            // 
+            this.txtHeight.Location = new System.Drawing.Point(125, 125);
+            this.txtHeight.Name = "txtHeight";
+            this.txtHeight.Size = new System.Drawing.Size(154, 20);
+            this.txtHeight.TabIndex = 14;
+            // 
+            // txtRace
+            // 
+            this.txtRace.Location = new System.Drawing.Point(125, 99);
+            this.txtRace.Name = "txtRace";
+            this.txtRace.Size = new System.Drawing.Size(154, 20);
+            this.txtRace.TabIndex = 15;
+            // 
+            // txtClass
+            // 
+            this.txtClass.Location = new System.Drawing.Point(124, 73);
+            this.txtClass.Name = "txtClass";
+            this.txtClass.Size = new System.Drawing.Size(155, 20);
+            this.txtClass.TabIndex = 16;
+            // 
+            // txtName
+            // 
+            this.txtName.Location = new System.Drawing.Point(124, 47);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(155, 20);
+            this.txtName.TabIndex = 17;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -128,6 +309,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.tabInfo.ResumeLayout(false);
+            this.tabInfo.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -141,6 +324,24 @@
         private System.Windows.Forms.TabPage tabSkills;
         private System.Windows.Forms.TabPage tabTalents;
         private System.Windows.Forms.TabPage tabSpells;
+        private System.Windows.Forms.Label lblName;
+        private System.Windows.Forms.Label lblClass;
+        private System.Windows.Forms.Label lblRace;
+        private System.Windows.Forms.Label lblWeight;
+        private System.Windows.Forms.Label lblHeight;
+        private System.Windows.Forms.Label lblAge;
+        private System.Windows.Forms.Label lblAspiration;
+        private System.Windows.Forms.Label lblOccupation;
+        private System.Windows.Forms.Label lblBackground;
+        private System.Windows.Forms.TextBox txtAspiration;
+        private System.Windows.Forms.TextBox txtBackground;
+        private System.Windows.Forms.TextBox txtOccupation;
+        private System.Windows.Forms.TextBox txtHeight;
+        private System.Windows.Forms.TextBox txtWeight;
+        private System.Windows.Forms.TextBox txtAge;
+        private System.Windows.Forms.TextBox txtRace;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.TextBox txtClass;
     }
 }
 

@@ -45,3 +45,4 @@ namespace Solipstry_Character_Creator
         public static int CUSTOM_4 = 34;
         public static int CUSTOM_5 = 35;
     };
+}
