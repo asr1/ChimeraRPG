@@ -10,12 +10,14 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.TransferHandler;
 import javax.swing.UIManager;
 import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
 
 public class MainWindow extends JFrame
 {
@@ -81,6 +83,11 @@ public class MainWindow extends JFrame
 	
 	private Character character;
 	private JButton btnAttrNext;
+	private JTextField txtCustomSkill1Name;
+	private JTextField txtCustomSkill2Name;
+	private JTextField txtCustomSkill3Name;
+	private JTextField txtCustomSkill4Name;
+	private JTextField txtCustomSkill5Name;
 	
 	public static void main(String args[])
 	{
@@ -139,6 +146,190 @@ public class MainWindow extends JFrame
 		tabbedPane.addTab("Details", null, detailsPanel, "Character details");
 		tabbedPane.addTab("Attributes", null, attributesPanel, "Character attributes");
 		tabbedPane.addTab("Skills", null, skillsPanel, "Character skills");
+		
+		JCheckBox chckbxAlteration = new JCheckBox("Alteration");
+		chckbxAlteration.setBounds(6, 33, 97, 23);
+		skillsPanel.add(chckbxAlteration);
+		
+		JCheckBox chckbxAcrobatics = new JCheckBox("Acrobatics");
+		chckbxAcrobatics.setBounds(6, 7, 97, 23);
+		skillsPanel.add(chckbxAcrobatics);
+		
+		JCheckBox chckbxAthletics = new JCheckBox("Athletics");
+		chckbxAthletics.setBounds(6, 59, 97, 23);
+		skillsPanel.add(chckbxAthletics);
+		
+		JCheckBox chckbxBlock = new JCheckBox("Block");
+		chckbxBlock.setBounds(6, 85, 97, 23);
+		skillsPanel.add(chckbxBlock);
+		
+		JCheckBox chckbxChemistry = new JCheckBox("Chemistry");
+		chckbxChemistry.setBounds(6, 111, 97, 23);
+		skillsPanel.add(chckbxChemistry);
+		
+		JCheckBox chckbxConjuration = new JCheckBox("Conjuration");
+		chckbxConjuration.setBounds(6, 137, 97, 23);
+		skillsPanel.add(chckbxConjuration);
+		
+		JCheckBox chckbxCraft = new JCheckBox("Craft");
+		chckbxCraft.setBounds(6, 163, 97, 23);
+		skillsPanel.add(chckbxCraft);
+		
+		JCheckBox chckbxDestruction = new JCheckBox("Destruction");
+		chckbxDestruction.setBounds(6, 189, 97, 23);
+		skillsPanel.add(chckbxDestruction);
+		
+		JCheckBox chckbxDiscipline = new JCheckBox("Discipline");
+		chckbxDiscipline.setBounds(6, 215, 97, 23);
+		skillsPanel.add(chckbxDiscipline);
+		
+		JCheckBox chckbxDisguise = new JCheckBox("Disguise");
+		chckbxDisguise.setBounds(6, 241, 97, 23);
+		skillsPanel.add(chckbxDisguise);
+		
+		JCheckBox chckbxEndurance = new JCheckBox("Endurance");
+		chckbxEndurance.setBounds(6, 267, 97, 23);
+		skillsPanel.add(chckbxEndurance);
+		
+		JCheckBox chckbxEngineering = new JCheckBox("Engineering");
+		chckbxEngineering.setBounds(6, 293, 97, 23);
+		skillsPanel.add(chckbxEngineering);
+		
+		JCheckBox chckbxEnlightenment = new JCheckBox("Enlightenment");
+		chckbxEnlightenment.setBounds(105, 7, 118, 23);
+		skillsPanel.add(chckbxEnlightenment);
+		
+		JCheckBox chckbxEscape = new JCheckBox("Escape");
+		chckbxEscape.setBounds(105, 33, 97, 23);
+		skillsPanel.add(chckbxEscape);
+		
+		JCheckBox chckbxHeavyArmor = new JCheckBox("Heavy Armor");
+		chckbxHeavyArmor.setBounds(105, 59, 118, 23);
+		skillsPanel.add(chckbxHeavyArmor);
+		
+		JCheckBox chckbxInteraction = new JCheckBox("Interaction");
+		chckbxInteraction.setBounds(105, 85, 97, 23);
+		skillsPanel.add(chckbxInteraction);
+		
+		JCheckBox chckbxKnowledge = new JCheckBox("Knowledge");
+		chckbxKnowledge.setBounds(105, 111, 97, 23);
+		skillsPanel.add(chckbxKnowledge);
+		
+		JCheckBox chckbxLanguage = new JCheckBox("Language");
+		chckbxLanguage.setBounds(105, 137, 97, 23);
+		skillsPanel.add(chckbxLanguage);
+		
+		JCheckBox chckbxLightArmor = new JCheckBox("Light Armor");
+		chckbxLightArmor.setBounds(105, 163, 97, 23);
+		skillsPanel.add(chckbxLightArmor);
+		
+		JCheckBox chckbxMedicine = new JCheckBox("Medicine");
+		chckbxMedicine.setBounds(105, 189, 97, 23);
+		skillsPanel.add(chckbxMedicine);
+		
+		JCheckBox chckbxMeleeWeapon = new JCheckBox("Melee Weapon");
+		chckbxMeleeWeapon.setBounds(105, 215, 118, 23);
+		skillsPanel.add(chckbxMeleeWeapon);
+		
+		JCheckBox chckbxNature = new JCheckBox("Nature");
+		chckbxNature.setBounds(105, 241, 97, 23);
+		skillsPanel.add(chckbxNature);
+		
+		JCheckBox chckbxPerception = new JCheckBox("Perception");
+		chckbxPerception.setBounds(105, 267, 97, 23);
+		skillsPanel.add(chckbxPerception);
+		
+		JCheckBox chckbxRangedCombat = new JCheckBox("Ranged Combat");
+		chckbxRangedCombat.setBounds(105, 293, 118, 23);
+		skillsPanel.add(chckbxRangedCombat);
+		
+		JCheckBox chckbxRestoration = new JCheckBox("Restoration");
+		chckbxRestoration.setBounds(225, 7, 97, 23);
+		skillsPanel.add(chckbxRestoration);
+		
+		JCheckBox chckbxRide = new JCheckBox("Ride");
+		chckbxRide.setBounds(225, 33, 97, 23);
+		skillsPanel.add(chckbxRide);
+		
+		JCheckBox chckbxSecurity = new JCheckBox("Security");
+		chckbxSecurity.setBounds(225, 59, 97, 23);
+		skillsPanel.add(chckbxSecurity);
+		
+		JCheckBox chckbxSenseMotive = new JCheckBox("Sense Motive");
+		chckbxSenseMotive.setBounds(225, 85, 149, 23);
+		skillsPanel.add(chckbxSenseMotive);
+		
+		JCheckBox chckbxSleightOfHand = new JCheckBox("Sleight of Hand");
+		chckbxSleightOfHand.setBounds(225, 111, 162, 23);
+		skillsPanel.add(chckbxSleightOfHand);
+		
+		JCheckBox chckbxStealth = new JCheckBox("Stealth");
+		chckbxStealth.setBounds(225, 137, 97, 23);
+		skillsPanel.add(chckbxStealth);
+		
+		JCheckBox chckbxUnarmedCombat = new JCheckBox("Unarmed Combat");
+		chckbxUnarmedCombat.setBounds(225, 163, 173, 23);
+		skillsPanel.add(chckbxUnarmedCombat);
+		
+		JCheckBox chckbxCustomSkill1 = new JCheckBox("");
+		chckbxCustomSkill1.setBounds(225, 189, 21, 23);
+		skillsPanel.add(chckbxCustomSkill1);
+		
+		JCheckBox chckbxCustomSkill2 = new JCheckBox("");
+		chckbxCustomSkill2.setBounds(225, 215, 21, 23);
+		skillsPanel.add(chckbxCustomSkill2);
+		
+		JCheckBox chckbxCustomSkill3 = new JCheckBox("");
+		chckbxCustomSkill3.setBounds(225, 241, 21, 23);
+		skillsPanel.add(chckbxCustomSkill3);
+		
+		JCheckBox chckbxCustomSkill4 = new JCheckBox("");
+		chckbxCustomSkill4.setBounds(225, 267, 21, 23);
+		skillsPanel.add(chckbxCustomSkill4);
+		
+		JCheckBox chckbxCustomSkill5 = new JCheckBox("");
+		chckbxCustomSkill5.setBounds(225, 293, 21, 23);
+		skillsPanel.add(chckbxCustomSkill5);
+		
+		txtCustomSkill1Name = new JTextField();
+		txtCustomSkill1Name.setText("Custom Skill");
+		txtCustomSkill1Name.setColumns(10);
+		txtCustomSkill1Name.setBounds(252, 192, 200, 20);
+		skillsPanel.add(txtCustomSkill1Name);
+		
+		txtCustomSkill2Name = new JTextField();
+		txtCustomSkill2Name.setText("Custom Skill");
+		txtCustomSkill2Name.setColumns(10);
+		txtCustomSkill2Name.setBounds(252, 216, 200, 20);
+		skillsPanel.add(txtCustomSkill2Name);
+		
+		txtCustomSkill3Name = new JTextField();
+		txtCustomSkill3Name.setText("Custom Skill");
+		txtCustomSkill3Name.setColumns(10);
+		txtCustomSkill3Name.setBounds(252, 242, 200, 20);
+		skillsPanel.add(txtCustomSkill3Name);
+		
+		txtCustomSkill4Name = new JTextField();
+		txtCustomSkill4Name.setText("Custom Skill");
+		txtCustomSkill4Name.setColumns(10);
+		txtCustomSkill4Name.setBounds(252, 268, 200, 20);
+		skillsPanel.add(txtCustomSkill4Name);
+		
+		txtCustomSkill5Name = new JTextField();
+		txtCustomSkill5Name.setText("Custom Skill");
+		txtCustomSkill5Name.setColumns(10);
+		txtCustomSkill5Name.setBounds(252, 296, 200, 20);
+		skillsPanel.add(txtCustomSkill5Name);
+		
+		JLabel lblSkillsInstructions = new JLabel("Instructions:");
+		lblSkillsInstructions.setVerticalAlignment(SwingConstants.TOP);
+		lblSkillsInstructions.setBounds(368, 11, 217, 97);
+		skillsPanel.add(lblSkillsInstructions);
+		JLabel lblSkillsInstructions2 = new JLabel("Select 5 skills to have a base score of 25");
+		lblSkillsInstructions2.setVerticalAlignment(SwingConstants.TOP);
+		lblSkillsInstructions2.setBounds(368,25,217,97);
+		skillsPanel.add(lblSkillsInstructions2);
+		
 		tabbedPane.addTab("Talents", null, talentsPanel, "Character talents");
 		tabbedPane.addTab("Spells", null, spellsPanel, "Character spells");
 		
@@ -249,26 +440,88 @@ public class MainWindow extends JFrame
 	 */
 	private void updateCharacterAttributes()
 	{
-		character.charisma = Integer.parseInt(txtCharisma.getText());
-		character.constitution = Integer.parseInt(txtConstitution.getText());
-		character.dexterity = Integer.parseInt(txtDexterity.getText());
-		character.intelligence = Integer.parseInt(txtIntelligence.getText());
-		character.luck = Integer.parseInt(txtLuck.getText());
-		character.speed = Integer.parseInt(txtSpeed.getText());
-		character.wisdom = Integer.parseInt(txtWisdom.getText());
+		boolean invalidInput = false;
 		
-		//Check if the character sheet is homebrewed
-		if(character.charisma < 3 || character.charisma > 30 ||
-				character.constitution < 3 || character.constitution > 30 ||
-				character.dexterity < 3 || character.dexterity > 30 ||
-				character.intelligence < 3 || character.intelligence > 30 ||
-				character.luck < 3 || character.luck > 30 ||
-				character.speed < 3 || character.speed > 30 ||
-				character.wisdom < 3 || character.wisdom > 30)
+		try
 		{
-			chkHomebrew.setSelected(true);
+			character.charisma = Integer.parseInt(txtCharisma.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.charisma = 0;
+			invalidInput = true;
 		}
 		
+		try
+		{
+			character.constitution = Integer.parseInt(txtConstitution.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.constitution = 0;
+			invalidInput = true;
+		}
+		
+		
+		try
+		{
+			character.dexterity = Integer.parseInt(txtDexterity.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.dexterity = 0;
+			invalidInput = true;
+		}
+		
+		
+		try 
+		{
+			character.intelligence = Integer.parseInt(txtIntelligence.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			 character.intelligence = 0;
+			 invalidInput = true;
+		}
+		
+		
+		try
+		{
+			character.luck = Integer.parseInt(txtLuck.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.luck = 0;
+			invalidInput = true;
+		}
+		
+		try
+		{
+			character.speed = Integer.parseInt(txtSpeed.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.speed = 0;
+			invalidInput = true;
+		}
+		
+		
+		try
+		{
+			character.wisdom = Integer.parseInt(txtWisdom.getText());
+		}
+		catch(NumberFormatException e)
+		{
+			character.wisdom = 0;
+			invalidInput = true;
+		}
+		
+		//Notify user of invalid input
+		if(invalidInput)
+		{
+			JOptionPane.showMessageDialog(null, "Please enter integer values only", "Invalid Input", JOptionPane.INFORMATION_MESSAGE);
+		}
+        
 		//Calculate derived traits
 		character.movement = 3 + Character.getModifier(character.speed);
 		character.hp = (int) Math.floor(1.5 * character.constitution);
@@ -379,6 +632,7 @@ public class MainWindow extends JFrame
 			public void actionPerformed(ActionEvent arg0) 
 			{
 				updateCharacterDetails();
+				checkHomebrew();
 				tabbedPane.setSelectedIndex(1);
 			}
 		});
@@ -388,38 +642,241 @@ public class MainWindow extends JFrame
 	
 	private void setupAttributesPanel()
 	{
+		btnAttribute1 = new JButton();
+		btnAttribute2 = new JButton();
+		btnAttribute3 = new JButton();
+		btnAttribute4 = new JButton();
+		btnAttribute5 = new JButton();
+		btnAttribute6 = new JButton();
+		btnAttribute7 = new JButton();
+		btnAttribute8 = new JButton();
+		
+		btnAttribute1.setBounds(232, 43, 86, 20);
+		btnAttribute1.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute1.setFocusPainted(false);
+		btnAttribute1.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute1.setContentAreaFilled(false);
+		btnAttribute1.setOpaque(false);
+		TransferHandler transfer1 = new TransferHandler("text");
+		btnAttribute1.setTransferHandler(transfer1);
+		btnAttribute1.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute2.setBounds(232, 68, 86, 20);
+		btnAttribute2.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute2.setFocusPainted(false);
+		btnAttribute2.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute2.setContentAreaFilled(false);
+		btnAttribute2.setOpaque(false);
+		TransferHandler transfer2 = new TransferHandler("text");
+		btnAttribute2.setTransferHandler(transfer2);
+		btnAttribute2.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute3.setBounds(232, 93, 86, 20);
+		btnAttribute3.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute3.setFocusPainted(false);
+		btnAttribute3.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute3.setContentAreaFilled(false);
+		btnAttribute3.setOpaque(false);
+		TransferHandler transfer3 = new TransferHandler("text");
+		btnAttribute3.setTransferHandler(transfer3);
+		btnAttribute3.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute4.setBounds(232, 118, 86, 20);
+		btnAttribute4.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute4.setFocusPainted(false);
+		btnAttribute4.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute4.setContentAreaFilled(false);
+		btnAttribute4.setOpaque(false);
+		TransferHandler transfer4 = new TransferHandler("text");
+		btnAttribute4.setTransferHandler(transfer4);
+		btnAttribute4.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute5.setBounds(232, 143, 86, 20);
+		btnAttribute5.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute5.setFocusPainted(false);
+		btnAttribute5.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute5.setContentAreaFilled(false);
+		btnAttribute5.setOpaque(false);
+		TransferHandler transfer5 = new TransferHandler("text");
+		btnAttribute5.setTransferHandler(transfer5);
+		btnAttribute5.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute6.setBounds(232, 168, 86, 20);
+		btnAttribute6.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute6.setFocusPainted(false);
+		btnAttribute6.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute6.setContentAreaFilled(false);
+		btnAttribute6.setOpaque(false);
+		TransferHandler transfer6 = new TransferHandler("text");
+		btnAttribute6.setTransferHandler(transfer6);
+		btnAttribute6.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute7.setBounds(232, 193, 86, 20);
+		btnAttribute7.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute7.setFocusPainted(false);
+		btnAttribute7.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute7.setContentAreaFilled(false);
+		btnAttribute7.setOpaque(false);
+		TransferHandler transfer7 = new TransferHandler("text");
+		btnAttribute7.setTransferHandler(transfer7);
+		btnAttribute7.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		btnAttribute8.setBounds(232, 221, 86, 20);
+		btnAttribute8.setBackground(UIManager.getColor("Label.background"));
+		btnAttribute8.setFocusPainted(false);
+		btnAttribute8.setMargin(new Insets(0, 0, 0, 0));
+		btnAttribute8.setContentAreaFilled(false);
+		btnAttribute8.setOpaque(false);
+		TransferHandler transfer8 = new TransferHandler("text");
+		btnAttribute8.setTransferHandler(transfer8);
+		btnAttribute8.addMouseListener(new MouseAdapter()
+		{
+			public void mousePressed(MouseEvent e)
+			{
+				JButton button = (JButton) e.getSource();
+				TransferHandler handler = button.getTransferHandler();
+				if(button.isEnabled())
+				{
+					handler.exportAsDrag(button, e, TransferHandler.COPY);
+				}
+				button.setEnabled(false);
+			}
+		});
+		
+		attributesPanel.add(btnAttribute1);
+		attributesPanel.add(btnAttribute2);
+		attributesPanel.add(btnAttribute3);
+		attributesPanel.add(btnAttribute4);
+		attributesPanel.add(btnAttribute5);
+		attributesPanel.add(btnAttribute6);
+		attributesPanel.add(btnAttribute7);
+		attributesPanel.add(btnAttribute8);
+		
+		txtCharisma = new JTextField();
+		txtConstitution = new JTextField();
+		txtDexterity = new JTextField();
+		txtIntelligence = new JTextField();
+		txtLuck = new JTextField();
+		txtSpeed = new JTextField();
+		txtStrength = new JTextField();
+		txtWisdom = new JTextField();
+		
 		JButton btnAll20 = new JButton("All 20");
 		btnAll20.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				btnAttribute1.setVisible(true);
-				btnAttribute2.setVisible(true);
-				btnAttribute3.setVisible(true);
-				btnAttribute4.setVisible(true);
-				btnAttribute5.setVisible(true);
-				btnAttribute6.setVisible(true);
-				btnAttribute7.setVisible(true);
-				btnAttribute8.setVisible(true);
+				btnAttribute1.setVisible(false);
+				btnAttribute2.setVisible(false);
+				btnAttribute3.setVisible(false);
+				btnAttribute4.setVisible(false);
+				btnAttribute5.setVisible(false);
+				btnAttribute6.setVisible(false);
+				btnAttribute7.setVisible(false);
+				btnAttribute8.setVisible(false);
+				btnAttribute1.setEnabled(false);
+				btnAttribute2.setEnabled(false);
+				btnAttribute3.setEnabled(false);
+				btnAttribute4.setEnabled(false);
+				btnAttribute5.setEnabled(false);
+				btnAttribute6.setEnabled(false);
+				btnAttribute7.setEnabled(false);
+				btnAttribute8.setEnabled(false);
 				
-				btnAttribute1.setText("20");
-				btnAttribute2.setText("20");
-				btnAttribute3.setText("20");
-				btnAttribute4.setText("20");
-				btnAttribute5.setText("20");
-				btnAttribute6.setText("20");
-				btnAttribute7.setText("20");
-				btnAttribute8.setText("20");
-				
-				txtCharisma.setText("");
-				txtConstitution.setText("");
-				txtDexterity.setText("");
-				txtIntelligence.setText("");
-				txtLuck.setText("");
-				txtSpeed.setText("");
-				txtStrength.setText("");
-				txtWisdom.setText("");
+				txtCharisma.setText("20");
+				txtConstitution.setText("20");
+				txtDexterity.setText("20");
+				txtIntelligence.setText("20");
+				txtLuck.setText("20");
+				txtSpeed.setText("20");
+				txtStrength.setText("20");
+				txtWisdom.setText("20");
 			}
 		});
 		btnAll20.setBounds(359, 11, 196, 23);
+		btnAll20.doClick();
 		attributesPanel.add(btnAll20);
 		
 		JButton btnOption1 = new JButton("30 30 20 20 20 20 10 10");
@@ -433,6 +890,14 @@ public class MainWindow extends JFrame
 				btnAttribute6.setVisible(true);
 				btnAttribute7.setVisible(true);
 				btnAttribute8.setVisible(true);
+				btnAttribute1.setEnabled(true);
+				btnAttribute2.setEnabled(true);
+				btnAttribute3.setEnabled(true);
+				btnAttribute4.setEnabled(true);
+				btnAttribute5.setEnabled(true);
+				btnAttribute6.setEnabled(true);
+				btnAttribute7.setEnabled(true);
+				btnAttribute8.setEnabled(true);
 				
 				btnAttribute1.setText("30");
 				btnAttribute2.setText("30");
@@ -467,6 +932,14 @@ public class MainWindow extends JFrame
 				btnAttribute6.setVisible(true);
 				btnAttribute7.setVisible(true);
 				btnAttribute8.setVisible(true);
+				btnAttribute1.setEnabled(true);
+				btnAttribute2.setEnabled(true);
+				btnAttribute3.setEnabled(true);
+				btnAttribute4.setEnabled(true);
+				btnAttribute5.setEnabled(true);
+				btnAttribute6.setEnabled(true);
+				btnAttribute7.setEnabled(true);
+				btnAttribute8.setEnabled(true);
 				
 				btnAttribute1.setText("30");
 				btnAttribute2.setText("30");
@@ -501,6 +974,14 @@ public class MainWindow extends JFrame
 				btnAttribute6.setVisible(false);
 				btnAttribute7.setVisible(false);
 				btnAttribute8.setVisible(false);
+				btnAttribute1.setEnabled(false);
+				btnAttribute2.setEnabled(false);
+				btnAttribute3.setEnabled(false);
+				btnAttribute4.setEnabled(false);
+				btnAttribute5.setEnabled(false);
+				btnAttribute6.setEnabled(false);
+				btnAttribute7.setEnabled(false);
+				btnAttribute8.setEnabled(false);
 				
 				txtCharisma.setText("");
 				txtConstitution.setText("");
@@ -547,221 +1028,37 @@ public class MainWindow extends JFrame
 		lblWis.setBounds(24, 224, 100, 14);
 		attributesPanel.add(lblWis);
 		
-		txtCharisma = new JTextField();
 		txtCharisma.setBounds(134, 46, 86, 20);
 		attributesPanel.add(txtCharisma);
 		txtCharisma.setColumns(10);
 
-		txtConstitution = new JTextField();
 		txtConstitution.setBounds(134, 71, 86, 20);
 		attributesPanel.add(txtConstitution);
 		txtConstitution.setColumns(10);
 
-		txtDexterity = new JTextField();
 		txtDexterity.setBounds(134, 96, 86, 20);
 		attributesPanel.add(txtDexterity);
 		txtDexterity.setColumns(10);
 
-		txtIntelligence = new JTextField();
 		txtIntelligence.setBounds(134, 121, 86, 20);
 		attributesPanel.add(txtIntelligence);
 		txtIntelligence.setColumns(10);
 
-		txtLuck = new JTextField();
 		txtLuck.setBounds(134, 146, 86, 20);
 		attributesPanel.add(txtLuck);
 		txtLuck.setColumns(10);
 
-		txtSpeed = new JTextField();
 		txtSpeed.setBounds(134, 171, 86, 20);
 		attributesPanel.add(txtSpeed);
 		txtSpeed.setColumns(10);
 
-		txtStrength = new JTextField();
 		txtStrength.setBounds(134, 196, 86, 20);
 		attributesPanel.add(txtStrength);
 		txtStrength.setColumns(10);
 		
-		txtWisdom = new JTextField();
 		txtWisdom.setBounds(134, 221, 86, 20);
 		attributesPanel.add(txtWisdom);
 		txtWisdom.setColumns(10);
-		
-		btnAttribute1 = new JButton();
-		btnAttribute1.setBackground(UIManager.getColor("Label.background"));
-		btnAttribute1.setBounds(253, 46, 86, 20);
-		btnAttribute1.setVisible(false);
-		btnAttribute1.setFocusPainted(false);
-		btnAttribute1.setMargin(new Insets(0, 0, 0, 0));
-		btnAttribute1.setContentAreaFilled(false);
-		btnAttribute1.setBorderPainted(false);
-		btnAttribute1.setOpaque(false);
-		TransferHandler transfer1 = new TransferHandler("text");
-		btnAttribute1.setTransferHandler(transfer1);
-		btnAttribute1.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent e)
-			{
-				JButton button = (JButton) e.getSource();
-				TransferHandler handle = button.getTransferHandler();
-				handle.exportAsDrag(button, e, TransferHandler.COPY);
-			}
-		});
-		attributesPanel.add(btnAttribute1);
-		
-		btnAttribute2 = new JButton();
-		btnAttribute2.setBackground(UIManager.getColor("Label.background"));
-		btnAttribute2.setBounds(253, 71, 86, 20);
-		btnAttribute2.setVisible(false);
-		btnAttribute2.setFocusPainted(false);
-		btnAttribute2.setMargin(new Insets(0, 0, 0, 0));
-		btnAttribute2.setContentAreaFilled(false);
-		btnAttribute2.setBorderPainted(false);
-		btnAttribute2.setOpaque(false);
-		TransferHandler transfer2 = new TransferHandler("text");
-		btnAttribute2.setTransferHandler(transfer2);
-		btnAttribute2.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent e)
-			{
-				JButton button = (JButton) e.getSource();
-				TransferHandler handle = button.getTransferHandler();
-				handle.exportAsDrag(button, e, TransferHandler.COPY);
-			}
-		});
-		attributesPanel.add(btnAttribute2);
-		
-		btnAttribute3 = new JButton();
-		btnAttribute3.setBackground(UIManager.getColor("Label.background"));
-		btnAttribute3.setBounds(253, 96, 86, 20);
-		btnAttribute3.setVisible(false);
-		btnAttribute3.setFocusPainted(false);
-		btnAttribute3.setMargin(new Insets(0, 0, 0, 0));
-		btnAttribute3.setContentAreaFilled(false);
-		btnAttribute3.setBorderPainted(false);
-		btnAttribute3.setOpaque(false);
-		TransferHandler transfer3 = new TransferHandler("text");
-		btnAttribute3.setTransferHandler(transfer3);
-		btnAttribute3.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent e)
-			{
-				JButton button = (JButton) e.getSource();
-				TransferHandler handle = button.getTransferHandler();
-				handle.exportAsDrag(button, e, TransferHandler.COPY);
-			}
-		});
-		attributesPanel.add(btnAttribute3);
-		
-		btnAttribute4 = new JButton();
-		btnAttribute4.setBackground(UIManager.getColor("Label.background"));
-		btnAttribute4.setBounds(253, 121, 86, 20);
-		btnAttribute4.setVisible(false);
-		btnAttribute4.setFocusPainted(false);
-		btnAttribute4.setMargin(new Insets(0, 0, 0, 0));
-		btnAttribute4.setContentAreaFilled(false);
-		btnAttribute4.setBorderPainted(false);
-		btnAttribute4.setOpaque(false);
-		TransferHandler transfer4 = new TransferHandler("text");
-		btnAttribute4.setTransferHandler(transfer4);
-		btnAttribute4.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent e)
-			{
-				JButton button = (JButton) e.getSource();
-				TransferHandler handle = button.getTransferHandler();
-				handle.exportAsDrag(button, e, TransferHandler.COPY);
-			}
-		});
-		attributesPanel.add(btnAttribute4);
-		
-		btnAttribute5 = new JButton();
-		btnAttribute5.setBackground(UIManager.getColor("Label.background"));
-		btnAttribute5.setBounds(253, 146, 86, 20);
-		btnAttribute5.setVisible(false);
-		btnAttribute5.setFocusPainted(false);
-		btnAttribute5.setMargin(new Insets(0, 0, 0, 0));
-		btnAttribute5.setContentAreaFilled(false);
-		btnAttribute5.setBorderPainted(false);
-		btnAttribute5.setOpaque(false);
-		TransferHandler transfer5 = new TransferHandler("text");
-		btnAttribute5.setTransferHandler(transfer5);
-		btnAttribute5.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent e)
-			{
-				JButton button = (JButton) e.getSource();
-				TransferHandler handle = button.getTransferHandler();
-				handle.exportAsDrag(button, e, TransferHandler.COPY);
-			}
-		});
-		attributesPanel.add(btnAttribute5);
-		
-		btnAttribute6 = new JButton();
-		btnAttribute6.setBackground(UIManager.getColor("Label.background"));
-		btnAttribute6.setBounds(253, 171, 86, 20);
-		btnAttribute6.setVisible(false);
-		btnAttribute6.setFocusPainted(false);
-		btnAttribute6.setMargin(new Insets(0, 0, 0, 0));
-		btnAttribute6.setContentAreaFilled(false);
-		btnAttribute6.setBorderPainted(false);
-		btnAttribute6.setOpaque(false);
-		TransferHandler transfer6 = new TransferHandler("text");
-		btnAttribute6.setTransferHandler(transfer6);
-		btnAttribute6.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent e)
-			{
-				JButton button = (JButton) e.getSource();
-				TransferHandler handle = button.getTransferHandler();
-				handle.exportAsDrag(button, e, TransferHandler.COPY);
-			}
-		});
-		attributesPanel.add(btnAttribute6);
-		
-		btnAttribute7 = new JButton();
-		btnAttribute7.setBackground(UIManager.getColor("Label.background"));
-		btnAttribute7.setBounds(253, 196, 86, 20);
-		btnAttribute7.setVisible(false);
-		btnAttribute7.setFocusPainted(false);
-		btnAttribute7.setMargin(new Insets(0, 0, 0, 0));
-		btnAttribute7.setContentAreaFilled(false);
-		btnAttribute7.setBorderPainted(false);
-		btnAttribute7.setOpaque(false);
-		TransferHandler transfer7 = new TransferHandler("text");
-		btnAttribute7.setTransferHandler(transfer7);
-		btnAttribute7.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent e)
-			{
-				JButton button = (JButton) e.getSource();
-				TransferHandler handle = button.getTransferHandler();
-				handle.exportAsDrag(button, e, TransferHandler.COPY);
-			}
-		});
-		attributesPanel.add(btnAttribute7);
-		
-		btnAttribute8 = new JButton();
-		btnAttribute8.setBackground(UIManager.getColor("Label.background"));
-		btnAttribute8.setBounds(253, 221, 86, 20);
-		btnAttribute8.setVisible(false);
-		btnAttribute8.setFocusPainted(false);
-		btnAttribute8.setMargin(new Insets(0, 0, 0, 0));
-		btnAttribute8.setContentAreaFilled(false);
-		btnAttribute8.setBorderPainted(false);
-		btnAttribute8.setOpaque(false);
-		TransferHandler transfer8 = new TransferHandler("text");
-		btnAttribute8.setTransferHandler(transfer8);
-		btnAttribute8.addMouseListener(new MouseAdapter()
-		{
-			public void mousePressed(MouseEvent e)
-			{
-				JButton button = (JButton) e.getSource();
-				TransferHandler handle = button.getTransferHandler();
-				handle.exportAsDrag(button, e, TransferHandler.COPY);
-			}
-		});
-		attributesPanel.add(btnAttribute8);
 		
 		btnAttrNext = new JButton("Next");
 		btnAttrNext.addActionListener(new ActionListener() 
@@ -769,6 +1066,7 @@ public class MainWindow extends JFrame
 			public void actionPerformed(ActionEvent e) 
 			{
 				updateCharacterAttributes();
+				checkHomebrew();
 				tabbedPane.setSelectedIndex(2);
 			}
 		});
@@ -789,5 +1087,22 @@ public class MainWindow extends JFrame
 	private void setupSpellsPanel()
 	{
 		
+	}
+
+	/**
+	 * Checks to see if the character is homebrewed or not. If the character is homebrewed, mark the homebrew checkbox.
+	 */
+	private void checkHomebrew()
+	{
+		if(character.charisma < 3 || character.charisma > 30 ||
+				character.constitution < 3 || character.constitution > 30 ||
+				character.dexterity < 3 || character.dexterity > 30 ||
+				character.intelligence < 3 || character.intelligence > 30 ||
+				character.luck < 3 || character.luck > 30 ||
+				character.speed < 3 || character.speed > 30 ||
+				character.wisdom < 3 || character.wisdom > 30)
+		{
+			chkHomebrew.setSelected(true);
+		}
 	}
 }
