@@ -8,6 +8,7 @@ namespace Solipstry_Character_Creator
 {
     class Character
     {
+		//Basic information
         public string name;
         public string _class;
         public string race;
@@ -17,10 +18,11 @@ namespace Solipstry_Character_Creator
         public string aspiration;
         public string background;
 
-        public string size; //Small, medium, large, ...
+        public string size; //Small, medium, large
 
         public int[] skills = new int[36];
 
+		//Attributes
         public int charisma;
         public int constitution;
         public int dexterity;
@@ -29,6 +31,16 @@ namespace Solipstry_Character_Creator
         public int speed;
         public int strength;
         public int wisdom;
+
+		//Derived traits
+		public int movement;
+		public int hitPoints;
+		public int magicTotal;
+		public int magicRegen;
+		public int fortunePoints;
+		public int initiative;
+		public int enlightenment; //?
+		public int numLanguages;  //?
 
         /// <summary>
         /// Calculates the character's AC if using heavy armor
@@ -51,6 +63,11 @@ namespace Solipstry_Character_Creator
 
         public int CalculateModifier(int skill)
         {
+			if(skill == 0)
+			{
+				return 0;
+			}
+
             int sub = skill % 10;
             skill -= sub;
             return skill / 10;
