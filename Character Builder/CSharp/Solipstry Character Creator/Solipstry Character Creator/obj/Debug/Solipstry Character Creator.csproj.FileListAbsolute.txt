@@ -7,3 +7,12 @@ C:\Users\Jake\dev\Solipstry\Character Builder\CSharp\Solipstry Character Creator
 C:\Users\Jake\dev\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry Character Creator.exe
 C:\Users\Jake\dev\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry Character Creator.pdb
 C:\Users\Jake\dev\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry_Character_Creator.Window.resources
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\bin\Debug\Solipstry Character Creator.exe.config
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry Character Creator.exe
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry Character Creator.pdb
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\bin\Debug\Solipstry Character Creator.exe
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\bin\Debug\Solipstry Character Creator.pdb
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry Character Creator.csprojResolveAssemblyReference.cache
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry_Character_Creator.Window.resources
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry_Character_Creator.Properties.Resources.resources
+C:\Users\Jake\git\Solipstry\Character Builder\CSharp\Solipstry Character Creator\Solipstry Character Creator\obj\Debug\Solipstry Character Creator.csproj.GenerateResource.Cache
