@@ -52,14 +52,14 @@
 			this.lblClass = new System.Windows.Forms.Label();
 			this.lblName = new System.Windows.Forms.Label();
 			this.tabAttributes = new System.Windows.Forms.TabPage();
-			this.lblAttr8 = new System.Windows.Forms.Label();
-			this.lblAttr7 = new System.Windows.Forms.Label();
-			this.lblAttr6 = new System.Windows.Forms.Label();
-			this.lblAttr5 = new System.Windows.Forms.Label();
-			this.lblAttr4 = new System.Windows.Forms.Label();
-			this.lblAttr3 = new System.Windows.Forms.Label();
-			this.lblAttr2 = new System.Windows.Forms.Label();
-			this.lblAttr1 = new System.Windows.Forms.Label();
+			this.btnAttr8 = new System.Windows.Forms.Button();
+			this.btnAttr7 = new System.Windows.Forms.Button();
+			this.btnAttr6 = new System.Windows.Forms.Button();
+			this.btnAttr5 = new System.Windows.Forms.Button();
+			this.btnAttr4 = new System.Windows.Forms.Button();
+			this.btnAttr3 = new System.Windows.Forms.Button();
+			this.btnAttr2 = new System.Windows.Forms.Button();
+			this.btnAttr1 = new System.Windows.Forms.Button();
 			this.lblAttributeSelectionMethod = new System.Windows.Forms.Label();
 			this.cmbAttributeMethod = new System.Windows.Forms.ComboBox();
 			this.lblCharisma = new System.Windows.Forms.Label();
@@ -317,14 +317,14 @@
 			// 
 			// tabAttributes
 			// 
-			this.tabAttributes.Controls.Add(this.lblAttr8);
-			this.tabAttributes.Controls.Add(this.lblAttr7);
-			this.tabAttributes.Controls.Add(this.lblAttr6);
-			this.tabAttributes.Controls.Add(this.lblAttr5);
-			this.tabAttributes.Controls.Add(this.lblAttr4);
-			this.tabAttributes.Controls.Add(this.lblAttr3);
-			this.tabAttributes.Controls.Add(this.lblAttr2);
-			this.tabAttributes.Controls.Add(this.lblAttr1);
+			this.tabAttributes.Controls.Add(this.btnAttr8);
+			this.tabAttributes.Controls.Add(this.btnAttr7);
+			this.tabAttributes.Controls.Add(this.btnAttr6);
+			this.tabAttributes.Controls.Add(this.btnAttr5);
+			this.tabAttributes.Controls.Add(this.btnAttr4);
+			this.tabAttributes.Controls.Add(this.btnAttr3);
+			this.tabAttributes.Controls.Add(this.btnAttr2);
+			this.tabAttributes.Controls.Add(this.btnAttr1);
 			this.tabAttributes.Controls.Add(this.lblAttributeSelectionMethod);
 			this.tabAttributes.Controls.Add(this.cmbAttributeMethod);
 			this.tabAttributes.Controls.Add(this.lblCharisma);
@@ -352,77 +352,109 @@
 			this.tabAttributes.UseVisualStyleBackColor = true;
 			this.tabAttributes.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
 			// 
-			// lblAttr8
+			// btnAttr8
 			// 
-			this.lblAttr8.AutoSize = true;
-			this.lblAttr8.Location = new System.Drawing.Point(290, 276);
-			this.lblAttr8.Name = "lblAttr8";
-			this.lblAttr8.Size = new System.Drawing.Size(19, 13);
-			this.lblAttr8.TabIndex = 25;
-			this.lblAttr8.Text = "20";
+			this.btnAttr8.FlatAppearance.BorderSize = 0;
+			this.btnAttr8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr8.Location = new System.Drawing.Point(293, 278);
+			this.btnAttr8.Name = "btnAttr8";
+			this.btnAttr8.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr8.TabIndex = 25;
+			this.btnAttr8.Text = "20";
+			this.btnAttr8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr8.UseVisualStyleBackColor = true;
+			this.btnAttr8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
 			// 
-			// lblAttr7
+			// btnAttr7
 			// 
-			this.lblAttr7.AutoSize = true;
-			this.lblAttr7.Location = new System.Drawing.Point(290, 250);
-			this.lblAttr7.Name = "lblAttr7";
-			this.lblAttr7.Size = new System.Drawing.Size(19, 13);
-			this.lblAttr7.TabIndex = 24;
-			this.lblAttr7.Text = "20";
+			this.btnAttr7.FlatAppearance.BorderSize = 0;
+			this.btnAttr7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr7.Location = new System.Drawing.Point(293, 252);
+			this.btnAttr7.Name = "btnAttr7";
+			this.btnAttr7.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr7.TabIndex = 24;
+			this.btnAttr7.Text = "20";
+			this.btnAttr7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr7.UseVisualStyleBackColor = true;
+			this.btnAttr7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
 			// 
-			// lblAttr6
+			// btnAttr6
 			// 
-			this.lblAttr6.AutoSize = true;
-			this.lblAttr6.Location = new System.Drawing.Point(290, 224);
-			this.lblAttr6.Name = "lblAttr6";
-			this.lblAttr6.Size = new System.Drawing.Size(19, 13);
-			this.lblAttr6.TabIndex = 23;
-			this.lblAttr6.Text = "20";
+			this.btnAttr6.FlatAppearance.BorderSize = 0;
+			this.btnAttr6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr6.Location = new System.Drawing.Point(293, 226);
+			this.btnAttr6.Name = "btnAttr6";
+			this.btnAttr6.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr6.TabIndex = 23;
+			this.btnAttr6.Text = "20";
+			this.btnAttr6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr6.UseVisualStyleBackColor = true;
+			this.btnAttr6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
 			// 
-			// lblAttr5
+			// btnAttr5
 			// 
-			this.lblAttr5.AutoSize = true;
-			this.lblAttr5.Location = new System.Drawing.Point(290, 198);
-			this.lblAttr5.Name = "lblAttr5";
-			this.lblAttr5.Size = new System.Drawing.Size(19, 13);
-			this.lblAttr5.TabIndex = 22;
-			this.lblAttr5.Text = "20";
+			this.btnAttr5.FlatAppearance.BorderSize = 0;
+			this.btnAttr5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr5.Location = new System.Drawing.Point(293, 200);
+			this.btnAttr5.Name = "btnAttr5";
+			this.btnAttr5.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr5.TabIndex = 22;
+			this.btnAttr5.Text = "20";
+			this.btnAttr5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr5.UseVisualStyleBackColor = true;
+			this.btnAttr5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
 			// 
-			// lblAttr4
+			// btnAttr4
 			// 
-			this.lblAttr4.AutoSize = true;
-			this.lblAttr4.Location = new System.Drawing.Point(290, 172);
-			this.lblAttr4.Name = "lblAttr4";
-			this.lblAttr4.Size = new System.Drawing.Size(19, 13);
-			this.lblAttr4.TabIndex = 21;
-			this.lblAttr4.Text = "20";
+			this.btnAttr4.FlatAppearance.BorderSize = 0;
+			this.btnAttr4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr4.Location = new System.Drawing.Point(293, 174);
+			this.btnAttr4.Name = "btnAttr4";
+			this.btnAttr4.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr4.TabIndex = 21;
+			this.btnAttr4.Text = "20";
+			this.btnAttr4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr4.UseVisualStyleBackColor = true;
+			this.btnAttr4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
 			// 
-			// lblAttr3
+			// btnAttr3
 			// 
-			this.lblAttr3.AutoSize = true;
-			this.lblAttr3.Location = new System.Drawing.Point(290, 146);
-			this.lblAttr3.Name = "lblAttr3";
-			this.lblAttr3.Size = new System.Drawing.Size(19, 13);
-			this.lblAttr3.TabIndex = 20;
-			this.lblAttr3.Text = "20";
+			this.btnAttr3.FlatAppearance.BorderSize = 0;
+			this.btnAttr3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr3.Location = new System.Drawing.Point(293, 148);
+			this.btnAttr3.Name = "btnAttr3";
+			this.btnAttr3.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr3.TabIndex = 20;
+			this.btnAttr3.Text = "20";
+			this.btnAttr3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr3.UseVisualStyleBackColor = true;
+			this.btnAttr3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
 			// 
-			// lblAttr2
+			// btnAttr2
 			// 
-			this.lblAttr2.AutoSize = true;
-			this.lblAttr2.Location = new System.Drawing.Point(290, 120);
-			this.lblAttr2.Name = "lblAttr2";
-			this.lblAttr2.Size = new System.Drawing.Size(19, 13);
-			this.lblAttr2.TabIndex = 19;
-			this.lblAttr2.Text = "20";
+			this.btnAttr2.FlatAppearance.BorderSize = 0;
+			this.btnAttr2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr2.Location = new System.Drawing.Point(293, 122);
+			this.btnAttr2.Name = "btnAttr2";
+			this.btnAttr2.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr2.TabIndex = 19;
+			this.btnAttr2.Text = "20";
+			this.btnAttr2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr2.UseVisualStyleBackColor = true;
+			this.btnAttr2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
 			// 
-			// lblAttr1
+			// btnAttr1
 			// 
-			this.lblAttr1.AutoSize = true;
-			this.lblAttr1.Location = new System.Drawing.Point(290, 100);
-			this.lblAttr1.Name = "lblAttr1";
-			this.lblAttr1.Size = new System.Drawing.Size(19, 13);
-			this.lblAttr1.TabIndex = 18;
-			this.lblAttr1.Text = "20";
+			this.btnAttr1.FlatAppearance.BorderSize = 0;
+			this.btnAttr1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr1.Location = new System.Drawing.Point(293, 96);
+			this.btnAttr1.Name = "btnAttr1";
+			this.btnAttr1.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr1.TabIndex = 18;
+			this.btnAttr1.Text = "20";
+			this.btnAttr1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr1.UseVisualStyleBackColor = true;
+			this.btnAttr1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
 			// 
 			// lblAttributeSelectionMethod
 			// 
@@ -528,6 +560,7 @@
 			this.txtWisdom.Size = new System.Drawing.Size(100, 20);
 			this.txtWisdom.TabIndex = 7;
 			this.txtWisdom.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtWisdom.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// txtStrength
 			// 
@@ -537,6 +570,7 @@
 			this.txtStrength.Size = new System.Drawing.Size(100, 20);
 			this.txtStrength.TabIndex = 6;
 			this.txtStrength.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtStrength.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// txtSpeed
 			// 
@@ -546,6 +580,7 @@
 			this.txtSpeed.Size = new System.Drawing.Size(100, 20);
 			this.txtSpeed.TabIndex = 5;
 			this.txtSpeed.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtSpeed.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// txtLuck
 			// 
@@ -555,6 +590,7 @@
 			this.txtLuck.Size = new System.Drawing.Size(100, 20);
 			this.txtLuck.TabIndex = 4;
 			this.txtLuck.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtLuck.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// txtIntelligence
 			// 
@@ -564,6 +600,7 @@
 			this.txtIntelligence.Size = new System.Drawing.Size(100, 20);
 			this.txtIntelligence.TabIndex = 3;
 			this.txtIntelligence.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtIntelligence.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// txtCharisma
 			// 
@@ -573,6 +610,7 @@
 			this.txtCharisma.Size = new System.Drawing.Size(100, 20);
 			this.txtCharisma.TabIndex = 2;
 			this.txtCharisma.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtCharisma.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// txtConstitution
 			// 
@@ -582,6 +620,7 @@
 			this.txtConstitution.Size = new System.Drawing.Size(100, 20);
 			this.txtConstitution.TabIndex = 1;
 			this.txtConstitution.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtConstitution.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// txtDexterity
 			// 
@@ -591,6 +630,7 @@
 			this.txtDexterity.Size = new System.Drawing.Size(100, 20);
 			this.txtDexterity.TabIndex = 0;
 			this.txtDexterity.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtDexterity.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// tabSkills
 			// 
@@ -687,14 +727,14 @@
         private System.Windows.Forms.Label lblIntelligence;
         private System.Windows.Forms.ComboBox cmbAttributeMethod;
 		private System.Windows.Forms.Label lblAttributeSelectionMethod;
-		private System.Windows.Forms.Label lblAttr8;
-		private System.Windows.Forms.Label lblAttr7;
-		private System.Windows.Forms.Label lblAttr6;
-		private System.Windows.Forms.Label lblAttr5;
-		private System.Windows.Forms.Label lblAttr4;
-		private System.Windows.Forms.Label lblAttr3;
-		private System.Windows.Forms.Label lblAttr2;
-		private System.Windows.Forms.Label lblAttr1;
+		private System.Windows.Forms.Button btnAttr8;
+		private System.Windows.Forms.Button btnAttr7;
+		private System.Windows.Forms.Button btnAttr6;
+		private System.Windows.Forms.Button btnAttr5;
+		private System.Windows.Forms.Button btnAttr4;
+		private System.Windows.Forms.Button btnAttr3;
+		private System.Windows.Forms.Button btnAttr2;
+		private System.Windows.Forms.Button btnAttr1;
     }
 }
 
