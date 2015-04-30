@@ -13,8 +13,8 @@ namespace Solipstry_Character_Creator
     public partial class Window : Form
     {
         private Character character;
-		private List<Label> attributeLabels;
-		private List<TextBox> attributeTextBoxes;
+		private List<Control> attributeLabels;
+		private List<Control> attributeTextBoxes;
 
         public Window()
         {
@@ -23,7 +23,7 @@ namespace Solipstry_Character_Creator
             character = new Character();
 
 			//Store the labels for attributes in a list for easier processing
-			attributeLabels = new List<Label>();
+			attributeLabels = new List<Control>();
 			attributeLabels.Add(lblAttr1);
 			attributeLabels.Add(lblAttr2);
 			attributeLabels.Add(lblAttr3);
@@ -34,7 +34,7 @@ namespace Solipstry_Character_Creator
 			attributeLabels.Add(lblAttr8);
 
 			//Store the text boxes for attributes in a list for easier processing
-			attributeTextBoxes = new List<TextBox>();
+			attributeTextBoxes = new List<Control>();
 			attributeTextBoxes.Add(txtCharisma);
 			attributeTextBoxes.Add(txtConstitution);
 			attributeTextBoxes.Add(txtDexterity);
@@ -49,8 +49,7 @@ namespace Solipstry_Character_Creator
         {
 			UpdateBasicInformation();
 			UpdateAttributes();
-
-			//Update derived traits
+			CalculateDerivedTraits();
 
 
             //TODO: Update character information
@@ -85,7 +84,7 @@ namespace Solipstry_Character_Creator
 					lblAttr7.Text = "20";
 					lblAttr8.Text = "20";
 
-					DisableTextBoxes(attributeTextBoxes);
+					DisableControls(attributeTextBoxes);
                     break;
                 case 1: //2 30s, 4 20s, 2 10s
 					lblAttr1.Text = "30";
@@ -97,7 +96,7 @@ namespace Solipstry_Character_Creator
 					lblAttr7.Text = "10";
 					lblAttr8.Text = "10";
 
-					DisableTextBoxes(attributeTextBoxes);
+					DisableControls(attributeTextBoxes);
 					break;
                 case 2: //3 30s, 2 20s, 3 10s
 					lblAttr1.Text = "30";
@@ -109,15 +108,15 @@ namespace Solipstry_Character_Creator
 					lblAttr7.Text = "10";
 					lblAttr8.Text = "10";
 
-					DisableTextBoxes(attributeTextBoxes);
+					DisableControls(attributeTextBoxes);
 					break;
                 case 3: //Rolled own attributes
                     foreach(Label lbl in attributeLabels)
 					{
 						lbl.Text = "";
 					}
-
-					EnableTextBoxes(attributeTextBoxes);
+					
+					EnableControls(attributeTextBoxes);
 					break;
             }
         }
@@ -167,17 +166,17 @@ namespace Solipstry_Character_Creator
 			return isInteger ? int.Parse(str) : 0;
 		}
 
-		private void EnableTextBoxes(List<TextBox> list)
+		private void EnableControls(List<Control> list)
 		{
-			foreach(TextBox box in list)
+			foreach(Control box in list)
 			{
 				box.Enabled = true;
 			}
 		}
 
-		private void DisableTextBoxes(List<TextBox> list)
+		private void DisableControls(List<Control> list)
 		{
-			foreach(TextBox box in list)
+			foreach(Control box in list)
 			{
 				box.Enabled = false;
 			}
