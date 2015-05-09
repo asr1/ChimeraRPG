@@ -52,26 +52,35 @@
 			this.lblClass = new System.Windows.Forms.Label();
 			this.lblName = new System.Windows.Forms.Label();
 			this.tabAttributes = new System.Windows.Forms.TabPage();
+			this.btnAttr8 = new System.Windows.Forms.Button();
+			this.btnAttr7 = new System.Windows.Forms.Button();
+			this.btnAttr6 = new System.Windows.Forms.Button();
+			this.btnAttr5 = new System.Windows.Forms.Button();
+			this.btnAttr4 = new System.Windows.Forms.Button();
+			this.btnAttr3 = new System.Windows.Forms.Button();
+			this.btnAttr2 = new System.Windows.Forms.Button();
+			this.btnAttr1 = new System.Windows.Forms.Button();
+			this.lblAttributeSelectionMethod = new System.Windows.Forms.Label();
+			this.cmbAttributeMethod = new System.Windows.Forms.ComboBox();
+			this.lblCharisma = new System.Windows.Forms.Label();
+			this.lblConstitution = new System.Windows.Forms.Label();
+			this.lblDexterity = new System.Windows.Forms.Label();
+			this.lblIntelligence = new System.Windows.Forms.Label();
+			this.lblLuck = new System.Windows.Forms.Label();
+			this.lblSpeed = new System.Windows.Forms.Label();
+			this.lblStrength = new System.Windows.Forms.Label();
+			this.lblWisdom = new System.Windows.Forms.Label();
+			this.txtWisdom = new System.Windows.Forms.TextBox();
+			this.txtStrength = new System.Windows.Forms.TextBox();
+			this.txtSpeed = new System.Windows.Forms.TextBox();
+			this.txtLuck = new System.Windows.Forms.TextBox();
+			this.txtIntelligence = new System.Windows.Forms.TextBox();
+			this.txtCharisma = new System.Windows.Forms.TextBox();
+			this.txtConstitution = new System.Windows.Forms.TextBox();
+			this.txtDexterity = new System.Windows.Forms.TextBox();
 			this.tabSkills = new System.Windows.Forms.TabPage();
 			this.tabTalents = new System.Windows.Forms.TabPage();
 			this.tabSpells = new System.Windows.Forms.TabPage();
-			this.txtDexterity = new System.Windows.Forms.TextBox();
-			this.txtConstitution = new System.Windows.Forms.TextBox();
-			this.txtCharisma = new System.Windows.Forms.TextBox();
-			this.txtIntelligence = new System.Windows.Forms.TextBox();
-			this.txtLuck = new System.Windows.Forms.TextBox();
-			this.txtSpeed = new System.Windows.Forms.TextBox();
-			this.txtStrength = new System.Windows.Forms.TextBox();
-			this.txtWisdom = new System.Windows.Forms.TextBox();
-			this.lblWisdom = new System.Windows.Forms.Label();
-			this.lblStrength = new System.Windows.Forms.Label();
-			this.lblSpeed = new System.Windows.Forms.Label();
-			this.lblLuck = new System.Windows.Forms.Label();
-			this.lblIntelligence = new System.Windows.Forms.Label();
-			this.lblDexterity = new System.Windows.Forms.Label();
-			this.lblConstitution = new System.Windows.Forms.Label();
-			this.lblCharisma = new System.Windows.Forms.Label();
-			this.cmbAttributeMethod = new System.Windows.Forms.ComboBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
@@ -141,7 +150,7 @@
 			// lblSize
 			// 
 			this.lblSize.AutoSize = true;
-			this.lblSize.Location = new System.Drawing.Point(116, 278);
+			this.lblSize.Location = new System.Drawing.Point(116, 68);
 			this.lblSize.Name = "lblSize";
 			this.lblSize.Size = new System.Drawing.Size(27, 13);
 			this.lblSize.TabIndex = 19;
@@ -150,12 +159,13 @@
 			// cmbSize
 			// 
 			this.cmbSize.DisplayMember = "Medium";
+			this.cmbSize.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.cmbSize.FormattingEnabled = true;
 			this.cmbSize.Items.AddRange(new object[] {
             "Small",
             "Medium",
             "Large"});
-			this.cmbSize.Location = new System.Drawing.Point(200, 275);
+			this.cmbSize.Location = new System.Drawing.Point(200, 65);
 			this.cmbSize.Name = "cmbSize";
 			this.cmbSize.Size = new System.Drawing.Size(155, 21);
 			this.cmbSize.TabIndex = 18;
@@ -170,7 +180,7 @@
 			// 
 			// txtClass
 			// 
-			this.txtClass.Location = new System.Drawing.Point(200, 66);
+			this.txtClass.Location = new System.Drawing.Point(201, 274);
 			this.txtClass.Name = "txtClass";
 			this.txtClass.Size = new System.Drawing.Size(155, 20);
 			this.txtClass.TabIndex = 16;
@@ -290,7 +300,7 @@
 			// lblClass
 			// 
 			this.lblClass.AutoSize = true;
-			this.lblClass.Location = new System.Drawing.Point(116, 69);
+			this.lblClass.Location = new System.Drawing.Point(116, 277);
 			this.lblClass.Name = "lblClass";
 			this.lblClass.Size = new System.Drawing.Size(32, 13);
 			this.lblClass.TabIndex = 1;
@@ -307,6 +317,15 @@
 			// 
 			// tabAttributes
 			// 
+			this.tabAttributes.Controls.Add(this.btnAttr8);
+			this.tabAttributes.Controls.Add(this.btnAttr7);
+			this.tabAttributes.Controls.Add(this.btnAttr6);
+			this.tabAttributes.Controls.Add(this.btnAttr5);
+			this.tabAttributes.Controls.Add(this.btnAttr4);
+			this.tabAttributes.Controls.Add(this.btnAttr3);
+			this.tabAttributes.Controls.Add(this.btnAttr2);
+			this.tabAttributes.Controls.Add(this.btnAttr1);
+			this.tabAttributes.Controls.Add(this.lblAttributeSelectionMethod);
 			this.tabAttributes.Controls.Add(this.cmbAttributeMethod);
 			this.tabAttributes.Controls.Add(this.lblCharisma);
 			this.tabAttributes.Controls.Add(this.lblConstitution);
@@ -331,6 +350,287 @@
 			this.tabAttributes.TabIndex = 1;
 			this.tabAttributes.Text = "Attributes";
 			this.tabAttributes.UseVisualStyleBackColor = true;
+			this.tabAttributes.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			// 
+			// btnAttr8
+			// 
+			this.btnAttr8.FlatAppearance.BorderSize = 0;
+			this.btnAttr8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr8.Location = new System.Drawing.Point(293, 278);
+			this.btnAttr8.Name = "btnAttr8";
+			this.btnAttr8.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr8.TabIndex = 25;
+			this.btnAttr8.Text = "20";
+			this.btnAttr8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr8.UseVisualStyleBackColor = true;
+			this.btnAttr8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
+			// 
+			// btnAttr7
+			// 
+			this.btnAttr7.FlatAppearance.BorderSize = 0;
+			this.btnAttr7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr7.Location = new System.Drawing.Point(293, 252);
+			this.btnAttr7.Name = "btnAttr7";
+			this.btnAttr7.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr7.TabIndex = 24;
+			this.btnAttr7.Text = "20";
+			this.btnAttr7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr7.UseVisualStyleBackColor = true;
+			this.btnAttr7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
+			// 
+			// btnAttr6
+			// 
+			this.btnAttr6.FlatAppearance.BorderSize = 0;
+			this.btnAttr6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr6.Location = new System.Drawing.Point(293, 226);
+			this.btnAttr6.Name = "btnAttr6";
+			this.btnAttr6.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr6.TabIndex = 23;
+			this.btnAttr6.Text = "20";
+			this.btnAttr6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr6.UseVisualStyleBackColor = true;
+			this.btnAttr6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
+			// 
+			// btnAttr5
+			// 
+			this.btnAttr5.FlatAppearance.BorderSize = 0;
+			this.btnAttr5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr5.Location = new System.Drawing.Point(293, 200);
+			this.btnAttr5.Name = "btnAttr5";
+			this.btnAttr5.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr5.TabIndex = 22;
+			this.btnAttr5.Text = "20";
+			this.btnAttr5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr5.UseVisualStyleBackColor = true;
+			this.btnAttr5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
+			// 
+			// btnAttr4
+			// 
+			this.btnAttr4.FlatAppearance.BorderSize = 0;
+			this.btnAttr4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr4.Location = new System.Drawing.Point(293, 174);
+			this.btnAttr4.Name = "btnAttr4";
+			this.btnAttr4.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr4.TabIndex = 21;
+			this.btnAttr4.Text = "20";
+			this.btnAttr4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr4.UseVisualStyleBackColor = true;
+			this.btnAttr4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
+			// 
+			// btnAttr3
+			// 
+			this.btnAttr3.FlatAppearance.BorderSize = 0;
+			this.btnAttr3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr3.Location = new System.Drawing.Point(293, 148);
+			this.btnAttr3.Name = "btnAttr3";
+			this.btnAttr3.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr3.TabIndex = 20;
+			this.btnAttr3.Text = "20";
+			this.btnAttr3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr3.UseVisualStyleBackColor = true;
+			this.btnAttr3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
+			// 
+			// btnAttr2
+			// 
+			this.btnAttr2.FlatAppearance.BorderSize = 0;
+			this.btnAttr2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr2.Location = new System.Drawing.Point(293, 122);
+			this.btnAttr2.Name = "btnAttr2";
+			this.btnAttr2.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr2.TabIndex = 19;
+			this.btnAttr2.Text = "20";
+			this.btnAttr2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr2.UseVisualStyleBackColor = true;
+			this.btnAttr2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
+			// 
+			// btnAttr1
+			// 
+			this.btnAttr1.FlatAppearance.BorderSize = 0;
+			this.btnAttr1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.btnAttr1.Location = new System.Drawing.Point(293, 96);
+			this.btnAttr1.Name = "btnAttr1";
+			this.btnAttr1.Size = new System.Drawing.Size(100, 20);
+			this.btnAttr1.TabIndex = 18;
+			this.btnAttr1.Text = "20";
+			this.btnAttr1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.btnAttr1.UseVisualStyleBackColor = true;
+			this.btnAttr1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.btnAttr_MouseDown);
+			// 
+			// lblAttributeSelectionMethod
+			// 
+			this.lblAttributeSelectionMethod.AutoSize = true;
+			this.lblAttributeSelectionMethod.Location = new System.Drawing.Point(290, 54);
+			this.lblAttributeSelectionMethod.Name = "lblAttributeSelectionMethod";
+			this.lblAttributeSelectionMethod.Size = new System.Drawing.Size(129, 13);
+			this.lblAttributeSelectionMethod.TabIndex = 17;
+			this.lblAttributeSelectionMethod.Text = "Attribute selection method";
+			// 
+			// cmbAttributeMethod
+			// 
+			this.cmbAttributeMethod.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.cmbAttributeMethod.FormattingEnabled = true;
+			this.cmbAttributeMethod.Items.AddRange(new object[] {
+            "All 20s",
+            "Two 30s, four 20s, and two 10s",
+            "Three 30s, two 20s, and three 10s",
+            "I rolled my own"});
+			this.cmbAttributeMethod.Location = new System.Drawing.Point(293, 70);
+			this.cmbAttributeMethod.Name = "cmbAttributeMethod";
+			this.cmbAttributeMethod.Size = new System.Drawing.Size(187, 21);
+			this.cmbAttributeMethod.TabIndex = 16;
+			this.cmbAttributeMethod.SelectedIndexChanged += new System.EventHandler(this.cmbAttributeMethod_SelectedIndexChanged);
+			// 
+			// lblCharisma
+			// 
+			this.lblCharisma.AutoSize = true;
+			this.lblCharisma.Location = new System.Drawing.Point(6, 100);
+			this.lblCharisma.Name = "lblCharisma";
+			this.lblCharisma.Size = new System.Drawing.Size(50, 13);
+			this.lblCharisma.TabIndex = 15;
+			this.lblCharisma.Text = "Charisma";
+			// 
+			// lblConstitution
+			// 
+			this.lblConstitution.AutoSize = true;
+			this.lblConstitution.Location = new System.Drawing.Point(6, 126);
+			this.lblConstitution.Name = "lblConstitution";
+			this.lblConstitution.Size = new System.Drawing.Size(62, 13);
+			this.lblConstitution.TabIndex = 14;
+			this.lblConstitution.Text = "Constitution";
+			// 
+			// lblDexterity
+			// 
+			this.lblDexterity.AutoSize = true;
+			this.lblDexterity.Location = new System.Drawing.Point(6, 152);
+			this.lblDexterity.Name = "lblDexterity";
+			this.lblDexterity.Size = new System.Drawing.Size(48, 13);
+			this.lblDexterity.TabIndex = 13;
+			this.lblDexterity.Text = "Dexterity";
+			// 
+			// lblIntelligence
+			// 
+			this.lblIntelligence.AutoSize = true;
+			this.lblIntelligence.Location = new System.Drawing.Point(6, 178);
+			this.lblIntelligence.Name = "lblIntelligence";
+			this.lblIntelligence.Size = new System.Drawing.Size(61, 13);
+			this.lblIntelligence.TabIndex = 12;
+			this.lblIntelligence.Text = "Intelligence";
+			// 
+			// lblLuck
+			// 
+			this.lblLuck.AutoSize = true;
+			this.lblLuck.Location = new System.Drawing.Point(6, 204);
+			this.lblLuck.Name = "lblLuck";
+			this.lblLuck.Size = new System.Drawing.Size(31, 13);
+			this.lblLuck.TabIndex = 11;
+			this.lblLuck.Text = "Luck";
+			// 
+			// lblSpeed
+			// 
+			this.lblSpeed.AutoSize = true;
+			this.lblSpeed.Location = new System.Drawing.Point(6, 230);
+			this.lblSpeed.Name = "lblSpeed";
+			this.lblSpeed.Size = new System.Drawing.Size(38, 13);
+			this.lblSpeed.TabIndex = 10;
+			this.lblSpeed.Text = "Speed";
+			// 
+			// lblStrength
+			// 
+			this.lblStrength.AutoSize = true;
+			this.lblStrength.Location = new System.Drawing.Point(6, 256);
+			this.lblStrength.Name = "lblStrength";
+			this.lblStrength.Size = new System.Drawing.Size(47, 13);
+			this.lblStrength.TabIndex = 9;
+			this.lblStrength.Text = "Strength";
+			// 
+			// lblWisdom
+			// 
+			this.lblWisdom.AutoSize = true;
+			this.lblWisdom.Location = new System.Drawing.Point(6, 282);
+			this.lblWisdom.Name = "lblWisdom";
+			this.lblWisdom.Size = new System.Drawing.Size(45, 13);
+			this.lblWisdom.TabIndex = 8;
+			this.lblWisdom.Text = "Wisdom";
+			// 
+			// txtWisdom
+			// 
+			this.txtWisdom.AllowDrop = true;
+			this.txtWisdom.Location = new System.Drawing.Point(114, 279);
+			this.txtWisdom.Name = "txtWisdom";
+			this.txtWisdom.Size = new System.Drawing.Size(100, 20);
+			this.txtWisdom.TabIndex = 7;
+			this.txtWisdom.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtWisdom.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
+			// 
+			// txtStrength
+			// 
+			this.txtStrength.AllowDrop = true;
+			this.txtStrength.Location = new System.Drawing.Point(114, 253);
+			this.txtStrength.Name = "txtStrength";
+			this.txtStrength.Size = new System.Drawing.Size(100, 20);
+			this.txtStrength.TabIndex = 6;
+			this.txtStrength.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtStrength.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
+			// 
+			// txtSpeed
+			// 
+			this.txtSpeed.AllowDrop = true;
+			this.txtSpeed.Location = new System.Drawing.Point(114, 227);
+			this.txtSpeed.Name = "txtSpeed";
+			this.txtSpeed.Size = new System.Drawing.Size(100, 20);
+			this.txtSpeed.TabIndex = 5;
+			this.txtSpeed.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtSpeed.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
+			// 
+			// txtLuck
+			// 
+			this.txtLuck.AllowDrop = true;
+			this.txtLuck.Location = new System.Drawing.Point(114, 201);
+			this.txtLuck.Name = "txtLuck";
+			this.txtLuck.Size = new System.Drawing.Size(100, 20);
+			this.txtLuck.TabIndex = 4;
+			this.txtLuck.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtLuck.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
+			// 
+			// txtIntelligence
+			// 
+			this.txtIntelligence.AllowDrop = true;
+			this.txtIntelligence.Location = new System.Drawing.Point(114, 175);
+			this.txtIntelligence.Name = "txtIntelligence";
+			this.txtIntelligence.Size = new System.Drawing.Size(100, 20);
+			this.txtIntelligence.TabIndex = 3;
+			this.txtIntelligence.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtIntelligence.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
+			// 
+			// txtCharisma
+			// 
+			this.txtCharisma.AllowDrop = true;
+			this.txtCharisma.Location = new System.Drawing.Point(114, 97);
+			this.txtCharisma.Name = "txtCharisma";
+			this.txtCharisma.Size = new System.Drawing.Size(100, 20);
+			this.txtCharisma.TabIndex = 2;
+			this.txtCharisma.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtCharisma.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
+			// 
+			// txtConstitution
+			// 
+			this.txtConstitution.AllowDrop = true;
+			this.txtConstitution.Location = new System.Drawing.Point(114, 123);
+			this.txtConstitution.Name = "txtConstitution";
+			this.txtConstitution.Size = new System.Drawing.Size(100, 20);
+			this.txtConstitution.TabIndex = 1;
+			this.txtConstitution.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtConstitution.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
+			// 
+			// txtDexterity
+			// 
+			this.txtDexterity.AllowDrop = true;
+			this.txtDexterity.Location = new System.Drawing.Point(114, 149);
+			this.txtDexterity.Name = "txtDexterity";
+			this.txtDexterity.Size = new System.Drawing.Size(100, 20);
+			this.txtDexterity.TabIndex = 0;
+			this.txtDexterity.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
+			this.txtDexterity.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
 			// tabSkills
 			// 
@@ -358,148 +658,6 @@
 			this.tabSpells.TabIndex = 4;
 			this.tabSpells.Text = "Spells";
 			this.tabSpells.UseVisualStyleBackColor = true;
-			// 
-			// txtDexterity
-			// 
-			this.txtDexterity.Location = new System.Drawing.Point(114, 149);
-			this.txtDexterity.Name = "txtDexterity";
-			this.txtDexterity.Size = new System.Drawing.Size(100, 20);
-			this.txtDexterity.TabIndex = 0;
-			// 
-			// txtConstitution
-			// 
-			this.txtConstitution.Location = new System.Drawing.Point(114, 123);
-			this.txtConstitution.Name = "txtConstitution";
-			this.txtConstitution.Size = new System.Drawing.Size(100, 20);
-			this.txtConstitution.TabIndex = 1;
-			// 
-			// txtCharisma
-			// 
-			this.txtCharisma.Location = new System.Drawing.Point(114, 97);
-			this.txtCharisma.Name = "txtCharisma";
-			this.txtCharisma.Size = new System.Drawing.Size(100, 20);
-			this.txtCharisma.TabIndex = 2;
-			// 
-			// txtIntelligence
-			// 
-			this.txtIntelligence.Location = new System.Drawing.Point(114, 175);
-			this.txtIntelligence.Name = "txtIntelligence";
-			this.txtIntelligence.Size = new System.Drawing.Size(100, 20);
-			this.txtIntelligence.TabIndex = 3;
-			// 
-			// txtLuck
-			// 
-			this.txtLuck.Location = new System.Drawing.Point(114, 201);
-			this.txtLuck.Name = "txtLuck";
-			this.txtLuck.Size = new System.Drawing.Size(100, 20);
-			this.txtLuck.TabIndex = 4;
-			// 
-			// txtSpeed
-			// 
-			this.txtSpeed.Location = new System.Drawing.Point(114, 227);
-			this.txtSpeed.Name = "txtSpeed";
-			this.txtSpeed.Size = new System.Drawing.Size(100, 20);
-			this.txtSpeed.TabIndex = 5;
-			// 
-			// txtStrength
-			// 
-			this.txtStrength.Location = new System.Drawing.Point(114, 253);
-			this.txtStrength.Name = "txtStrength";
-			this.txtStrength.Size = new System.Drawing.Size(100, 20);
-			this.txtStrength.TabIndex = 6;
-			// 
-			// txtWisdom
-			// 
-			this.txtWisdom.Location = new System.Drawing.Point(114, 279);
-			this.txtWisdom.Name = "txtWisdom";
-			this.txtWisdom.Size = new System.Drawing.Size(100, 20);
-			this.txtWisdom.TabIndex = 7;
-			// 
-			// lblWisdom
-			// 
-			this.lblWisdom.AutoSize = true;
-			this.lblWisdom.Location = new System.Drawing.Point(6, 282);
-			this.lblWisdom.Name = "lblWisdom";
-			this.lblWisdom.Size = new System.Drawing.Size(45, 13);
-			this.lblWisdom.TabIndex = 8;
-			this.lblWisdom.Text = "Wisdom";
-			// 
-			// lblStrength
-			// 
-			this.lblStrength.AutoSize = true;
-			this.lblStrength.Location = new System.Drawing.Point(6, 256);
-			this.lblStrength.Name = "lblStrength";
-			this.lblStrength.Size = new System.Drawing.Size(47, 13);
-			this.lblStrength.TabIndex = 9;
-			this.lblStrength.Text = "Strength";
-			// 
-			// lblSpeed
-			// 
-			this.lblSpeed.AutoSize = true;
-			this.lblSpeed.Location = new System.Drawing.Point(6, 230);
-			this.lblSpeed.Name = "lblSpeed";
-			this.lblSpeed.Size = new System.Drawing.Size(38, 13);
-			this.lblSpeed.TabIndex = 10;
-			this.lblSpeed.Text = "Speed";
-			// 
-			// lblLuck
-			// 
-			this.lblLuck.AutoSize = true;
-			this.lblLuck.Location = new System.Drawing.Point(6, 204);
-			this.lblLuck.Name = "lblLuck";
-			this.lblLuck.Size = new System.Drawing.Size(31, 13);
-			this.lblLuck.TabIndex = 11;
-			this.lblLuck.Text = "Luck";
-			// 
-			// lblIntelligence
-			// 
-			this.lblIntelligence.AutoSize = true;
-			this.lblIntelligence.Location = new System.Drawing.Point(6, 178);
-			this.lblIntelligence.Name = "lblIntelligence";
-			this.lblIntelligence.Size = new System.Drawing.Size(61, 13);
-			this.lblIntelligence.TabIndex = 12;
-			this.lblIntelligence.Text = "Intelligence";
-			// 
-			// lblDexterity
-			// 
-			this.lblDexterity.AutoSize = true;
-			this.lblDexterity.Location = new System.Drawing.Point(6, 152);
-			this.lblDexterity.Name = "lblDexterity";
-			this.lblDexterity.Size = new System.Drawing.Size(48, 13);
-			this.lblDexterity.TabIndex = 13;
-			this.lblDexterity.Text = "Dexterity";
-			// 
-			// lblConstitution
-			// 
-			this.lblConstitution.AutoSize = true;
-			this.lblConstitution.Location = new System.Drawing.Point(6, 126);
-			this.lblConstitution.Name = "lblConstitution";
-			this.lblConstitution.Size = new System.Drawing.Size(62, 13);
-			this.lblConstitution.TabIndex = 14;
-			this.lblConstitution.Text = "Constitution";
-			// 
-			// lblCharisma
-			// 
-			this.lblCharisma.AutoSize = true;
-			this.lblCharisma.Location = new System.Drawing.Point(6, 100);
-			this.lblCharisma.Name = "lblCharisma";
-			this.lblCharisma.Size = new System.Drawing.Size(50, 13);
-			this.lblCharisma.TabIndex = 15;
-			this.lblCharisma.Text = "Charisma";
-			// 
-			// cmbAttributeMethod
-			// 
-			this.cmbAttributeMethod.FormattingEnabled = true;
-			this.cmbAttributeMethod.Items.AddRange(new object[] {
-            "All 20s",
-            "Two 30s, four 20s, and two 10s",
-            "Three 30s, two 20s, and three 10s",
-            "I rolled my own"});
-			this.cmbAttributeMethod.Location = new System.Drawing.Point(293, 70);
-			this.cmbAttributeMethod.Name = "cmbAttributeMethod";
-			this.cmbAttributeMethod.Size = new System.Drawing.Size(187, 21);
-			this.cmbAttributeMethod.TabIndex = 16;
-			this.cmbAttributeMethod.SelectedIndexChanged += new System.EventHandler(this.cmbAttributeMethod_SelectedIndexChanged);
 			// 
 			// Window
 			// 
@@ -568,6 +726,15 @@
         private System.Windows.Forms.Label lblDexterity;
         private System.Windows.Forms.Label lblIntelligence;
         private System.Windows.Forms.ComboBox cmbAttributeMethod;
+		private System.Windows.Forms.Label lblAttributeSelectionMethod;
+		private System.Windows.Forms.Button btnAttr8;
+		private System.Windows.Forms.Button btnAttr7;
+		private System.Windows.Forms.Button btnAttr6;
+		private System.Windows.Forms.Button btnAttr5;
+		private System.Windows.Forms.Button btnAttr4;
+		private System.Windows.Forms.Button btnAttr3;
+		private System.Windows.Forms.Button btnAttr2;
+		private System.Windows.Forms.Button btnAttr1;
     }
 }
 
