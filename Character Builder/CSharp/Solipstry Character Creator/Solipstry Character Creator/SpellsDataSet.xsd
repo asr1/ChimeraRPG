@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="SpellsConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SpellsConnectionString (Settings)" PropertyReference="ApplicationSettings.Solipstry_Character_Creator.Properties.Settings.GlobalReference.Default.SpellsConnectionString" Provider="System.Data.OleDb" />
+          <Connection ConnectionStringObject="Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\Spells.accdb;Persist Security Info=True" IsAppSettingsProperty="false" Modifier="Assembly" Name="Spells.accdb" Provider="System.Data.OleDb" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SchoolsTableAdapter" GeneratorDataComponentClassName="SchoolsTableAdapter" Name="Schools" UserDataComponentName="SchoolsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SpellsConnectionString (Settings)" DbObjectName="Schools" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Spells.accdb" DbObjectName="Schools" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `Schools` WHERE ((`ID` = ?) AND ((? = 1 AND `school_name` IS NULL) OR (`school_name` = ?)))</CommandText>
@@ -55,7 +55,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SpellsTableAdapter" GeneratorDataComponentClassName="SpellsTableAdapter" Name="Spells" UserDataComponentName="SpellsTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SpellsConnectionString (Settings)" DbObjectName="Spells" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="Spells.accdb" DbObjectName="Spells" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <DeleteCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="false">
                     <CommandText>DELETE FROM `Spells` WHERE ((`spell_name` = ?) AND ((? = 1 AND `school_id` IS NULL) OR (`school_id` = ?)) AND ((? = 1 AND `spell_prereq` IS NULL) OR (`spell_prereq` = ?)) AND ((? = 1 AND `skill_prereq` IS NULL) OR (`skill_prereq` = ?)))</CommandText>

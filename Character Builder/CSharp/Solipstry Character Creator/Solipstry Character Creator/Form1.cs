@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data;
+using System.Data.OleDb;
+using System.Xml.Serialization;
 
 namespace Solipstry_Character_Creator
 {
     public partial class Window : Form
     {
+		private const string SPELLS_ACCESS_STRING = "Provider=Microsot.Jet.OLEDB.4.0;Data Source=Spells.accdb";
+
         private Character character;
 		private List<Button> attrValuesList;
 		private List<TextBox> attributeTextBoxes;
@@ -45,6 +50,40 @@ namespace Solipstry_Character_Creator
 			attributeTextBoxes.Add(txtSpeed);
 			attributeTextBoxes.Add(txtStrength);
 			attributeTextBoxes.Add(txtWisdom);
+
+			DataSet ds = new DataSet();
+			OleDbConnection conn = null;
+			try
+			{
+				conn = new OleDbConnection(SPELLS_ACCESS_STRING);
+			}
+			catch(Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+
+			try
+			{
+				OleDbCommand cmd = new OleDbCommand("select * from Schools", conn);
+				OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+
+				conn.Open();
+				adapter.Fill(ds, "Schools");
+			}
+			catch(Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+			finally
+			{
+				conn.Close();
+			}
+
+			DataRowCollection dra = ds.Tables["Schools"].Rows;
+			foreach(DataRow dr in dra)
+			{
+				Console.WriteLine("{0} {1}", dr[0], dr[1]);
+			}
         }
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)

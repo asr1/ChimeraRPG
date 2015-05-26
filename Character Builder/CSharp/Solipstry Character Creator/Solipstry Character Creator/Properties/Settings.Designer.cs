@@ -22,15 +22,5 @@ namespace Solipstry_Character_Creator.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=|DataDirectory|\\Spells.accdb")]
-        public string SpellsConnectionString {
-            get {
-                return ((string)(this["SpellsConnectionString"]));
-            }
-        }
     }
 }
