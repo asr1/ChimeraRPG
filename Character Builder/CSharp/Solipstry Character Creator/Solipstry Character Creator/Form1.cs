@@ -15,7 +15,9 @@ namespace Solipstry_Character_Creator
 {
     public partial class Window : Form
     {
-		private const string SPELLS_ACCESS_STRING = "Provider=Microsot.Jet.OLEDB.4.0;Data Source=Spells.accdb";
+		private const string SPELLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Spells.accdb";
+
+		private OleDbConnection spellsConnection;
 
         private Character character;
 		private List<Button> attrValuesList;
@@ -51,40 +53,48 @@ namespace Solipstry_Character_Creator
 			attributeTextBoxes.Add(txtStrength);
 			attributeTextBoxes.Add(txtWisdom);
 
-			DataSet ds = new DataSet();
-			OleDbConnection conn = null;
+			//Initialize database connections
+			spellsConnection = new OleDbConnection(SPELLS_ACCESS_STRING);
 			try
 			{
-				conn = new OleDbConnection(SPELLS_ACCESS_STRING);
+				spellsConnection.Open();
 			}
 			catch(Exception e)
 			{
 				Console.WriteLine(e.Message);
 			}
 
-			try
-			{
-				OleDbCommand cmd = new OleDbCommand("select * from Schools", conn);
-				OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-
-				conn.Open();
-				adapter.Fill(ds, "Schools");
-			}
-			catch(Exception e)
-			{
-				Console.WriteLine(e.Message);
-			}
-			finally
-			{
-				conn.Close();
-			}
-
-			DataRowCollection dra = ds.Tables["Schools"].Rows;
-			foreach(DataRow dr in dra)
-			{
-				Console.WriteLine("{0} {1}", dr[0], dr[1]);
-			}
+			//DataRowCollection dra = ds.Tables["Spells"].Rows;
+			//foreach (DataRow dr in dra)
+			//{
+			//	Console.WriteLine("{0} is in school {1}", dr[0], dr[1]);
+			//}
         }
+
+		/// <summary>
+		/// Performs a SQL query on an OLE connection
+		/// </summary>
+		/// <param name="conn">OleDbConnection to use</param>
+		/// <param name="query">SQL query to perform</param>
+		/// <param name="table">Table to fill the dataset with</param>
+		/// <returns>DataSet containing results of the query</returns>
+		private DataSet PerformQuery(OleDbConnection conn, string query, string table)
+		{
+			DataSet ds = new DataSet();
+		
+			try
+			{
+				OleDbCommand cmd = new OleDbCommand(query, conn);
+				OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
+				adapter.Fill(ds, table);
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e.Message);
+			}
+
+			return ds;
+		}
 
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -294,6 +304,12 @@ namespace Solipstry_Character_Creator
 		{
 			btnDropFrom = (Button) sender; //Keep track of where the drag data came from
 			btnDropFrom.DoDragDrop(btnDropFrom.Text, DragDropEffects.Copy | DragDropEffects.Move);
+		}
+
+		private void Window_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			//Close all database connections
+			spellsConnection.Close();
 		}
     }
 }

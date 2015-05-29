@@ -667,6 +667,7 @@
 			this.Controls.Add(this.splitContainer1);
 			this.Name = "Window";
 			this.Text = "Solipstry Character Creator";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Window_FormClosing);
 			this.Load += new System.EventHandler(this.Window_Load);
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
