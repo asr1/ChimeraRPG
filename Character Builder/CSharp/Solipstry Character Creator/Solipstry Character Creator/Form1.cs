@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data;
 using System.Data.OleDb;
 using System.Xml.Serialization;
 
@@ -16,8 +15,10 @@ namespace Solipstry_Character_Creator
     public partial class Window : Form
     {
 		private const string SPELLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Spells.accdb";
+		private const string SPELLS_INFO_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=SpellsInfo.accdb";
 
 		private OleDbConnection spellsConnection;
+		private OleDbConnection spellsInfoConnection;
 
         private Character character;
 		private List<Button> attrValuesList;
@@ -28,6 +29,15 @@ namespace Solipstry_Character_Creator
         public Window()
         {
             InitializeComponent();
+
+			//Create a context menu strip for the spell list box
+			ContextMenuStrip spellMenuStrip = new ContextMenuStrip();
+			ToolStripMenuItem spellInfoItem = new ToolStripMenuItem("Info");
+			spellInfoItem.Click += new EventHandler(spellInfoMenuItem_Click);
+			spellInfoItem.Name = "Info";
+			spellInfoItem.Enabled = false;
+			spellMenuStrip.Items.Add(spellInfoItem);
+			clbSpells.ContextMenuStrip = spellMenuStrip;
 
             character = new Character();
 
@@ -61,15 +71,45 @@ namespace Solipstry_Character_Creator
 			}
 			catch(Exception e)
 			{
-				Console.WriteLine(e.Message);
+				Console.WriteLine("Error opening connection to spell database: {0}", e.Message);
 			}
 
-			//DataRowCollection dra = ds.Tables["Spells"].Rows;
+			spellsInfoConnection = new OleDbConnection(SPELLS_INFO_ACCESS_STRING);
+			try
+			{
+				spellsInfoConnection.Open();
+			}
+
+			catch(Exception e)
+			{
+				Console.WriteLine("Error opening connection to spell info database: {0}", e.Message);
+			}
+			FillSpellsList();
+
+			//DataRowCollection dra = PerformQuery(...).Tables[table].Rows;
 			//foreach (DataRow dr in dra)
 			//{
 			//	Console.WriteLine("{0} is in school {1}", dr[0], dr[1]);
 			//}
         }
+
+		private void FillSpellsList()
+		{
+			DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name FROM Spells", "Spells");
+			DataRowCollection dra = ds.Tables["Spells"].Rows;
+			List<string> spellList = new List<string>();
+
+			foreach(DataRow dr in dra)
+			{
+				spellList.Add(dr[0].ToString());
+			}
+			spellList.Sort();
+
+			foreach(string spell in spellList)
+			{
+				clbSpells.Items.Add(spell);
+			}
+		}
 
 		/// <summary>
 		/// Performs a SQL query on an OLE connection
@@ -310,6 +350,19 @@ namespace Solipstry_Character_Creator
 		{
 			//Close all database connections
 			spellsConnection.Close();
+		}
+
+		//Handler for spell 'info' menu item click
+		private void spellInfoMenuItem_Click(object sender, EventArgs e)
+		{
+			DataRow row = PerformQuery(spellsConnection, "SELECT * FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem + "'", "Spells").Tables["Spells"].Rows[0];
+			string school = (string) PerformQuery(spellsConnection, "SElECT school_name FROM Schools WHERE ID = " + row[1], "Schools").Tables["Schools"].Rows[0][0];			
+
+		}
+
+		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			clbSpells.ContextMenuStrip.Items[0].Enabled = true;
 		}
     }
 }

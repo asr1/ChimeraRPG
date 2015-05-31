@@ -81,12 +81,14 @@
 			this.tabSkills = new System.Windows.Forms.TabPage();
 			this.tabTalents = new System.Windows.Forms.TabPage();
 			this.tabSpells = new System.Windows.Forms.TabPage();
+			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabInfo.SuspendLayout();
 			this.tabAttributes.SuspendLayout();
+			this.tabSpells.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -652,12 +654,23 @@
 			// 
 			// tabSpells
 			// 
+			this.tabSpells.Controls.Add(this.clbSpells);
 			this.tabSpells.Location = new System.Drawing.Point(4, 22);
 			this.tabSpells.Name = "tabSpells";
 			this.tabSpells.Size = new System.Drawing.Size(486, 332);
 			this.tabSpells.TabIndex = 4;
 			this.tabSpells.Text = "Spells";
 			this.tabSpells.UseVisualStyleBackColor = true;
+			// 
+			// clbSpells
+			// 
+			this.clbSpells.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.clbSpells.FormattingEnabled = true;
+			this.clbSpells.Location = new System.Drawing.Point(0, 0);
+			this.clbSpells.Name = "clbSpells";
+			this.clbSpells.Size = new System.Drawing.Size(486, 332);
+			this.clbSpells.TabIndex = 0;
+			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
 			// 
 			// Window
 			// 
@@ -677,6 +690,7 @@
 			this.tabInfo.PerformLayout();
 			this.tabAttributes.ResumeLayout(false);
 			this.tabAttributes.PerformLayout();
+			this.tabSpells.ResumeLayout(false);
 			this.ResumeLayout(false);
 
         }
@@ -736,6 +750,7 @@
 		private System.Windows.Forms.Button btnAttr3;
 		private System.Windows.Forms.Button btnAttr2;
 		private System.Windows.Forms.Button btnAttr1;
+		private System.Windows.Forms.CheckedListBox clbSpells;
     }
 }
 
