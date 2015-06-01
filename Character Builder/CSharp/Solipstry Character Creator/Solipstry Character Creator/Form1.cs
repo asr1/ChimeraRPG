@@ -24,6 +24,8 @@ namespace Solipstry_Character_Creator
 
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
+		private int primarySkillCount; //Number of skills set as primary skills
+		
         public Window()
         {
             InitializeComponent();
@@ -74,12 +76,22 @@ namespace Solipstry_Character_Creator
 
 			FillSpellsList();
 
-			//DataRowCollection dra = PerformQuery(...).Tables[table].Rows;
-			//foreach (DataRow dr in dra)
-			//{
-			//	Console.WriteLine("{0} is in school {1}", dr[0], dr[1]);
-			//}
-        }
+			//Default all attributes to 20 (average) to avoid false homebrew status
+			character.charisma = 20;
+			character.constitution = 20;
+			character.dexterity = 20;
+			character.intelligence = 20;
+			character.speed = 20;
+			character.strength = 20;
+			character.luck = 20;
+			character.wisdom = 20;
+
+			//Default all skill levels to 10
+			for(int i = 0; i < character.skills.Length; ++i)
+			{
+				character.skills[i] = 10;
+			}
+		}
 
 		private void FillSpellsList()
 		{
@@ -421,6 +433,14 @@ namespace Solipstry_Character_Creator
 				goto finished;
 			}
 
+			//Check the number of primary skills (more than 5 is homebrewed)
+			if(primarySkillCount > 5)
+			{
+				hb = true;
+				goto finished;
+			}
+
+			//Check each spell
 			foreach(string spell in character.spells)
 			{
 				if(CheckSpellHomebrew(spell))
@@ -502,6 +522,24 @@ finished: //If the function has determined the character is homebrewed, jump her
 		{
 			school = school.ToLower();
 			return school.Equals("alteration") || school.Equals("destruction") || school.Equals("restoration") || school.Equals("conjuration");
+		}
+
+		private void clbSkills_ItemCheck(object sender, ItemCheckEventArgs e)
+		{
+			if(e.NewValue == CheckState.Unchecked)
+			{
+				--primarySkillCount;
+				character.skills[e.Index] = 10;
+			}
+			else
+			{
+				++primarySkillCount;
+				character.skills[e.Index] = 25;
+			}
+
+			CheckHomebrew();
+
+			//TODO Update skill values
 		}
     }
 }

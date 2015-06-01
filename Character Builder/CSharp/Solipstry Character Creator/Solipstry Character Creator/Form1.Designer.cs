@@ -83,6 +83,8 @@
 			this.tabSpells = new System.Windows.Forms.TabPage();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.chkHomebrew = new System.Windows.Forms.CheckBox();
+			this.clbSkills = new System.Windows.Forms.CheckedListBox();
+			this.lblSkillsInstructions = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -90,12 +92,14 @@
 			this.tabControl1.SuspendLayout();
 			this.tabInfo.SuspendLayout();
 			this.tabAttributes.SuspendLayout();
+			this.tabSkills.SuspendLayout();
 			this.tabSpells.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
 			// 
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer1.IsSplitterFixed = true;
 			this.splitContainer1.Location = new System.Drawing.Point(0, 0);
 			this.splitContainer1.Name = "splitContainer1";
 			// 
@@ -642,6 +646,8 @@
 			// 
 			// tabSkills
 			// 
+			this.tabSkills.Controls.Add(this.lblSkillsInstructions);
+			this.tabSkills.Controls.Add(this.clbSkills);
 			this.tabSkills.Location = new System.Drawing.Point(4, 22);
 			this.tabSkills.Name = "tabSkills";
 			this.tabSkills.Size = new System.Drawing.Size(486, 332);
@@ -690,6 +696,55 @@
 			this.chkHomebrew.Text = "Homebrewed";
 			this.chkHomebrew.UseVisualStyleBackColor = true;
 			// 
+			// clbSkills
+			// 
+			this.clbSkills.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.clbSkills.FormattingEnabled = true;
+			this.clbSkills.Items.AddRange(new object[] {
+            "Acrobatics",
+            "Alteration",
+            "Athletics",
+            "Block",
+            "Chemistry",
+            "Conjuration",
+            "Craft",
+            "Destruction",
+            "Disguise",
+            "Engineering",
+            "Enlightenment",
+            "Escape",
+            "Heavy Armor",
+            "Interaction",
+            "Knowledge",
+            "Language",
+            "Light Armor",
+            "Medicine",
+            "Melee Weapon",
+            "Perception",
+            "Ranged",
+            "Restoration",
+            "Ride/Drive",
+            "Security",
+            "Sense Motive",
+            "Sleight of Hand",
+            "Survival",
+            "Stealth",
+            "Unarmed Combat"});
+			this.clbSkills.Location = new System.Drawing.Point(0, 31);
+			this.clbSkills.Name = "clbSkills";
+			this.clbSkills.Size = new System.Drawing.Size(486, 242);
+			this.clbSkills.TabIndex = 0;
+			this.clbSkills.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSkills_ItemCheck);
+			// 
+			// lblSkillsInstructions
+			// 
+			this.lblSkillsInstructions.AutoSize = true;
+			this.lblSkillsInstructions.Location = new System.Drawing.Point(5, 15);
+			this.lblSkillsInstructions.Name = "lblSkillsInstructions";
+			this.lblSkillsInstructions.Size = new System.Drawing.Size(291, 13);
+			this.lblSkillsInstructions.TabIndex = 1;
+			this.lblSkillsInstructions.Text = "Choose 5 skills to receive 25 points. The rest will receive 10.";
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,6 +767,8 @@
 			this.tabInfo.PerformLayout();
 			this.tabAttributes.ResumeLayout(false);
 			this.tabAttributes.PerformLayout();
+			this.tabSkills.ResumeLayout(false);
+			this.tabSkills.PerformLayout();
 			this.tabSpells.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -774,6 +831,8 @@
 		private System.Windows.Forms.Button btnAttr1;
 		private System.Windows.Forms.CheckedListBox clbSpells;
 		private System.Windows.Forms.CheckBox chkHomebrew;
+		private System.Windows.Forms.CheckedListBox clbSkills;
+		private System.Windows.Forms.Label lblSkillsInstructions;
     }
 }
 
