@@ -21,6 +21,7 @@ namespace Solipstry_Character_Creator
         public string size; //Small, medium, large
 
         public int[] skills = new int[36];
+		public List<string> spells = new List<string>();
 
 		//Attributes
         public int charisma;
@@ -72,5 +73,75 @@ namespace Solipstry_Character_Creator
             skill -= sub;
             return skill / 10;
         }
+
+		public int GetSkillValue(string skill)
+		{
+			switch(skill.ToLower())
+			{
+				case "acrobatics":
+					return skills[Skills.ACROBATICS];
+				case "alteration":
+					return  skills[Skills.ALTERATION];
+				case "athletics":
+					return skills[Skills.ATHLETICS];
+				case "block":
+					return skills[Skills.BLOCK];
+				case "chemistry":
+					return skills[Skills.CHEMISTRY];
+				case "conjuration":
+					return skills[Skills.CONJURATION];
+				case "craft smith":
+				case "craft/smith":
+					return skills[Skills.CRAFT_SMITH];
+				case "destruction":
+					return skills[Skills.DESTRUCTION];
+				case "disguise":
+					return skills[Skills.DISGUISE];
+				case "engineering":
+					return skills[Skills.ENGINEERING];
+				case "enlightenment":
+					return skills[Skills.ENLIGHTENMENT];
+				case "escape":
+					return skills[Skills.ESCAPE];
+				case "heavy armor":
+					return skills[Skills.HEAVY_ARMOR];
+				case "interaction":
+					return skills[Skills.INTERACTION];
+				case "knowledge":
+					return skills[Skills.KNOWLEDGE];
+				case "language":
+					return skills[Skills.LANGUAGE];
+				case "light armor":
+					return skills[Skills.LIGHT_ARMOR];
+				case "medicine":
+					return skills[Skills.MEDICINE];
+				case "melee weapon":
+					return skills[Skills.MELEE_WEAPON];
+				case "nature":
+					return skills[Skills.NATURE];
+				case "perception":
+					return skills[Skills.PERCEPTION];
+				case "ranged combat":
+					return skills[Skills.RANGED_COMBAT];
+				case "restoration":
+					return skills[Skills.RESTORATION];
+				case "ride drive":
+				case "ride/drive":
+					return skills[Skills.RIDE_DRIVE];
+				case "security":
+					return skills[Skills.SECURITY];
+				case "sense motive":
+					return skills[Skills.SENSE_MOTIVE];
+				case "sleight of hand":
+					return skills[Skills.SLEIGHT_OF_HAND];
+				case "stealth":
+					return skills[Skills.STEALTH];
+				case "unarmed combat":
+					return skills[Skills.UNARMED_COMBAT];
+				default:
+					Console.WriteLine("Unrecognized skill: {0}", skill);
+					return -1;
+			}
+		}
     }
 }

@@ -15,10 +15,8 @@ namespace Solipstry_Character_Creator
     public partial class Window : Form
     {
 		private const string SPELLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Spells.accdb";
-		private const string SPELLS_INFO_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=SpellsInfo.accdb";
 
 		private OleDbConnection spellsConnection;
-		private OleDbConnection spellsInfoConnection;
 
         private Character character;
 		private List<Button> attrValuesList;
@@ -69,21 +67,11 @@ namespace Solipstry_Character_Creator
 			{
 				spellsConnection.Open();
 			}
-			catch(Exception e)
+			catch (Exception e)
 			{
 				Console.WriteLine("Error opening connection to spell database: {0}", e.Message);
 			}
 
-			spellsInfoConnection = new OleDbConnection(SPELLS_INFO_ACCESS_STRING);
-			try
-			{
-				spellsInfoConnection.Open();
-			}
-
-			catch(Exception e)
-			{
-				Console.WriteLine("Error opening connection to spell info database: {0}", e.Message);
-			}
 			FillSpellsList();
 
 			//DataRowCollection dra = PerformQuery(...).Tables[table].Rows;
@@ -355,14 +343,105 @@ namespace Solipstry_Character_Creator
 		//Handler for spell 'info' menu item click
 		private void spellInfoMenuItem_Click(object sender, EventArgs e)
 		{
-			DataRow row = PerformQuery(spellsConnection, "SELECT * FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem + "'", "Spells").Tables["Spells"].Rows[0];
-			string school = (string) PerformQuery(spellsConnection, "SElECT school_name FROM Schools WHERE ID = " + row[1], "Schools").Tables["Schools"].Rows[0][0];			
+			DataSet ds = PerformQuery(spellsConnection,
+				"SELECT * FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString().Trim() + "'",
+				"Spells");
+			DataRow infoRow = ds.Tables["Spells"].Rows[0];
 
+			SpellInfoForm frm = new SpellInfoForm(infoRow[0].ToString(),
+												  infoRow[2].ToString(),
+												  infoRow[1].ToString(),
+												  infoRow[3].ToString(),
+												  infoRow[4].ToString());
+			frm.ShowDialog();
 		}
 
 		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			clbSpells.ContextMenuStrip.Items[0].Enabled = true;
+		}
+
+		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
+		{
+			if(e.CurrentValue == CheckState.Checked)
+			{
+				character.spells.Remove(clbSpells.SelectedItem.ToString());
+			}
+			else
+			{
+				character.spells.Add(clbSpells.SelectedItem.ToString());
+			}
+
+			CheckHomebrew();
+		}
+
+		private void CheckHomebrew()
+		{
+			bool hb = false; //Whether or not the character is homebrewed
+
+			foreach(string spell in character.spells)
+			{
+				if(CheckSpellHomebrew(spell))
+				{
+					hb = true;
+					break;
+				}
+			}
+
+			//TODO: Check other homebrew things
+
+			chkHomebrew.Checked = hb;
+		}
+
+		/// <summary>
+		/// Check's if the character is homebrewed based off of the spells
+		/// </summary>
+		/// <param name="spell">Spell to check</param>
+		/// <returns>True if the character is homebrewed, false otherwise</returns>
+		private bool CheckSpellHomebrew(string spell)
+		{
+			//Get the prerequisites for the spell from the database
+			DataRow dr = PerformQuery(spellsConnection, "SELECT prereq FROM Spells WHERE spell_name = '" + spell + "'", "Spells").Tables["Spells"].Rows[0];
+			
+			//Don't need to check prereqs if there are none
+			if(dr[0].ToString().Equals(""))
+			{
+				return false;
+			}
+
+			string[] prereqs = dr[0].ToString().Split(','); //Split the prerequisites into an array for easier parsing
+
+			foreach(string pr in prereqs)
+			{
+				//Check which kind of prereq it is (skill level or other spell)
+				if(pr.StartsWith("Destruction") ||
+				   pr.StartsWith("Conjuration") ||
+				   pr.StartsWith("Alteration") ||
+				   pr.StartsWith("Restoration"))
+				{
+					string[] split = pr.Split(' ');
+				
+					//If the character's skill level is too low for the required, its homebrewed
+					if(character.GetSkillValue(split[0]) < TryParseInteger(split[1]))
+					{
+						return true;
+					}
+				}
+				else if(pr.StartsWith("[Meta]"))
+				{
+					//TODO: Deal with meta magic
+				}
+				else
+				{
+					//If the character doesn't have the prerequisite spells, its homebrewed
+					if(!character.spells.Contains(pr))
+					{
+						return true;
+					}
+				}
+			}
+
+			return false;
 		}
     }
 }

@@ -82,8 +82,10 @@
 			this.tabTalents = new System.Windows.Forms.TabPage();
 			this.tabSpells = new System.Windows.Forms.TabPage();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
+			this.chkHomebrew = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
+			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabInfo.SuspendLayout();
@@ -100,6 +102,10 @@
 			// splitContainer1.Panel1
 			// 
 			this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this.chkHomebrew);
 			this.splitContainer1.Size = new System.Drawing.Size(684, 361);
 			this.splitContainer1.SplitterDistance = 499;
 			this.splitContainer1.TabIndex = 0;
@@ -670,7 +676,19 @@
 			this.clbSpells.Name = "clbSpells";
 			this.clbSpells.Size = new System.Drawing.Size(486, 332);
 			this.clbSpells.TabIndex = 0;
+			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
 			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
+			// 
+			// chkHomebrew
+			// 
+			this.chkHomebrew.AutoSize = true;
+			this.chkHomebrew.Enabled = false;
+			this.chkHomebrew.Location = new System.Drawing.Point(3, 341);
+			this.chkHomebrew.Name = "chkHomebrew";
+			this.chkHomebrew.Size = new System.Drawing.Size(89, 17);
+			this.chkHomebrew.TabIndex = 0;
+			this.chkHomebrew.Text = "Homebrewed";
+			this.chkHomebrew.UseVisualStyleBackColor = true;
 			// 
 			// Window
 			// 
@@ -678,11 +696,15 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(684, 361);
 			this.Controls.Add(this.splitContainer1);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "Window";
 			this.Text = "Solipstry Character Creator";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Window_FormClosing);
 			this.Load += new System.EventHandler(this.Window_Load);
 			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			this.splitContainer1.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
 			this.tabControl1.ResumeLayout(false);
@@ -751,6 +773,7 @@
 		private System.Windows.Forms.Button btnAttr2;
 		private System.Windows.Forms.Button btnAttr1;
 		private System.Windows.Forms.CheckedListBox clbSpells;
+		private System.Windows.Forms.CheckBox chkHomebrew;
     }
 }
 
