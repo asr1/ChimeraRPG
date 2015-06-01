@@ -366,9 +366,38 @@ namespace Solipstry_Character_Creator
 			if(e.CurrentValue == CheckState.Checked)
 			{
 				character.spells.Remove(clbSpells.SelectedItem.ToString());
+				character.metaSpells[clbSpells.SelectedItem.ToString()] = null;
 			}
 			else
 			{
+				//Check if the spell is a meta spell
+				DataRow row = PerformQuery(spellsConnection, "SELECT school FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString() + "'", "Spells").Tables["Spells"].Rows[0];
+
+				if (row[0].ToString().Equals("Meta"))
+				{
+					//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
+					string school = "";
+					school = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
+																		"School selection"); 
+
+					//Make sure the school is valid
+					while (!IsValidSchool(school))
+					{
+						if (school.Equals(""))
+						{
+							e.NewValue = CheckState.Unchecked;
+							return;
+						}
+
+						school = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
+																			"School selection");
+					}
+
+					//Make the school initial case (for later use)
+					school = char.ToUpper(school[0]) + school.Substring(1).ToLower();
+					character.metaSpells[clbSpells.SelectedItem.ToString()] = school;
+				}
+	
 				character.spells.Add(clbSpells.SelectedItem.ToString());
 			}
 
@@ -443,7 +472,13 @@ finished: //If the function has determined the character is homebrewed, jump her
 				}
 				else if(pr.StartsWith("[Meta]"))
 				{
-					//TODO: Deal with meta magic
+					string[] split = pr.Split(' ');
+
+					//Check the skill value of the school associated with the meta magic spell
+					if(character.GetSkillValue(character.metaSpells[spell]) < TryParseInteger(split[1]))
+					{
+						return true;
+					}
 				}
 				else
 				{
@@ -456,6 +491,17 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 
 			return false;
+		}
+
+		/// <summary>
+		/// Checks if the specified string contains a valid school of magic
+		/// </summary>
+		/// <param name="school">String to check</param>
+		/// <returns>True if the string contains a valid school of magic, false otherwise</returns>
+		private bool IsValidSchool(string school)
+		{
+			school = school.ToLower();
+			return school.Equals("alteration") || school.Equals("destruction") || school.Equals("restoration") || school.Equals("conjuration");
 		}
     }
 }

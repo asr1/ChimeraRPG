@@ -22,6 +22,8 @@ namespace Solipstry_Character_Creator
 
         public int[] skills = new int[36];
 		public List<string> spells = new List<string>();
+		//Keeps track of which school meta spells are using
+		public Dictionary<string, string> metaSpells = new Dictionary<string, string>();
 
 		//Attributes
         public int charisma;
