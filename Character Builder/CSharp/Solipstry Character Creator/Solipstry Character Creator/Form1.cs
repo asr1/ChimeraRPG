@@ -379,17 +379,31 @@ namespace Solipstry_Character_Creator
 		{
 			bool hb = false; //Whether or not the character is homebrewed
 
+			//Check if attributes are within [9,100]
+			if(character.charisma < 9 || character.charisma > 100 ||
+				character.constitution < 9 || character.constitution > 100 ||
+				character.dexterity < 9 || character.dexterity > 100 ||
+				character.intelligence < 9 || character.intelligence > 100 ||
+				character.luck < 9 || character.luck > 100 ||
+				character.strength < 9 || character.strength > 100 ||
+				character.wisdom < 9 || character.wisdom > 100)
+			{
+				hb = true;
+				goto finished;
+			}
+
 			foreach(string spell in character.spells)
 			{
 				if(CheckSpellHomebrew(spell))
 				{
 					hb = true;
-					break;
+					goto finished;
 				}
 			}
 
 			//TODO: Check other homebrew things
 
+finished: //If the function has determined the character is homebrewed, jump here to skip unnecessary checks
 			chkHomebrew.Checked = hb;
 		}
 
