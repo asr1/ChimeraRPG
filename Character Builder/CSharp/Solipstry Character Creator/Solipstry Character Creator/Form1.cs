@@ -29,8 +29,9 @@ namespace Solipstry_Character_Creator
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
 		private int primarySkillCount; //Number of skills set as primary skills
-		
-        public Window()
+
+		#region Program setup
+		public Window()
         {
             InitializeComponent();
 
@@ -135,6 +136,7 @@ namespace Solipstry_Character_Creator
 				clbTalents.Items.Add(talent);
 			}
 		}
+		#endregion
 
 		/// <summary>
 		/// Performs a SQL query on an OLE connection
@@ -261,6 +263,7 @@ namespace Solipstry_Character_Creator
             }
         }
 
+		#region Updating character
 		private void UpdateAttributes()
 		{
 			character.charisma = TryParseInteger(txtCharisma.Text);
@@ -293,6 +296,7 @@ namespace Solipstry_Character_Creator
 			character.magicRegen = character.CalculateModifier(character.intelligence);
 			character.fortunePoints = character.CalculateModifier(character.luck);
 		}
+		#endregion
 
 		/// <summary>
 		/// Attempts to parse a string as an integer
@@ -306,6 +310,7 @@ namespace Solipstry_Character_Creator
 			return isInteger ? int.Parse(str) : 0;
 		}
 
+		#region Text box modification
 		private void MakeReadOnly(List<TextBox> list)
 		{
 			foreach(TextBox txt in list)
@@ -322,26 +327,6 @@ namespace Solipstry_Character_Creator
 			}
 		}
 
-		private void txtAttributes_DragDrop(object sender, DragEventArgs e)
-		{
-			TextBox txt = (TextBox) sender;
-			string oldText = txt.Text;
-
-			txt.Text = e.Data.GetData(DataFormats.Text).ToString();
-
-			if(oldText.Equals("")) //If nothing was there, disable the button
-			{
-				btnDropFrom.Text = "";
-				btnDropFrom.Enabled = false;
-				btnDropFrom.Visible = false;
-			}
-			else //Transfer the old contents of the text box to the button
-			{
-				btnDropFrom.Text = oldText;
-			}
-
-		}
-
 		private void ClearTextBoxes(List<TextBox> list)
 		{
 			foreach (TextBox txt in list)
@@ -349,7 +334,9 @@ namespace Solipstry_Character_Creator
 				txt.Text = "";
 			}
 		}
+		#endregion
 
+		#region Drag and drop
 		private void txtAttributes_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
 		{
 			if(e.Data.GetDataPresent(DataFormats.Text))
@@ -362,11 +349,31 @@ namespace Solipstry_Character_Creator
 			}
 		}
 
+		private void txtAttributes_DragDrop(object sender, DragEventArgs e)
+		{
+			TextBox txt = (TextBox)sender;
+			string oldText = txt.Text;
+
+			txt.Text = e.Data.GetData(DataFormats.Text).ToString();
+
+			if (oldText.Equals("")) //If nothing was there, disable the button
+			{
+				btnDropFrom.Text = "";
+				btnDropFrom.Enabled = false;
+				btnDropFrom.Visible = false;
+			}
+			else //Transfer the old contents of the text box to the button
+			{
+				btnDropFrom.Text = oldText;
+			}
+		}
+ 
 		private void btnAttr_MouseDown(object sender, MouseEventArgs e)
 		{
 			btnDropFrom = (Button) sender; //Keep track of where the drag data came from
 			btnDropFrom.DoDragDrop(btnDropFrom.Text, DragDropEffects.Copy | DragDropEffects.Move);
 		}
+		#endregion
 
 		private void Window_FormClosing(object sender, FormClosingEventArgs e)
 		{
@@ -407,54 +414,8 @@ namespace Solipstry_Character_Creator
 			frm.ShowDialog();
 		}
 
-		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			clbSpells.ContextMenuStrip.Items[0].Enabled = true;
-		}
 
-		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
-		{
-			if(e.CurrentValue == CheckState.Checked)
-			{
-				character.spells.Remove(clbSpells.SelectedItem.ToString());
-				character.metaSpells[clbSpells.SelectedItem.ToString()] = null;
-			}
-			else
-			{
-				//Check if the spell is a meta spell
-				DataRow row = PerformQuery(spellsConnection, "SELECT school FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString() + "'", "Spells").Tables["Spells"].Rows[0];
-
-				if (row[0].ToString().Equals("Meta"))
-				{
-					//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
-					string school = "";
-					school = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
-																		"School selection"); 
-
-					//Make sure the school is valid
-					while (!IsValidSchool(school))
-					{
-						if (school.Equals(""))
-						{
-							e.NewValue = CheckState.Unchecked;
-							return;
-						}
-
-						school = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
-																			"School selection");
-					}
-
-					//Make the school initial case (for later use)
-					school = char.ToUpper(school[0]) + school.Substring(1).ToLower();
-					character.metaSpells[clbSpells.SelectedItem.ToString()] = school;
-				}
-	
-				character.spells.Add(clbSpells.SelectedItem.ToString());
-			}
-
-			CheckHomebrew();
-		}
-
+		#region Homebrew checking
 		private void CheckHomebrew()
 		{
 			bool hb = false; //Whether or not the character is homebrewed
@@ -702,6 +663,56 @@ finished: //If the function has determined the character is homebrewed, jump her
 			school = school.ToLower();
 			return school.Equals("alteration") || school.Equals("destruction") || school.Equals("restoration") || school.Equals("conjuration");
 		}
+		#endregion
+
+		#region CheckListBox handlers
+		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			clbSpells.ContextMenuStrip.Items[0].Enabled = true;
+		}
+
+		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
+		{
+			if (e.CurrentValue == CheckState.Checked)
+			{
+				character.spells.Remove(clbSpells.SelectedItem.ToString());
+				character.metaSpells[clbSpells.SelectedItem.ToString()] = null;
+			}
+			else
+			{
+				//Check if the spell is a meta spell
+				DataRow row = PerformQuery(spellsConnection, "SELECT school FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString() + "'", "Spells").Tables["Spells"].Rows[0];
+
+				if (row[0].ToString().Equals("Meta"))
+				{
+					//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
+					string school = "";
+					school = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
+																		"School selection");
+
+					//Make sure the school is valid
+					while (!IsValidSchool(school))
+					{
+						if (school.Equals(""))
+						{
+							e.NewValue = CheckState.Unchecked;
+							return;
+						}
+
+						school = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
+																			"School selection");
+					}
+
+					//Make the school initial case (for later use)
+					school = char.ToUpper(school[0]) + school.Substring(1).ToLower();
+					character.metaSpells[clbSpells.SelectedItem.ToString()] = school;
+				}
+
+				character.spells.Add(clbSpells.SelectedItem.ToString());
+			}
+
+			CheckHomebrew();
+		}
 
 		private void clbSkills_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
@@ -739,5 +750,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			CheckHomebrew();
 		}
-    }
+		#endregion
+	}
 }
