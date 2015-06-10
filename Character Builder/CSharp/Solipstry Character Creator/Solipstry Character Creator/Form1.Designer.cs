@@ -82,10 +82,10 @@
 			this.lblSkillsInstructions = new System.Windows.Forms.Label();
 			this.clbSkills = new System.Windows.Forms.CheckedListBox();
 			this.tabTalents = new System.Windows.Forms.TabPage();
+			this.clbTalents = new System.Windows.Forms.CheckedListBox();
 			this.tabSpells = new System.Windows.Forms.TabPage();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.chkHomebrew = new System.Windows.Forms.CheckBox();
-			this.clbTalents = new System.Windows.Forms.CheckedListBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -716,6 +716,17 @@
 			this.tabTalents.Text = "Talents";
 			this.tabTalents.UseVisualStyleBackColor = true;
 			// 
+			// clbTalents
+			// 
+			this.clbTalents.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.clbTalents.FormattingEnabled = true;
+			this.clbTalents.Location = new System.Drawing.Point(0, 0);
+			this.clbTalents.Name = "clbTalents";
+			this.clbTalents.Size = new System.Drawing.Size(486, 332);
+			this.clbTalents.TabIndex = 1;
+			this.clbTalents.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTalents_ItemCheck);
+			this.clbTalents.SelectedIndexChanged += new System.EventHandler(this.clbTalents_SelectedIndexChanged);
+			// 
 			// tabSpells
 			// 
 			this.tabSpells.Controls.Add(this.clbSpells);
@@ -747,15 +758,6 @@
 			this.chkHomebrew.TabIndex = 0;
 			this.chkHomebrew.Text = "Homebrewed";
 			this.chkHomebrew.UseVisualStyleBackColor = true;
-			// 
-			// clbTalents
-			// 
-			this.clbTalents.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.clbTalents.FormattingEnabled = true;
-			this.clbTalents.Location = new System.Drawing.Point(0, 0);
-			this.clbTalents.Name = "clbTalents";
-			this.clbTalents.Size = new System.Drawing.Size(486, 332);
-			this.clbTalents.TabIndex = 1;
 			// 
 			// Window
 			// 

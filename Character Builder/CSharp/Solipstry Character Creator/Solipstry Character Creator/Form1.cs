@@ -41,9 +41,16 @@ namespace Solipstry_Character_Creator
 			spellMenuStrip.Items.Add(spellInfoItem);
 			clbSpells.ContextMenuStrip = spellMenuStrip;
 
-			//TODO: Context menu strip for talents
+			//Create a context menu strip for the talent list box
+			ContextMenuStrip talentMenuStrip = new ContextMenuStrip();
+			ToolStripMenuItem talentInfoItem = new ToolStripMenuItem("Info");
+			talentInfoItem.Click += new EventHandler(talentInfoMenuItem_Click);
+			talentInfoItem.Name = "Info";
+			talentInfoItem.Enabled = false;
+			talentMenuStrip.Items.Add(talentInfoItem);
+			clbTalents.ContextMenuStrip = talentMenuStrip;
 
-            character = new Character();
+			character = new Character();
 
 			//Store the labels for attributes in a list for easier processing
 			attrValuesList = new List<Button>();
@@ -378,11 +385,27 @@ namespace Solipstry_Character_Creator
 				"Spells");
 			DataRow infoRow = ds.Tables["Spells"].Rows[0];
 
-			SpellInfoForm frm = new SpellInfoForm(infoRow[0].ToString(),
-												  infoRow[2].ToString(),
-												  infoRow[1].ToString(),
-												  infoRow[3].ToString(),
-												  infoRow[4].ToString());
+			SpellInfoForm frm = new SpellInfoForm(
+				infoRow[0].ToString(), //Name
+				infoRow[2].ToString(), //School
+				infoRow[1].ToString(), //Cost
+				infoRow[3].ToString(), //Prereqs
+				infoRow[4].ToString());//Effects
+			frm.ShowDialog();
+		}
+
+		//Handler for talent 'info' menu item click
+		private void talentInfoMenuItem_Click(object sender, EventArgs e)
+		{
+			DataSet ds = PerformQuery(talentsConnection,
+				"SELECT * FROM Talents WHERE talent_name = '" + clbTalents.SelectedItem.ToString().Trim() + "'",
+				"Talents");
+			DataRow infoRow = ds.Tables["Talents"].Rows[0];
+
+			TalentInfoForm frm = new TalentInfoForm(
+				infoRow[0].ToString(), //Name
+				infoRow[1].ToString(), //Prereqs
+				infoRow[2].ToString());//Description
 			frm.ShowDialog();
 		}
 
@@ -558,6 +581,16 @@ finished: //If the function has determined the character is homebrewed, jump her
 			CheckHomebrew();
 
 			//TODO Update skill values
+		}
+
+		private void clbTalents_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			clbTalents.ContextMenuStrip.Items[0].Enabled = true;
+		}
+
+		private void clbTalents_ItemCheck(object sender, ItemCheckEventArgs e)
+		{
+
 		}
     }
 }

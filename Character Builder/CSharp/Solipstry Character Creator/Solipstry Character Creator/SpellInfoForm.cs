@@ -21,6 +21,7 @@ namespace Solipstry_Character_Creator
 			lblCost.Text = cost;
 			lblPrereq.Text = prereq.Equals("") ? "None" : prereq; //If there are no prereqs, display "None"
 			txtEffects.Text = effect;
+			//Remove the selection from the effects text
 			txtEffects.SelectionStart = 0;
 			txtEffects.SelectionLength = 0;
 		}
