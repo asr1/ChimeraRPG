@@ -192,22 +192,17 @@ namespace Solipstry_Character_Creator
                 case 0: //All 20s
 					foreach (Button btn in attrValuesList)
 					{
-						btn.Enabled = true;
-						btn.Visible = true;
+						btn.Enabled = false;
+						btn.Visible = false;
 					}
 
-					ClearTextBoxes(attributeTextBoxes);
-
-					btnAttr1.Text = "20";
-					btnAttr2.Text = "20";
-					btnAttr3.Text = "20";
-					btnAttr4.Text = "20";
-					btnAttr5.Text = "20";
-					btnAttr6.Text = "20";
-					btnAttr7.Text = "20";
-					btnAttr8.Text = "20";
+					foreach(TextBox txt in attributeTextBoxes)
+					{
+						txt.Text = "20";
+					}
 
 					MakeReadOnly(attributeTextBoxes);
+					UpdateAttributes();
                     break;
                 case 1: //2 30s, 4 20s, 2 10s
 					foreach (Button btn in attrValuesList)
