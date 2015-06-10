@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace Solipstry_Character_Creator
 {
@@ -101,6 +99,11 @@ namespace Solipstry_Character_Creator
             return skill / 10;
         }
 
+		/// <summary>
+		/// Gets the skill level of a skill
+		/// </summary>
+		/// <param name="skill">Skill to get the level of</param>
+		/// <returns>Level of the skill, -1 if the skill does not exist</returns>
 		public int GetSkillValue(string skill)
 		{
 			switch(skill.ToLower())
@@ -166,9 +169,41 @@ namespace Solipstry_Character_Creator
 				case "unarmed combat":
 					return skills[Skills.UNARMED_COMBAT];
 				default:
-					Console.WriteLine("Unrecognized skill: {0}", skill);
+					Debug.Print("{0} is not a recognized skill", skill);
 					return -1;
 			}
 		}
-    }
+    
+		/// <summary>
+		/// Gets the score for an attribute
+		/// </summary>
+		/// <param name="attr">Attribute to get the score of. Should be
+		/// the abbreviated name for the attribute (i.e. STR for Strength)</param>
+		/// <returns>Score for the attribute, -1 for an invalid attribute</returns>
+		public int GetAttributeValue(string attr)
+		{
+			switch(attr.ToUpper())
+			{
+				case "CHA":
+					return charisma;
+				case "CON":
+					return constitution;
+				case "DEX":
+					return dexterity;
+				case "INT":
+					return intelligence;
+				case "LCK":
+					return luck;
+				case "STR":
+					return strength;
+				case "SPD":
+					return speed;
+				case "WIS":
+					return wisdom;
+				default:
+					Debug.Print("{0} is an invalid attribute", attr);
+					return -1;
+			}
+		}
+	}
 }
