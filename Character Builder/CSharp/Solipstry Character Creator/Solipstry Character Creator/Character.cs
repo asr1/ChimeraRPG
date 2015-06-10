@@ -20,10 +20,12 @@ namespace Solipstry_Character_Creator
 
         public string size; //Small, medium, large
 
-        public int[] skills = new int[36];
-		public List<string> spells = new List<string>();
+		public int[] skills;
+		public List<string> spells;
+		public List<string> talents;
+
 		//Keeps track of which school meta spells are using
-		public Dictionary<string, string> metaSpells = new Dictionary<string, string>();
+		public Dictionary<string, string> metaSpells;
 
 		//Attributes
         public int charisma;
@@ -44,6 +46,29 @@ namespace Solipstry_Character_Creator
 		public int initiative;
 		public int enlightenment; //?
 		public int numLanguages;  //?
+
+		public Character()
+		{
+			skills = new int[36];
+			spells = new List<string>();
+			talents = new List<string>();
+			metaSpells = new Dictionary<string, string>();
+
+			//Set everything to its default values
+			charisma = 20;
+			constitution = 20;
+			dexterity = 20;
+			intelligence = 20;
+			luck = 20;
+			speed = 20;
+			strength = 20;
+			wisdom = 20;
+
+			for (int i = 0; i < skills.Length; ++i)
+			{
+				skills[i] = 10;
+			}
+		}
 
         /// <summary>
         /// Calculates the character's AC if using heavy armor
