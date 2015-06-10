@@ -94,36 +94,36 @@
 			this.lblInfo_Prereq.AutoSize = true;
 			this.lblInfo_Prereq.Location = new System.Drawing.Point(88, 78);
 			this.lblInfo_Prereq.Name = "lblInfo_Prereq";
-			this.lblInfo_Prereq.Size = new System.Drawing.Size(35, 13);
+			this.lblInfo_Prereq.Size = new System.Drawing.Size(68, 13);
 			this.lblInfo_Prereq.TabIndex = 5;
-			this.lblInfo_Prereq.Text = "label1";
+			this.lblInfo_Prereq.Text = "Spell prereqs";
 			// 
 			// lblInfo_Cost
 			// 
 			this.lblInfo_Cost.AutoSize = true;
 			this.lblInfo_Cost.Location = new System.Drawing.Point(88, 55);
 			this.lblInfo_Cost.Name = "lblInfo_Cost";
-			this.lblInfo_Cost.Size = new System.Drawing.Size(35, 13);
+			this.lblInfo_Cost.Size = new System.Drawing.Size(53, 13);
 			this.lblInfo_Cost.TabIndex = 6;
-			this.lblInfo_Cost.Text = "label2";
+			this.lblInfo_Cost.Text = "Spell cost";
 			// 
 			// lblInfo_School
 			// 
 			this.lblInfo_School.AutoSize = true;
 			this.lblInfo_School.Location = new System.Drawing.Point(88, 32);
 			this.lblInfo_School.Name = "lblInfo_School";
-			this.lblInfo_School.Size = new System.Drawing.Size(35, 13);
+			this.lblInfo_School.Size = new System.Drawing.Size(64, 13);
 			this.lblInfo_School.TabIndex = 7;
-			this.lblInfo_School.Text = "label3";
+			this.lblInfo_School.Text = "Spell school";
 			// 
 			// lblInfo_Name
 			// 
 			this.lblInfo_Name.AutoSize = true;
 			this.lblInfo_Name.Location = new System.Drawing.Point(88, 9);
 			this.lblInfo_Name.Name = "lblInfo_Name";
-			this.lblInfo_Name.Size = new System.Drawing.Size(35, 13);
+			this.lblInfo_Name.Size = new System.Drawing.Size(59, 13);
 			this.lblInfo_Name.TabIndex = 8;
-			this.lblInfo_Name.Text = "label4";
+			this.lblInfo_Name.Text = "Spell name";
 			// 
 			// txtInfo_Effects
 			// 
