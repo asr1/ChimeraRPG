@@ -85,6 +85,15 @@
     <Compile Include="SpellInfoForm.Designer.cs">
       <DependentUpon>SpellInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TalentInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TalentInfoForm.Designer.cs">
+      <DependentUpon>TalentInfoForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -97,6 +106,9 @@
     </Compile>
     <EmbeddedResource Include="SpellInfoForm.resx">
       <DependentUpon>SpellInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TalentInfoForm.resx">
+      <DependentUpon>TalentInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -130,6 +142,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Spells.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Talents.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

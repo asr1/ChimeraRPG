@@ -15,8 +15,10 @@ namespace Solipstry_Character_Creator
     public partial class Window : Form
     {
 		private const string SPELLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Spells.accdb";
+		private const string TALENTS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Talents.accdb";
 
 		private OleDbConnection spellsConnection;
+		private OleDbConnection talentsConnection;
 
         private Character character;
 		private List<Button> attrValuesList;
@@ -38,6 +40,8 @@ namespace Solipstry_Character_Creator
 			spellInfoItem.Enabled = false;
 			spellMenuStrip.Items.Add(spellInfoItem);
 			clbSpells.ContextMenuStrip = spellMenuStrip;
+
+			//TODO: Context menu strip for talents
 
             character = new Character();
 
@@ -65,41 +69,31 @@ namespace Solipstry_Character_Creator
 
 			//Initialize database connections
 			spellsConnection = new OleDbConnection(SPELLS_ACCESS_STRING);
+			talentsConnection = new OleDbConnection(TALENTS_ACCESS_STRING);
 			try
 			{
 				spellsConnection.Open();
+				talentsConnection.Open();
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("Error opening connection to spell database: {0}", e.Message);
+				Console.WriteLine("Error opening connection to database: {0}", e.Message);
 			}
 
 			FillSpellsList();
-
-			//Default all attributes to 20 (average) to avoid false homebrew status
-			character.charisma = 20;
-			character.constitution = 20;
-			character.dexterity = 20;
-			character.intelligence = 20;
-			character.speed = 20;
-			character.strength = 20;
-			character.luck = 20;
-			character.wisdom = 20;
-
-			//Default all skill levels to 10
-			for(int i = 0; i < character.skills.Length; ++i)
-			{
-				character.skills[i] = 10;
-			}
+			FillTalentsList();
 		}
 
+		/// <summary>
+		/// Queries the spell table and adds all spells to the CheckListBox for spells
+		/// </summary>
 		private void FillSpellsList()
 		{
 			DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name FROM Spells", "Spells");
-			DataRowCollection dra = ds.Tables["Spells"].Rows;
+			DataRowCollection rows = ds.Tables["Spells"].Rows;
 			List<string> spellList = new List<string>();
 
-			foreach(DataRow dr in dra)
+			foreach(DataRow dr in rows)
 			{
 				spellList.Add(dr[0].ToString());
 			}
@@ -108,6 +102,28 @@ namespace Solipstry_Character_Creator
 			foreach(string spell in spellList)
 			{
 				clbSpells.Items.Add(spell);
+			}
+		}
+
+		/// <summary>
+		/// Queries the talents table and adds the name of all talents to the CheckListBox
+		/// for talents
+		/// </summary>
+		private void FillTalentsList()
+		{
+			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name FROM Talents", "Talents");
+			DataRowCollection rows = ds.Tables["Talents"].Rows;
+			List<string> talentList = new List<string>();
+
+			foreach(DataRow dr in rows)
+			{
+				talentList.Add(dr[0].ToString());
+			}
+			talentList.Sort();
+
+			foreach(string talent in talentList)
+			{
+				clbTalents.Items.Add(talent);
 			}
 		}
 
@@ -142,8 +158,9 @@ namespace Solipstry_Character_Creator
 			UpdateAttributes();
 			CalculateDerivedTraits();
 
-
             //TODO: Update character information
+
+			CheckHomebrew();
         }
 
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
@@ -350,6 +367,7 @@ namespace Solipstry_Character_Creator
 		{
 			//Close all database connections
 			spellsConnection.Close();
+			talentsConnection.Close();
 		}
 
 		//Handler for spell 'info' menu item click

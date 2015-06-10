@@ -14,14 +14,15 @@ namespace Solipstry_Character_Creator
 		public SpellInfoForm(string name, string school, string cost, string prereq, string effect)
 		{
 			InitializeComponent();
+			this.Text = name;
 
-			lblInfo_Name.Text = name;
-			lblInfo_School.Text = school;
-			lblInfo_Cost.Text = cost;
-			lblInfo_Prereq.Text = prereq.Equals("") ? "None" : prereq;
-			txtInfo_Effects.Text = effect;
-			txtInfo_Effects.SelectionStart = 0;
-			txtInfo_Effects.SelectionLength = 0;
+			lblName.Text = name;
+			lblSchool.Text = school;
+			lblCost.Text = cost;
+			lblPrereq.Text = prereq.Equals("") ? "None" : prereq; //If there are no prereqs, display "None"
+			txtEffects.Text = effect;
+			txtEffects.SelectionStart = 0;
+			txtEffects.SelectionLength = 0;
 		}
 	}
 }
