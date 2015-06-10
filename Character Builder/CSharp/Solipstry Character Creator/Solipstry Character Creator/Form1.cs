@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Solipstry_Character_Creator
 {
@@ -173,6 +175,7 @@ namespace Solipstry_Character_Creator
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             character.size = (string) cmbSize.SelectedItem;
+			CheckHomebrew(); //Some talents depend on size
             //TODO: Update character information
         }
 
@@ -486,6 +489,16 @@ namespace Solipstry_Character_Creator
 				}
 			}
 
+			//Check each talent
+			foreach(string talent in character.talents)
+			{
+				if(CheckTalentHomebrew(talent))
+				{
+					hb = true;
+					goto finished;
+				}
+			}
+
 			//TODO: Check other homebrew things
 
 finished: //If the function has determined the character is homebrewed, jump here to skip unnecessary checks
@@ -493,22 +506,23 @@ finished: //If the function has determined the character is homebrewed, jump her
 		}
 
 		/// <summary>
-		/// Check's if the character is homebrewed based off of the spells
+		/// Checks if the character is homebrewed based off of a spell
 		/// </summary>
 		/// <param name="spell">Spell to check</param>
 		/// <returns>True if the character is homebrewed, false otherwise</returns>
 		private bool CheckSpellHomebrew(string spell)
 		{
 			//Get the prerequisites for the spell from the database
-			DataRow dr = PerformQuery(spellsConnection, "SELECT prereq FROM Spells WHERE spell_name = '" + spell + "'", "Spells").Tables["Spells"].Rows[0];
+			DataSet ds = PerformQuery(spellsConnection, "SELECT prereq FROM Spells WHERE spell_name = '" + spell + "'", "Spells");
+			DataRow row = ds.Tables["Spells"].Rows[0];
 			
 			//Don't need to check prereqs if there are none
-			if(dr[0].ToString().Equals(""))
+			if(row[0].ToString().Equals(""))
 			{
 				return false;
 			}
 
-			string[] prereqs = dr[0].ToString().Split(','); //Split the prerequisites into an array for easier parsing
+			string[] prereqs = row[0].ToString().Split(','); //Split the prerequisites into an array for easier parsing
 
 			foreach(string pr in prereqs)
 			{
@@ -550,6 +564,135 @@ finished: //If the function has determined the character is homebrewed, jump her
 		}
 
 		/// <summary>
+		/// Checks if the character is homebrewed bassed off of a talent
+		/// </summary>
+		/// <param name="talent">Talent to check</param>
+		/// <returns>True if the character is homebrewed, false otherwise</returns>
+		private bool CheckTalentHomebrew(string talent)
+		{
+			DataSet ds = PerformQuery(talentsConnection, "SELECT prereq FROM Talents WHERE talent_name = '" + talent + "'", "Talents");
+			DataRow row = ds.Tables["Talents"].Rows[0];
+
+			//Check if there are any prereqs to check
+			if(row[0].ToString().Equals(""))
+			{
+				return false;
+			}
+
+			string[] prereqs = row[0].ToString().Split(',');
+
+			foreach(string p in prereqs)
+			{
+				string prereq = p.Trim();
+
+				//Check if it's an attribute prereq
+				if(prereq.StartsWith("CHA") ||
+					prereq.StartsWith("CON") ||
+					prereq.StartsWith("DEX") ||
+					prereq.StartsWith("LCK") ||
+					prereq.StartsWith("INT") ||
+					prereq.StartsWith("SPD") ||
+					prereq.StartsWith("STR") ||
+					prereq.StartsWith("WIS"))
+				{
+					//Some talents must meet one of two attribute requirements
+					if (prereq.Contains("or"))
+					{
+						//Split the string around the word 'or'
+						Regex regex = new Regex(@"\bor\b");
+						string[] tempArray = regex.Split(prereq); //Temporarily holds the strings until further processng
+						string[][] attributeReqs = new string[2][]; //It's always between one attribute or another, safe to use constant
+
+						//Split each element of tempArray around the space between the attribute and the value, also trimming spaces
+						for (int i = 0; i < attributeReqs.Length; ++i)
+						{
+							tempArray[i] = tempArray[i].Trim();
+							attributeReqs[i] = tempArray[i].Split(' ');
+						}
+
+						//Check the characters scores against the requirements
+						if (character.GetAttributeValue(attributeReqs[0][0]) < TryParseInteger(attributeReqs[0][1]) &&
+						   character.GetAttributeValue(attributeReqs[1][0]) < TryParseInteger(attributeReqs[1][1]))
+						{
+							return true;
+						}
+					}
+					else
+					{
+						string[] attributeReq = prereq.Split(' ');
+
+						if(character.GetAttributeValue(attributeReq[0]) < TryParseInteger(attributeReq[1]))
+						{
+							return true;
+						}
+					}
+				}
+				//Check if the prereq is one of the empulse spells
+				else if(prereq.Equals("Empulse Spell"))
+				{
+					//Only need to check if they have Empulse I
+					//(if the character doesn't, and has other empulse spells it's homebrewed anyways)
+					if(!character.spells.Contains("Empulse I"))
+					{
+						return true;
+					}
+				}
+				//Check if it's a talent prereq
+				else if(clbTalents.Items.Contains(prereq))
+				{
+					if(!character.talents.Contains(prereq))
+					{
+						return true;
+					}
+				}
+				//Check if it's a spell prereq
+				else if(clbSpells.Items.Contains(prereq))
+				{
+					if(!character.spells.Contains(prereq))
+					{
+						return true;
+					}
+				}
+				//Check if it's a size prereq
+				else if(prereq.ToLower().Contains("creature") &&
+					(prereq.ToLower().Contains("medium") || prereq.ToLower().Contains("large") ||
+					prereq.ToLower().Contains("small")))
+				{
+					if(!prereq.ToLower().Contains(character.size.ToLower()))
+					{
+						return true;
+					}
+				}
+				else
+				{
+					string[] splitPrereq = prereq.Split(' ');
+
+					//Check if it's a skill prereq
+					int skillValue = character.GetSkillValue(splitPrereq[0]);
+					if(skillValue > -1 || prereq.ToLower().StartsWith("heavy armor") ||
+						prereq.ToLower().Trim().StartsWith("light armor") ||
+						prereq.ToLower().Trim().StartsWith("ranged combat") ||
+						prereq.ToLower().Trim().StartsWith("sense motive") ||
+						prereq.ToLower().Trim().StartsWith("sleight of hand") ||
+						prereq.ToLower().Trim().StartsWith("unarmed combat") ||
+						prereq.ToLower().Trim().StartsWith("melee weapon"))
+					{
+						if(skillValue < TryParseInteger(splitPrereq[splitPrereq.Length - 1]))
+						{
+							return true;
+						}
+					}
+					else
+					{
+						Console.WriteLine(prereq); //Debug it just in case I missed something
+					}
+				}
+			} //end foreach
+
+			return false;
+		}
+
+		/// <summary>
 		/// Checks if the specified string contains a valid school of magic
 		/// </summary>
 		/// <param name="school">String to check</param>
@@ -585,7 +728,16 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbTalents_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
+			if(e.CurrentValue == CheckState.Unchecked)
+			{
+				character.talents.Add(clbTalents.SelectedItem.ToString());
+			}
+			else
+			{
+				character.talents.Remove(clbTalents.SelectedItem.ToString());
+			}
 
+			CheckHomebrew();
 		}
     }
 }
