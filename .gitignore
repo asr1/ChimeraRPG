@@ -4,6 +4,7 @@
 *.sln.docstates
 *.userprefs
 *.pdb
+*.laccdb
 
 "Character Builder/**/*.exe"
 /CharacterSheetCreator
