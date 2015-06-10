@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{28D16CC1-9C52-46C5-AC7B-7CE1A54ADF8E}</ProjectGuid>
+    <ProjectGuid>{C4A76A32-F911-4CFC-A5D8-30A87124D242}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Solipstry_Character_Creator</RootNamespace>
