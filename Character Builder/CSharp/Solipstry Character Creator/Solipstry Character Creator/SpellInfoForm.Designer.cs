@@ -127,6 +127,9 @@
 			// 
 			// txtInfo_Effects
 			// 
+			this.txtInfo_Effects.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.txtInfo_Effects.ImeMode = System.Windows.Forms.ImeMode.Disable;
 			this.txtInfo_Effects.Location = new System.Drawing.Point(91, 98);
 			this.txtInfo_Effects.Multiline = true;
@@ -151,10 +154,10 @@
 			this.Controls.Add(this.lblInfo_Cost_Label);
 			this.Controls.Add(this.lblInfo_School_Label);
 			this.Controls.Add(this.lblInfo_NameLabel);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(303, 235);
 			this.Name = "SpellInfoForm";
-			this.Text = "SpellInfoForm";
+			this.Text = "Spell Information";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
