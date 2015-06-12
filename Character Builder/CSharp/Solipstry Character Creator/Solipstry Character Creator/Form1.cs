@@ -382,6 +382,7 @@ namespace Solipstry_Character_Creator
 			talentsConnection.Close();
 		}
 
+		#region Context menu item handlers
 		//Handler for spell 'info' menu item click
 		private void spellInfoMenuItem_Click(object sender, EventArgs e)
 		{
@@ -413,7 +414,7 @@ namespace Solipstry_Character_Creator
 				infoRow[2].ToString());//Description
 			frm.ShowDialog();
 		}
-
+		#endregion
 
 		#region Homebrew checking
 		private void CheckHomebrew()
