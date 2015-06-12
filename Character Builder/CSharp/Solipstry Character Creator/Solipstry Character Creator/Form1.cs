@@ -9,14 +9,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Xml.Serialization;
+using System.Text.RegularExpressions;
+using System.Diagnostics;
 
 namespace Solipstry_Character_Creator
 {
     public partial class Window : Form
     {
 		private const string SPELLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Spells.accdb";
+		private const string TALENTS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Talents.accdb";
 
 		private OleDbConnection spellsConnection;
+		private OleDbConnection talentsConnection;
 
         private Character character;
 		private List<Button> attrValuesList;
@@ -25,8 +29,9 @@ namespace Solipstry_Character_Creator
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
 		private int primarySkillCount; //Number of skills set as primary skills
-		
-        public Window()
+
+		#region Program setup
+		public Window()
         {
             InitializeComponent();
 
@@ -39,7 +44,16 @@ namespace Solipstry_Character_Creator
 			spellMenuStrip.Items.Add(spellInfoItem);
 			clbSpells.ContextMenuStrip = spellMenuStrip;
 
-            character = new Character();
+			//Create a context menu strip for the talent list box
+			ContextMenuStrip talentMenuStrip = new ContextMenuStrip();
+			ToolStripMenuItem talentInfoItem = new ToolStripMenuItem("Info");
+			talentInfoItem.Click += new EventHandler(talentInfoMenuItem_Click);
+			talentInfoItem.Name = "Info";
+			talentInfoItem.Enabled = false;
+			talentMenuStrip.Items.Add(talentInfoItem);
+			clbTalents.ContextMenuStrip = talentMenuStrip;
+
+			character = new Character();
 
 			//Store the labels for attributes in a list for easier processing
 			attrValuesList = new List<Button>();
@@ -65,41 +79,31 @@ namespace Solipstry_Character_Creator
 
 			//Initialize database connections
 			spellsConnection = new OleDbConnection(SPELLS_ACCESS_STRING);
+			talentsConnection = new OleDbConnection(TALENTS_ACCESS_STRING);
 			try
 			{
 				spellsConnection.Open();
+				talentsConnection.Open();
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine("Error opening connection to spell database: {0}", e.Message);
+				Console.WriteLine("Error opening connection to database: {0}", e.Message);
 			}
 
 			FillSpellsList();
-
-			//Default all attributes to 20 (average) to avoid false homebrew status
-			character.charisma = 20;
-			character.constitution = 20;
-			character.dexterity = 20;
-			character.intelligence = 20;
-			character.speed = 20;
-			character.strength = 20;
-			character.luck = 20;
-			character.wisdom = 20;
-
-			//Default all skill levels to 10
-			for(int i = 0; i < character.skills.Length; ++i)
-			{
-				character.skills[i] = 10;
-			}
+			FillTalentsList();
 		}
 
+		/// <summary>
+		/// Queries the spell table and adds all spells to the CheckListBox for spells
+		/// </summary>
 		private void FillSpellsList()
 		{
 			DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name FROM Spells", "Spells");
-			DataRowCollection dra = ds.Tables["Spells"].Rows;
+			DataRowCollection rows = ds.Tables["Spells"].Rows;
 			List<string> spellList = new List<string>();
 
-			foreach(DataRow dr in dra)
+			foreach(DataRow dr in rows)
 			{
 				spellList.Add(dr[0].ToString());
 			}
@@ -110,6 +114,29 @@ namespace Solipstry_Character_Creator
 				clbSpells.Items.Add(spell);
 			}
 		}
+
+		/// <summary>
+		/// Queries the talents table and adds the name of all talents to the CheckListBox
+		/// for talents
+		/// </summary>
+		private void FillTalentsList()
+		{
+			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name FROM Talents", "Talents");
+			DataRowCollection rows = ds.Tables["Talents"].Rows;
+			List<string> talentList = new List<string>();
+
+			foreach(DataRow dr in rows)
+			{
+				talentList.Add(dr[0].ToString());
+			}
+			talentList.Sort();
+
+			foreach(string talent in talentList)
+			{
+				clbTalents.Items.Add(talent);
+			}
+		}
+		#endregion
 
 		/// <summary>
 		/// Performs a SQL query on an OLE connection
@@ -142,13 +169,15 @@ namespace Solipstry_Character_Creator
 			UpdateAttributes();
 			CalculateDerivedTraits();
 
-
             //TODO: Update character information
+
+			CheckHomebrew();
         }
 
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             character.size = (string) cmbSize.SelectedItem;
+			CheckHomebrew(); //Some talents depend on size
             //TODO: Update character information
         }
 
@@ -168,22 +197,17 @@ namespace Solipstry_Character_Creator
                 case 0: //All 20s
 					foreach (Button btn in attrValuesList)
 					{
-						btn.Enabled = true;
-						btn.Visible = true;
+						btn.Enabled = false;
+						btn.Visible = false;
 					}
 
-					ClearTextBoxes(attributeTextBoxes);
-
-					btnAttr1.Text = "20";
-					btnAttr2.Text = "20";
-					btnAttr3.Text = "20";
-					btnAttr4.Text = "20";
-					btnAttr5.Text = "20";
-					btnAttr6.Text = "20";
-					btnAttr7.Text = "20";
-					btnAttr8.Text = "20";
+					foreach(TextBox txt in attributeTextBoxes)
+					{
+						txt.Text = "20";
+					}
 
 					MakeReadOnly(attributeTextBoxes);
+					UpdateAttributes();
                     break;
                 case 1: //2 30s, 4 20s, 2 10s
 					foreach (Button btn in attrValuesList)
@@ -239,6 +263,7 @@ namespace Solipstry_Character_Creator
             }
         }
 
+		#region Updating character
 		private void UpdateAttributes()
 		{
 			character.charisma = TryParseInteger(txtCharisma.Text);
@@ -271,6 +296,7 @@ namespace Solipstry_Character_Creator
 			character.magicRegen = character.CalculateModifier(character.intelligence);
 			character.fortunePoints = character.CalculateModifier(character.luck);
 		}
+		#endregion
 
 		/// <summary>
 		/// Attempts to parse a string as an integer
@@ -284,6 +310,7 @@ namespace Solipstry_Character_Creator
 			return isInteger ? int.Parse(str) : 0;
 		}
 
+		#region Text box modification
 		private void MakeReadOnly(List<TextBox> list)
 		{
 			foreach(TextBox txt in list)
@@ -300,26 +327,6 @@ namespace Solipstry_Character_Creator
 			}
 		}
 
-		private void txtAttributes_DragDrop(object sender, DragEventArgs e)
-		{
-			TextBox txt = (TextBox) sender;
-			string oldText = txt.Text;
-
-			txt.Text = e.Data.GetData(DataFormats.Text).ToString();
-
-			if(oldText.Equals("")) //If nothing was there, disable the button
-			{
-				btnDropFrom.Text = "";
-				btnDropFrom.Enabled = false;
-				btnDropFrom.Visible = false;
-			}
-			else //Transfer the old contents of the text box to the button
-			{
-				btnDropFrom.Text = oldText;
-			}
-
-		}
-
 		private void ClearTextBoxes(List<TextBox> list)
 		{
 			foreach (TextBox txt in list)
@@ -327,7 +334,9 @@ namespace Solipstry_Character_Creator
 				txt.Text = "";
 			}
 		}
+		#endregion
 
+		#region Drag and drop
 		private void txtAttributes_DragEnter(object sender, System.Windows.Forms.DragEventArgs e)
 		{
 			if(e.Data.GetDataPresent(DataFormats.Text))
@@ -340,16 +349,37 @@ namespace Solipstry_Character_Creator
 			}
 		}
 
+		private void txtAttributes_DragDrop(object sender, DragEventArgs e)
+		{
+			TextBox txt = (TextBox)sender;
+			string oldText = txt.Text;
+
+			txt.Text = e.Data.GetData(DataFormats.Text).ToString();
+
+			if (oldText.Equals("")) //If nothing was there, disable the button
+			{
+				btnDropFrom.Text = "";
+				btnDropFrom.Enabled = false;
+				btnDropFrom.Visible = false;
+			}
+			else //Transfer the old contents of the text box to the button
+			{
+				btnDropFrom.Text = oldText;
+			}
+		}
+ 
 		private void btnAttr_MouseDown(object sender, MouseEventArgs e)
 		{
 			btnDropFrom = (Button) sender; //Keep track of where the drag data came from
 			btnDropFrom.DoDragDrop(btnDropFrom.Text, DragDropEffects.Copy | DragDropEffects.Move);
 		}
+		#endregion
 
 		private void Window_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			//Close all database connections
 			spellsConnection.Close();
+			talentsConnection.Close();
 		}
 
 		//Handler for spell 'info' menu item click
@@ -360,62 +390,32 @@ namespace Solipstry_Character_Creator
 				"Spells");
 			DataRow infoRow = ds.Tables["Spells"].Rows[0];
 
-			SpellInfoForm frm = new SpellInfoForm(infoRow[0].ToString(),
-												  infoRow[2].ToString(),
-												  infoRow[1].ToString(),
-												  infoRow[3].ToString(),
-												  infoRow[4].ToString());
+			SpellInfoForm frm = new SpellInfoForm(
+				infoRow[0].ToString(), //Name
+				infoRow[2].ToString(), //School
+				infoRow[1].ToString(), //Cost
+				infoRow[3].ToString(), //Prereqs
+				infoRow[4].ToString());//Effects
 			frm.ShowDialog();
 		}
 
-		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
+		//Handler for talent 'info' menu item click
+		private void talentInfoMenuItem_Click(object sender, EventArgs e)
 		{
-			clbSpells.ContextMenuStrip.Items[0].Enabled = true;
+			DataSet ds = PerformQuery(talentsConnection,
+				"SELECT * FROM Talents WHERE talent_name = '" + clbTalents.SelectedItem.ToString().Trim() + "'",
+				"Talents");
+			DataRow infoRow = ds.Tables["Talents"].Rows[0];
+
+			TalentInfoForm frm = new TalentInfoForm(
+				infoRow[0].ToString(), //Name
+				infoRow[1].ToString(), //Prereqs
+				infoRow[2].ToString());//Description
+			frm.ShowDialog();
 		}
 
-		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
-		{
-			if(e.CurrentValue == CheckState.Checked)
-			{
-				character.spells.Remove(clbSpells.SelectedItem.ToString());
-				character.metaSpells[clbSpells.SelectedItem.ToString()] = null;
-			}
-			else
-			{
-				//Check if the spell is a meta spell
-				DataRow row = PerformQuery(spellsConnection, "SELECT school FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString() + "'", "Spells").Tables["Spells"].Rows[0];
 
-				if (row[0].ToString().Equals("Meta"))
-				{
-					//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
-					string school = "";
-					school = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
-																		"School selection"); 
-
-					//Make sure the school is valid
-					while (!IsValidSchool(school))
-					{
-						if (school.Equals(""))
-						{
-							e.NewValue = CheckState.Unchecked;
-							return;
-						}
-
-						school = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
-																			"School selection");
-					}
-
-					//Make the school initial case (for later use)
-					school = char.ToUpper(school[0]) + school.Substring(1).ToLower();
-					character.metaSpells[clbSpells.SelectedItem.ToString()] = school;
-				}
-	
-				character.spells.Add(clbSpells.SelectedItem.ToString());
-			}
-
-			CheckHomebrew();
-		}
-
+		#region Homebrew checking
 		private void CheckHomebrew()
 		{
 			bool hb = false; //Whether or not the character is homebrewed
@@ -450,6 +450,16 @@ namespace Solipstry_Character_Creator
 				}
 			}
 
+			//Check each talent
+			foreach(string talent in character.talents)
+			{
+				if(CheckTalentHomebrew(talent))
+				{
+					hb = true;
+					goto finished;
+				}
+			}
+
 			//TODO: Check other homebrew things
 
 finished: //If the function has determined the character is homebrewed, jump here to skip unnecessary checks
@@ -457,22 +467,23 @@ finished: //If the function has determined the character is homebrewed, jump her
 		}
 
 		/// <summary>
-		/// Check's if the character is homebrewed based off of the spells
+		/// Checks if the character is homebrewed based off of a spell
 		/// </summary>
 		/// <param name="spell">Spell to check</param>
 		/// <returns>True if the character is homebrewed, false otherwise</returns>
 		private bool CheckSpellHomebrew(string spell)
 		{
 			//Get the prerequisites for the spell from the database
-			DataRow dr = PerformQuery(spellsConnection, "SELECT prereq FROM Spells WHERE spell_name = '" + spell + "'", "Spells").Tables["Spells"].Rows[0];
+			DataSet ds = PerformQuery(spellsConnection, "SELECT prereq FROM Spells WHERE spell_name = '" + spell + "'", "Spells");
+			DataRow row = ds.Tables["Spells"].Rows[0];
 			
 			//Don't need to check prereqs if there are none
-			if(dr[0].ToString().Equals(""))
+			if(row[0].ToString().Equals(""))
 			{
 				return false;
 			}
 
-			string[] prereqs = dr[0].ToString().Split(','); //Split the prerequisites into an array for easier parsing
+			string[] prereqs = row[0].ToString().Split(','); //Split the prerequisites into an array for easier parsing
 
 			foreach(string pr in prereqs)
 			{
@@ -514,6 +525,135 @@ finished: //If the function has determined the character is homebrewed, jump her
 		}
 
 		/// <summary>
+		/// Checks if the character is homebrewed bassed off of a talent
+		/// </summary>
+		/// <param name="talent">Talent to check</param>
+		/// <returns>True if the character is homebrewed, false otherwise</returns>
+		private bool CheckTalentHomebrew(string talent)
+		{
+			DataSet ds = PerformQuery(talentsConnection, "SELECT prereq FROM Talents WHERE talent_name = '" + talent + "'", "Talents");
+			DataRow row = ds.Tables["Talents"].Rows[0];
+
+			//Check if there are any prereqs to check
+			if(row[0].ToString().Equals(""))
+			{
+				return false;
+			}
+
+			string[] prereqs = row[0].ToString().Split(',');
+
+			foreach(string p in prereqs)
+			{
+				string prereq = p.Trim();
+
+				//Check if it's an attribute prereq
+				if(prereq.StartsWith("CHA") ||
+					prereq.StartsWith("CON") ||
+					prereq.StartsWith("DEX") ||
+					prereq.StartsWith("LCK") ||
+					prereq.StartsWith("INT") ||
+					prereq.StartsWith("SPD") ||
+					prereq.StartsWith("STR") ||
+					prereq.StartsWith("WIS"))
+				{
+					//Some talents must meet one of two attribute requirements
+					if (prereq.Contains("or"))
+					{
+						//Split the string around the word 'or'
+						Regex regex = new Regex(@"\bor\b");
+						string[] tempArray = regex.Split(prereq); //Temporarily holds the strings until further processng
+						string[][] attributeReqs = new string[2][]; //It's always between one attribute or another, safe to use constant
+
+						//Split each element of tempArray around the space between the attribute and the value, also trimming spaces
+						for (int i = 0; i < attributeReqs.Length; ++i)
+						{
+							tempArray[i] = tempArray[i].Trim();
+							attributeReqs[i] = tempArray[i].Split(' ');
+						}
+
+						//Check the characters scores against the requirements
+						if (character.GetAttributeValue(attributeReqs[0][0]) < TryParseInteger(attributeReqs[0][1]) &&
+						   character.GetAttributeValue(attributeReqs[1][0]) < TryParseInteger(attributeReqs[1][1]))
+						{
+							return true;
+						}
+					}
+					else
+					{
+						string[] attributeReq = prereq.Split(' ');
+
+						if(character.GetAttributeValue(attributeReq[0]) < TryParseInteger(attributeReq[1]))
+						{
+							return true;
+						}
+					}
+				}
+				//Check if the prereq is one of the empulse spells
+				else if(prereq.Equals("Empulse Spell"))
+				{
+					//Only need to check if they have Empulse I
+					//(if the character doesn't, and has other empulse spells it's homebrewed anyways)
+					if(!character.spells.Contains("Empulse I"))
+					{
+						return true;
+					}
+				}
+				//Check if it's a talent prereq
+				else if(clbTalents.Items.Contains(prereq))
+				{
+					if(!character.talents.Contains(prereq))
+					{
+						return true;
+					}
+				}
+				//Check if it's a spell prereq
+				else if(clbSpells.Items.Contains(prereq))
+				{
+					if(!character.spells.Contains(prereq))
+					{
+						return true;
+					}
+				}
+				//Check if it's a size prereq
+				else if(prereq.ToLower().Contains("creature") &&
+					(prereq.ToLower().Contains("medium") || prereq.ToLower().Contains("large") ||
+					prereq.ToLower().Contains("small")))
+				{
+					if(!prereq.ToLower().Contains(character.size.ToLower()))
+					{
+						return true;
+					}
+				}
+				else
+				{
+					string[] splitPrereq = prereq.Split(' ');
+
+					//Check if it's a skill prereq
+					int skillValue = character.GetSkillValue(splitPrereq[0]);
+					if(skillValue > -1 || prereq.ToLower().StartsWith("heavy armor") ||
+						prereq.ToLower().Trim().StartsWith("light armor") ||
+						prereq.ToLower().Trim().StartsWith("ranged combat") ||
+						prereq.ToLower().Trim().StartsWith("sense motive") ||
+						prereq.ToLower().Trim().StartsWith("sleight of hand") ||
+						prereq.ToLower().Trim().StartsWith("unarmed combat") ||
+						prereq.ToLower().Trim().StartsWith("melee weapon"))
+					{
+						if(skillValue < TryParseInteger(splitPrereq[splitPrereq.Length - 1]))
+						{
+							return true;
+						}
+					}
+					else
+					{
+						Console.WriteLine(prereq); //Debug it just in case I missed something
+					}
+				}
+			} //end foreach
+
+			return false;
+		}
+
+		/// <summary>
 		/// Checks if the specified string contains a valid school of magic
 		/// </summary>
 		/// <param name="school">String to check</param>
@@ -522,6 +662,56 @@ finished: //If the function has determined the character is homebrewed, jump her
 		{
 			school = school.ToLower();
 			return school.Equals("alteration") || school.Equals("destruction") || school.Equals("restoration") || school.Equals("conjuration");
+		}
+		#endregion
+
+		#region CheckListBox handlers
+		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			clbSpells.ContextMenuStrip.Items[0].Enabled = true;
+		}
+
+		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
+		{
+			if (e.CurrentValue == CheckState.Checked)
+			{
+				character.spells.Remove(clbSpells.SelectedItem.ToString());
+				character.metaSpells[clbSpells.SelectedItem.ToString()] = null;
+			}
+			else
+			{
+				//Check if the spell is a meta spell
+				DataRow row = PerformQuery(spellsConnection, "SELECT school FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString() + "'", "Spells").Tables["Spells"].Rows[0];
+
+				if (row[0].ToString().Equals("Meta"))
+				{
+					//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
+					string school = "";
+					school = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
+																		"School selection");
+
+					//Make sure the school is valid
+					while (!IsValidSchool(school))
+					{
+						if (school.Equals(""))
+						{
+							e.NewValue = CheckState.Unchecked;
+							return;
+						}
+
+						school = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
+																			"School selection");
+					}
+
+					//Make the school initial case (for later use)
+					school = char.ToUpper(school[0]) + school.Substring(1).ToLower();
+					character.metaSpells[clbSpells.SelectedItem.ToString()] = school;
+				}
+
+				character.spells.Add(clbSpells.SelectedItem.ToString());
+			}
+
+			CheckHomebrew();
 		}
 
 		private void clbSkills_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -541,5 +731,25 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			//TODO Update skill values
 		}
-    }
+
+		private void clbTalents_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			clbTalents.ContextMenuStrip.Items[0].Enabled = true;
+		}
+
+		private void clbTalents_ItemCheck(object sender, ItemCheckEventArgs e)
+		{
+			if(e.CurrentValue == CheckState.Unchecked)
+			{
+				character.talents.Add(clbTalents.SelectedItem.ToString());
+			}
+			else
+			{
+				character.talents.Remove(clbTalents.SelectedItem.ToString());
+			}
+
+			CheckHomebrew();
+		}
+		#endregion
+	}
 }
