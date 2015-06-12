@@ -86,6 +86,8 @@
 			this.tabSpells = new System.Windows.Forms.TabPage();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.chkHomebrew = new System.Windows.Forms.CheckBox();
+			this.lblTalentsInstructions = new System.Windows.Forms.Label();
+			this.lblSpellsInstructions = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -702,12 +704,13 @@
             "Unarmed Combat"});
 			this.clbSkills.Location = new System.Drawing.Point(0, 31);
 			this.clbSkills.Name = "clbSkills";
-			this.clbSkills.Size = new System.Drawing.Size(486, 242);
+			this.clbSkills.Size = new System.Drawing.Size(486, 212);
 			this.clbSkills.TabIndex = 0;
 			this.clbSkills.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSkills_ItemCheck);
 			// 
 			// tabTalents
 			// 
+			this.tabTalents.Controls.Add(this.lblTalentsInstructions);
 			this.tabTalents.Controls.Add(this.clbTalents);
 			this.tabTalents.Location = new System.Drawing.Point(4, 22);
 			this.tabTalents.Name = "tabTalents";
@@ -718,17 +721,17 @@
 			// 
 			// clbTalents
 			// 
-			this.clbTalents.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.clbTalents.FormattingEnabled = true;
-			this.clbTalents.Location = new System.Drawing.Point(0, 0);
+			this.clbTalents.Location = new System.Drawing.Point(0, 31);
 			this.clbTalents.Name = "clbTalents";
-			this.clbTalents.Size = new System.Drawing.Size(486, 332);
+			this.clbTalents.Size = new System.Drawing.Size(486, 214);
 			this.clbTalents.TabIndex = 1;
 			this.clbTalents.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTalents_ItemCheck);
 			this.clbTalents.SelectedIndexChanged += new System.EventHandler(this.clbTalents_SelectedIndexChanged);
 			// 
 			// tabSpells
 			// 
+			this.tabSpells.Controls.Add(this.lblSpellsInstructions);
 			this.tabSpells.Controls.Add(this.clbSpells);
 			this.tabSpells.Location = new System.Drawing.Point(4, 22);
 			this.tabSpells.Name = "tabSpells";
@@ -739,11 +742,10 @@
 			// 
 			// clbSpells
 			// 
-			this.clbSpells.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.clbSpells.FormattingEnabled = true;
-			this.clbSpells.Location = new System.Drawing.Point(0, 0);
+			this.clbSpells.Location = new System.Drawing.Point(0, 31);
 			this.clbSpells.Name = "clbSpells";
-			this.clbSpells.Size = new System.Drawing.Size(486, 332);
+			this.clbSpells.Size = new System.Drawing.Size(486, 214);
 			this.clbSpells.TabIndex = 0;
 			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
 			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
@@ -758,6 +760,24 @@
 			this.chkHomebrew.TabIndex = 0;
 			this.chkHomebrew.Text = "Homebrewed";
 			this.chkHomebrew.UseVisualStyleBackColor = true;
+			// 
+			// lblTalentsInstructions
+			// 
+			this.lblTalentsInstructions.AutoSize = true;
+			this.lblTalentsInstructions.Location = new System.Drawing.Point(5, 15);
+			this.lblTalentsInstructions.Name = "lblTalentsInstructions";
+			this.lblTalentsInstructions.Size = new System.Drawing.Size(172, 13);
+			this.lblTalentsInstructions.TabIndex = 2;
+			this.lblTalentsInstructions.Text = "Select the talents you wish to take.";
+			// 
+			// lblSpellsInstructions
+			// 
+			this.lblSpellsInstructions.AutoSize = true;
+			this.lblSpellsInstructions.Location = new System.Drawing.Point(5, 15);
+			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
+			this.lblSpellsInstructions.Size = new System.Drawing.Size(167, 13);
+			this.lblSpellsInstructions.TabIndex = 1;
+			this.lblSpellsInstructions.Text = "Select the spells you wish to take.";
 			// 
 			// Window
 			// 
@@ -784,7 +804,9 @@
 			this.tabSkills.ResumeLayout(false);
 			this.tabSkills.PerformLayout();
 			this.tabTalents.ResumeLayout(false);
+			this.tabTalents.PerformLayout();
 			this.tabSpells.ResumeLayout(false);
+			this.tabSpells.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -849,6 +871,8 @@
 		private System.Windows.Forms.CheckedListBox clbSkills;
 		private System.Windows.Forms.Label lblSkillsInstructions;
 		private System.Windows.Forms.CheckedListBox clbTalents;
+		private System.Windows.Forms.Label lblTalentsInstructions;
+		private System.Windows.Forms.Label lblSpellsInstructions;
     }
 }
 
