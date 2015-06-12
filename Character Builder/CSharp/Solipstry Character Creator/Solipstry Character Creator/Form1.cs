@@ -216,7 +216,8 @@ namespace Solipstry_Character_Creator
 			//Default to medium
 			cmbSize.SelectedIndex = 1;
 
-			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each \nschool is equal to your modifier in that school.";
+			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each" + 
+				Environment.NewLine + "school is equal to your modifier in that school.";
         }
 
         private void cmbAttributeMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -699,7 +700,23 @@ finished: //If the function has determined the character is homebrewed, jump her
 		#region CheckListBox handlers
 		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			clbSpells.ContextMenuStrip.Items[0].Enabled = true;
+			//Get information about the spell
+			string spellName = clbSpells.SelectedItem.ToString();
+
+			DataSet ds = PerformQuery(spellsConnection,
+				"SELECT cost, school, prereq, effect FROM Spells WHERE spell_name = '" + spellName + "'",
+				"Spells");
+			DataRow row = ds.Tables["Spells"].Rows[0];
+
+			//Update the talent quick info view with the talent information
+			txtSpellInfo.Text = spellName +
+				Environment.NewLine + "School: " + row[1] +
+				Environment.NewLine + "Cost: " + row[0] +
+				Environment.NewLine + "Prerequisites: " +
+				(string.IsNullOrWhiteSpace(row[2].ToString()) ? "None" : row[2]) +
+				Environment.NewLine + row[3];
+			txtSpellInfo.SelectionStart = 0;
+			txtSpellInfo.SelectionLength = 0;
 		}
 
 		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -765,7 +782,21 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbTalents_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			clbTalents.ContextMenuStrip.Items[0].Enabled = true;
+			//Get information about the talent
+			string talentName = clbTalents.SelectedItem.ToString();
+			
+			DataSet ds = PerformQuery(talentsConnection,
+				"SELECT prereq, desc FROM Talents WHERE talent_name = '" + talentName + "'",
+				"Talents");
+			DataRow row = ds.Tables["Talents"].Rows[0];
+
+			//Update the talent quick info view with the talent information
+			txtTalentInfo.Text = talentName +
+				Environment.NewLine + "Prerequisites: " +
+				(string.IsNullOrWhiteSpace(row[0].ToString()) ? "None" : row[0]) +
+				Environment.NewLine + row[1];
+			txtTalentInfo.SelectionStart = 0;
+			txtTalentInfo.SelectionLength = 0;
 		}
 
 		private void clbTalents_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -791,10 +822,9 @@ finished: //If the function has determined the character is homebrewed, jump her
 			DataRow row = ds.Tables["Skills"].Rows[0];
 
 			//Update the quick info panel with the skills information
-			lblSkillName.Text = skillName;
-			txtSkillDesc.Text = row[0].ToString();
-			txtSkillDesc.SelectionStart = 0;
-			txtSkillDesc.SelectionStart = 0;
+			txtSkillInfo.Text = skillName + Environment.NewLine + row[0].ToString();
+			txtSkillInfo.SelectionStart = 0;
+			txtSkillInfo.SelectionStart = 0;
 		}
 		#endregion
 

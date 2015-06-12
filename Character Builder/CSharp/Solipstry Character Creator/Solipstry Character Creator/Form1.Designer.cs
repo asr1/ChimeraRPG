@@ -88,8 +88,9 @@
 			this.chkHomebrew = new System.Windows.Forms.CheckBox();
 			this.lblTalentsInstructions = new System.Windows.Forms.Label();
 			this.lblSpellsInstructions = new System.Windows.Forms.Label();
-			this.lblSkillName = new System.Windows.Forms.Label();
-			this.txtSkillDesc = new System.Windows.Forms.TextBox();
+			this.txtSkillInfo = new System.Windows.Forms.TextBox();
+			this.txtTalentInfo = new System.Windows.Forms.TextBox();
+			this.txtSpellInfo = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -652,8 +653,7 @@
 			// 
 			// tabSkills
 			// 
-			this.tabSkills.Controls.Add(this.txtSkillDesc);
-			this.tabSkills.Controls.Add(this.lblSkillName);
+			this.tabSkills.Controls.Add(this.txtSkillInfo);
 			this.tabSkills.Controls.Add(this.lblSkillsInstructions);
 			this.tabSkills.Controls.Add(this.clbSkills);
 			this.tabSkills.Location = new System.Drawing.Point(4, 22);
@@ -685,6 +685,7 @@
 			// 
 			// tabTalents
 			// 
+			this.tabTalents.Controls.Add(this.txtTalentInfo);
 			this.tabTalents.Controls.Add(this.lblTalentsInstructions);
 			this.tabTalents.Controls.Add(this.clbTalents);
 			this.tabTalents.Location = new System.Drawing.Point(4, 22);
@@ -706,6 +707,7 @@
 			// 
 			// tabSpells
 			// 
+			this.tabSpells.Controls.Add(this.txtSpellInfo);
 			this.tabSpells.Controls.Add(this.lblSpellsInstructions);
 			this.tabSpells.Controls.Add(this.clbSpells);
 			this.tabSpells.Location = new System.Drawing.Point(4, 22);
@@ -748,29 +750,43 @@
 			// lblSpellsInstructions
 			// 
 			this.lblSpellsInstructions.AutoSize = true;
-			this.lblSpellsInstructions.Location = new System.Drawing.Point(3, 0);
+			this.lblSpellsInstructions.Location = new System.Drawing.Point(3, 2);
 			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
 			this.lblSpellsInstructions.Size = new System.Drawing.Size(0, 13);
 			this.lblSpellsInstructions.TabIndex = 1;
 			// 
-			// lblSkillName
+			// txtSkillInfo
 			// 
-			this.lblSkillName.AutoSize = true;
-			this.lblSkillName.Location = new System.Drawing.Point(5, 246);
-			this.lblSkillName.Name = "lblSkillName";
-			this.lblSkillName.Size = new System.Drawing.Size(35, 13);
-			this.lblSkillName.TabIndex = 2;
-			this.lblSkillName.Text = "label1";
+			this.txtSkillInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.txtSkillInfo.Location = new System.Drawing.Point(0, 245);
+			this.txtSkillInfo.Multiline = true;
+			this.txtSkillInfo.Name = "txtSkillInfo";
+			this.txtSkillInfo.ReadOnly = true;
+			this.txtSkillInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtSkillInfo.Size = new System.Drawing.Size(486, 87);
+			this.txtSkillInfo.TabIndex = 3;
 			// 
-			// txtSkillDesc
+			// txtTalentInfo
 			// 
-			this.txtSkillDesc.Location = new System.Drawing.Point(3, 262);
-			this.txtSkillDesc.Multiline = true;
-			this.txtSkillDesc.Name = "txtSkillDesc";
-			this.txtSkillDesc.ReadOnly = true;
-			this.txtSkillDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtSkillDesc.Size = new System.Drawing.Size(480, 65);
-			this.txtSkillDesc.TabIndex = 3;
+			this.txtTalentInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.txtTalentInfo.Location = new System.Drawing.Point(0, 245);
+			this.txtTalentInfo.Multiline = true;
+			this.txtTalentInfo.Name = "txtTalentInfo";
+			this.txtTalentInfo.ReadOnly = true;
+			this.txtTalentInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtTalentInfo.Size = new System.Drawing.Size(486, 87);
+			this.txtTalentInfo.TabIndex = 6;
+			// 
+			// txtSpellInfo
+			// 
+			this.txtSpellInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.txtSpellInfo.Location = new System.Drawing.Point(0, 245);
+			this.txtSpellInfo.Multiline = true;
+			this.txtSpellInfo.Name = "txtSpellInfo";
+			this.txtSpellInfo.ReadOnly = true;
+			this.txtSpellInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtSpellInfo.Size = new System.Drawing.Size(486, 87);
+			this.txtSpellInfo.TabIndex = 7;
 			// 
 			// Window
 			// 
@@ -866,8 +882,9 @@
 		private System.Windows.Forms.CheckedListBox clbTalents;
 		private System.Windows.Forms.Label lblTalentsInstructions;
 		private System.Windows.Forms.Label lblSpellsInstructions;
-		private System.Windows.Forms.TextBox txtSkillDesc;
-		private System.Windows.Forms.Label lblSkillName;
+		private System.Windows.Forms.TextBox txtSkillInfo;
+		private System.Windows.Forms.TextBox txtTalentInfo;
+		private System.Windows.Forms.TextBox txtSpellInfo;
     }
 }
 
