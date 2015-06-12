@@ -88,6 +88,8 @@
 			this.chkHomebrew = new System.Windows.Forms.CheckBox();
 			this.lblTalentsInstructions = new System.Windows.Forms.Label();
 			this.lblSpellsInstructions = new System.Windows.Forms.Label();
+			this.lblSkillName = new System.Windows.Forms.Label();
+			this.txtSkillDesc = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -650,6 +652,8 @@
 			// 
 			// tabSkills
 			// 
+			this.tabSkills.Controls.Add(this.txtSkillDesc);
+			this.tabSkills.Controls.Add(this.lblSkillName);
 			this.tabSkills.Controls.Add(this.lblSkillsInstructions);
 			this.tabSkills.Controls.Add(this.clbSkills);
 			this.tabSkills.Location = new System.Drawing.Point(4, 22);
@@ -672,41 +676,12 @@
 			// 
 			this.clbSkills.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.clbSkills.FormattingEnabled = true;
-			this.clbSkills.Items.AddRange(new object[] {
-            "Acrobatics",
-            "Alteration",
-            "Athletics",
-            "Block",
-            "Chemistry",
-            "Conjuration",
-            "Craft",
-            "Destruction",
-            "Disguise",
-            "Engineering",
-            "Enlightenment",
-            "Escape",
-            "Heavy Armor",
-            "Interaction",
-            "Knowledge",
-            "Language",
-            "Light Armor",
-            "Medicine",
-            "Melee Weapon",
-            "Perception",
-            "Ranged",
-            "Restoration",
-            "Ride/Drive",
-            "Security",
-            "Sense Motive",
-            "Sleight of Hand",
-            "Survival",
-            "Stealth",
-            "Unarmed Combat"});
 			this.clbSkills.Location = new System.Drawing.Point(0, 31);
 			this.clbSkills.Name = "clbSkills";
 			this.clbSkills.Size = new System.Drawing.Size(486, 212);
 			this.clbSkills.TabIndex = 0;
 			this.clbSkills.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSkills_ItemCheck);
+			this.clbSkills.SelectedIndexChanged += new System.EventHandler(this.clbSkills_SelectedIndexChanged);
 			// 
 			// tabTalents
 			// 
@@ -773,11 +748,29 @@
 			// lblSpellsInstructions
 			// 
 			this.lblSpellsInstructions.AutoSize = true;
-			this.lblSpellsInstructions.Location = new System.Drawing.Point(5, 15);
+			this.lblSpellsInstructions.Location = new System.Drawing.Point(3, 0);
 			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
-			this.lblSpellsInstructions.Size = new System.Drawing.Size(167, 13);
+			this.lblSpellsInstructions.Size = new System.Drawing.Size(0, 13);
 			this.lblSpellsInstructions.TabIndex = 1;
-			this.lblSpellsInstructions.Text = "Select the spells you wish to take.";
+			// 
+			// lblSkillName
+			// 
+			this.lblSkillName.AutoSize = true;
+			this.lblSkillName.Location = new System.Drawing.Point(5, 246);
+			this.lblSkillName.Name = "lblSkillName";
+			this.lblSkillName.Size = new System.Drawing.Size(35, 13);
+			this.lblSkillName.TabIndex = 2;
+			this.lblSkillName.Text = "label1";
+			// 
+			// txtSkillDesc
+			// 
+			this.txtSkillDesc.Location = new System.Drawing.Point(3, 262);
+			this.txtSkillDesc.Multiline = true;
+			this.txtSkillDesc.Name = "txtSkillDesc";
+			this.txtSkillDesc.ReadOnly = true;
+			this.txtSkillDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtSkillDesc.Size = new System.Drawing.Size(480, 65);
+			this.txtSkillDesc.TabIndex = 3;
 			// 
 			// Window
 			// 
@@ -873,6 +866,8 @@
 		private System.Windows.Forms.CheckedListBox clbTalents;
 		private System.Windows.Forms.Label lblTalentsInstructions;
 		private System.Windows.Forms.Label lblSpellsInstructions;
+		private System.Windows.Forms.TextBox txtSkillDesc;
+		private System.Windows.Forms.Label lblSkillName;
     }
 }
 

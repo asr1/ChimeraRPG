@@ -18,9 +18,11 @@ namespace Solipstry_Character_Creator
     {
 		private const string SPELLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Spells.accdb";
 		private const string TALENTS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Talents.accdb";
+		private const string SKILLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Skills.accdb";
 
 		private OleDbConnection spellsConnection;
 		private OleDbConnection talentsConnection;
+		private OleDbConnection skillsConnection;
 
         private Character character;
 		private List<Button> attrValuesList;
@@ -80,10 +82,12 @@ namespace Solipstry_Character_Creator
 			//Initialize database connections
 			spellsConnection = new OleDbConnection(SPELLS_ACCESS_STRING);
 			talentsConnection = new OleDbConnection(TALENTS_ACCESS_STRING);
+			skillsConnection = new OleDbConnection(SKILLS_ACCESS_STRING);
 			try
 			{
 				spellsConnection.Open();
 				talentsConnection.Open();
+				skillsConnection.Open();
 			}
 			catch (Exception e)
 			{
@@ -92,6 +96,7 @@ namespace Solipstry_Character_Creator
 
 			FillSpellsList();
 			FillTalentsList();
+			FillSkillsList();
 		}
 
 		/// <summary>
@@ -134,6 +139,28 @@ namespace Solipstry_Character_Creator
 			foreach(string talent in talentList)
 			{
 				clbTalents.Items.Add(talent);
+			}
+		}
+		
+		/// <summary>
+		/// Queries the talents table and adds the name of all skills to the CheckListBox
+		/// for skills
+		/// </summary>
+		private void FillSkillsList()
+		{
+			DataSet ds = PerformQuery(skillsConnection, "SELECT skill_name FROM Skills", "Skills");
+			DataRowCollection rows = ds.Tables["Skills"].Rows;
+			List<string> skillList = new List<string>();
+
+			foreach(DataRow dr in rows)
+			{
+				skillList.Add(dr[0].ToString());
+			}
+			skillList.Sort();
+
+			foreach(string skill in skillList)
+			{
+				clbSkills.Items.Add(skill);
 			}
 		}
 		#endregion
@@ -188,6 +215,8 @@ namespace Solipstry_Character_Creator
 			
 			//Default to medium
 			cmbSize.SelectedIndex = 1;
+
+			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each \nschool is equal to your modifier in that school.";
         }
 
         private void cmbAttributeMethod_SelectedIndexChanged(object sender, EventArgs e)
@@ -380,6 +409,7 @@ namespace Solipstry_Character_Creator
 			//Close all database connections
 			spellsConnection.Close();
 			talentsConnection.Close();
+			skillsConnection.Close();
 		}
 
 		#region Context menu item handlers
@@ -751,6 +781,22 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			CheckHomebrew();
 		}
+
+		private void clbSkills_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			//Get information about the skill
+			string skillName = clbSkills.SelectedItem.ToString();
+			DataSet ds = PerformQuery(skillsConnection, 
+				"SELECT desc FROM Skills WHERE skill_name = '" + skillName + "'", "Skills");
+			DataRow row = ds.Tables["Skills"].Rows[0];
+
+			//Update the quick info panel with the skills information
+			lblSkillName.Text = skillName;
+			txtSkillDesc.Text = row[0].ToString();
+			txtSkillDesc.SelectionStart = 0;
+			txtSkillDesc.SelectionStart = 0;
+		}
 		#endregion
+
 	}
 }
