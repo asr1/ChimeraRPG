@@ -37,24 +37,6 @@ namespace Solipstry_Character_Creator
         {
             InitializeComponent();
 
-			//Create a context menu strip for the spell list box
-			ContextMenuStrip spellMenuStrip = new ContextMenuStrip();
-			ToolStripMenuItem spellInfoItem = new ToolStripMenuItem("Info");
-			spellInfoItem.Click += new EventHandler(spellInfoMenuItem_Click);
-			spellInfoItem.Name = "Info";
-			spellInfoItem.Enabled = false;
-			spellMenuStrip.Items.Add(spellInfoItem);
-			clbSpells.ContextMenuStrip = spellMenuStrip;
-
-			//Create a context menu strip for the talent list box
-			ContextMenuStrip talentMenuStrip = new ContextMenuStrip();
-			ToolStripMenuItem talentInfoItem = new ToolStripMenuItem("Info");
-			talentInfoItem.Click += new EventHandler(talentInfoMenuItem_Click);
-			talentInfoItem.Name = "Info";
-			talentInfoItem.Enabled = false;
-			talentMenuStrip.Items.Add(talentInfoItem);
-			clbTalents.ContextMenuStrip = talentMenuStrip;
-
 			character = new Character();
 
 			//Store the labels for attributes in a list for easier processing
@@ -412,40 +394,6 @@ namespace Solipstry_Character_Creator
 			talentsConnection.Close();
 			skillsConnection.Close();
 		}
-
-		#region Context menu item handlers
-		//Handler for spell 'info' menu item click
-		private void spellInfoMenuItem_Click(object sender, EventArgs e)
-		{
-			DataSet ds = PerformQuery(spellsConnection,
-				"SELECT * FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString().Trim() + "'",
-				"Spells");
-			DataRow infoRow = ds.Tables["Spells"].Rows[0];
-
-			SpellInfoForm frm = new SpellInfoForm(
-				infoRow[0].ToString(), //Name
-				infoRow[2].ToString(), //School
-				infoRow[1].ToString(), //Cost
-				infoRow[3].ToString(), //Prereqs
-				infoRow[4].ToString());//Effects
-			frm.ShowDialog();
-		}
-
-		//Handler for talent 'info' menu item click
-		private void talentInfoMenuItem_Click(object sender, EventArgs e)
-		{
-			DataSet ds = PerformQuery(talentsConnection,
-				"SELECT * FROM Talents WHERE talent_name = '" + clbTalents.SelectedItem.ToString().Trim() + "'",
-				"Talents");
-			DataRow infoRow = ds.Tables["Talents"].Rows[0];
-
-			TalentInfoForm frm = new TalentInfoForm(
-				infoRow[0].ToString(), //Name
-				infoRow[1].ToString(), //Prereqs
-				infoRow[2].ToString());//Description
-			frm.ShowDialog();
-		}
-		#endregion
 
 		#region Homebrew checking
 		private void CheckHomebrew()
