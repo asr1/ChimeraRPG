@@ -789,20 +789,12 @@ finished: //If the function has determined the character is homebrewed, jump her
 				string messageText = "User email: " + bugReport.txtFromEmail.Text + Environment.NewLine +
 					"Bug report: " + Environment.NewLine + bugDesc;
 
-				var client = new SmtpClient("smtp.gmail.com", 587)
-				{
-					Credentials = new NetworkCredential("solipstrybugreport@gmail.com", "yrtspilos"),
-					EnableSsl = true
-				};
+				SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
+				client.Credentials = new NetworkCredential("solipstrybugreport@gmail.com", "yrtspilos");
+				client.EnableSsl = true;
 				client.Send("solipstrybugreport@gmail.com", "builder@solipstry.com", "Solipstry Bug Report", messageText);
 
 			}
 		}
-
-		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-
-		}
-
 	}
 }
