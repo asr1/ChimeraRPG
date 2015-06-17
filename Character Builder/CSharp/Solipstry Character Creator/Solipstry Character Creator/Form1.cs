@@ -11,6 +11,8 @@ using System.Data.OleDb;
 using System.Xml.Serialization;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
+using System.Net.Mail;
+using System.Net;
 
 namespace Solipstry_Character_Creator
 {
@@ -775,6 +777,32 @@ finished: //If the function has determined the character is homebrewed, jump her
 			txtSkillInfo.SelectionStart = 0;
 		}
 		#endregion
+
+		private void sendBugReportToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			BugReportDialog bugReport = new BugReportDialog();
+			DialogResult result = bugReport.ShowDialog();
+
+			if(result == DialogResult.OK)
+			{
+				string bugDesc = bugReport.txtBugDesc.Text;
+				string messageText = "User email: " + bugReport.txtFromEmail.Text + Environment.NewLine +
+					"Bug report: " + Environment.NewLine + bugDesc;
+
+				var client = new SmtpClient("smtp.gmail.com", 587)
+				{
+					Credentials = new NetworkCredential("solipstrybugreport@gmail.com", "yrtspilos"),
+					EnableSsl = true
+				};
+				client.Send("solipstrybugreport@gmail.com", "builder@solipstry.com", "Solipstry Bug Report", messageText);
+
+			}
+		}
+
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
 
 	}
 }

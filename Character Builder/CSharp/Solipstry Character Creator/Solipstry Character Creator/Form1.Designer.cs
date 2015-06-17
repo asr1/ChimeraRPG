@@ -79,18 +79,22 @@
 			this.txtConstitution = new System.Windows.Forms.TextBox();
 			this.txtDexterity = new System.Windows.Forms.TextBox();
 			this.tabSkills = new System.Windows.Forms.TabPage();
+			this.txtSkillInfo = new System.Windows.Forms.TextBox();
 			this.lblSkillsInstructions = new System.Windows.Forms.Label();
 			this.clbSkills = new System.Windows.Forms.CheckedListBox();
 			this.tabTalents = new System.Windows.Forms.TabPage();
+			this.txtTalentInfo = new System.Windows.Forms.TextBox();
+			this.lblTalentsInstructions = new System.Windows.Forms.Label();
 			this.clbTalents = new System.Windows.Forms.CheckedListBox();
 			this.tabSpells = new System.Windows.Forms.TabPage();
+			this.txtSpellInfo = new System.Windows.Forms.TextBox();
+			this.lblSpellsInstructions = new System.Windows.Forms.Label();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.chkHomebrew = new System.Windows.Forms.CheckBox();
-			this.lblTalentsInstructions = new System.Windows.Forms.Label();
-			this.lblSpellsInstructions = new System.Windows.Forms.Label();
-			this.txtSkillInfo = new System.Windows.Forms.TextBox();
-			this.txtTalentInfo = new System.Windows.Forms.TextBox();
-			this.txtSpellInfo = new System.Windows.Forms.TextBox();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -101,13 +105,14 @@
 			this.tabSkills.SuspendLayout();
 			this.tabTalents.SuspendLayout();
 			this.tabSpells.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
 			// 
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.splitContainer1.IsSplitterFixed = true;
-			this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer1.Location = new System.Drawing.Point(0, 24);
 			this.splitContainer1.Name = "splitContainer1";
 			// 
 			// splitContainer1.Panel1
@@ -117,7 +122,7 @@
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.chkHomebrew);
-			this.splitContainer1.Size = new System.Drawing.Size(684, 361);
+			this.splitContainer1.Size = new System.Drawing.Size(684, 337);
 			this.splitContainer1.SplitterDistance = 499;
 			this.splitContainer1.TabIndex = 0;
 			// 
@@ -663,6 +668,17 @@
 			this.tabSkills.Text = "Skills";
 			this.tabSkills.UseVisualStyleBackColor = true;
 			// 
+			// txtSkillInfo
+			// 
+			this.txtSkillInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.txtSkillInfo.Location = new System.Drawing.Point(0, 245);
+			this.txtSkillInfo.Multiline = true;
+			this.txtSkillInfo.Name = "txtSkillInfo";
+			this.txtSkillInfo.ReadOnly = true;
+			this.txtSkillInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtSkillInfo.Size = new System.Drawing.Size(486, 87);
+			this.txtSkillInfo.TabIndex = 3;
+			// 
 			// lblSkillsInstructions
 			// 
 			this.lblSkillsInstructions.AutoSize = true;
@@ -695,6 +711,26 @@
 			this.tabTalents.Text = "Talents";
 			this.tabTalents.UseVisualStyleBackColor = true;
 			// 
+			// txtTalentInfo
+			// 
+			this.txtTalentInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.txtTalentInfo.Location = new System.Drawing.Point(0, 245);
+			this.txtTalentInfo.Multiline = true;
+			this.txtTalentInfo.Name = "txtTalentInfo";
+			this.txtTalentInfo.ReadOnly = true;
+			this.txtTalentInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtTalentInfo.Size = new System.Drawing.Size(486, 87);
+			this.txtTalentInfo.TabIndex = 6;
+			// 
+			// lblTalentsInstructions
+			// 
+			this.lblTalentsInstructions.AutoSize = true;
+			this.lblTalentsInstructions.Location = new System.Drawing.Point(5, 15);
+			this.lblTalentsInstructions.Name = "lblTalentsInstructions";
+			this.lblTalentsInstructions.Size = new System.Drawing.Size(172, 13);
+			this.lblTalentsInstructions.TabIndex = 2;
+			this.lblTalentsInstructions.Text = "Select the talents you wish to take.";
+			// 
 			// clbTalents
 			// 
 			this.clbTalents.FormattingEnabled = true;
@@ -717,6 +753,25 @@
 			this.tabSpells.Text = "Spells";
 			this.tabSpells.UseVisualStyleBackColor = true;
 			// 
+			// txtSpellInfo
+			// 
+			this.txtSpellInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.txtSpellInfo.Location = new System.Drawing.Point(0, 245);
+			this.txtSpellInfo.Multiline = true;
+			this.txtSpellInfo.Name = "txtSpellInfo";
+			this.txtSpellInfo.ReadOnly = true;
+			this.txtSpellInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtSpellInfo.Size = new System.Drawing.Size(486, 87);
+			this.txtSpellInfo.TabIndex = 7;
+			// 
+			// lblSpellsInstructions
+			// 
+			this.lblSpellsInstructions.AutoSize = true;
+			this.lblSpellsInstructions.Location = new System.Drawing.Point(3, 2);
+			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
+			this.lblSpellsInstructions.Size = new System.Drawing.Size(0, 13);
+			this.lblSpellsInstructions.TabIndex = 1;
+			// 
 			// clbSpells
 			// 
 			this.clbSpells.FormattingEnabled = true;
@@ -738,55 +793,38 @@
 			this.chkHomebrew.Text = "Homebrewed";
 			this.chkHomebrew.UseVisualStyleBackColor = true;
 			// 
-			// lblTalentsInstructions
+			// menuStrip1
 			// 
-			this.lblTalentsInstructions.AutoSize = true;
-			this.lblTalentsInstructions.Location = new System.Drawing.Point(5, 15);
-			this.lblTalentsInstructions.Name = "lblTalentsInstructions";
-			this.lblTalentsInstructions.Size = new System.Drawing.Size(172, 13);
-			this.lblTalentsInstructions.TabIndex = 2;
-			this.lblTalentsInstructions.Text = "Select the talents you wish to take.";
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.helpToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(684, 24);
+			this.menuStrip1.TabIndex = 1;
+			this.menuStrip1.Text = "menuStrip1";
 			// 
-			// lblSpellsInstructions
+			// helpToolStripMenuItem
 			// 
-			this.lblSpellsInstructions.AutoSize = true;
-			this.lblSpellsInstructions.Location = new System.Drawing.Point(3, 2);
-			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
-			this.lblSpellsInstructions.Size = new System.Drawing.Size(0, 13);
-			this.lblSpellsInstructions.TabIndex = 1;
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendBugReportToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.helpToolStripMenuItem.Text = "Help";
 			// 
-			// txtSkillInfo
+			// sendBugReportToolStripMenuItem
 			// 
-			this.txtSkillInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtSkillInfo.Location = new System.Drawing.Point(0, 245);
-			this.txtSkillInfo.Multiline = true;
-			this.txtSkillInfo.Name = "txtSkillInfo";
-			this.txtSkillInfo.ReadOnly = true;
-			this.txtSkillInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtSkillInfo.Size = new System.Drawing.Size(486, 87);
-			this.txtSkillInfo.TabIndex = 3;
+			this.sendBugReportToolStripMenuItem.Name = "sendBugReportToolStripMenuItem";
+			this.sendBugReportToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
+			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
 			// 
-			// txtTalentInfo
+			// aboutToolStripMenuItem
 			// 
-			this.txtTalentInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtTalentInfo.Location = new System.Drawing.Point(0, 245);
-			this.txtTalentInfo.Multiline = true;
-			this.txtTalentInfo.Name = "txtTalentInfo";
-			this.txtTalentInfo.ReadOnly = true;
-			this.txtTalentInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtTalentInfo.Size = new System.Drawing.Size(486, 87);
-			this.txtTalentInfo.TabIndex = 6;
-			// 
-			// txtSpellInfo
-			// 
-			this.txtSpellInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtSpellInfo.Location = new System.Drawing.Point(0, 245);
-			this.txtSpellInfo.Multiline = true;
-			this.txtSpellInfo.Name = "txtSpellInfo";
-			this.txtSpellInfo.ReadOnly = true;
-			this.txtSpellInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtSpellInfo.Size = new System.Drawing.Size(486, 87);
-			this.txtSpellInfo.TabIndex = 7;
+			this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+			this.aboutToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.aboutToolStripMenuItem.Text = "About";
+			this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
 			// 
 			// Window
 			// 
@@ -794,7 +832,9 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(684, 361);
 			this.Controls.Add(this.splitContainer1);
+			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
 			this.Name = "Window";
 			this.Text = "Solipstry Character Creator";
@@ -816,7 +856,10 @@
 			this.tabTalents.PerformLayout();
 			this.tabSpells.ResumeLayout(false);
 			this.tabSpells.PerformLayout();
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
         }
 
@@ -885,6 +928,10 @@
 		private System.Windows.Forms.TextBox txtSkillInfo;
 		private System.Windows.Forms.TextBox txtTalentInfo;
 		private System.Windows.Forms.TextBox txtSpellInfo;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem sendBugReportToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 
