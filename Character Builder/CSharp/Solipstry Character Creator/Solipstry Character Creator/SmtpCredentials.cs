@@ -2,7 +2,7 @@
 {
 	class SmtpCredentials
 	{
-		public static const string USERNAME = "username@example.com";
-		public static const string PASSWORD = "password";
+		public const string USERNAME = "username@example.com";
+		public const string PASSWORD = "password";
 	}
 }
