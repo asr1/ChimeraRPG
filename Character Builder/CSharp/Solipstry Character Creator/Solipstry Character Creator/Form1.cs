@@ -790,7 +790,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 					"Bug report: " + Environment.NewLine + bugDesc;
 
 				SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
-				client.Credentials = new NetworkCredential("solipstrybugreport@gmail.com", "yrtspilos");
+				//Actual SmtpCredentials file witheld from repo for security reasons
+				client.Credentials = new NetworkCredential(SmtpCredentials.USERNAME,SmtpCredentials.PASSWORD);
 				client.EnableSsl = true;
 				client.Send("solipstrybugreport@gmail.com", "builder@solipstry.com", "Solipstry Bug Report", messageText);
 
