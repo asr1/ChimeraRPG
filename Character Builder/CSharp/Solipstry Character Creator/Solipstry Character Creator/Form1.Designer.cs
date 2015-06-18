@@ -94,6 +94,22 @@
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lblQuickCharisma = new System.Windows.Forms.Label();
+			this.lblQuickConstitution = new System.Windows.Forms.Label();
+			this.lblQuickDexterity = new System.Windows.Forms.Label();
+			this.lblQuickIntelligence = new System.Windows.Forms.Label();
+			this.lblQuickLuck = new System.Windows.Forms.Label();
+			this.lblQuickSpeed = new System.Windows.Forms.Label();
+			this.lblQuickStrength = new System.Windows.Forms.Label();
+			this.lblQuickWisdom = new System.Windows.Forms.Label();
+			this.lblQuickWisdomName = new System.Windows.Forms.Label();
+			this.lblQuickStrengthName = new System.Windows.Forms.Label();
+			this.lblQuickSpeedName = new System.Windows.Forms.Label();
+			this.lblQuickLuckName = new System.Windows.Forms.Label();
+			this.lblQuickIntelligenceName = new System.Windows.Forms.Label();
+			this.lblQuickDexterityName = new System.Windows.Forms.Label();
+			this.lblQuickConstitutionName = new System.Windows.Forms.Label();
+			this.lblQuickCharismaName = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -120,6 +136,22 @@
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickWisdomName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickStrengthName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickSpeedName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickLuckName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickIntelligenceName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickDexterityName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickConstitutionName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickCharismaName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickWisdom);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickStrength);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickSpeed);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickLuck);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickIntelligence);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickDexterity);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickConstitution);
+			this.splitContainer1.Panel2.Controls.Add(this.lblQuickCharisma);
 			this.splitContainer1.Panel2.Controls.Add(this.chkHomebrew);
 			this.splitContainer1.Size = new System.Drawing.Size(684, 337);
 			this.splitContainer1.SplitterDistance = 499;
@@ -817,6 +849,150 @@
 			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
 			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
 			// 
+			// lblQuickCharisma
+			// 
+			this.lblQuickCharisma.AutoSize = true;
+			this.lblQuickCharisma.Location = new System.Drawing.Point(73, 5);
+			this.lblQuickCharisma.Name = "lblQuickCharisma";
+			this.lblQuickCharisma.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickCharisma.TabIndex = 1;
+			this.lblQuickCharisma.Text = " ";
+			// 
+			// lblQuickConstitution
+			// 
+			this.lblQuickConstitution.AutoSize = true;
+			this.lblQuickConstitution.Location = new System.Drawing.Point(73, 18);
+			this.lblQuickConstitution.Name = "lblQuickConstitution";
+			this.lblQuickConstitution.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickConstitution.TabIndex = 2;
+			this.lblQuickConstitution.Text = " ";
+			// 
+			// lblQuickDexterity
+			// 
+			this.lblQuickDexterity.AutoSize = true;
+			this.lblQuickDexterity.Location = new System.Drawing.Point(73, 31);
+			this.lblQuickDexterity.Name = "lblQuickDexterity";
+			this.lblQuickDexterity.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickDexterity.TabIndex = 3;
+			this.lblQuickDexterity.Text = " ";
+			// 
+			// lblQuickIntelligence
+			// 
+			this.lblQuickIntelligence.AutoSize = true;
+			this.lblQuickIntelligence.Location = new System.Drawing.Point(73, 44);
+			this.lblQuickIntelligence.Name = "lblQuickIntelligence";
+			this.lblQuickIntelligence.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickIntelligence.TabIndex = 4;
+			this.lblQuickIntelligence.Text = " ";
+			// 
+			// lblQuickLuck
+			// 
+			this.lblQuickLuck.AutoSize = true;
+			this.lblQuickLuck.Location = new System.Drawing.Point(73, 57);
+			this.lblQuickLuck.Name = "lblQuickLuck";
+			this.lblQuickLuck.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickLuck.TabIndex = 5;
+			this.lblQuickLuck.Text = " ";
+			// 
+			// lblQuickSpeed
+			// 
+			this.lblQuickSpeed.AutoSize = true;
+			this.lblQuickSpeed.Location = new System.Drawing.Point(73, 71);
+			this.lblQuickSpeed.Name = "lblQuickSpeed";
+			this.lblQuickSpeed.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickSpeed.TabIndex = 6;
+			this.lblQuickSpeed.Text = " ";
+			// 
+			// lblQuickStrength
+			// 
+			this.lblQuickStrength.AutoSize = true;
+			this.lblQuickStrength.Location = new System.Drawing.Point(73, 84);
+			this.lblQuickStrength.Name = "lblQuickStrength";
+			this.lblQuickStrength.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickStrength.TabIndex = 7;
+			this.lblQuickStrength.Text = " ";
+			// 
+			// lblQuickWisdom
+			// 
+			this.lblQuickWisdom.AutoSize = true;
+			this.lblQuickWisdom.Location = new System.Drawing.Point(73, 97);
+			this.lblQuickWisdom.Name = "lblQuickWisdom";
+			this.lblQuickWisdom.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickWisdom.TabIndex = 8;
+			this.lblQuickWisdom.Text = " ";
+			// 
+			// lblQuickWisdomName
+			// 
+			this.lblQuickWisdomName.AutoSize = true;
+			this.lblQuickWisdomName.Location = new System.Drawing.Point(3, 97);
+			this.lblQuickWisdomName.Name = "lblQuickWisdomName";
+			this.lblQuickWisdomName.Size = new System.Drawing.Size(48, 13);
+			this.lblQuickWisdomName.TabIndex = 16;
+			this.lblQuickWisdomName.Text = "Wisdom:";
+			// 
+			// lblQuickStrengthName
+			// 
+			this.lblQuickStrengthName.AutoSize = true;
+			this.lblQuickStrengthName.Location = new System.Drawing.Point(3, 84);
+			this.lblQuickStrengthName.Name = "lblQuickStrengthName";
+			this.lblQuickStrengthName.Size = new System.Drawing.Size(50, 13);
+			this.lblQuickStrengthName.TabIndex = 15;
+			this.lblQuickStrengthName.Text = "Strength:";
+			// 
+			// lblQuickSpeedName
+			// 
+			this.lblQuickSpeedName.AutoSize = true;
+			this.lblQuickSpeedName.Location = new System.Drawing.Point(3, 71);
+			this.lblQuickSpeedName.Name = "lblQuickSpeedName";
+			this.lblQuickSpeedName.Size = new System.Drawing.Size(41, 13);
+			this.lblQuickSpeedName.TabIndex = 14;
+			this.lblQuickSpeedName.Text = "Speed:";
+			// 
+			// lblQuickLuckName
+			// 
+			this.lblQuickLuckName.AutoSize = true;
+			this.lblQuickLuckName.Location = new System.Drawing.Point(3, 57);
+			this.lblQuickLuckName.Name = "lblQuickLuckName";
+			this.lblQuickLuckName.Size = new System.Drawing.Size(34, 13);
+			this.lblQuickLuckName.TabIndex = 13;
+			this.lblQuickLuckName.Text = "Luck:";
+			// 
+			// lblQuickIntelligenceName
+			// 
+			this.lblQuickIntelligenceName.AutoSize = true;
+			this.lblQuickIntelligenceName.Location = new System.Drawing.Point(3, 44);
+			this.lblQuickIntelligenceName.Name = "lblQuickIntelligenceName";
+			this.lblQuickIntelligenceName.Size = new System.Drawing.Size(64, 13);
+			this.lblQuickIntelligenceName.TabIndex = 12;
+			this.lblQuickIntelligenceName.Text = "Intelligence:";
+			// 
+			// lblQuickDexterityName
+			// 
+			this.lblQuickDexterityName.AutoSize = true;
+			this.lblQuickDexterityName.Location = new System.Drawing.Point(3, 31);
+			this.lblQuickDexterityName.Name = "lblQuickDexterityName";
+			this.lblQuickDexterityName.Size = new System.Drawing.Size(51, 13);
+			this.lblQuickDexterityName.TabIndex = 11;
+			this.lblQuickDexterityName.Text = "Dexterity:";
+			// 
+			// lblQuickConstitutionName
+			// 
+			this.lblQuickConstitutionName.AutoSize = true;
+			this.lblQuickConstitutionName.Location = new System.Drawing.Point(3, 18);
+			this.lblQuickConstitutionName.Name = "lblQuickConstitutionName";
+			this.lblQuickConstitutionName.Size = new System.Drawing.Size(65, 13);
+			this.lblQuickConstitutionName.TabIndex = 10;
+			this.lblQuickConstitutionName.Text = "Constitution:";
+			// 
+			// lblQuickCharismaName
+			// 
+			this.lblQuickCharismaName.AutoSize = true;
+			this.lblQuickCharismaName.Location = new System.Drawing.Point(3, 5);
+			this.lblQuickCharismaName.Name = "lblQuickCharismaName";
+			this.lblQuickCharismaName.Size = new System.Drawing.Size(53, 13);
+			this.lblQuickCharismaName.TabIndex = 9;
+			this.lblQuickCharismaName.Text = "Charisma:";
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -922,6 +1098,22 @@
 		private System.Windows.Forms.MenuStrip menuStrip1;
 		private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem sendBugReportToolStripMenuItem;
+		private System.Windows.Forms.Label lblQuickCharisma;
+		private System.Windows.Forms.Label lblQuickDexterity;
+		private System.Windows.Forms.Label lblQuickConstitution;
+		private System.Windows.Forms.Label lblQuickWisdom;
+		private System.Windows.Forms.Label lblQuickStrength;
+		private System.Windows.Forms.Label lblQuickSpeed;
+		private System.Windows.Forms.Label lblQuickLuck;
+		private System.Windows.Forms.Label lblQuickIntelligence;
+		private System.Windows.Forms.Label lblQuickWisdomName;
+		private System.Windows.Forms.Label lblQuickStrengthName;
+		private System.Windows.Forms.Label lblQuickSpeedName;
+		private System.Windows.Forms.Label lblQuickLuckName;
+		private System.Windows.Forms.Label lblQuickIntelligenceName;
+		private System.Windows.Forms.Label lblQuickDexterityName;
+		private System.Windows.Forms.Label lblQuickConstitutionName;
+		private System.Windows.Forms.Label lblQuickCharismaName;
     }
 }
 

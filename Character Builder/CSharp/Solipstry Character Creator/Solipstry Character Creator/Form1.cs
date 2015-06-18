@@ -81,6 +81,8 @@ namespace Solipstry_Character_Creator
 			FillSpellsList();
 			FillTalentsList();
 			FillSkillsList();
+
+			UpdateQuickAttributes();
 		}
 
 		/// <summary>
@@ -275,6 +277,8 @@ namespace Solipstry_Character_Creator
 					MakeReadWrite(attributeTextBoxes);
 					break;
             }
+
+			UpdateQuickAttributes();
         }
 
 		#region Updating character
@@ -288,6 +292,8 @@ namespace Solipstry_Character_Creator
 			character.speed = TryParseInteger(txtSpeed.Text);
 			character.strength = TryParseInteger(txtStrength.Text);
 			character.wisdom = TryParseInteger(txtWisdom.Text);
+
+			//TODO Update attributes from talents
 		}
 
 		private void UpdateBasicInformation()
@@ -309,6 +315,8 @@ namespace Solipstry_Character_Creator
 			character.magicTotal = 5 * character.CalculateModifier(character.wisdom);
 			character.magicRegen = character.CalculateModifier(character.intelligence);
 			character.fortunePoints = character.CalculateModifier(character.luck);
+
+			//TODO Update these from talents
 		}
 		#endregion
 
@@ -380,6 +388,9 @@ namespace Solipstry_Character_Creator
 			{
 				btnDropFrom.Text = oldText;
 			}
+
+			UpdateAttributes();
+			UpdateQuickAttributes();
 		}
  
 		private void btnAttr_MouseDown(object sender, MouseEventArgs e)
@@ -797,5 +808,19 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			}
 		}
+
+		#region Quick info pane
+		private void UpdateQuickAttributes()
+		{
+			lblQuickCharisma.Text     = character.charisma.ToString();
+			lblQuickConstitution.Text = character.constitution.ToString();
+			lblQuickDexterity.Text    = character.dexterity.ToString();
+			lblQuickIntelligence.Text = character.intelligence.ToString();
+			lblQuickLuck.Text         = character.luck.ToString();
+			lblQuickSpeed.Text        = character.speed.ToString();
+			lblQuickStrength.Text     = character.strength.ToString();
+			lblQuickWisdom.Text       = character.wisdom.ToString();
+		}
+		#endregion
 	}
 }
