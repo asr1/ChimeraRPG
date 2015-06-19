@@ -13,6 +13,10 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Net.Mail;
 using System.Net;
+using System.IO;
+
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Solipstry_Character_Creator
 {
@@ -82,7 +86,19 @@ namespace Solipstry_Character_Creator
 			FillTalentsList();
 			FillSkillsList();
 
-			UpdateQuickAttributes();
+			UpdateInformation();
+		}
+
+		private void Window_Load(object sender, EventArgs e)
+		{
+			//Default to "All 20s"
+			cmbAttributeMethod.SelectedIndex = 0;
+
+			//Default to medium
+			cmbSize.SelectedIndex = 1;
+
+			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each" +
+				Environment.NewLine + "school is equal to your modifier in that school.";
 		}
 
 		/// <summary>
@@ -127,7 +143,7 @@ namespace Solipstry_Character_Creator
 				clbTalents.Items.Add(talent);
 			}
 		}
-		
+
 		/// <summary>
 		/// Queries the talents table and adds the name of all skills to the CheckListBox
 		/// for skills
@@ -179,8 +195,7 @@ namespace Solipstry_Character_Creator
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
 			UpdateBasicInformation();
-			UpdateAttributes();
-			CalculateDerivedTraits();
+			UpdateInformation();
 
             //TODO: Update character information
 
@@ -193,19 +208,7 @@ namespace Solipstry_Character_Creator
 			CheckHomebrew(); //Some talents depend on size
             //TODO: Update character information
         }
-
-        private void Window_Load(object sender, EventArgs e)
-        {
-			//Default to "All 20s"
-            cmbAttributeMethod.SelectedIndex = 0;
-			
-			//Default to medium
-			cmbSize.SelectedIndex = 1;
-
-			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each" + 
-				Environment.NewLine + "school is equal to your modifier in that school.";
-        }
-
+   
         private void cmbAttributeMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
             switch(cmbAttributeMethod.SelectedIndex)
@@ -223,7 +226,6 @@ namespace Solipstry_Character_Creator
 					}
 
 					MakeReadOnly(attributeTextBoxes);
-					UpdateAttributes();
                     break;
                 case 1: //2 30s, 4 20s, 2 10s
 					foreach (Button btn in attrValuesList)
@@ -278,10 +280,17 @@ namespace Solipstry_Character_Creator
 					break;
             }
 
-			UpdateQuickAttributes();
+			UpdateInformation();
         }
 
 		#region Updating character
+		private void UpdateInformation()
+		{
+			UpdateAttributes();
+			CalculateDerivedTraits();
+			UpdateQuickPane();
+		}
+		
 		private void UpdateAttributes()
 		{
 			character.charisma = TryParseInteger(txtCharisma.Text);
@@ -306,17 +315,60 @@ namespace Solipstry_Character_Creator
 			character.occupation = txtOccupation.Text;
 			character.aspiration = txtAspiration.Text;
 			character.background = txtBackground.Text;
+			character.age = txtAge.Text;
 		}
 
 		private void CalculateDerivedTraits()
 		{
-			character.movement = character.CalculateModifier(character.speed) + 3;
+			character.movement = 3 + character.CalculateModifier(character.speed);
 			character.hitPoints = (int)Math.Truncate(1.5 * (double)character.CalculateModifier(character.constitution));
+			character.initiative = character.CalculateModifier(character.speed);
+
 			character.magicTotal = 5 * character.CalculateModifier(character.wisdom);
 			character.magicRegen = character.CalculateModifier(character.intelligence);
 			character.fortunePoints = character.CalculateModifier(character.luck);
+			//character.enlightenment = 
+
+			character.acLight = 7 + character.CalculateModifier(Math.Max(character.speed, character.dexterity)) + character.CalculateModifier(character.skills[Skills.LIGHT_ARMOR]);
+			character.acHeavy = 12 + character.CalculateModifier(character.skills[Skills.HEAVY_ARMOR]);
+			
+			character.reflexLight = 5 + character.CalculateModifier(Math.Max(character.speed, character.dexterity)) + character.CalculateModifier(character.skills[Skills.LIGHT_ARMOR]);
+			character.reflexHeavy = character.CalculateModifier(Math.Max(character.speed, character.dexterity)) + character.CalculateModifier(character.skills[Skills.HEAVY_ARMOR]);
+			character.will = 10 + character.CalculateModifier(character.wisdom);
+			character.fortitude = 10 + character.CalculateModifier(character.constitution);
+
+			character.magicTotal = 5 * character.wisdom;
+			character.magicRegen = character.intelligence;
 
 			//TODO Update these from talents
+			//TODO Calculate enlightenment points
+		}
+
+		private void UpdateQuickPane()
+		{
+			lblQuickCharisma.Text = character.charisma.ToString();
+			lblQuickConstitution.Text = character.constitution.ToString();
+			lblQuickDexterity.Text = character.dexterity.ToString();
+			lblQuickIntelligence.Text = character.intelligence.ToString();
+			lblQuickLuck.Text = character.luck.ToString();
+			lblQuickSpeed.Text = character.speed.ToString();
+			lblQuickStrength.Text = character.strength.ToString();
+			lblQuickWisdom.Text = character.wisdom.ToString();
+
+			lblHP.Text = character.hitPoints.ToString();
+			lblInitiative.Text = character.initiative.ToString();
+			lblACHeavy.Text = character.acHeavy.ToString();
+			lblACLight.Text = character.acLight.ToString();
+
+			lblMagicTotal.Text = character.magicTotal.ToString();
+			lblMagicRegen.Text = character.magicRegen.ToString();
+			lblEnlightenment.Text = character.enlightenment.ToString();
+			lblFortunePoints.Text = character.fortunePoints.ToString();
+
+			lblWill.Text = character.will.ToString();
+			lblFortitude.Text = character.fortitude.ToString();
+			lblReflexHeavy.Text = character.reflexHeavy.ToString();
+			lblReflexLight.Text = character.reflexLight.ToString();
 		}
 		#endregion
 
@@ -389,8 +441,7 @@ namespace Solipstry_Character_Creator
 				btnDropFrom.Text = oldText;
 			}
 
-			UpdateAttributes();
-			UpdateQuickAttributes();
+			UpdateInformation();
 		}
  
 		private void btnAttr_MouseDown(object sender, MouseEventArgs e)
@@ -809,18 +860,99 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 		}
 
-		#region Quick info pane
-		private void UpdateQuickAttributes()
+		private void ExportPDF(string saveLocation)
 		{
-			lblQuickCharisma.Text     = character.charisma.ToString();
-			lblQuickConstitution.Text = character.constitution.ToString();
-			lblQuickDexterity.Text    = character.dexterity.ToString();
-			lblQuickIntelligence.Text = character.intelligence.ToString();
-			lblQuickLuck.Text         = character.luck.ToString();
-			lblQuickSpeed.Text        = character.speed.ToString();
-			lblQuickStrength.Text     = character.strength.ToString();
-			lblQuickWisdom.Text       = character.wisdom.ToString();
+			//Load the pdf
+			PdfReader reader = new PdfReader("Editable Character Sheet.pdf");
+			PdfStamper stamper = new PdfStamper(reader, new FileStream(saveLocation, FileMode.Create));
+			AcroFields fields = stamper.AcroFields;
+
+			//Fill out the fields
+			fields.SetField("name", character.name);
+			fields.SetField("class", character._class);
+			fields.SetField("race", character.race);
+			fields.SetField("height", character.height);
+			fields.SetField("weight", character.weight);
+			fields.SetField("age", character.age);
+			fields.SetField("occupation", character.occupation);
+			fields.SetField("aspiration", character.aspiration);
+			fields.SetField("background", character.background);
+
+			//Make iterating through the skills easier
+			string[] skills = 
+			{
+				"acrobatics",
+				"alteration",
+				"athletics",
+				"block",
+				"chemistry",
+				"conjuration",
+				"craft",
+				"destruction",
+				"disguise",
+				"engineering",
+				"enlightenment",
+				"escape",
+				"heavy_armor",
+				"interaction",
+				"knowledge",
+				"language",
+				"light_armor",
+				"medicine",
+				"melee_weapon",
+				"survival",
+				"perception",
+				"ranged_combat",
+				"restoration",
+				"ride_drive",
+				"security",
+				"sense_motive",
+				"sleight_of_hand",
+				"stealth",
+				"unarmed_combat"
+			};
+			
+			foreach(string skill in skills)
+			{
+				string strScore = skill + "_score";
+				string strMod = skill + "_mod";
+
+				int score = character.GetSkillValue(skill);
+				int mod = character.CalculateModifier(score);
+
+				fields.SetField(strScore, score.ToString());
+				fields.SetField(strMod, mod.ToString());
+			}
+
+			//TODO Custom things
+
+			stamper.FormFlattening = false;
+			stamper.Close();
 		}
-		#endregion
+
+		private void exportPDFToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//Display a dialog to obtain file name
+			SaveFileDialog saveDialog = new SaveFileDialog();
+			saveDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
+			saveDialog.Filter = "PDF (*.pdf)|";
+			saveDialog.FilterIndex = 1;
+
+			if(saveDialog.ShowDialog() == DialogResult.OK)
+			{
+				string file = saveDialog.FileName;
+				if(!file.EndsWith(".pdf"))
+				{
+					file = file + ".pdf";
+				}
+
+				ExportPDF(file);
+			}
+		}
+
+		private void BasicInformationTextBox_TextChanged(object sender, EventArgs e)
+		{
+			UpdateBasicInformation();
+		}
 	}
 }

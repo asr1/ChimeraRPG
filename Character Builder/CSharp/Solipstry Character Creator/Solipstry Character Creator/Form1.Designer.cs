@@ -90,18 +90,30 @@
 			this.txtSpellInfo = new System.Windows.Forms.TextBox();
 			this.lblSpellsInstructions = new System.Windows.Forms.Label();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
-			this.chkHomebrew = new System.Windows.Forms.CheckBox();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.lblQuickCharisma = new System.Windows.Forms.Label();
-			this.lblQuickConstitution = new System.Windows.Forms.Label();
-			this.lblQuickDexterity = new System.Windows.Forms.Label();
-			this.lblQuickIntelligence = new System.Windows.Forms.Label();
-			this.lblQuickLuck = new System.Windows.Forms.Label();
-			this.lblQuickSpeed = new System.Windows.Forms.Label();
-			this.lblQuickStrength = new System.Windows.Forms.Label();
-			this.lblQuickWisdom = new System.Windows.Forms.Label();
+			this.lblACLight = new System.Windows.Forms.Label();
+			this.lblACHeavy = new System.Windows.Forms.Label();
+			this.lblInitiative = new System.Windows.Forms.Label();
+			this.lblHP = new System.Windows.Forms.Label();
+			this.lblReflexLight = new System.Windows.Forms.Label();
+			this.lblReflexHeavy = new System.Windows.Forms.Label();
+			this.lblFortitude = new System.Windows.Forms.Label();
+			this.lblWill = new System.Windows.Forms.Label();
+			this.lblFortunePoints = new System.Windows.Forms.Label();
+			this.lblEnlightenment = new System.Windows.Forms.Label();
+			this.lblMagicRegen = new System.Windows.Forms.Label();
+			this.lblMagicTotal = new System.Windows.Forms.Label();
+			this.lblReflexLightName = new System.Windows.Forms.Label();
+			this.lblReflexHeavyName = new System.Windows.Forms.Label();
+			this.lblFortitudeName = new System.Windows.Forms.Label();
+			this.lblWillName = new System.Windows.Forms.Label();
+			this.lblFortunePointsName = new System.Windows.Forms.Label();
+			this.lblEnlightenmentName = new System.Windows.Forms.Label();
+			this.lblMagicRegenName = new System.Windows.Forms.Label();
+			this.lblMagicTotalName = new System.Windows.Forms.Label();
+			this.lblACLightName = new System.Windows.Forms.Label();
+			this.lblACHeavyName = new System.Windows.Forms.Label();
+			this.lblInitiativeName = new System.Windows.Forms.Label();
+			this.lblHPName = new System.Windows.Forms.Label();
 			this.lblQuickWisdomName = new System.Windows.Forms.Label();
 			this.lblQuickStrengthName = new System.Windows.Forms.Label();
 			this.lblQuickSpeedName = new System.Windows.Forms.Label();
@@ -110,6 +122,20 @@
 			this.lblQuickDexterityName = new System.Windows.Forms.Label();
 			this.lblQuickConstitutionName = new System.Windows.Forms.Label();
 			this.lblQuickCharismaName = new System.Windows.Forms.Label();
+			this.lblQuickWisdom = new System.Windows.Forms.Label();
+			this.lblQuickStrength = new System.Windows.Forms.Label();
+			this.lblQuickSpeed = new System.Windows.Forms.Label();
+			this.lblQuickLuck = new System.Windows.Forms.Label();
+			this.lblQuickIntelligence = new System.Windows.Forms.Label();
+			this.lblQuickDexterity = new System.Windows.Forms.Label();
+			this.lblQuickConstitution = new System.Windows.Forms.Label();
+			this.lblQuickCharisma = new System.Windows.Forms.Label();
+			this.chkHomebrew = new System.Windows.Forms.CheckBox();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.exportPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -136,6 +162,30 @@
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.lblACLight);
+			this.splitContainer1.Panel2.Controls.Add(this.lblACHeavy);
+			this.splitContainer1.Panel2.Controls.Add(this.lblInitiative);
+			this.splitContainer1.Panel2.Controls.Add(this.lblHP);
+			this.splitContainer1.Panel2.Controls.Add(this.lblReflexLight);
+			this.splitContainer1.Panel2.Controls.Add(this.lblReflexHeavy);
+			this.splitContainer1.Panel2.Controls.Add(this.lblFortitude);
+			this.splitContainer1.Panel2.Controls.Add(this.lblWill);
+			this.splitContainer1.Panel2.Controls.Add(this.lblFortunePoints);
+			this.splitContainer1.Panel2.Controls.Add(this.lblEnlightenment);
+			this.splitContainer1.Panel2.Controls.Add(this.lblMagicRegen);
+			this.splitContainer1.Panel2.Controls.Add(this.lblMagicTotal);
+			this.splitContainer1.Panel2.Controls.Add(this.lblReflexLightName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblReflexHeavyName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblFortitudeName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblWillName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblFortunePointsName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblEnlightenmentName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblMagicRegenName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblMagicTotalName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblACLightName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblACHeavyName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblInitiativeName);
+			this.splitContainer1.Panel2.Controls.Add(this.lblHPName);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickWisdomName);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickStrengthName);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickSpeedName);
@@ -153,7 +203,7 @@
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickConstitution);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickCharisma);
 			this.splitContainer1.Panel2.Controls.Add(this.chkHomebrew);
-			this.splitContainer1.Size = new System.Drawing.Size(684, 337);
+			this.splitContainer1.Size = new System.Drawing.Size(684, 359);
 			this.splitContainer1.SplitterDistance = 499;
 			this.splitContainer1.TabIndex = 0;
 			// 
@@ -232,6 +282,7 @@
 			this.txtName.Name = "txtName";
 			this.txtName.Size = new System.Drawing.Size(155, 20);
 			this.txtName.TabIndex = 17;
+			this.txtName.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtClass
 			// 
@@ -239,6 +290,7 @@
 			this.txtClass.Name = "txtClass";
 			this.txtClass.Size = new System.Drawing.Size(155, 20);
 			this.txtClass.TabIndex = 16;
+			this.txtClass.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtRace
 			// 
@@ -246,6 +298,7 @@
 			this.txtRace.Name = "txtRace";
 			this.txtRace.Size = new System.Drawing.Size(154, 20);
 			this.txtRace.TabIndex = 15;
+			this.txtRace.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtHeight
 			// 
@@ -253,6 +306,7 @@
 			this.txtHeight.Name = "txtHeight";
 			this.txtHeight.Size = new System.Drawing.Size(154, 20);
 			this.txtHeight.TabIndex = 14;
+			this.txtHeight.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtWeight
 			// 
@@ -260,6 +314,7 @@
 			this.txtWeight.Name = "txtWeight";
 			this.txtWeight.Size = new System.Drawing.Size(154, 20);
 			this.txtWeight.TabIndex = 13;
+			this.txtWeight.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtAge
 			// 
@@ -267,6 +322,7 @@
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(154, 20);
 			this.txtAge.TabIndex = 12;
+			this.txtAge.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtOccupation
 			// 
@@ -274,6 +330,7 @@
 			this.txtOccupation.Name = "txtOccupation";
 			this.txtOccupation.Size = new System.Drawing.Size(154, 20);
 			this.txtOccupation.TabIndex = 11;
+			this.txtOccupation.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtAspiration
 			// 
@@ -281,6 +338,7 @@
 			this.txtAspiration.Name = "txtAspiration";
 			this.txtAspiration.Size = new System.Drawing.Size(154, 20);
 			this.txtAspiration.TabIndex = 10;
+			this.txtAspiration.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtBackground
 			// 
@@ -288,6 +346,7 @@
 			this.txtBackground.Name = "txtBackground";
 			this.txtBackground.Size = new System.Drawing.Size(154, 20);
 			this.txtBackground.TabIndex = 9;
+			this.txtBackground.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// lblBackground
 			// 
@@ -813,113 +872,221 @@
 			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
 			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
 			// 
-			// chkHomebrew
+			// lblACLight
 			// 
-			this.chkHomebrew.AutoSize = true;
-			this.chkHomebrew.Enabled = false;
-			this.chkHomebrew.Location = new System.Drawing.Point(3, 341);
-			this.chkHomebrew.Name = "chkHomebrew";
-			this.chkHomebrew.Size = new System.Drawing.Size(89, 17);
-			this.chkHomebrew.TabIndex = 0;
-			this.chkHomebrew.Text = "Homebrewed";
-			this.chkHomebrew.UseVisualStyleBackColor = true;
+			this.lblACLight.AutoSize = true;
+			this.lblACLight.Location = new System.Drawing.Point(102, 157);
+			this.lblACLight.Name = "lblACLight";
+			this.lblACLight.Size = new System.Drawing.Size(10, 13);
+			this.lblACLight.TabIndex = 40;
+			this.lblACLight.Text = " ";
 			// 
-			// menuStrip1
+			// lblACHeavy
 			// 
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.helpToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Size = new System.Drawing.Size(684, 24);
-			this.menuStrip1.TabIndex = 1;
-			this.menuStrip1.Text = "menuStrip1";
+			this.lblACHeavy.AutoSize = true;
+			this.lblACHeavy.Location = new System.Drawing.Point(102, 144);
+			this.lblACHeavy.Name = "lblACHeavy";
+			this.lblACHeavy.Size = new System.Drawing.Size(10, 13);
+			this.lblACHeavy.TabIndex = 39;
+			this.lblACHeavy.Text = " ";
 			// 
-			// helpToolStripMenuItem
+			// lblInitiative
 			// 
-			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sendBugReportToolStripMenuItem});
-			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-			this.helpToolStripMenuItem.Text = "Help";
+			this.lblInitiative.AutoSize = true;
+			this.lblInitiative.Location = new System.Drawing.Point(102, 131);
+			this.lblInitiative.Name = "lblInitiative";
+			this.lblInitiative.Size = new System.Drawing.Size(10, 13);
+			this.lblInitiative.TabIndex = 38;
+			this.lblInitiative.Text = " ";
 			// 
-			// sendBugReportToolStripMenuItem
+			// lblHP
 			// 
-			this.sendBugReportToolStripMenuItem.Name = "sendBugReportToolStripMenuItem";
-			this.sendBugReportToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
-			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
+			this.lblHP.AutoSize = true;
+			this.lblHP.Location = new System.Drawing.Point(102, 118);
+			this.lblHP.Name = "lblHP";
+			this.lblHP.Size = new System.Drawing.Size(10, 13);
+			this.lblHP.TabIndex = 37;
+			this.lblHP.Text = " ";
 			// 
-			// lblQuickCharisma
+			// lblReflexLight
 			// 
-			this.lblQuickCharisma.AutoSize = true;
-			this.lblQuickCharisma.Location = new System.Drawing.Point(73, 5);
-			this.lblQuickCharisma.Name = "lblQuickCharisma";
-			this.lblQuickCharisma.Size = new System.Drawing.Size(10, 13);
-			this.lblQuickCharisma.TabIndex = 1;
-			this.lblQuickCharisma.Text = " ";
+			this.lblReflexLight.AutoSize = true;
+			this.lblReflexLight.Location = new System.Drawing.Point(118, 278);
+			this.lblReflexLight.Name = "lblReflexLight";
+			this.lblReflexLight.Size = new System.Drawing.Size(10, 13);
+			this.lblReflexLight.TabIndex = 36;
+			this.lblReflexLight.Text = " ";
 			// 
-			// lblQuickConstitution
+			// lblReflexHeavy
 			// 
-			this.lblQuickConstitution.AutoSize = true;
-			this.lblQuickConstitution.Location = new System.Drawing.Point(73, 18);
-			this.lblQuickConstitution.Name = "lblQuickConstitution";
-			this.lblQuickConstitution.Size = new System.Drawing.Size(10, 13);
-			this.lblQuickConstitution.TabIndex = 2;
-			this.lblQuickConstitution.Text = " ";
+			this.lblReflexHeavy.AutoSize = true;
+			this.lblReflexHeavy.Location = new System.Drawing.Point(118, 265);
+			this.lblReflexHeavy.Name = "lblReflexHeavy";
+			this.lblReflexHeavy.Size = new System.Drawing.Size(10, 13);
+			this.lblReflexHeavy.TabIndex = 35;
+			this.lblReflexHeavy.Text = " ";
 			// 
-			// lblQuickDexterity
+			// lblFortitude
 			// 
-			this.lblQuickDexterity.AutoSize = true;
-			this.lblQuickDexterity.Location = new System.Drawing.Point(73, 31);
-			this.lblQuickDexterity.Name = "lblQuickDexterity";
-			this.lblQuickDexterity.Size = new System.Drawing.Size(10, 13);
-			this.lblQuickDexterity.TabIndex = 3;
-			this.lblQuickDexterity.Text = " ";
+			this.lblFortitude.AutoSize = true;
+			this.lblFortitude.Location = new System.Drawing.Point(118, 252);
+			this.lblFortitude.Name = "lblFortitude";
+			this.lblFortitude.Size = new System.Drawing.Size(10, 13);
+			this.lblFortitude.TabIndex = 34;
+			this.lblFortitude.Text = " ";
 			// 
-			// lblQuickIntelligence
+			// lblWill
 			// 
-			this.lblQuickIntelligence.AutoSize = true;
-			this.lblQuickIntelligence.Location = new System.Drawing.Point(73, 44);
-			this.lblQuickIntelligence.Name = "lblQuickIntelligence";
-			this.lblQuickIntelligence.Size = new System.Drawing.Size(10, 13);
-			this.lblQuickIntelligence.TabIndex = 4;
-			this.lblQuickIntelligence.Text = " ";
+			this.lblWill.AutoSize = true;
+			this.lblWill.Location = new System.Drawing.Point(118, 239);
+			this.lblWill.Name = "lblWill";
+			this.lblWill.Size = new System.Drawing.Size(10, 13);
+			this.lblWill.TabIndex = 33;
+			this.lblWill.Text = " ";
 			// 
-			// lblQuickLuck
+			// lblFortunePoints
 			// 
-			this.lblQuickLuck.AutoSize = true;
-			this.lblQuickLuck.Location = new System.Drawing.Point(73, 57);
-			this.lblQuickLuck.Name = "lblQuickLuck";
-			this.lblQuickLuck.Size = new System.Drawing.Size(10, 13);
-			this.lblQuickLuck.TabIndex = 5;
-			this.lblQuickLuck.Text = " ";
+			this.lblFortunePoints.AutoSize = true;
+			this.lblFortunePoints.Location = new System.Drawing.Point(102, 217);
+			this.lblFortunePoints.Name = "lblFortunePoints";
+			this.lblFortunePoints.Size = new System.Drawing.Size(10, 13);
+			this.lblFortunePoints.TabIndex = 32;
+			this.lblFortunePoints.Text = " ";
 			// 
-			// lblQuickSpeed
+			// lblEnlightenment
 			// 
-			this.lblQuickSpeed.AutoSize = true;
-			this.lblQuickSpeed.Location = new System.Drawing.Point(73, 71);
-			this.lblQuickSpeed.Name = "lblQuickSpeed";
-			this.lblQuickSpeed.Size = new System.Drawing.Size(10, 13);
-			this.lblQuickSpeed.TabIndex = 6;
-			this.lblQuickSpeed.Text = " ";
+			this.lblEnlightenment.AutoSize = true;
+			this.lblEnlightenment.Location = new System.Drawing.Point(102, 204);
+			this.lblEnlightenment.Name = "lblEnlightenment";
+			this.lblEnlightenment.Size = new System.Drawing.Size(10, 13);
+			this.lblEnlightenment.TabIndex = 31;
+			this.lblEnlightenment.Text = " ";
 			// 
-			// lblQuickStrength
+			// lblMagicRegen
 			// 
-			this.lblQuickStrength.AutoSize = true;
-			this.lblQuickStrength.Location = new System.Drawing.Point(73, 84);
-			this.lblQuickStrength.Name = "lblQuickStrength";
-			this.lblQuickStrength.Size = new System.Drawing.Size(10, 13);
-			this.lblQuickStrength.TabIndex = 7;
-			this.lblQuickStrength.Text = " ";
+			this.lblMagicRegen.AutoSize = true;
+			this.lblMagicRegen.Location = new System.Drawing.Point(102, 191);
+			this.lblMagicRegen.Name = "lblMagicRegen";
+			this.lblMagicRegen.Size = new System.Drawing.Size(10, 13);
+			this.lblMagicRegen.TabIndex = 30;
+			this.lblMagicRegen.Text = " ";
 			// 
-			// lblQuickWisdom
+			// lblMagicTotal
 			// 
-			this.lblQuickWisdom.AutoSize = true;
-			this.lblQuickWisdom.Location = new System.Drawing.Point(73, 97);
-			this.lblQuickWisdom.Name = "lblQuickWisdom";
-			this.lblQuickWisdom.Size = new System.Drawing.Size(10, 13);
-			this.lblQuickWisdom.TabIndex = 8;
-			this.lblQuickWisdom.Text = " ";
+			this.lblMagicTotal.AutoSize = true;
+			this.lblMagicTotal.Location = new System.Drawing.Point(102, 178);
+			this.lblMagicTotal.Name = "lblMagicTotal";
+			this.lblMagicTotal.Size = new System.Drawing.Size(10, 13);
+			this.lblMagicTotal.TabIndex = 29;
+			this.lblMagicTotal.Text = " ";
+			// 
+			// lblReflexLightName
+			// 
+			this.lblReflexLightName.AutoSize = true;
+			this.lblReflexLightName.Location = new System.Drawing.Point(3, 278);
+			this.lblReflexLightName.Name = "lblReflexLightName";
+			this.lblReflexLightName.Size = new System.Drawing.Size(101, 13);
+			this.lblReflexLightName.TabIndex = 28;
+			this.lblReflexLightName.Text = "Reflex (Light armor):";
+			// 
+			// lblReflexHeavyName
+			// 
+			this.lblReflexHeavyName.AutoSize = true;
+			this.lblReflexHeavyName.Location = new System.Drawing.Point(3, 265);
+			this.lblReflexHeavyName.Name = "lblReflexHeavyName";
+			this.lblReflexHeavyName.Size = new System.Drawing.Size(109, 13);
+			this.lblReflexHeavyName.TabIndex = 27;
+			this.lblReflexHeavyName.Text = "Reflex (Heavy armor):";
+			// 
+			// lblFortitudeName
+			// 
+			this.lblFortitudeName.AutoSize = true;
+			this.lblFortitudeName.Location = new System.Drawing.Point(3, 252);
+			this.lblFortitudeName.Name = "lblFortitudeName";
+			this.lblFortitudeName.Size = new System.Drawing.Size(51, 13);
+			this.lblFortitudeName.TabIndex = 26;
+			this.lblFortitudeName.Text = "Fortitude:";
+			// 
+			// lblWillName
+			// 
+			this.lblWillName.AutoSize = true;
+			this.lblWillName.Location = new System.Drawing.Point(3, 239);
+			this.lblWillName.Name = "lblWillName";
+			this.lblWillName.Size = new System.Drawing.Size(27, 13);
+			this.lblWillName.TabIndex = 25;
+			this.lblWillName.Text = "Will:";
+			// 
+			// lblFortunePointsName
+			// 
+			this.lblFortunePointsName.AutoSize = true;
+			this.lblFortunePointsName.Location = new System.Drawing.Point(3, 217);
+			this.lblFortunePointsName.Name = "lblFortunePointsName";
+			this.lblFortunePointsName.Size = new System.Drawing.Size(78, 13);
+			this.lblFortunePointsName.TabIndex = 24;
+			this.lblFortunePointsName.Text = "Fortune Points:";
+			// 
+			// lblEnlightenmentName
+			// 
+			this.lblEnlightenmentName.AutoSize = true;
+			this.lblEnlightenmentName.Location = new System.Drawing.Point(3, 204);
+			this.lblEnlightenmentName.Name = "lblEnlightenmentName";
+			this.lblEnlightenmentName.Size = new System.Drawing.Size(77, 13);
+			this.lblEnlightenmentName.TabIndex = 23;
+			this.lblEnlightenmentName.Text = "Enlightenment:";
+			// 
+			// lblMagicRegenName
+			// 
+			this.lblMagicRegenName.AutoSize = true;
+			this.lblMagicRegenName.Location = new System.Drawing.Point(3, 191);
+			this.lblMagicRegenName.Name = "lblMagicRegenName";
+			this.lblMagicRegenName.Size = new System.Drawing.Size(74, 13);
+			this.lblMagicRegenName.TabIndex = 22;
+			this.lblMagicRegenName.Text = "Magic Regen:";
+			// 
+			// lblMagicTotalName
+			// 
+			this.lblMagicTotalName.AutoSize = true;
+			this.lblMagicTotalName.Location = new System.Drawing.Point(3, 178);
+			this.lblMagicTotalName.Name = "lblMagicTotalName";
+			this.lblMagicTotalName.Size = new System.Drawing.Size(66, 13);
+			this.lblMagicTotalName.TabIndex = 21;
+			this.lblMagicTotalName.Text = "Magic Total:";
+			// 
+			// lblACLightName
+			// 
+			this.lblACLightName.AutoSize = true;
+			this.lblACLightName.Location = new System.Drawing.Point(3, 157);
+			this.lblACLightName.Name = "lblACLightName";
+			this.lblACLightName.Size = new System.Drawing.Size(85, 13);
+			this.lblACLightName.TabIndex = 20;
+			this.lblACLightName.Text = "AC (Light armor):";
+			// 
+			// lblACHeavyName
+			// 
+			this.lblACHeavyName.AutoSize = true;
+			this.lblACHeavyName.Location = new System.Drawing.Point(3, 144);
+			this.lblACHeavyName.Name = "lblACHeavyName";
+			this.lblACHeavyName.Size = new System.Drawing.Size(93, 13);
+			this.lblACHeavyName.TabIndex = 19;
+			this.lblACHeavyName.Text = "AC (Heavy armor):";
+			// 
+			// lblInitiativeName
+			// 
+			this.lblInitiativeName.AutoSize = true;
+			this.lblInitiativeName.Location = new System.Drawing.Point(3, 131);
+			this.lblInitiativeName.Name = "lblInitiativeName";
+			this.lblInitiativeName.Size = new System.Drawing.Size(49, 13);
+			this.lblInitiativeName.TabIndex = 18;
+			this.lblInitiativeName.Text = "Initiative:";
+			// 
+			// lblHPName
+			// 
+			this.lblHPName.AutoSize = true;
+			this.lblHPName.Location = new System.Drawing.Point(3, 118);
+			this.lblHPName.Name = "lblHPName";
+			this.lblHPName.Size = new System.Drawing.Size(25, 13);
+			this.lblHPName.TabIndex = 17;
+			this.lblHPName.Text = "HP:";
 			// 
 			// lblQuickWisdomName
 			// 
@@ -993,11 +1160,135 @@
 			this.lblQuickCharismaName.TabIndex = 9;
 			this.lblQuickCharismaName.Text = "Charisma:";
 			// 
+			// lblQuickWisdom
+			// 
+			this.lblQuickWisdom.AutoSize = true;
+			this.lblQuickWisdom.Location = new System.Drawing.Point(73, 97);
+			this.lblQuickWisdom.Name = "lblQuickWisdom";
+			this.lblQuickWisdom.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickWisdom.TabIndex = 8;
+			this.lblQuickWisdom.Text = " ";
+			// 
+			// lblQuickStrength
+			// 
+			this.lblQuickStrength.AutoSize = true;
+			this.lblQuickStrength.Location = new System.Drawing.Point(73, 84);
+			this.lblQuickStrength.Name = "lblQuickStrength";
+			this.lblQuickStrength.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickStrength.TabIndex = 7;
+			this.lblQuickStrength.Text = " ";
+			// 
+			// lblQuickSpeed
+			// 
+			this.lblQuickSpeed.AutoSize = true;
+			this.lblQuickSpeed.Location = new System.Drawing.Point(73, 71);
+			this.lblQuickSpeed.Name = "lblQuickSpeed";
+			this.lblQuickSpeed.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickSpeed.TabIndex = 6;
+			this.lblQuickSpeed.Text = " ";
+			// 
+			// lblQuickLuck
+			// 
+			this.lblQuickLuck.AutoSize = true;
+			this.lblQuickLuck.Location = new System.Drawing.Point(73, 57);
+			this.lblQuickLuck.Name = "lblQuickLuck";
+			this.lblQuickLuck.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickLuck.TabIndex = 5;
+			this.lblQuickLuck.Text = " ";
+			// 
+			// lblQuickIntelligence
+			// 
+			this.lblQuickIntelligence.AutoSize = true;
+			this.lblQuickIntelligence.Location = new System.Drawing.Point(73, 44);
+			this.lblQuickIntelligence.Name = "lblQuickIntelligence";
+			this.lblQuickIntelligence.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickIntelligence.TabIndex = 4;
+			this.lblQuickIntelligence.Text = " ";
+			// 
+			// lblQuickDexterity
+			// 
+			this.lblQuickDexterity.AutoSize = true;
+			this.lblQuickDexterity.Location = new System.Drawing.Point(73, 31);
+			this.lblQuickDexterity.Name = "lblQuickDexterity";
+			this.lblQuickDexterity.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickDexterity.TabIndex = 3;
+			this.lblQuickDexterity.Text = " ";
+			// 
+			// lblQuickConstitution
+			// 
+			this.lblQuickConstitution.AutoSize = true;
+			this.lblQuickConstitution.Location = new System.Drawing.Point(73, 18);
+			this.lblQuickConstitution.Name = "lblQuickConstitution";
+			this.lblQuickConstitution.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickConstitution.TabIndex = 2;
+			this.lblQuickConstitution.Text = " ";
+			// 
+			// lblQuickCharisma
+			// 
+			this.lblQuickCharisma.AutoSize = true;
+			this.lblQuickCharisma.Location = new System.Drawing.Point(73, 5);
+			this.lblQuickCharisma.Name = "lblQuickCharisma";
+			this.lblQuickCharisma.Size = new System.Drawing.Size(10, 13);
+			this.lblQuickCharisma.TabIndex = 1;
+			this.lblQuickCharisma.Text = " ";
+			// 
+			// chkHomebrew
+			// 
+			this.chkHomebrew.AutoSize = true;
+			this.chkHomebrew.Enabled = false;
+			this.chkHomebrew.Location = new System.Drawing.Point(3, 337);
+			this.chkHomebrew.Name = "chkHomebrew";
+			this.chkHomebrew.Size = new System.Drawing.Size(89, 17);
+			this.chkHomebrew.TabIndex = 0;
+			this.chkHomebrew.Text = "Homebrewed";
+			this.chkHomebrew.UseVisualStyleBackColor = true;
+			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(684, 24);
+			this.menuStrip1.TabIndex = 1;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// fileToolStripMenuItem
+			// 
+			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.exportPDFToolStripMenuItem});
+			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+			this.fileToolStripMenuItem.Text = "File";
+			// 
+			// exportPDFToolStripMenuItem
+			// 
+			this.exportPDFToolStripMenuItem.Name = "exportPDFToolStripMenuItem";
+			this.exportPDFToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+			this.exportPDFToolStripMenuItem.Text = "Export PDF";
+			this.exportPDFToolStripMenuItem.Click += new System.EventHandler(this.exportPDFToolStripMenuItem_Click);
+			// 
+			// helpToolStripMenuItem
+			// 
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendBugReportToolStripMenuItem});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.helpToolStripMenuItem.Text = "Help";
+			// 
+			// sendBugReportToolStripMenuItem
+			// 
+			this.sendBugReportToolStripMenuItem.Name = "sendBugReportToolStripMenuItem";
+			this.sendBugReportToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
+			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(684, 361);
+			this.ClientSize = new System.Drawing.Size(684, 383);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.menuStrip1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -1114,6 +1405,32 @@
 		private System.Windows.Forms.Label lblQuickDexterityName;
 		private System.Windows.Forms.Label lblQuickConstitutionName;
 		private System.Windows.Forms.Label lblQuickCharismaName;
+		private System.Windows.Forms.Label lblACLightName;
+		private System.Windows.Forms.Label lblACHeavyName;
+		private System.Windows.Forms.Label lblInitiativeName;
+		private System.Windows.Forms.Label lblHPName;
+		private System.Windows.Forms.Label lblReflexLight;
+		private System.Windows.Forms.Label lblReflexHeavy;
+		private System.Windows.Forms.Label lblFortitude;
+		private System.Windows.Forms.Label lblWill;
+		private System.Windows.Forms.Label lblFortunePoints;
+		private System.Windows.Forms.Label lblEnlightenment;
+		private System.Windows.Forms.Label lblMagicRegen;
+		private System.Windows.Forms.Label lblMagicTotal;
+		private System.Windows.Forms.Label lblReflexLightName;
+		private System.Windows.Forms.Label lblReflexHeavyName;
+		private System.Windows.Forms.Label lblFortitudeName;
+		private System.Windows.Forms.Label lblWillName;
+		private System.Windows.Forms.Label lblFortunePointsName;
+		private System.Windows.Forms.Label lblEnlightenmentName;
+		private System.Windows.Forms.Label lblMagicRegenName;
+		private System.Windows.Forms.Label lblMagicTotalName;
+		private System.Windows.Forms.Label lblACLight;
+		private System.Windows.Forms.Label lblACHeavy;
+		private System.Windows.Forms.Label lblInitiative;
+		private System.Windows.Forms.Label lblHP;
+		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem exportPDFToolStripMenuItem;
     }
 }
 
