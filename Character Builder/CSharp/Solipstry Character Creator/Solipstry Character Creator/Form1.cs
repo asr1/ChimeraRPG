@@ -327,7 +327,7 @@ namespace Solipstry_Character_Creator
 			character.magicTotal = 5 * character.CalculateModifier(character.wisdom);
 			character.magicRegen = character.CalculateModifier(character.intelligence);
 			character.fortunePoints = character.CalculateModifier(character.luck);
-			//character.enlightenment = 
+			character.enlightenment = character.skills[Skills.ENLIGHTENMENT];
 
 			character.acLight = 7 + character.CalculateModifier(Math.Max(character.speed, character.dexterity)) + character.CalculateModifier(character.skills[Skills.LIGHT_ARMOR]);
 			character.acHeavy = 12 + character.CalculateModifier(character.skills[Skills.HEAVY_ARMOR]);
@@ -789,7 +789,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			CheckHomebrew();
 
-			//TODO Update skill values
+			UpdateInformation();
 		}
 
 		private void clbTalents_SelectedIndexChanged(object sender, EventArgs e)
@@ -840,6 +840,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 		}
 		#endregion
 
+		#region Menu stuff
 		private void sendBugReportToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			BugReportDialog bugReport = new BugReportDialog();
@@ -924,6 +925,13 @@ finished: //If the function has determined the character is homebrewed, jump her
 				fields.SetField(strMod, mod.ToString());
 			}
 
+			int talentNum = 1;
+			foreach(string talent in character.talents)
+			{
+				fields.SetField("talent_skill_" + talentNum, talent);
+				++talentNum;
+			}
+
 			//TODO Custom things
 
 			stamper.FormFlattening = false;
@@ -954,5 +962,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 		{
 			UpdateBasicInformation();
 		}
+		#endregion
 	}
 }
