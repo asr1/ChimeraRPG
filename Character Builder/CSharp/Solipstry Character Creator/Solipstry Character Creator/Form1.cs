@@ -478,6 +478,13 @@ namespace Solipstry_Character_Creator
 		{
 			bool hb = false; //Whether or not the character is homebrewed
 
+			//Check custom talents, spells, and talents
+			if(character.customTalents.Count != 0)
+			{
+				hb = true;
+				goto finished;
+			}
+
 			//Check if attributes are within [9,100]
 			if(character.charisma < 9 || character.charisma > 100 ||
 				character.constitution < 9 || character.constitution > 100 ||
