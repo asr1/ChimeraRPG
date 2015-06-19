@@ -21,7 +21,7 @@
 		public static int LIGHT_ARMOR = 16;
 		public static int MEDICINE = 17;
 		public static int MELEE_WEAPON = 18;
-		public static int NATURE = 19;
+		public static int SURVIVAL = 19;
 		public static int PERCEPTION = 20;
 		public static int RANGED_COMBAT = 21;
 		public static int RESTORATION = 22;
