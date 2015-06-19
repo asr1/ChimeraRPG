@@ -932,6 +932,33 @@ finished: //If the function has determined the character is homebrewed, jump her
 				++talentNum;
 			}
 
+			int spellNum = 1;
+			foreach(string spell in character.spells)
+			{
+				string strName = "spell_" + spellNum + "_name";
+				string strCost = "spell_" + spellNum + "_cost";
+				string strSchool = "spell_" + spellNum + "_school";
+				string strEffect = "spell_" + spellNum + "_effect";
+				++spellNum;
+
+				DataSet ds = PerformQuery(spellsConnection,
+					"SELECT cost, school, effect FROM Spells WHERE spell_name='" + spell + "'",
+					"Spells");
+				DataRow row = ds.Tables["Spells"].Rows[0];
+
+				fields.SetField(strName, spell);
+				fields.SetField(strCost, row[0].ToString());
+				fields.SetField(strEffect, row[2].ToString());
+
+				string school = row[1].ToString();
+				if(school.Equals("Meta"))
+				{
+					school = character.metaSpells[spell];
+				}
+
+				fields.SetField(strSchool, school);
+			}
+
 			//TODO Custom things
 
 			stamper.FormFlattening = false;
