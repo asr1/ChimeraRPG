@@ -141,6 +141,7 @@ namespace Solipstry_Character_Creator
 				case "escape":
 					return skills[Skills.ESCAPE];
 				case "heavy armor":
+				case "heavy_armor":
 					return skills[Skills.HEAVY_ARMOR];
 				case "interaction":
 					return skills[Skills.INTERACTION];
@@ -149,31 +150,38 @@ namespace Solipstry_Character_Creator
 				case "language":
 					return skills[Skills.LANGUAGE];
 				case "light armor":
+				case "light_armor":
 					return skills[Skills.LIGHT_ARMOR];
 				case "medicine":
 					return skills[Skills.MEDICINE];
 				case "melee weapon":
+				case "melee_weapon":
 					return skills[Skills.MELEE_WEAPON];
-				case "nature":
-					return skills[Skills.NATURE];
+				case "survival":
+					return skills[Skills.SURVIVAL];
 				case "perception":
 					return skills[Skills.PERCEPTION];
 				case "ranged combat":
+				case "ranged_combat":
 					return skills[Skills.RANGED_COMBAT];
 				case "restoration":
 					return skills[Skills.RESTORATION];
 				case "ride drive":
 				case "ride/drive":
+				case "ride_drive":
 					return skills[Skills.RIDE_DRIVE];
 				case "security":
 					return skills[Skills.SECURITY];
 				case "sense motive":
+				case "sense_motive":
 					return skills[Skills.SENSE_MOTIVE];
 				case "sleight of hand":
+				case "sleight_of_hand":
 					return skills[Skills.SLEIGHT_OF_HAND];
 				case "stealth":
 					return skills[Skills.STEALTH];
 				case "unarmed combat":
+				case "unarmed_combat":
 					return skills[Skills.UNARMED_COMBAT];
 				default:
 					Debug.Print("{0} is not a recognized skill", skill);
