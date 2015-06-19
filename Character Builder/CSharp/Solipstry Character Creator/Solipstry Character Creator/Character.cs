@@ -10,6 +10,7 @@ namespace Solipstry_Character_Creator
         public string name;
         public string _class;
         public string race;
+		public string age;
         public string height;
         public string weight;
         public string occupation;
@@ -42,8 +43,13 @@ namespace Solipstry_Character_Creator
 		public int magicRegen;
 		public int fortunePoints;
 		public int initiative;
+		public int acLight;
+		public int acHeavy;
+		public int reflexHeavy;
+		public int reflexLight;
+		public int will;
+		public int fortitude;
 		public int enlightenment; //?
-		public int numLanguages;  //?
 
 		public Character()
 		{
@@ -61,6 +67,8 @@ namespace Solipstry_Character_Creator
 			speed = 20;
 			strength = 20;
 			wisdom = 20;
+
+			initiative = 2;
 
 			for (int i = 0; i < skills.Length; ++i)
 			{
@@ -120,9 +128,8 @@ namespace Solipstry_Character_Creator
 					return skills[Skills.CHEMISTRY];
 				case "conjuration":
 					return skills[Skills.CONJURATION];
-				case "craft smith":
-				case "craft/smith":
-					return skills[Skills.CRAFT_SMITH];
+				case "craft":
+					return skills[Skills.CRAFT];
 				case "destruction":
 					return skills[Skills.DESTRUCTION];
 				case "disguise":

@@ -8,7 +8,7 @@
 		public static int BLOCK = 3;
 		public static int CHEMISTRY = 4;
 		public static int CONJURATION = 5;
-		public static int CRAFT_SMITH = 6;
+		public static int CRAFT = 6;
 		public static int DESTRUCTION = 7;
 		public static int DISGUISE = 8;
 		public static int ENGINEERING = 9;
