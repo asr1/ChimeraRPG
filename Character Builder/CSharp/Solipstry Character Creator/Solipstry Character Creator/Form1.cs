@@ -1004,6 +1004,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 				fields.SetField(strSchool, school);
 			}
 			#endregion
+			
 			//TODO Custom things
 
 			stamper.FormFlattening = false;
