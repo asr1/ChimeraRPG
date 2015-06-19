@@ -23,6 +23,8 @@ namespace Solipstry_Character_Creator
 		public List<string> spells;
 		public List<string> talents;
 
+		public List<string> customTalents;
+
 		//Keeps track of which school meta spells are using
 		public Dictionary<string, string> metaSpells;
 
@@ -56,6 +58,7 @@ namespace Solipstry_Character_Creator
 			skills = new int[36];
 			spells = new List<string>();
 			talents = new List<string>();
+			customTalents = new List<string>();
 			metaSpells = new Dictionary<string, string>();
 
 			//Set everything to its default values

@@ -15,6 +15,8 @@ using System.Net.Mail;
 using System.Net;
 using System.IO;
 
+using Microsoft;
+
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
@@ -34,6 +36,8 @@ namespace Solipstry_Character_Creator
 		private List<Button> attrValuesList;
 		private List<TextBox> attributeTextBoxes;
 
+		private List<string> customTalents;
+
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
 		private int primarySkillCount; //Number of skills set as primary skills
@@ -44,6 +48,16 @@ namespace Solipstry_Character_Creator
             InitializeComponent();
 
 			character = new Character();
+			customTalents = new List<string>();
+
+			//Create context menu strips
+			ContextMenuStrip talentsMenuStrip = new ContextMenuStrip();
+			ToolStripMenuItem newTalentItem = new ToolStripMenuItem("New Talent");
+			newTalentItem.Name = "New Talent";
+			newTalentItem.Click += new EventHandler(newTalentMenuItem_Click);
+
+			talentsMenuStrip.Items.Add(newTalentItem);
+			clbTalents.ContextMenuStrip = talentsMenuStrip;
 
 			//Store the labels for attributes in a list for easier processing
 			attrValuesList = new List<Button>();
@@ -796,32 +810,52 @@ finished: //If the function has determined the character is homebrewed, jump her
 		{
 			//Get information about the talent
 			string talentName = clbTalents.SelectedItem.ToString();
-			
-			DataSet ds = PerformQuery(talentsConnection,
-				"SELECT prereq, desc FROM Talents WHERE talent_name = '" + talentName + "'",
-				"Talents");
-			DataRow row = ds.Tables["Talents"].Rows[0];
 
-			//Update the talent quick info view with the talent information
-			txtTalentInfo.Text = talentName +
-				Environment.NewLine + "Prerequisites: " +
-				(string.IsNullOrWhiteSpace(row[0].ToString()) ? "None" : row[0]) +
-				Environment.NewLine + row[1];
-			txtTalentInfo.SelectionStart = 0;
-			txtTalentInfo.SelectionLength = 0;
+			if(customTalents.Contains(talentName))
+			{
+				txtTalentInfo.Text = talentName;
+			}
+			else 
+			{
+				DataSet ds = PerformQuery(talentsConnection,
+					"SELECT prereq, desc FROM Talents WHERE talent_name = '" + talentName + "'",
+					"Talents");
+				DataRow row = ds.Tables["Talents"].Rows[0];
+
+				//Update the talent quick info view with the talent information
+				txtTalentInfo.Text = talentName +
+					Environment.NewLine + "Prerequisites: " +
+					(string.IsNullOrWhiteSpace(row[0].ToString()) ? "None" : row[0]) +
+					Environment.NewLine + row[1];
+				txtTalentInfo.SelectionStart = 0;
+				txtTalentInfo.SelectionLength = 0;
+			}
 		}
 
 		private void clbTalents_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			if(e.CurrentValue == CheckState.Unchecked)
+			if(customTalents.Contains(clbTalents.SelectedItem.ToString()))
 			{
-				character.talents.Add(clbTalents.SelectedItem.ToString());
+				if(e.NewValue == CheckState.Checked)
+				{
+					character.customTalents.Add(clbTalents.SelectedItem.ToString());
+				}
+				else
+				{
+					character.customTalents.Remove(clbTalents.SelectedItem.ToString());
+				}
 			}
 			else
 			{
-				character.talents.Remove(clbTalents.SelectedItem.ToString());
+				if(e.NewValue == CheckState.Checked)
+				{
+					character.talents.Add(clbTalents.SelectedItem.ToString());
+				}
+				else
+				{
+					character.talents.Remove(clbTalents.SelectedItem.ToString());
+				}
 			}
-
 			CheckHomebrew();
 		}
 
@@ -879,6 +913,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 			fields.SetField("aspiration", character.aspiration);
 			fields.SetField("background", character.background);
 
+			#region Export skills
 			//Make iterating through the skills easier
 			string[] skills = 
 			{
@@ -912,8 +947,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 				"stealth",
 				"unarmed_combat"
 			};
-			
-			foreach(string skill in skills)
+
+			foreach (string skill in skills)
 			{
 				string strScore = skill + "_score";
 				string strMod = skill + "_mod";
@@ -924,7 +959,9 @@ finished: //If the function has determined the character is homebrewed, jump her
 				fields.SetField(strScore, score.ToString());
 				fields.SetField(strMod, mod.ToString());
 			}
+			#endregion
 
+			#region Export talents
 			int talentNum = 1;
 			foreach(string talent in character.talents)
 			{
@@ -932,6 +969,14 @@ finished: //If the function has determined the character is homebrewed, jump her
 				++talentNum;
 			}
 
+			foreach(string talent in character.customTalents)
+			{
+				fields.SetField("talent_skill_" + talentNum, talent);
+				++talentNum;
+			}
+			#endregion
+
+			#region Export spells
 			int spellNum = 1;
 			foreach(string spell in character.spells)
 			{
@@ -958,7 +1003,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 				fields.SetField(strSchool, school);
 			}
-
+			#endregion
 			//TODO Custom things
 
 			stamper.FormFlattening = false;
@@ -984,10 +1029,35 @@ finished: //If the function has determined the character is homebrewed, jump her
 				ExportPDF(file);
 			}
 		}
+		#endregion
 
 		private void BasicInformationTextBox_TextChanged(object sender, EventArgs e)
 		{
 			UpdateBasicInformation();
+		}
+
+		#region Context menu handlers
+		private void newTalentMenuItem_Click(object sender, EventArgs e)
+		{
+			string talentName = Microsoft.VisualBasic.Interaction.InputBox("New talent name");
+
+			if(!String.IsNullOrWhiteSpace(talentName))
+			{
+				customTalents.Add(talentName);
+				clbTalents.Items.Add(talentName);
+				clbTalents.SetSelected(clbTalents.Items.Count - 1, true);
+				clbTalents.SetItemChecked(clbTalents.Items.Count - 1, true);
+			}
+		}
+
+		private void newSpellMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void newSkillMenuItem_Click(object sender, EventArgs e)
+		{
+
 		}
 		#endregion
 	}
