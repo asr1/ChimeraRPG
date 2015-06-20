@@ -37,7 +37,7 @@ namespace Solipstry_Character_Creator
 		private List<TextBox> attributeTextBoxes;
 
 		private List<string> customTalents;
-		private List<string> customSkills;
+		private List<CustomSkill> customSkills;
 
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
@@ -50,6 +50,7 @@ namespace Solipstry_Character_Creator
 
 			character = new Character();
 			customTalents = new List<string>();
+			customSkills = new List<CustomSkill>();
 
 			//Create context menu strips
 			ContextMenuStrip talentsMenuStrip = new ContextMenuStrip();
@@ -59,6 +60,14 @@ namespace Solipstry_Character_Creator
 
 			talentsMenuStrip.Items.Add(newTalentItem);
 			clbTalents.ContextMenuStrip = talentsMenuStrip;
+
+			ContextMenuStrip skillsMenuStrip = new ContextMenuStrip();
+			ToolStripMenuItem newSkillItem = new ToolStripMenuItem("New Skill");
+			newSkillItem.Name = "New Skill";
+			newSkillItem.Click += new EventHandler(newSkillMenuItem_Click);
+
+			skillsMenuStrip.Items.Add(newSkillItem);
+			clbSkills.ContextMenuStrip = skillsMenuStrip;
 
 			//Store the labels for attributes in a list for easier processing
 			attrValuesList = new List<Button>();
@@ -798,15 +807,33 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbSkills_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			if(e.NewValue == CheckState.Unchecked)
+			string skillName = clbSkills.SelectedItem.ToString();
+
+			if (IsCustomSkill(skillName))
 			{
-				--primarySkillCount;
-				character.skills[e.Index] = 10;
+				if(e.NewValue == CheckState.Unchecked)
+				{
+					--primarySkillCount;
+					character.customSkills[skillName] = 10;
+				}
+				else
+				{
+					++primarySkillCount;
+					character.customSkills[skillName] = 25;
+				}
 			}
 			else
 			{
-				++primarySkillCount;
-				character.skills[e.Index] = 25;
+				if (e.NewValue == CheckState.Unchecked)
+				{
+					--primarySkillCount;
+					character.skills[e.Index] = 10;
+				}
+				else
+				{
+					++primarySkillCount;
+					character.skills[e.Index] = 25;
+				}
 			}
 
 			CheckHomebrew();
@@ -871,14 +898,23 @@ finished: //If the function has determined the character is homebrewed, jump her
 		{
 			//Get information about the skill
 			string skillName = clbSkills.SelectedItem.ToString();
-			DataSet ds = PerformQuery(skillsConnection, 
-				"SELECT desc FROM Skills WHERE skill_name = '" + skillName + "'", "Skills");
-			DataRow row = ds.Tables["Skills"].Rows[0];
 
-			//Update the quick info panel with the skills information
-			txtSkillInfo.Text = skillName + Environment.NewLine + row[0].ToString();
-			txtSkillInfo.SelectionStart = 0;
-			txtSkillInfo.SelectionStart = 0;
+			if (IsCustomSkill(skillName))
+			{
+				CustomSkill skill = GetCustomSkill(skillName);
+				txtSkillInfo.Text = skillName + Environment.NewLine + skill.governingAttribute + " based.";
+			}
+			else
+			{
+				DataSet ds = PerformQuery(skillsConnection,
+					"SELECT desc FROM Skills WHERE skill_name = '" + skillName + "'", "Skills");
+				DataRow row = ds.Tables["Skills"].Rows[0];
+
+				//Update the quick info panel with the skills information
+				txtSkillInfo.Text = skillName + Environment.NewLine + row[0].ToString();
+				txtSkillInfo.SelectionStart = 0;
+				txtSkillInfo.SelectionStart = 0;
+			}
 		}
 		#endregion
 
@@ -966,6 +1002,21 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 				fields.SetField(strScore, score.ToString());
 				fields.SetField(strMod, mod.ToString());
+			}
+
+			int customSkillNum = 1;
+			foreach(CustomSkill skill in customSkills)
+			{
+				string strName = "custom_skill_" + customSkillNum + "_name";
+				string strAttr = "custom_skill_" + customSkillNum + "_attribute";
+				string strScore = "custom_skill_" + customSkillNum + "_score";
+				string strMod = "custom_skill_" + customSkillNum + "_mod";
+				++customSkillNum;
+
+				fields.SetField(strName, skill.name);
+				fields.SetField(strAttr, skill.governingAttribute);
+				fields.SetField(strScore, character.customSkills[skill.name].ToString());
+				fields.SetField(strMod, character.CalculateModifier(character.customSkills[skill.name]).ToString());
 			}
 			#endregion
 
@@ -1066,8 +1117,60 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void newSkillMenuItem_Click(object sender, EventArgs e)
 		{
+			CustomSkillForm frmSkill = new CustomSkillForm();
+			DialogResult result = frmSkill.ShowDialog();
 
+			if(result == DialogResult.OK)
+			{
+				CustomSkill newSkill = new CustomSkill();
+				newSkill.name = frmSkill.GetSkillName();
+				newSkill.governingAttribute = frmSkill.GetGoverningAttribute();
+
+				character.customSkills[newSkill.name] = frmSkill.IsPrimarySkill() ? 25 : 10;
+
+				customSkills.Add(newSkill);
+
+				clbSkills.Items.Add(newSkill.name);
+				clbSkills.SelectedIndex = clbSkills.Items.Count - 1;
+				clbSkills.SetItemChecked(clbSkills.Items.Count - 1, frmSkill.IsPrimarySkill());
+			}
 		}
 		#endregion
+
+		/// <summary>
+		/// Checks if the specified skill is a custom skill
+		/// </summary>
+		/// <param name="skillName">Skill to check</param>
+		/// <returns>True if the skill is custom, false otherwise</returns>
+		private bool IsCustomSkill(string skillName)
+		{
+			foreach(CustomSkill skill in customSkills)
+			{
+				if(skill.name.Equals(skillName))
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Gets information about a custom skill
+		/// </summary>
+		/// <param name="skillName">Name of the skill to get</param>
+		/// <returns>CustomSkill object if the skill is a custom skill, null otherwise</returns>
+		private CustomSkill GetCustomSkill(string skillName)
+		{
+			foreach(CustomSkill skill in customSkills)
+			{
+				if(skill.name.Equals(skillName))
+				{
+					return skill;
+				}
+			}
+
+			return null;
+		}
 	}
 }

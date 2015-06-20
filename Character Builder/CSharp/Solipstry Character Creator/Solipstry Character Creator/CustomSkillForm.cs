@@ -40,5 +40,62 @@ namespace Solipstry_Character_Creator
 		{
 			cmbSkillAttr.SelectedIndex = 0;
 		}
+
+		/// <summary>
+		/// Gets the name of the created skill
+		/// </summary>
+		/// <returns>Name of the skill</returns>
+		public string GetSkillName()
+		{
+			return txtSkillName.Text;
+		}
+
+		/// <summary>
+		/// Gets the abbreviation of the skills governing attribute
+		/// </summary>
+		/// <returns>Abbreviation of the governing attribute</returns>
+		public string GetGoverningAttribute()
+		{
+			string attr = "";
+
+			switch(cmbSkillAttr.SelectedItem.ToString())
+			{
+				case "Charisma":
+					attr = "CHA";
+					break;
+				case "Constitution":
+					attr = "CON";
+					break;
+				case "Dexterity":
+					attr = "DEX";
+					break;
+				case "Intelligence":
+					attr = "INT";
+					break;
+				case "Luck":
+					attr = "LCK";
+					break;
+				case "Speed":
+					attr = "SPD";
+					break;
+				case "Strength":
+					attr = "STR";
+					break;
+				case "Wisdom":
+					attr = "WIS";
+					break;
+			}
+
+			return attr;
+		}
+
+		/// <summary>
+		/// Returns whether the user wants to use this skill as a primary skill
+		/// </summary>
+		/// <returns>True if the user wants the skill to be primary, false otherwise</returns>
+		public bool IsPrimarySkill()
+		{
+			return chkPrimary.Checked;
+		}
 	}
 }
