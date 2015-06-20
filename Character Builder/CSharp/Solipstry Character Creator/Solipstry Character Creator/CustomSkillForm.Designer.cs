@@ -1,6 +1,6 @@
 ﻿namespace Solipstry_Character_Creator
 {
-	partial class CustomSkill
+	partial class CustomSkillForm
 	{
 		/// <summary>
 		/// Required designer variable.

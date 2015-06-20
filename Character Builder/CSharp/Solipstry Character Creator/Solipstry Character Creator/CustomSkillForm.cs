@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Solipstry_Character_Creator
 {
-	public partial class CustomSkill : Form
+	public partial class CustomSkillForm : Form
 	{
-		public CustomSkill()
+		public CustomSkillForm()
 		{
 			InitializeComponent();
 		}
