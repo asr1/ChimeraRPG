@@ -125,6 +125,8 @@
 			this.Controls.Add(this.lblSpellName);
 			this.Controls.Add(this.btnOk);
 			this.Controls.Add(this.btnCancel);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.MaximizeBox = false;
 			this.Name = "CustomSpellForm";
 			this.Text = "Create Custom Skill";
 			this.Load += new System.EventHandler(this.CustomSpellForm_Load);
