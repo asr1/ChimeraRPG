@@ -36,11 +36,13 @@
 			this.cmbSchool = new System.Windows.Forms.ComboBox();
 			this.lblSchool = new System.Windows.Forms.Label();
 			this.txtCost = new System.Windows.Forms.TextBox();
+			this.lblEffect = new System.Windows.Forms.Label();
+			this.txtEffect = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// btnCancel
 			// 
-			this.btnCancel.Location = new System.Drawing.Point(122, 91);
+			this.btnCancel.Location = new System.Drawing.Point(122, 178);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 3;
@@ -50,7 +52,7 @@
 			// 
 			// btnOk
 			// 
-			this.btnOk.Location = new System.Drawing.Point(203, 91);
+			this.btnOk.Location = new System.Drawing.Point(203, 178);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.Size = new System.Drawing.Size(75, 23);
 			this.btnOk.TabIndex = 4;
@@ -112,11 +114,30 @@
 			this.txtCost.Size = new System.Drawing.Size(92, 20);
 			this.txtCost.TabIndex = 1;
 			// 
+			// lblEffect
+			// 
+			this.lblEffect.AutoSize = true;
+			this.lblEffect.Location = new System.Drawing.Point(15, 87);
+			this.lblEffect.Name = "lblEffect";
+			this.lblEffect.Size = new System.Drawing.Size(38, 13);
+			this.lblEffect.TabIndex = 7;
+			this.lblEffect.Text = "Effect:";
+			// 
+			// txtEffect
+			// 
+			this.txtEffect.Location = new System.Drawing.Point(12, 103);
+			this.txtEffect.Multiline = true;
+			this.txtEffect.Name = "txtEffect";
+			this.txtEffect.Size = new System.Drawing.Size(266, 69);
+			this.txtEffect.TabIndex = 8;
+			// 
 			// CustomSpellForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(290, 126);
+			this.ClientSize = new System.Drawing.Size(290, 213);
+			this.Controls.Add(this.txtEffect);
+			this.Controls.Add(this.lblEffect);
 			this.Controls.Add(this.txtCost);
 			this.Controls.Add(this.lblSchool);
 			this.Controls.Add(this.cmbSchool);
@@ -145,5 +166,7 @@
 		private System.Windows.Forms.ComboBox cmbSchool;
 		private System.Windows.Forms.Label lblSchool;
 		private System.Windows.Forms.TextBox txtCost;
+		private System.Windows.Forms.Label lblEffect;
+		private System.Windows.Forms.TextBox txtEffect;
 	}
 }

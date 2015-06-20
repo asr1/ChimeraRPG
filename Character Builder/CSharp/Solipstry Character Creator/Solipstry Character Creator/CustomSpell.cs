@@ -10,5 +10,6 @@ namespace Solipstry_Character_Creator
 		public string name;
 		public string cost;
 		public string school;
+		public string effect;
 	}
 }

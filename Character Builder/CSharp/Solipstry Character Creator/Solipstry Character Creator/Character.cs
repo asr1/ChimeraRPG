@@ -25,6 +25,7 @@ namespace Solipstry_Character_Creator
 
 		public List<string> customTalents;
 		public Dictionary<string, int> customSkills;
+		public List<string> customSpells;
 
 		//Keeps track of which school meta spells are using
 		public Dictionary<string, string> metaSpells;
@@ -63,6 +64,7 @@ namespace Solipstry_Character_Creator
 
 			customTalents = new List<string>();
 			customSkills = new Dictionary<string, int>();
+			customSpells = new List<string>();
 
 			//Set everything to its default values
 			charisma = 20;

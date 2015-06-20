@@ -86,6 +86,13 @@
     <Compile Include="CustomSkillForm.Designer.cs">
       <DependentUpon>CustomSkillForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomSpell.cs" />
+    <Compile Include="CustomSpellForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomSpellForm.Designer.cs">
+      <DependentUpon>CustomSpellForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomSkillForm.resx">
       <DependentUpon>CustomSkillForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomSpellForm.resx">
+      <DependentUpon>CustomSpellForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

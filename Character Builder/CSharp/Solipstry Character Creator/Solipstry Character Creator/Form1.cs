@@ -38,6 +38,7 @@ namespace Solipstry_Character_Creator
 
 		private List<string> customTalents;
 		private List<CustomSkill> customSkills;
+		private List<CustomSpell> customSpells;
 
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
@@ -49,8 +50,10 @@ namespace Solipstry_Character_Creator
             InitializeComponent();
 
 			character = new Character();
+
 			customTalents = new List<string>();
 			customSkills = new List<CustomSkill>();
+			customSpells = new List<CustomSpell>();
 
 			//Create context menu strips
 			ContextMenuStrip talentsMenuStrip = new ContextMenuStrip();
@@ -68,6 +71,14 @@ namespace Solipstry_Character_Creator
 
 			skillsMenuStrip.Items.Add(newSkillItem);
 			clbSkills.ContextMenuStrip = skillsMenuStrip;
+
+			ContextMenuStrip spellsMenuStrip = new ContextMenuStrip();
+			ToolStripMenuItem newSpellItem = new ToolStripMenuItem("New Spell");
+			newSpellItem.Name = "New Spell";
+			newSpellItem.Click += new EventHandler(newSpellMenuItem_Click);
+
+			spellsMenuStrip.Items.Add(newSpellItem);
+			clbSpells.ContextMenuStrip = spellsMenuStrip;
 
 			//Store the labels for attributes in a list for easier processing
 			attrValuesList = new List<Button>();
@@ -746,60 +757,90 @@ finished: //If the function has determined the character is homebrewed, jump her
 			//Get information about the spell
 			string spellName = clbSpells.SelectedItem.ToString();
 
-			DataSet ds = PerformQuery(spellsConnection,
-				"SELECT cost, school, prereq, effect FROM Spells WHERE spell_name = '" + spellName + "'",
-				"Spells");
-			DataRow row = ds.Tables["Spells"].Rows[0];
+			if(IsCustomSpell(spellName))
+			{
+				CustomSpell spell = GetCustomSpell(spellName);
 
-			//Update the talent quick info view with the talent information
-			txtSpellInfo.Text = spellName +
-				Environment.NewLine + "School: " + row[1] +
-				Environment.NewLine + "Cost: " + row[0] +
-				Environment.NewLine + "Prerequisites: " +
-				(string.IsNullOrWhiteSpace(row[2].ToString()) ? "None" : row[2]) +
-				Environment.NewLine + row[3];
-			txtSpellInfo.SelectionStart = 0;
-			txtSpellInfo.SelectionLength = 0;
+				txtSpellInfo.Text = spellName + Environment.NewLine +
+					"School: " + spell.school + Environment.NewLine +
+					"Cost: " + spell.cost;
+			}
+			else
+			{
+				DataSet ds = PerformQuery(spellsConnection,
+					"SELECT cost, school, prereq, effect FROM Spells WHERE spell_name = '" + spellName + "'",
+					"Spells");
+				DataRow row = ds.Tables["Spells"].Rows[0];
+
+				//Update the talent quick info view with the talent information
+				txtSpellInfo.Text = spellName +
+					Environment.NewLine + "School: " + row[1] +
+					Environment.NewLine + "Cost: " + row[0] +
+					Environment.NewLine + "Prerequisites: " +
+					(string.IsNullOrWhiteSpace(row[2].ToString()) ? "None" : row[2]) +
+					Environment.NewLine + row[3];
+				txtSpellInfo.SelectionStart = 0;
+				txtSpellInfo.SelectionLength = 0;
+			}
 		}
 
 		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			if (e.CurrentValue == CheckState.Checked)
+			string spellName = clbSpells.SelectedItem.ToString();
+
+			if(IsCustomSpell(spellName))
 			{
-				character.spells.Remove(clbSpells.SelectedItem.ToString());
-				character.metaSpells[clbSpells.SelectedItem.ToString()] = null;
+				Console.WriteLine("{0} is a custom spell", spellName);
+
+
+				 if(e.NewValue == CheckState.Unchecked)
+				 {
+					 character.customSpells.Remove(spellName);
+				 }
+				 else
+				 {
+					 character.customSpells.Add(spellName);
+				 }
 			}
 			else
 			{
-				//Check if the spell is a meta spell
-				DataRow row = PerformQuery(spellsConnection, "SELECT school FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString() + "'", "Spells").Tables["Spells"].Rows[0];
-
-				if (row[0].ToString().Equals("Meta"))
+				if (e.NewValue == CheckState.Unchecked)
 				{
-					//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
-					string school = "";
-					school = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
-																		"School selection");
+					character.spells.Remove(clbSpells.SelectedItem.ToString());
+					character.metaSpells[clbSpells.SelectedItem.ToString()] = null;
+				}
+				else
+				{
+					//Check if the spell is a meta spell
+					DataRow row = PerformQuery(spellsConnection, "SELECT school FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString() + "'", "Spells").Tables["Spells"].Rows[0];
 
-					//Make sure the school is valid
-					while (!IsValidSchool(school))
+					if (row[0].ToString().Equals("Meta"))
 					{
-						if (school.Equals(""))
+						//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
+						string school = "";
+						school = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
+																			"School selection");
+
+						//Make sure the school is valid
+						while (!IsValidSchool(school))
 						{
-							e.NewValue = CheckState.Unchecked;
-							return;
+							if (school.Equals(""))
+							{
+								e.NewValue = CheckState.Unchecked;
+								return;
+							}
+
+							school = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
+																				"School selection");
 						}
 
-						school = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
-																			"School selection");
+						//Make the school initial case (for later use)
+						school = char.ToUpper(school[0]) + school.Substring(1).ToLower();
+						character.metaSpells[clbSpells.SelectedItem.ToString()] = school;
 					}
 
-					//Make the school initial case (for later use)
-					school = char.ToUpper(school[0]) + school.Substring(1).ToLower();
-					character.metaSpells[clbSpells.SelectedItem.ToString()] = school;
+					character.spells.Add(clbSpells.SelectedItem.ToString());
 				}
-
-				character.spells.Add(clbSpells.SelectedItem.ToString());
 			}
 
 			CheckHomebrew();
@@ -1052,6 +1093,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 				fields.SetField(strName, spell);
 				fields.SetField(strCost, row[0].ToString());
+				fields.SetField(strSchool, row[1].ToString());
 				fields.SetField(strEffect, row[2].ToString());
 
 				string school = row[1].ToString();
@@ -1061,6 +1103,22 @@ finished: //If the function has determined the character is homebrewed, jump her
 				}
 
 				fields.SetField(strSchool, school);
+			}
+
+			foreach(string spell in character.customSpells)
+			{
+				string strName = "spell_" + spellNum + "_name";
+				string strCost = "spell_" + spellNum + "_cost";
+				string strSchool = "spell_" + spellNum + "_school";
+				string strEffect = "spell_" + spellNum + "_effect";
+				++spellNum;
+
+				CustomSpell customSpell = GetCustomSpell(spell);
+
+				fields.SetField(strName, spell);
+				fields.SetField(strCost, customSpell.cost);
+				fields.SetField(strSchool, customSpell.school);
+				fields.SetField(strEffect, customSpell.effect);
 			}
 			#endregion
 			
@@ -1104,15 +1162,38 @@ finished: //If the function has determined the character is homebrewed, jump her
 			if(!String.IsNullOrWhiteSpace(talentName))
 			{
 				customTalents.Add(talentName);
+
+				//Add the talent to the check list box and check it
 				clbTalents.Items.Add(talentName);
 				clbTalents.SetSelected(clbTalents.Items.Count - 1, true);
 				clbTalents.SetItemChecked(clbTalents.Items.Count - 1, true);
 			}
+
+			CheckHomebrew();
 		}
 
 		private void newSpellMenuItem_Click(object sender, EventArgs e)
 		{
+			CustomSpellForm frmSpell = new CustomSpellForm();
+			DialogResult result = frmSpell.ShowDialog();
 
+			if(result == DialogResult.OK)
+			{
+				CustomSpell newSpell = new CustomSpell();
+				newSpell.name = frmSpell.GetSpellName();
+				newSpell.school = frmSpell.GetSchool();
+				newSpell.cost = frmSpell.GetCost();
+				newSpell.effect = frmSpell.GetEffect();
+
+				customSpells.Add(newSpell);
+
+				//Add the spell to the check list box and check it
+				clbSpells.Items.Add(newSpell.name);
+				clbSpells.SelectedIndex = clbSpells.Items.Count - 1;
+				clbSpells.SetItemChecked(clbSpells.Items.Count - 1, true);
+			}
+
+			CheckHomebrew();
 		}
 
 		private void newSkillMenuItem_Click(object sender, EventArgs e)
@@ -1130,10 +1211,13 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 				customSkills.Add(newSkill);
 
+				//Add the skill to the check list box and check it if the user wants it to be a primary skill
 				clbSkills.Items.Add(newSkill.name);
 				clbSkills.SelectedIndex = clbSkills.Items.Count - 1;
 				clbSkills.SetItemChecked(clbSkills.Items.Count - 1, frmSkill.IsPrimarySkill());
 			}
+
+			CheckHomebrew();
 		}
 		#endregion
 
@@ -1167,6 +1251,42 @@ finished: //If the function has determined the character is homebrewed, jump her
 				if(skill.name.Equals(skillName))
 				{
 					return skill;
+				}
+			}
+
+			return null;
+		}
+
+		/// <summary>
+		/// Checks if the specified spell is a custom spell
+		/// </summary>
+		/// <param name="spellName">Skill to check</param>
+		/// <returns>True if the spell is custom, false otherwise</returns>
+		private bool IsCustomSpell(string spellName)
+		{
+			foreach(CustomSpell spell in customSpells)
+			{
+				if(spell.name.Equals(spellName))
+				{
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/// <summary>
+		/// Gets information about a custom spell
+		/// </summary>
+		/// <param name="spellName">Name of the spell to get</param>
+		/// <returns>CustomSpell object if the spell is a custom spell, null otherwise</returns>
+		private CustomSpell GetCustomSpell(string spellName)
+		{
+			foreach (CustomSpell spell in customSpells)
+			{
+				if (spell.name.Equals(spellName))
+				{
+					return spell;
 				}
 			}
 

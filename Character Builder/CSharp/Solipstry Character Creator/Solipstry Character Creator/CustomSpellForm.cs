@@ -66,5 +66,14 @@ namespace Solipstry_Character_Creator
 		{
 			return cmbSchool.SelectedItem.ToString();
 		}
+
+		/// <summary>
+		/// Gets the effect of the spell
+		/// </summary>
+		/// <returns>The spell's effect</returns>
+		public string GetEffect()
+		{
+			return txtEffect.Text;
+		}
 	}
 }
