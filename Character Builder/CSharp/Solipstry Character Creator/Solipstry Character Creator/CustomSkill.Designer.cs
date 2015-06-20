@@ -34,6 +34,7 @@
 			this.lblName = new System.Windows.Forms.Label();
 			this.lblAttribute = new System.Windows.Forms.Label();
 			this.cmbSkillAttr = new System.Windows.Forms.ComboBox();
+			this.chkPrimary = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// btnCancel
@@ -98,11 +99,22 @@
 			this.cmbSkillAttr.Size = new System.Drawing.Size(121, 21);
 			this.cmbSkillAttr.TabIndex = 1;
 			// 
+			// chkPrimary
+			// 
+			this.chkPrimary.AutoSize = true;
+			this.chkPrimary.Location = new System.Drawing.Point(151, 78);
+			this.chkPrimary.Name = "chkPrimary";
+			this.chkPrimary.Size = new System.Drawing.Size(127, 17);
+			this.chkPrimary.TabIndex = 5;
+			this.chkPrimary.Text = "Take as primary skill?";
+			this.chkPrimary.UseVisualStyleBackColor = true;
+			// 
 			// CustomSkill
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(290, 149);
+			this.Controls.Add(this.chkPrimary);
 			this.Controls.Add(this.cmbSkillAttr);
 			this.Controls.Add(this.lblAttribute);
 			this.Controls.Add(this.lblName);
@@ -127,5 +139,6 @@
 		private System.Windows.Forms.Label lblName;
 		private System.Windows.Forms.Label lblAttribute;
 		private System.Windows.Forms.ComboBox cmbSkillAttr;
+		private System.Windows.Forms.CheckBox chkPrimary;
 	}
 }
