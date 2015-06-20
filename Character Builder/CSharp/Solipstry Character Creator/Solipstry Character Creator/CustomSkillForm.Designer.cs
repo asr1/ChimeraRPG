@@ -42,7 +42,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(122, 91);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 2;
+			this.btnCancel.TabIndex = 3;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -52,7 +52,7 @@
 			this.btnOk.Location = new System.Drawing.Point(203, 91);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.Size = new System.Drawing.Size(75, 23);
-			this.btnOk.TabIndex = 3;
+			this.btnOk.TabIndex = 4;
 			this.btnOk.Text = "OK";
 			this.btnOk.UseVisualStyleBackColor = true;
 			this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -105,7 +105,7 @@
 			this.chkPrimary.Location = new System.Drawing.Point(151, 66);
 			this.chkPrimary.Name = "chkPrimary";
 			this.chkPrimary.Size = new System.Drawing.Size(127, 17);
-			this.chkPrimary.TabIndex = 5;
+			this.chkPrimary.TabIndex = 2;
 			this.chkPrimary.Text = "Take as primary skill?";
 			this.chkPrimary.UseVisualStyleBackColor = true;
 			// 

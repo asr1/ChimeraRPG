@@ -273,7 +273,7 @@
 			this.cmbSize.Location = new System.Drawing.Point(200, 65);
 			this.cmbSize.Name = "cmbSize";
 			this.cmbSize.Size = new System.Drawing.Size(155, 21);
-			this.cmbSize.TabIndex = 18;
+			this.cmbSize.TabIndex = 1;
 			this.cmbSize.SelectedIndexChanged += new System.EventHandler(this.cmbSize_SelectedIndexChanged);
 			// 
 			// txtName
@@ -281,7 +281,7 @@
 			this.txtName.Location = new System.Drawing.Point(200, 40);
 			this.txtName.Name = "txtName";
 			this.txtName.Size = new System.Drawing.Size(155, 20);
-			this.txtName.TabIndex = 17;
+			this.txtName.TabIndex = 0;
 			this.txtName.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtClass
@@ -289,7 +289,7 @@
 			this.txtClass.Location = new System.Drawing.Point(201, 274);
 			this.txtClass.Name = "txtClass";
 			this.txtClass.Size = new System.Drawing.Size(155, 20);
-			this.txtClass.TabIndex = 16;
+			this.txtClass.TabIndex = 9;
 			this.txtClass.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtRace
@@ -297,7 +297,7 @@
 			this.txtRace.Location = new System.Drawing.Point(201, 92);
 			this.txtRace.Name = "txtRace";
 			this.txtRace.Size = new System.Drawing.Size(154, 20);
-			this.txtRace.TabIndex = 15;
+			this.txtRace.TabIndex = 2;
 			this.txtRace.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtHeight
@@ -305,7 +305,7 @@
 			this.txtHeight.Location = new System.Drawing.Point(201, 118);
 			this.txtHeight.Name = "txtHeight";
 			this.txtHeight.Size = new System.Drawing.Size(154, 20);
-			this.txtHeight.TabIndex = 14;
+			this.txtHeight.TabIndex = 3;
 			this.txtHeight.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtWeight
@@ -313,7 +313,7 @@
 			this.txtWeight.Location = new System.Drawing.Point(201, 144);
 			this.txtWeight.Name = "txtWeight";
 			this.txtWeight.Size = new System.Drawing.Size(154, 20);
-			this.txtWeight.TabIndex = 13;
+			this.txtWeight.TabIndex = 4;
 			this.txtWeight.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtAge
@@ -321,7 +321,7 @@
 			this.txtAge.Location = new System.Drawing.Point(201, 170);
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(154, 20);
-			this.txtAge.TabIndex = 12;
+			this.txtAge.TabIndex = 5;
 			this.txtAge.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtOccupation
@@ -329,7 +329,7 @@
 			this.txtOccupation.Location = new System.Drawing.Point(201, 196);
 			this.txtOccupation.Name = "txtOccupation";
 			this.txtOccupation.Size = new System.Drawing.Size(154, 20);
-			this.txtOccupation.TabIndex = 11;
+			this.txtOccupation.TabIndex = 6;
 			this.txtOccupation.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtAspiration
@@ -337,7 +337,7 @@
 			this.txtAspiration.Location = new System.Drawing.Point(201, 222);
 			this.txtAspiration.Name = "txtAspiration";
 			this.txtAspiration.Size = new System.Drawing.Size(154, 20);
-			this.txtAspiration.TabIndex = 10;
+			this.txtAspiration.TabIndex = 7;
 			this.txtAspiration.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtBackground
@@ -345,7 +345,7 @@
 			this.txtBackground.Location = new System.Drawing.Point(201, 248);
 			this.txtBackground.Name = "txtBackground";
 			this.txtBackground.Size = new System.Drawing.Size(154, 20);
-			this.txtBackground.TabIndex = 9;
+			this.txtBackground.TabIndex = 8;
 			this.txtBackground.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// lblBackground
@@ -722,7 +722,7 @@
 			this.txtCharisma.Location = new System.Drawing.Point(114, 97);
 			this.txtCharisma.Name = "txtCharisma";
 			this.txtCharisma.Size = new System.Drawing.Size(100, 20);
-			this.txtCharisma.TabIndex = 2;
+			this.txtCharisma.TabIndex = 0;
 			this.txtCharisma.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
 			this.txtCharisma.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 
@@ -742,7 +742,7 @@
 			this.txtDexterity.Location = new System.Drawing.Point(114, 149);
 			this.txtDexterity.Name = "txtDexterity";
 			this.txtDexterity.Size = new System.Drawing.Size(100, 20);
-			this.txtDexterity.TabIndex = 0;
+			this.txtDexterity.TabIndex = 2;
 			this.txtDexterity.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragDrop);
 			this.txtDexterity.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtAttributes_DragEnter);
 			// 

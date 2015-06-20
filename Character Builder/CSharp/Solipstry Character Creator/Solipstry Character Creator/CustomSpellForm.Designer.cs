@@ -45,7 +45,7 @@
 			this.btnCancel.Location = new System.Drawing.Point(122, 178);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 3;
+			this.btnCancel.TabIndex = 4;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -55,7 +55,7 @@
 			this.btnOk.Location = new System.Drawing.Point(203, 178);
 			this.btnOk.Name = "btnOk";
 			this.btnOk.Size = new System.Drawing.Size(75, 23);
-			this.btnOk.TabIndex = 4;
+			this.btnOk.TabIndex = 5;
 			this.btnOk.Text = "OK";
 			this.btnOk.UseVisualStyleBackColor = true;
 			this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
@@ -129,7 +129,7 @@
 			this.txtEffect.Multiline = true;
 			this.txtEffect.Name = "txtEffect";
 			this.txtEffect.Size = new System.Drawing.Size(266, 69);
-			this.txtEffect.TabIndex = 8;
+			this.txtEffect.TabIndex = 3;
 			// 
 			// CustomSpellForm
 			// 
