@@ -79,6 +79,12 @@
       <DependentUpon>BugReportDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Character.cs" />
+    <Compile Include="CustomSkill.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomSkill.Designer.cs">
+      <DependentUpon>CustomSkill.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +97,9 @@
     <Compile Include="SmtpCredentials.cs" />
     <EmbeddedResource Include="BugReportDialog.resx">
       <DependentUpon>BugReportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomSkill.resx">
+      <DependentUpon>CustomSkill.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

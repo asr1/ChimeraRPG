@@ -37,6 +37,7 @@ namespace Solipstry_Character_Creator
 		private List<TextBox> attributeTextBoxes;
 
 		private List<string> customTalents;
+		private List<string> customSkills;
 
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
