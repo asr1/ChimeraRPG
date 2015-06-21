@@ -881,6 +881,29 @@ finished: //If the function has determined the character is homebrewed, jump her
 			UpdateInformation();
 		}
 
+		private void clbSkills_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			//Get information about the skill
+			string skillName = clbSkills.SelectedItem.ToString();
+
+			if (IsCustomSkill(skillName))
+			{
+				CustomSkill skill = GetCustomSkill(skillName);
+				txtSkillInfo.Text = skillName + Environment.NewLine + skill.governingAttribute + " based.";
+			}
+			else
+			{
+				DataSet ds = PerformQuery(skillsConnection,
+					"SELECT desc FROM Skills WHERE skill_name = '" + skillName + "'", "Skills");
+				DataRow row = ds.Tables["Skills"].Rows[0];
+
+				//Update the quick info panel with the skills information
+				txtSkillInfo.Text = skillName + Environment.NewLine + row[0].ToString();
+				txtSkillInfo.SelectionStart = 0;
+				txtSkillInfo.SelectionStart = 0;
+			}
+		}
+
 		private void clbTalents_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			//Get information about the talent
@@ -932,29 +955,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 				}
 			}
 			CheckHomebrew();
-		}
-
-		private void clbSkills_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			//Get information about the skill
-			string skillName = clbSkills.SelectedItem.ToString();
-
-			if (IsCustomSkill(skillName))
-			{
-				CustomSkill skill = GetCustomSkill(skillName);
-				txtSkillInfo.Text = skillName + Environment.NewLine + skill.governingAttribute + " based.";
-			}
-			else
-			{
-				DataSet ds = PerformQuery(skillsConnection,
-					"SELECT desc FROM Skills WHERE skill_name = '" + skillName + "'", "Skills");
-				DataRow row = ds.Tables["Skills"].Rows[0];
-
-				//Update the quick info panel with the skills information
-				txtSkillInfo.Text = skillName + Environment.NewLine + row[0].ToString();
-				txtSkillInfo.SelectionStart = 0;
-				txtSkillInfo.SelectionStart = 0;
-			}
 		}
 		#endregion
 
