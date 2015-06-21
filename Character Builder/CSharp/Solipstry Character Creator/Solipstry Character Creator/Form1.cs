@@ -126,11 +126,10 @@ namespace Solipstry_Character_Creator
 
 		private void Window_Load(object sender, EventArgs e)
 		{
-			//Default to "All 20s"
-			cmbAttributeMethod.SelectedIndex = 0;
-
-			//Default to medium
-			cmbSize.SelectedIndex = 1;
+			//Set combo boxes and radio buttons to default values
+			cmbAttributeMethod.SelectedIndex = 0; //All 20s for attributes
+			cmbSize.SelectedIndex = 1; //Medium size
+			rdoHeavyArmor.Checked = true; //Heavy armor
 
 			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each" +
 				Environment.NewLine + "school is equal to your modifier in that school.";
@@ -500,7 +499,7 @@ namespace Solipstry_Character_Creator
 			bool hb = false; //Whether or not the character is homebrewed
 
 			//Check custom talents, spells, and talents
-			if(character.customTalents.Count != 0)
+			if(character.customTalents.Count > 0 || customSkills.Count > 0 || character.customSpells.Count > 0)
 			{
 				hb = true;
 				goto finished;
@@ -997,6 +996,37 @@ finished: //If the function has determined the character is homebrewed, jump her
 			fields.SetField("occupation", character.occupation);
 			fields.SetField("aspiration", character.aspiration);
 			fields.SetField("background", character.background);
+
+			fields.SetField("hp_total", character.hitPoints.ToString());
+			fields.SetField("mp_total", character.magicTotal.ToString());
+			fields.SetField("mp_regen", character.magicRegen.ToString());
+
+			fields.SetField("cha_score", character.charisma.ToString());
+			fields.SetField("con_score", character.constitution.ToString());
+			fields.SetField("dex_score", character.dexterity.ToString());
+			fields.SetField("int_score", character.intelligence.ToString());
+			fields.SetField("lck_score", character.luck.ToString());
+			fields.SetField("spd_score", character.speed.ToString());
+			fields.SetField("str_score", character.strength.ToString());
+			fields.SetField("wis_score", character.wisdom.ToString());
+			fields.SetField("cha_mod", character.CalculateModifier(character.charisma).ToString());
+			fields.SetField("con_mod", character.CalculateModifier(character.constitution).ToString());
+			fields.SetField("dex_mod", character.CalculateModifier(character.dexterity).ToString());
+			fields.SetField("int_mod", character.CalculateModifier(character.intelligence).ToString());
+			fields.SetField("lck_mod", character.CalculateModifier(character.luck).ToString());
+			fields.SetField("spd_mod", character.CalculateModifier(character.speed).ToString());
+			fields.SetField("str_mod", character.CalculateModifier(character.strength).ToString());
+			fields.SetField("wis_mod", character.CalculateModifier(character.wisdom).ToString());
+
+			fields.SetField("armor_class", (rdoHeavyArmor.Checked ? character.acHeavy : character.acLight).ToString());
+			fields.SetField("will", character.will.ToString());
+			fields.SetField("fortitude", character.fortitude.ToString());
+			fields.SetField("reflex", (rdoHeavyArmor.Checked ? character.reflexHeavy : character.reflexLight).ToString());
+			fields.SetField("fortune_base", character.CalculateModifier(character.luck).ToString());
+			fields.SetField("movement", character.movement.ToString());
+			fields.SetField("initiative", character.initiative.ToString());
+
+			fields.SetField("enlightenment_total", character.enlightenment.ToString());
 
 			#region Export skills
 			//Make iterating through the skills easier

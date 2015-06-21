@@ -136,6 +136,9 @@
 			this.exportPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.rdoLightArmor = new System.Windows.Forms.RadioButton();
+			this.rdoHeavyArmor = new System.Windows.Forms.RadioButton();
+			this.lblHeavyLightArmor = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -223,6 +226,9 @@
 			// 
 			// tabInfo
 			// 
+			this.tabInfo.Controls.Add(this.lblHeavyLightArmor);
+			this.tabInfo.Controls.Add(this.rdoHeavyArmor);
+			this.tabInfo.Controls.Add(this.rdoLightArmor);
 			this.tabInfo.Controls.Add(this.lblSize);
 			this.tabInfo.Controls.Add(this.cmbSize);
 			this.tabInfo.Controls.Add(this.txtName);
@@ -255,7 +261,7 @@
 			// lblSize
 			// 
 			this.lblSize.AutoSize = true;
-			this.lblSize.Location = new System.Drawing.Point(116, 68);
+			this.lblSize.Location = new System.Drawing.Point(118, 44);
 			this.lblSize.Name = "lblSize";
 			this.lblSize.Size = new System.Drawing.Size(27, 13);
 			this.lblSize.TabIndex = 19;
@@ -270,7 +276,7 @@
             "Small",
             "Medium",
             "Large"});
-			this.cmbSize.Location = new System.Drawing.Point(200, 65);
+			this.cmbSize.Location = new System.Drawing.Point(202, 41);
 			this.cmbSize.Name = "cmbSize";
 			this.cmbSize.Size = new System.Drawing.Size(155, 21);
 			this.cmbSize.TabIndex = 1;
@@ -278,7 +284,7 @@
 			// 
 			// txtName
 			// 
-			this.txtName.Location = new System.Drawing.Point(200, 40);
+			this.txtName.Location = new System.Drawing.Point(202, 16);
 			this.txtName.Name = "txtName";
 			this.txtName.Size = new System.Drawing.Size(155, 20);
 			this.txtName.TabIndex = 0;
@@ -286,7 +292,7 @@
 			// 
 			// txtClass
 			// 
-			this.txtClass.Location = new System.Drawing.Point(201, 274);
+			this.txtClass.Location = new System.Drawing.Point(203, 250);
 			this.txtClass.Name = "txtClass";
 			this.txtClass.Size = new System.Drawing.Size(155, 20);
 			this.txtClass.TabIndex = 9;
@@ -294,7 +300,7 @@
 			// 
 			// txtRace
 			// 
-			this.txtRace.Location = new System.Drawing.Point(201, 92);
+			this.txtRace.Location = new System.Drawing.Point(203, 68);
 			this.txtRace.Name = "txtRace";
 			this.txtRace.Size = new System.Drawing.Size(154, 20);
 			this.txtRace.TabIndex = 2;
@@ -302,7 +308,7 @@
 			// 
 			// txtHeight
 			// 
-			this.txtHeight.Location = new System.Drawing.Point(201, 118);
+			this.txtHeight.Location = new System.Drawing.Point(203, 94);
 			this.txtHeight.Name = "txtHeight";
 			this.txtHeight.Size = new System.Drawing.Size(154, 20);
 			this.txtHeight.TabIndex = 3;
@@ -310,7 +316,7 @@
 			// 
 			// txtWeight
 			// 
-			this.txtWeight.Location = new System.Drawing.Point(201, 144);
+			this.txtWeight.Location = new System.Drawing.Point(203, 120);
 			this.txtWeight.Name = "txtWeight";
 			this.txtWeight.Size = new System.Drawing.Size(154, 20);
 			this.txtWeight.TabIndex = 4;
@@ -318,7 +324,7 @@
 			// 
 			// txtAge
 			// 
-			this.txtAge.Location = new System.Drawing.Point(201, 170);
+			this.txtAge.Location = new System.Drawing.Point(203, 146);
 			this.txtAge.Name = "txtAge";
 			this.txtAge.Size = new System.Drawing.Size(154, 20);
 			this.txtAge.TabIndex = 5;
@@ -326,7 +332,7 @@
 			// 
 			// txtOccupation
 			// 
-			this.txtOccupation.Location = new System.Drawing.Point(201, 196);
+			this.txtOccupation.Location = new System.Drawing.Point(203, 172);
 			this.txtOccupation.Name = "txtOccupation";
 			this.txtOccupation.Size = new System.Drawing.Size(154, 20);
 			this.txtOccupation.TabIndex = 6;
@@ -334,7 +340,7 @@
 			// 
 			// txtAspiration
 			// 
-			this.txtAspiration.Location = new System.Drawing.Point(201, 222);
+			this.txtAspiration.Location = new System.Drawing.Point(203, 198);
 			this.txtAspiration.Name = "txtAspiration";
 			this.txtAspiration.Size = new System.Drawing.Size(154, 20);
 			this.txtAspiration.TabIndex = 7;
@@ -342,7 +348,7 @@
 			// 
 			// txtBackground
 			// 
-			this.txtBackground.Location = new System.Drawing.Point(201, 248);
+			this.txtBackground.Location = new System.Drawing.Point(203, 224);
 			this.txtBackground.Name = "txtBackground";
 			this.txtBackground.Size = new System.Drawing.Size(154, 20);
 			this.txtBackground.TabIndex = 8;
@@ -351,7 +357,7 @@
 			// lblBackground
 			// 
 			this.lblBackground.AutoSize = true;
-			this.lblBackground.Location = new System.Drawing.Point(116, 251);
+			this.lblBackground.Location = new System.Drawing.Point(118, 227);
 			this.lblBackground.Name = "lblBackground";
 			this.lblBackground.Size = new System.Drawing.Size(65, 13);
 			this.lblBackground.TabIndex = 8;
@@ -360,7 +366,7 @@
 			// lblAspiration
 			// 
 			this.lblAspiration.AutoSize = true;
-			this.lblAspiration.Location = new System.Drawing.Point(116, 225);
+			this.lblAspiration.Location = new System.Drawing.Point(118, 201);
 			this.lblAspiration.Name = "lblAspiration";
 			this.lblAspiration.Size = new System.Drawing.Size(53, 13);
 			this.lblAspiration.TabIndex = 7;
@@ -369,7 +375,7 @@
 			// lblOccupation
 			// 
 			this.lblOccupation.AutoSize = true;
-			this.lblOccupation.Location = new System.Drawing.Point(116, 199);
+			this.lblOccupation.Location = new System.Drawing.Point(118, 175);
 			this.lblOccupation.Name = "lblOccupation";
 			this.lblOccupation.Size = new System.Drawing.Size(62, 13);
 			this.lblOccupation.TabIndex = 6;
@@ -378,7 +384,7 @@
 			// lblAge
 			// 
 			this.lblAge.AutoSize = true;
-			this.lblAge.Location = new System.Drawing.Point(116, 173);
+			this.lblAge.Location = new System.Drawing.Point(118, 149);
 			this.lblAge.Name = "lblAge";
 			this.lblAge.Size = new System.Drawing.Size(26, 13);
 			this.lblAge.TabIndex = 5;
@@ -387,7 +393,7 @@
 			// lblWeight
 			// 
 			this.lblWeight.AutoSize = true;
-			this.lblWeight.Location = new System.Drawing.Point(116, 147);
+			this.lblWeight.Location = new System.Drawing.Point(118, 123);
 			this.lblWeight.Name = "lblWeight";
 			this.lblWeight.Size = new System.Drawing.Size(41, 13);
 			this.lblWeight.TabIndex = 4;
@@ -396,7 +402,7 @@
 			// lblHeight
 			// 
 			this.lblHeight.AutoSize = true;
-			this.lblHeight.Location = new System.Drawing.Point(116, 121);
+			this.lblHeight.Location = new System.Drawing.Point(118, 97);
 			this.lblHeight.Name = "lblHeight";
 			this.lblHeight.Size = new System.Drawing.Size(38, 13);
 			this.lblHeight.TabIndex = 3;
@@ -405,7 +411,7 @@
 			// lblRace
 			// 
 			this.lblRace.AutoSize = true;
-			this.lblRace.Location = new System.Drawing.Point(116, 95);
+			this.lblRace.Location = new System.Drawing.Point(118, 71);
 			this.lblRace.Name = "lblRace";
 			this.lblRace.Size = new System.Drawing.Size(33, 13);
 			this.lblRace.TabIndex = 2;
@@ -414,7 +420,7 @@
 			// lblClass
 			// 
 			this.lblClass.AutoSize = true;
-			this.lblClass.Location = new System.Drawing.Point(116, 277);
+			this.lblClass.Location = new System.Drawing.Point(118, 253);
 			this.lblClass.Name = "lblClass";
 			this.lblClass.Size = new System.Drawing.Size(32, 13);
 			this.lblClass.TabIndex = 1;
@@ -423,7 +429,7 @@
 			// lblName
 			// 
 			this.lblName.AutoSize = true;
-			this.lblName.Location = new System.Drawing.Point(116, 43);
+			this.lblName.Location = new System.Drawing.Point(118, 19);
 			this.lblName.Name = "lblName";
 			this.lblName.Size = new System.Drawing.Size(35, 13);
 			this.lblName.TabIndex = 0;
@@ -1284,6 +1290,37 @@
 			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
 			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
 			// 
+			// rdoLightArmor
+			// 
+			this.rdoLightArmor.AutoSize = true;
+			this.rdoLightArmor.Location = new System.Drawing.Point(222, 299);
+			this.rdoLightArmor.Name = "rdoLightArmor";
+			this.rdoLightArmor.Size = new System.Drawing.Size(77, 17);
+			this.rdoLightArmor.TabIndex = 20;
+			this.rdoLightArmor.TabStop = true;
+			this.rdoLightArmor.Text = "Light armor";
+			this.rdoLightArmor.UseVisualStyleBackColor = true;
+			// 
+			// rdoHeavyArmor
+			// 
+			this.rdoHeavyArmor.AutoSize = true;
+			this.rdoHeavyArmor.Location = new System.Drawing.Point(222, 276);
+			this.rdoHeavyArmor.Name = "rdoHeavyArmor";
+			this.rdoHeavyArmor.Size = new System.Drawing.Size(85, 17);
+			this.rdoHeavyArmor.TabIndex = 21;
+			this.rdoHeavyArmor.TabStop = true;
+			this.rdoHeavyArmor.Text = "Heavy armor";
+			this.rdoHeavyArmor.UseVisualStyleBackColor = true;
+			// 
+			// lblHeavyLightArmor
+			// 
+			this.lblHeavyLightArmor.AutoSize = true;
+			this.lblHeavyLightArmor.Location = new System.Drawing.Point(118, 292);
+			this.lblHeavyLightArmor.Name = "lblHeavyLightArmor";
+			this.lblHeavyLightArmor.Size = new System.Drawing.Size(98, 13);
+			this.lblHeavyLightArmor.TabIndex = 22;
+			this.lblHeavyLightArmor.Text = "Heavy/Light armor:";
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1431,6 +1468,9 @@
 		private System.Windows.Forms.Label lblHP;
 		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem exportPDFToolStripMenuItem;
+		private System.Windows.Forms.Label lblHeavyLightArmor;
+		private System.Windows.Forms.RadioButton rdoHeavyArmor;
+		private System.Windows.Forms.RadioButton rdoLightArmor;
     }
 }
 
