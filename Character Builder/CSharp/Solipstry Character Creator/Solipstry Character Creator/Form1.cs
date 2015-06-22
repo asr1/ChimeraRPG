@@ -1026,6 +1026,12 @@ finished: //If the function has determined the character is homebrewed, jump her
 				else
 				{
 					character.talents.Remove(clbTalents.SelectedItem.ToString());
+
+					//Check if the talent can be taken multiple times
+					if(multipleTimesTalents.Contains(talentName))
+					{
+						clbTalents.Items.RemoveAt(e.Index);
+					}
 				}
 			}
 			CheckHomebrew();
