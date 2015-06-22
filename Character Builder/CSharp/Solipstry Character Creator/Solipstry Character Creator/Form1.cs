@@ -28,6 +28,12 @@ namespace Solipstry_Character_Creator
 		private const string TALENTS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Talents.accdb";
 		private const string SKILLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Skills.accdb";
 
+		//List of talents that modify attributes, skills, etc.
+		private List<string> modifyingTalents;
+
+		//List of talents that can be taken multiple times
+		private List<string> multipleTimesTalents;
+
 		private OleDbConnection spellsConnection;
 		private OleDbConnection talentsConnection;
 		private OleDbConnection skillsConnection;
@@ -133,6 +139,42 @@ namespace Solipstry_Character_Creator
 
 			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each" +
 				Environment.NewLine + "school is equal to your modifier in that school.";
+
+			multipleTimesTalents = new List<string>
+			{
+				"Adaptive Skin",
+				"Basic Training",
+				"Devout Follower",
+				"Far Shot",
+				"Greater Magic",
+				"Improved Defense",
+				"Improved Initiative",
+				"Improved Rushing",
+				"Increased Teleportation",
+				"Lucky Break",
+				"Power Word II",
+				"Power Word III",
+				"Reprogrammable Augmentation",
+				"Reslience",
+				"Skill Specialization",
+				"Student of Magic",
+				"Thick Skin"
+			};
+
+			modifyingTalents = new List<string>
+			{
+				"Basic Training",
+				"Devout Follower",
+				"Greater Magic",
+				"Improved Magic Flow",
+				"Lucky Break",
+				"More Efficient, Less Wasteful",
+				"Quick Steps",
+				"Resilience",
+				"Skill Specialization",
+				"Student of Magic",
+				"Thick Skin"
+			};
 		}
 
 		/// <summary>
@@ -785,7 +827,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			string spellName = clbSpells.SelectedItem.ToString();
+			string spellName = clbSpells.Items[e.Index].ToString();
 
 			if(IsCustomSpell(spellName))
 			{
@@ -932,22 +974,33 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbTalents_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
-			if(customTalents.Contains(clbTalents.SelectedItem.ToString()))
+			string talentName = clbTalents.Items[e.Index].ToString();
+
+			if(customTalents.Contains(talentName))
 			{
 				if(e.NewValue == CheckState.Checked)
 				{
-					character.customTalents.Add(clbTalents.SelectedItem.ToString());
+					character.customTalents.Add(talentName);
 				}
 				else
 				{
-					character.customTalents.Remove(clbTalents.SelectedItem.ToString());
+					character.customTalents.Remove(talentName);
 				}
 			}
 			else
 			{
 				if(e.NewValue == CheckState.Checked)
 				{
-					character.talents.Add(clbTalents.SelectedItem.ToString());
+					character.talents.Add(talentName);
+
+					//Check if the talent can be taken multiple times
+					if(multipleTimesTalents.Contains(talentName))
+					{
+						//Add the talent to the list so it can be taken again
+						clbTalents.Items.Add(talentName);
+						SortCheckedListBox(clbTalents);
+						//TODO
+					}
 				}
 				else
 				{
@@ -1195,8 +1248,10 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 				//Add the talent to the check list box and check it
 				clbTalents.Items.Add(talentName);
-				clbTalents.SetSelected(clbTalents.Items.Count - 1, true);
 				clbTalents.SetItemChecked(clbTalents.Items.Count - 1, true);
+
+				SortCheckedListBox(clbTalents);
+				clbTalents.SelectedItem = talentName;
 			}
 
 			CheckHomebrew();
@@ -1219,8 +1274,10 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 				//Add the spell to the check list box and check it
 				clbSpells.Items.Add(newSpell.name);
-				clbSpells.SelectedIndex = clbSpells.Items.Count - 1;
 				clbSpells.SetItemChecked(clbSpells.Items.Count - 1, true);
+
+				SortCheckedListBox(clbSpells);
+				clbSpells.SelectedItem = newSpell.name;
 			}
 
 			CheckHomebrew();
@@ -1243,8 +1300,10 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 				//Add the skill to the check list box and check it if the user wants it to be a primary skill
 				clbSkills.Items.Add(newSkill.name);
-				clbSkills.SelectedIndex = clbSkills.Items.Count - 1;
 				clbSkills.SetItemChecked(clbSkills.Items.Count - 1, frmSkill.IsPrimarySkill());
+
+				SortCheckedListBox(clbSkills);
+				clbSkills.SelectedItem = newSkill.name;
 			}
 
 			CheckHomebrew();
@@ -1321,6 +1380,43 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 
 			return null;
+		}
+
+		/// <summary>
+		/// Sorts the items in the specified CheckedListBox, preserving checked items
+		/// </summary>
+		/// <param name="clb">CheckedListBox to sort</param>
+		private void SortCheckedListBox(CheckedListBox clb)
+		{
+			List<string> checkedItems = new List<string>();
+			List<string> items = new List<string>();
+
+			foreach(object item in clb.CheckedItems)
+			{
+				checkedItems.Add(item.ToString());
+			}
+
+			foreach(object item in clb.Items)
+			{
+				items.Add(item.ToString());
+			}
+
+			items.Sort();
+
+			clb.Items.Clear();
+
+			foreach(string item in items)
+			{
+				if(checkedItems.Contains(item))
+				{
+					clb.Items.Add(item, true);
+					checkedItems.Remove(item);
+				}
+				else
+				{
+					clb.Items.Add(item, false);
+				}
+			}
 		}
 	}
 }
