@@ -46,6 +46,9 @@ namespace Solipstry_Character_Creator
 		private List<CustomSkill> customSkills;
 		private List<CustomSpell> customSpells;
 
+		//Keeps track of any modified attributes or skills
+		private List<ModifiedScore> modifiedScores;
+
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
 		private int primarySkillCount; //Number of skills set as primary skills
@@ -62,6 +65,8 @@ namespace Solipstry_Character_Creator
 			customTalents = new List<string>();
 			customSkills = new List<CustomSkill>();
 			customSpells = new List<CustomSpell>();
+
+			modifiedScores = new List<ModifiedScore>();
 
 			//Create context menu strips
 			ContextMenuStrip talentsMenuStrip = new ContextMenuStrip();
@@ -87,6 +92,43 @@ namespace Solipstry_Character_Creator
 
 			spellsMenuStrip.Items.Add(newSpellItem);
 			clbSpells.ContextMenuStrip = spellsMenuStrip;
+
+			multipleTimesTalents = new List<string>
+			{
+				"Adaptive Skin",
+				"Basic Training",
+				"Devout Follower",
+				"Far Shot",
+				"Greater Magic",
+				"Improved Defense",
+				"Improved Initiative",
+				"Improved Rushing",
+				"Increased Teleportation",
+				"Lucky Break",
+				"Power Word II",
+				"Power Word III",
+				"Reprogrammable Augmentation",
+				"Reslience",
+				"Skill Specialization",
+				"Student of Magic",
+				"Thick Skin"
+			};
+
+			modifyingTalents = new List<string>
+			{
+				"Basic Training",
+				"Devout Follower",
+				"Greater Magic",
+				"Improved Initiative",
+				"Improved Magic Flow",
+				"Lucky Break",
+				"More Efficient, Less Wasteful",
+				"Quick Steps",
+				"Resilience",
+				"Skill Specialization",
+				"Student of Magic",
+				"Thick Skin"
+			};
 
 			//Store the labels for attributes in a list for easier processing
 			attrValuesList = new List<Button>();
@@ -141,42 +183,6 @@ namespace Solipstry_Character_Creator
 
 			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each" +
 				Environment.NewLine + "school is equal to your modifier in that school.";
-
-			multipleTimesTalents = new List<string>
-			{
-				"Adaptive Skin",
-				"Basic Training",
-				"Devout Follower",
-				"Far Shot",
-				"Greater Magic",
-				"Improved Defense",
-				"Improved Initiative",
-				"Improved Rushing",
-				"Increased Teleportation",
-				"Lucky Break",
-				"Power Word II",
-				"Power Word III",
-				"Reprogrammable Augmentation",
-				"Reslience",
-				"Skill Specialization",
-				"Student of Magic",
-				"Thick Skin"
-			};
-
-			modifyingTalents = new List<string>
-			{
-				"Basic Training",
-				"Devout Follower",
-				"Greater Magic",
-				"Improved Magic Flow",
-				"Lucky Break",
-				"More Efficient, Less Wasteful",
-				"Quick Steps",
-				"Resilience",
-				"Skill Specialization",
-				"Student of Magic",
-				"Thick Skin"
-			};
 		}
 
 		/// <summary>
@@ -366,6 +372,7 @@ namespace Solipstry_Character_Creator
 		{
 			UpdateAttributes();
 			CalculateDerivedTraits();
+			UpdateFromTalents();
 			UpdateQuickPane();
 		}
 		
@@ -379,8 +386,43 @@ namespace Solipstry_Character_Creator
 			character.speed = TryParseInteger(txtSpeed.Text);
 			character.strength = TryParseInteger(txtStrength.Text);
 			character.wisdom = TryParseInteger(txtWisdom.Text);
+		}
 
-			//TODO Update attributes from talents
+		private void UpdateFromTalents()
+		{
+			foreach(ModifiedScore mod in modifiedScores)
+			{
+				switch(mod.modifiedBy)
+				{
+					case "Devout Follower":
+						character.enlightenment += 10;
+						break;
+					case  "Greater Magic":
+						character.magicTotal += 10;
+						break;
+					case "Improved Magic Flow":
+						character.magicRegen += 5;
+						break;
+					case "Improved Initiative":
+						character.initiative += 2;
+						break;
+					case "Lucky Break":
+						++character.fortunePoints;
+						break;
+					case "Quick Steps":
+						++character.movement;
+						break;
+					case "Resilience":
+						++character.reflexHeavy;
+						++character.reflexLight;
+						++character.will;
+						++character.fortitude;
+						break;
+					case "Thick Skin":
+						character.hitPoints += 5;
+						break;
+				}
+			}
 		}
 
 		private void UpdateBasicInformation()
@@ -1015,17 +1057,93 @@ finished: //If the function has determined the character is homebrewed, jump her
 				{
 					character.talents.Add(talentName);
 
+					//Check if the talent modifies anything (attributes, skills, etc)
+					if(modifyingTalents.Contains(talentName))
+					{
+						ModifiedScore modified = new ModifiedScore();
+						modified.modifiedBy = talentName;
+						modified.modifiedScore = null;
+						modified.userMarks = false;
+
+						DialogResult result;
+
+						switch(talentName)
+						{
+							case "Basic Training":
+							case "Power Word":
+							case "Power Word II":
+							case "Power Word III":
+								modified.userMarks = true;
+								break;
+							case "Skill Specialization": //+3 to any skill
+								//Have the user select a skill
+								SelectionDialog skillSelection = new SelectionDialog(clbSkills.Items, "Select a Skill");
+								result = skillSelection.ShowDialog();
+
+								if(result == DialogResult.OK)
+								{
+									modified.modifiedScore = skillSelection.GetSelectedItem();
+								}
+								else
+								{
+									e.NewValue = e.CurrentValue;
+									return;
+								}
+
+								break;
+							case "Student of Magic": //additional spell with requirements met
+								//Figure out which spells the user can take
+								List<string> validSpells = new List<string>();
+
+								foreach(string spell in clbSpells.Items)
+								{
+									//Spell is valid if it is not taken, not homebrewed, and the character meets the requirements
+									if(!clbSpells.CheckedItems.Contains(spell) && !IsCustomSpell(spell) && !CheckSpellHomebrew(spell))
+									{
+										validSpells.Add(spell);
+									}
+								}
+
+								//Have the user select the spell they want
+								SelectionDialog spellSelection = new SelectionDialog(validSpells, "Select a Spell");
+								result = spellSelection.ShowDialog();
+
+								if(result == DialogResult.OK)
+								{
+									modified.modifiedScore = spellSelection.GetSelectedItem();
+								}
+								else
+								{
+									e.NewValue = e.CurrentValue;
+									return;
+								}
+
+								break;
+						}
+
+						modifiedScores.Add(modified);
+						UpdateInformation();
+					} //endif for checking for modifying from talents
+
+
 					//Check if the talent can be taken multiple times
-					if(multipleTimesTalents.Contains(talentName))
+					if (multipleTimesTalents.Contains(talentName))
 					{
 						//Add the talent to the list so it can be taken again
 						clbTalents.Items.Add(talentName);
 						SortCheckedListBox(clbTalents);
+						clbTalents.SelectedIndex = e.Index + 1;
 					}
 				}
 				else
 				{
 					character.talents.Remove(clbTalents.SelectedItem.ToString());
+
+					//Check if the talent modifies anything (attributes, skills, etc)
+					if (modifyingTalents.Contains(talentName))
+					{
+						//TODO
+					}
 
 					//Check if the talent can be taken multiple times
 					if(multipleTimesTalents.Contains(talentName))
@@ -1061,6 +1179,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void ExportPDF(string saveLocation)
 		{
+			UpdateInformation(); //Make sure the character's information is up to date
 			//Load the pdf
 			PdfReader reader = new PdfReader("Editable Character Sheet.pdf");
 			PdfStamper stamper = new PdfStamper(reader, new FileStream(saveLocation, FileMode.Create));
