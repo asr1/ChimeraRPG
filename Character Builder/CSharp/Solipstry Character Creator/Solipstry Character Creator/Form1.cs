@@ -854,12 +854,12 @@ finished: //If the function has determined the character is homebrewed, jump her
 				if(e.NewValue == CheckState.Unchecked)
 				{
 					--primarySkillCount;
-					character.customSkills[skillName] = 10;
+					character.customSkills[skillName] -= 15;
 				}
 				else
 				{
 					++primarySkillCount;
-					character.customSkills[skillName] = 25;
+					character.customSkills[skillName] += 15;
 				}
 			}
 			else
