@@ -50,6 +50,8 @@ namespace Solipstry_Character_Creator
 
 		private int primarySkillCount; //Number of skills set as primary skills
 
+		private bool sorting; //Whether or not a CheckedListBox is being sorted
+
 		#region Program setup
 		public Window()
         {
@@ -827,6 +829,11 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
+			if(sorting)
+			{
+				return;
+			}
+
 			string spellName = clbSpells.Items[e.Index].ToString();
 
 			if(IsCustomSpell(spellName))
@@ -889,6 +896,11 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbSkills_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
+			if(sorting)
+			{
+				return;
+			}
+
 			string skillName = clbSkills.SelectedItem.ToString();
 
 			if (IsCustomSkill(skillName))
@@ -948,6 +960,11 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbTalents_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if(clbTalents.SelectedItem == null)
+			{
+				return;
+			}
+
 			//Get information about the talent
 			string talentName = clbTalents.SelectedItem.ToString();
 
@@ -974,6 +991,11 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 		private void clbTalents_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
+			if(sorting)
+			{
+				return;
+			}
+
 			string talentName = clbTalents.Items[e.Index].ToString();
 
 			if(customTalents.Contains(talentName))
@@ -999,7 +1021,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 						//Add the talent to the list so it can be taken again
 						clbTalents.Items.Add(talentName);
 						SortCheckedListBox(clbTalents);
-						//TODO
 					}
 				}
 				else
@@ -1401,6 +1422,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 				items.Add(item.ToString());
 			}
 
+			sorting = true;
+
 			items.Sort();
 
 			clb.Items.Clear();
@@ -1417,6 +1440,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 					clb.Items.Add(item, false);
 				}
 			}
+
+			sorting = false;
 		}
 	}
 }
