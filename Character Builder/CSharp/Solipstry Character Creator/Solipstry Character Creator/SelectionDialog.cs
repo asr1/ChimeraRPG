@@ -41,12 +41,6 @@ namespace Solipstry_Character_Creator
 
 		private void btnOk_Click(object sender, EventArgs e)
 		{
-			if(string.IsNullOrWhiteSpace(cmbItems.SelectedText))
-			{
-				MessageBox.Show("Please select a skill");
-				return;
-			}
-
 			this.DialogResult = DialogResult.OK;
 			this.Close();
 		}
