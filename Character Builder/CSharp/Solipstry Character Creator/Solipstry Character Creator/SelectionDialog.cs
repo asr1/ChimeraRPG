@@ -57,7 +57,8 @@ namespace Solipstry_Character_Creator
 		/// <returns>Skill the user selected</returns>
 		public string GetSelectedItem()
 		{
-			return cmbItems.SelectedText;
+			Console.WriteLine(cmbItems.SelectedItem.ToString());
+			return cmbItems.SelectedItem.ToString();
 		}
 	}
 }
