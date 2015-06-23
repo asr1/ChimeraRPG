@@ -137,7 +137,7 @@ namespace Solipstry_Character_Creator
 					break;
 				case "block":
 					index = Skills.BLOCK;
-					break
+					break;
 				case "chemistry":
 					index = Skills.CHEMISTRY;
 					break;
@@ -247,7 +247,7 @@ namespace Solipstry_Character_Creator
 					break;
 				case "block":
 					index = Skills.BLOCK;
-					break
+					break;
 				case "chemistry":
 					index = Skills.CHEMISTRY;
 					break;
