@@ -122,79 +122,222 @@ namespace Solipstry_Character_Creator
 		/// <returns>Level of the skill, -1 if the skill does not exist</returns>
 		public int GetSkillValue(string skill)
 		{
-			switch(skill.ToLower())
+			int index;
+
+			switch (skill.ToLower())
 			{
 				case "acrobatics":
-					return skills[Skills.ACROBATICS];
+					index = Skills.ACROBATICS;
+					break;
 				case "alteration":
-					return  skills[Skills.ALTERATION];
+					index = Skills.ALTERATION;
+					break;
 				case "athletics":
-					return skills[Skills.ATHLETICS];
+					index = Skills.ATHLETICS;
+					break;
 				case "block":
-					return skills[Skills.BLOCK];
+					index = Skills.BLOCK;
+					break
 				case "chemistry":
-					return skills[Skills.CHEMISTRY];
+					index = Skills.CHEMISTRY;
+					break;
 				case "conjuration":
-					return skills[Skills.CONJURATION];
+					index = Skills.CONJURATION;
+					break;
 				case "craft":
-					return skills[Skills.CRAFT];
+					index = Skills.CRAFT;
+					break;
 				case "destruction":
-					return skills[Skills.DESTRUCTION];
+					index = Skills.DESTRUCTION;
+					break;
 				case "disguise":
-					return skills[Skills.DISGUISE];
+					index = Skills.DISGUISE;
+					break;
 				case "engineering":
-					return skills[Skills.ENGINEERING];
+					index = Skills.ENGINEERING;
+					break;
 				case "enlightenment":
-					return skills[Skills.ENLIGHTENMENT];
+					index = Skills.ENLIGHTENMENT;
+					break;
 				case "escape":
-					return skills[Skills.ESCAPE];
+					index = Skills.ESCAPE;
+					break;
 				case "heavy armor":
 				case "heavy_armor":
-					return skills[Skills.HEAVY_ARMOR];
+					index = Skills.HEAVY_ARMOR;
+					break;
 				case "interaction":
-					return skills[Skills.INTERACTION];
+					index = Skills.INTERACTION;
+					break;
 				case "knowledge":
-					return skills[Skills.KNOWLEDGE];
+					index = Skills.KNOWLEDGE;
+					break;
 				case "language":
-					return skills[Skills.LANGUAGE];
+					index = Skills.LANGUAGE;
+					break;
 				case "light armor":
 				case "light_armor":
-					return skills[Skills.LIGHT_ARMOR];
+					index = Skills.LIGHT_ARMOR;
+					break;
 				case "medicine":
-					return skills[Skills.MEDICINE];
+					index = Skills.MEDICINE;
+					break;
 				case "melee weapon":
 				case "melee_weapon":
-					return skills[Skills.MELEE_WEAPON];
+					index = Skills.MELEE_WEAPON;
+					break;
 				case "survival":
-					return skills[Skills.SURVIVAL];
+					index = Skills.SURVIVAL;
+					break;
 				case "perception":
-					return skills[Skills.PERCEPTION];
+					index = Skills.PERCEPTION;
+					break;
 				case "ranged combat":
 				case "ranged_combat":
-					return skills[Skills.RANGED_COMBAT];
+					index = Skills.RANGED_COMBAT;
+					break;
 				case "restoration":
-					return skills[Skills.RESTORATION];
+					index = Skills.RESTORATION;
+					break;
 				case "ride drive":
 				case "ride/drive":
 				case "ride_drive":
-					return skills[Skills.RIDE_DRIVE];
+					index = Skills.RIDE_DRIVE;
+					break;
 				case "security":
-					return skills[Skills.SECURITY];
+					index = Skills.SECURITY;
+					break;
 				case "sense motive":
 				case "sense_motive":
-					return skills[Skills.SENSE_MOTIVE];
+					index = Skills.SENSE_MOTIVE;
+					break;
 				case "sleight of hand":
 				case "sleight_of_hand":
-					return skills[Skills.SLEIGHT_OF_HAND];
+					index = Skills.SLEIGHT_OF_HAND;
+					break;
 				case "stealth":
-					return skills[Skills.STEALTH];
+					index = Skills.STEALTH;
+					break;
 				case "unarmed combat":
 				case "unarmed_combat":
-					return skills[Skills.UNARMED_COMBAT];
+					index = Skills.UNARMED_COMBAT;
+					break;
 				default:
 					Debug.Print("{0} is not a recognized skill", skill);
 					return -1;
 			}
+
+			return skills[index];
+		}
+
+		public void UpdateSkillScore(string skill, int newValue)
+		{
+			int index;
+
+			switch (skill.ToLower())
+			{
+				case "acrobatics":
+					index = Skills.ACROBATICS;
+					break;
+				case "alteration":
+					index = Skills.ALTERATION;
+					break;
+				case "athletics":
+					index = Skills.ATHLETICS;
+					break;
+				case "block":
+					index = Skills.BLOCK;
+					break
+				case "chemistry":
+					index = Skills.CHEMISTRY;
+					break;
+				case "conjuration":
+					index = Skills.CONJURATION;
+					break;
+				case "craft":
+					index = Skills.CRAFT;
+					break;
+				case "destruction":
+					index = Skills.DESTRUCTION;
+					break;
+				case "disguise":
+					index = Skills.DISGUISE;
+					break;
+				case "engineering":
+					index = Skills.ENGINEERING;
+					break;
+				case "enlightenment":
+					index = Skills.ENLIGHTENMENT;
+					break;
+				case "escape":
+					index = Skills.ESCAPE;
+					break;
+				case "heavy armor":
+				case "heavy_armor":
+					index = Skills.HEAVY_ARMOR;
+					break;
+				case "interaction":
+					index = Skills.INTERACTION;
+					break;
+				case "knowledge":
+					index = Skills.KNOWLEDGE;
+					break;
+				case "language":
+					index = Skills.LANGUAGE;
+					break;
+				case "light armor":
+				case "light_armor":
+					index = Skills.LIGHT_ARMOR;
+					break;
+				case "medicine":
+					index = Skills.MEDICINE;
+					break;
+				case "melee weapon":
+				case "melee_weapon":
+					index = Skills.MELEE_WEAPON;
+					break;
+				case "survival":
+					index = Skills.SURVIVAL;
+					break;
+				case "perception":
+					index = Skills.PERCEPTION;
+					break;
+				case "ranged combat":
+				case "ranged_combat":
+					index = Skills.RANGED_COMBAT;
+					break;
+				case "restoration":
+					index = Skills.RESTORATION;
+					break;
+				case "ride drive":
+				case "ride/drive":
+				case "ride_drive":
+					index = Skills.RIDE_DRIVE;
+					break;
+				case "security":
+					index = Skills.SECURITY;
+					break;
+				case "sense motive":
+				case "sense_motive":
+					index = Skills.SENSE_MOTIVE;
+					break;
+				case "sleight of hand":
+				case "sleight_of_hand":
+					index = Skills.SLEIGHT_OF_HAND;
+					break;
+				case "stealth":
+					index = Skills.STEALTH;
+					break;
+				case "unarmed combat":
+				case "unarmed_combat":
+					index = Skills.UNARMED_COMBAT;
+					break;
+				default:
+					Debug.Print("{0} is not a recognized skill", skill);
+					return;
+			}
+
+			skills[index] = newValue;
 		}
     
 		/// <summary>
