@@ -392,6 +392,8 @@ namespace Solipstry_Character_Creator
 		{
 			foreach(ModifiedScore mod in modifiedScores)
 			{
+				Console.WriteLine(mod.modifiedBy + " : " + mod.modifiedScore);
+
 				switch(mod.modifiedBy)
 				{
 					case "Devout Follower":
@@ -420,6 +422,14 @@ namespace Solipstry_Character_Creator
 						break;
 					case "Thick Skin":
 						character.hitPoints += 5;
+						break;
+					case "Skill Specialization":
+						character.UpdateSkillScore(mod.modifiedScore, character.GetSkillValue(mod.modifiedScore) + 3);
+
+						if(mod.modifiedScore.Equals("Enlightenment"))
+						{
+							character.enlightenment = character.GetSkillValue("Enlightenment");
+						}
 						break;
 				}
 			}
@@ -674,6 +684,11 @@ finished: //If the function has determined the character is homebrewed, jump her
 				}
 				else if(pr.StartsWith("[Meta]"))
 				{
+					if(!character.spells.Contains(spell))
+					{
+						return false;
+					}
+
 					string[] split = pr.Split(' ');
 
 					//Check the skill value of the school associated with the meta magic spell
@@ -1111,6 +1126,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 								if(result == DialogResult.OK)
 								{
 									modified.modifiedScore = spellSelection.GetSelectedItem();
+									clbSpells.SelectedItem = modified.modifiedScore;
+									clbSpells.SetItemChecked(clbSpells.SelectedIndex, true);
 								}
 								else
 								{
@@ -1122,7 +1139,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 						}
 
 						modifiedScores.Add(modified);
-						UpdateInformation();
 					} //endif for checking for modifying from talents
 
 
@@ -1142,7 +1158,95 @@ finished: //If the function has determined the character is homebrewed, jump her
 					//Check if the talent modifies anything (attributes, skills, etc)
 					if (modifyingTalents.Contains(talentName))
 					{
-						//TODO
+						DialogResult result;
+
+						switch (talentName)
+						{
+							case "Skill Specialization":
+								List<string> modifiedSkills = new List<string>();
+
+								//Find the skills that were modified
+								foreach (ModifiedScore mod in modifiedScores)
+								{
+									if (mod.modifiedBy.Equals("Skill Specialization"))
+									{
+										modifiedSkills.Add(mod.modifiedScore);
+									}
+								}
+
+								SelectionDialog skillSelector = new SelectionDialog(modifiedSkills, "Which skill to remove from?");
+								result = skillSelector.ShowDialog();
+	
+								if(result == DialogResult.OK)
+								{
+									for(int n = 0; n < modifiedScores.Count; ++n)
+									{
+										if(modifiedScores[n].modifiedScore.Equals(skillSelector.GetSelectedItem()) &&
+											modifiedScores[n].modifiedBy.Equals("Skill Specialization"))
+										{
+											modifiedScores.RemoveAt(n);
+											break;
+										}
+									}
+								}
+								else
+								{
+									e.NewValue = e.CurrentValue;
+									return;
+								}
+
+								break;
+							case "Student of Magic": //additional spell with requirements met
+								List<string> modifiedSpells = new List<string>();
+
+								//Find the spells that were added with Student of Magic
+								foreach(ModifiedScore mod in modifiedScores)
+								{
+									if(mod.modifiedBy.Equals("Student of Magic"))
+									{
+										modifiedSpells.Add(mod.modifiedScore);
+									}
+								}
+
+								SelectionDialog spellSelector = new SelectionDialog(modifiedSpells, "Which spell to remove?");
+								result = spellSelector.ShowDialog();
+
+								if(result == DialogResult.OK)
+								{
+									for(int n = 0; n < modifiedScores.Count; ++n)
+									{
+										if(modifiedScores[n].modifiedScore.Equals(spellSelector.GetSelectedItem()) &&
+											modifiedScores[n].modifiedBy.Equals("Student of Magic"))
+										{
+											clbSpells.SelectedItem = modifiedScores[n].modifiedScore;
+											clbSpells.SetItemChecked(clbSpells.SelectedIndex, false);
+
+											modifiedScores.RemoveAt(n);
+											break;
+										}
+									}
+								}
+								else
+								{
+									e.NewValue = e.CurrentValue;
+									return;
+								}
+
+								break;
+							default:
+								for(int n = 0; n < modifiedScores.Count; ++n)
+								{
+									if(modifiedScores[n].modifiedBy.Equals(talentName))
+									{
+										modifiedScores.RemoveAt(n);
+										break;
+									}
+								}
+								
+								break;
+						} //end switch
+
+						UpdateInformation();
 					}
 
 					//Check if the talent can be taken multiple times
@@ -1152,6 +1256,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 					}
 				}
 			}
+			UpdateInformation();
 			CheckHomebrew();
 		}
 		#endregion
