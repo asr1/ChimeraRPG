@@ -1086,6 +1086,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 						switch(talentName)
 						{
 							case "Adaptive Skin":
+							case "Iron Resolve":
 							case "Power Word":
 							case "Power Word II":
 							case "Power Word III":
@@ -1493,7 +1494,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 				DataRow row = ds.Tables["Spells"].Rows[0];
 
 				fields.SetField(strName, spell);
-				fields.SetField(strCost, halfCostSpells ? ((int) row[0] / 2).ToString() : row[0].ToString());
+				fields.SetField(strCost, halfCostSpells ? (TryParseInteger(row[0].ToString()) / 2).ToString() : row[0].ToString());
 				fields.SetField(strSchool, row[1].ToString());
 				fields.SetField(strEffect, row[2].ToString());
 
