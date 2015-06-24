@@ -1080,24 +1080,43 @@ finished: //If the function has determined the character is homebrewed, jump her
 						modified.modifiedScore = null;
 						modified.userMarks = false;
 
+						SelectionDialog selection;
 						DialogResult result;
 
 						switch(talentName)
 						{
-							case "Basic Training":
+							case "Adaptive Skin":
 							case "Power Word":
 							case "Power Word II":
 							case "Power Word III":
 								modified.userMarks = true;
 								break;
+							case "Basic Training":
+								modified.userMarks = true;
+								
+								//Have the user select a skill
+								selection = new SelectionDialog(clbSkills.Items, "Select a Skill");
+								result = selection.ShowDialog();
+
+								if (result == DialogResult.OK)
+								{
+									modified.modifiedScore = selection.GetSelectedItem();
+								}
+								else
+								{
+									e.NewValue = e.CurrentValue;
+									return;
+								}
+
+								break;
 							case "Skill Specialization": //+3 to any skill
 								//Have the user select a skill
-								SelectionDialog skillSelection = new SelectionDialog(clbSkills.Items, "Select a Skill");
-								result = skillSelection.ShowDialog();
+								selection = new SelectionDialog(clbSkills.Items, "Select a Skill");
+								result = selection.ShowDialog();
 
 								if(result == DialogResult.OK)
 								{
-									modified.modifiedScore = skillSelection.GetSelectedItem();
+									modified.modifiedScore = selection.GetSelectedItem();
 								}
 								else
 								{
@@ -1120,12 +1139,12 @@ finished: //If the function has determined the character is homebrewed, jump her
 								}
 
 								//Have the user select the spell they want
-								SelectionDialog spellSelection = new SelectionDialog(validSpells, "Select a Spell");
-								result = spellSelection.ShowDialog();
+								selection = new SelectionDialog(validSpells, "Select a Spell");
+								result = selection.ShowDialog();
 
 								if(result == DialogResult.OK)
 								{
-									modified.modifiedScore = spellSelection.GetSelectedItem();
+									modified.modifiedScore = selection.GetSelectedItem();
 									clbSpells.SelectedItem = modified.modifiedScore;
 									clbSpells.SetItemChecked(clbSpells.SelectedIndex, true);
 								}
@@ -1162,13 +1181,14 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 						switch (talentName)
 						{
+							case "Basic Training":
 							case "Skill Specialization":
 								List<string> modifiedSkills = new List<string>();
 
 								//Find the skills that were modified
 								foreach (ModifiedScore mod in modifiedScores)
 								{
-									if (mod.modifiedBy.Equals("Skill Specialization"))
+									if (mod.modifiedBy.Equals(talentName))
 									{
 										modifiedSkills.Add(mod.modifiedScore);
 									}
@@ -1182,7 +1202,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 									for(int n = 0; n < modifiedScores.Count; ++n)
 									{
 										if(modifiedScores[n].modifiedScore.Equals(skillSelector.GetSelectedItem()) &&
-											modifiedScores[n].modifiedBy.Equals("Skill Specialization"))
+											modifiedScores[n].modifiedBy.Equals(talentName))
 										{
 											modifiedScores.RemoveAt(n);
 											break;
@@ -1418,26 +1438,27 @@ finished: //If the function has determined the character is homebrewed, jump her
 				//Check if the talent modifies anything
 				if(modifyingTalents.Contains(talent))
 				{
-					foreach(ModifiedScore mod in modifiedScores)
+					for(int n = 0; n < modifiedScores.Count; ++n)
 					{
-						if(mod.modifiedBy.Equals(talent))
+						if(modifiedScores[n].modifiedBy.Equals(talent))
 						{
 							string fieldValue = talent;
 
 							//Indicate that the user needs to mark what they took the talent for
-							if(mod.userMarks)
+							if (modifiedScores[n].userMarks)
 							{
 								fieldValue += "*";
 							}
+
 							//Indicate what the user took the talent for
-							else if(!string.IsNullOrWhiteSpace(mod.modifiedScore))
+							if (!string.IsNullOrWhiteSpace(modifiedScores[n].modifiedScore))
 							{
-								fieldValue += " - " + mod.modifiedScore;
+								fieldValue += " - " + modifiedScores[n].modifiedScore;
 							}
 
 							fields.SetField("talent_skill_" + talentNum, fieldValue);
 
-							modifiedScores.Remove(mod);
+							modifiedScores.RemoveAt(n);
 						}
 					}
 				}
