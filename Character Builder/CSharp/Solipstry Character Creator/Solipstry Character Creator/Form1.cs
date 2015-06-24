@@ -1285,6 +1285,20 @@ finished: //If the function has determined the character is homebrewed, jump her
 		private void ExportPDF(string saveLocation)
 		{
 			UpdateInformation(); //Make sure the character's information is up to date
+
+			bool halfCostSpells = false;
+			foreach(ModifiedScore mod in modifiedScores)
+			{
+				if(mod.modifiedBy.Equals("More Efficient, Less Wasteful"))
+				{
+					halfCostSpells = true;
+					break;
+				}
+			}
+
+			//Notify the user about anything they need to mark on their own
+			MessageBox.Show("You need to write down the effects of talents marked with *");
+			
 			//Load the pdf
 			PdfReader reader = new PdfReader("Editable Character Sheet.pdf");
 			PdfStamper stamper = new PdfStamper(reader, new FileStream(saveLocation, FileMode.Create));
@@ -1399,7 +1413,39 @@ finished: //If the function has determined the character is homebrewed, jump her
 			int talentNum = 1;
 			foreach(string talent in character.talents)
 			{
-				fields.SetField("talent_skill_" + talentNum, talent);
+				string infoToWrite = talent;
+
+				//Check if the talent modifies anything
+				if(modifyingTalents.Contains(talent))
+				{
+					foreach(ModifiedScore mod in modifiedScores)
+					{
+						if(mod.modifiedBy.Equals(talent))
+						{
+							string fieldValue = talent;
+
+							//Indicate that the user needs to mark what they took the talent for
+							if(mod.userMarks)
+							{
+								fieldValue += "*";
+							}
+							//Indicate what the user took the talent for
+							else if(!string.IsNullOrWhiteSpace(mod.modifiedScore))
+							{
+								fieldValue += " - " + mod.modifiedScore;
+							}
+
+							fields.SetField("talent_skill_" + talentNum, fieldValue);
+
+							modifiedScores.Remove(mod);
+						}
+					}
+				}
+				else
+				{
+					fields.SetField("talent_skill_" + talentNum, talent);
+				}
+				
 				++talentNum;
 			}
 
@@ -1426,7 +1472,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 				DataRow row = ds.Tables["Spells"].Rows[0];
 
 				fields.SetField(strName, spell);
-				fields.SetField(strCost, row[0].ToString());
+				fields.SetField(strCost, halfCostSpells ? ((int) row[0] / 2).ToString() : row[0].ToString());
 				fields.SetField(strSchool, row[1].ToString());
 				fields.SetField(strEffect, row[2].ToString());
 
@@ -1450,7 +1496,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 				CustomSpell customSpell = GetCustomSpell(spell);
 
 				fields.SetField(strName, spell);
-				fields.SetField(strCost, customSpell.cost);
+				fields.SetField(strCost, halfCostSpells ? (TryParseInteger(customSpell.cost) / 2).ToString() : customSpell.cost);
 				fields.SetField(strSchool, customSpell.school);
 				fields.SetField(strEffect, customSpell.effect);
 			}
