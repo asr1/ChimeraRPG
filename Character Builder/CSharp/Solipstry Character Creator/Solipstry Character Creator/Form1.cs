@@ -1402,7 +1402,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 				"unarmed_combat"
 			};
 
-			foreach (string skill in skills)
+			foreach(string skill in skills)
 			{
 				string strScore = skill + "_score";
 				string strMod = skill + "_mod";
@@ -1430,7 +1430,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 			#endregion
 
-			#region Export talents
+			#region Export talents/skill perks
 			int talentNum = 1;
 			foreach(string talent in character.talents)
 			{
@@ -1473,9 +1473,25 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			foreach(string talent in character.customTalents)
 			{
-				fields.SetField("talent_skill_" + talentNum, talent);
+				fields.SetField("talent_skill_" + talentNum, talent + "*");
 				++talentNum;
 			}
+
+			//Skill perks
+			foreach(string skill in skills)
+			{
+				//Query for skill perks the character is eligible for
+				string query = "SELECT perk FROM Perks WHERE skill_name='" + ConvertToProperName(skill) + "' AND min_score<=" + character.GetSkillValue(skill);
+				DataTable perkTable = PerformQuery(skillsConnection, query, "Perks").Tables["Perks"];
+
+				foreach(DataRow row in perkTable.Rows)
+				{
+					fields.SetField("talent_skill_" + talentNum, row[0].ToString());
+
+					++talentNum;
+				}
+			}
+
 			#endregion
 
 			#region Export spells
@@ -1528,6 +1544,20 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			stamper.FormFlattening = false;
 			stamper.Close();
+		}
+
+		/// <summary>
+		/// Converts a skill name to it's proper name (i.e. heavy_armor to Heavy Armor)
+		/// </summary>
+		/// <param name="skillName">Skill to convert</param>
+		/// <returns>Proper name of the skill</returns>
+		private string ConvertToProperName(string skillName)
+		{
+			skillName = skillName.Replace('_', ' ');
+			//Make each word in the string initial case (heavy armor to Heavy Armor)
+			skillName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(skillName.ToLower());
+
+			return skillName;
 		}
 
 		private void exportPDFToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1740,14 +1770,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 
 			sorting = false;
-		}
-	
-		/// <summary>
-		/// 
-		/// </summary>
-		private void ResetCharacterAndWindow()
-		{
-
 		}
 	}
 }
