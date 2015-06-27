@@ -1741,5 +1741,13 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			sorting = false;
 		}
+	
+		/// <summary>
+		/// 
+		/// </summary>
+		private void ResetCharacterAndWindow()
+		{
+
+		}
 	}
 }
