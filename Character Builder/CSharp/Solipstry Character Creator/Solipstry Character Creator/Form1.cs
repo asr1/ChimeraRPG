@@ -1004,6 +1004,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 			else
 			{
+				Console.WriteLine("Hi");
 				DataSet ds = PerformQuery(skillsConnection,
 					"SELECT desc FROM Skills WHERE skill_name = '" + skillName + "'", "Skills");
 				DataRow row = ds.Tables["Skills"].Rows[0];

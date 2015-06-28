@@ -31,6 +31,9 @@
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabInfo = new System.Windows.Forms.TabPage();
+			this.lblHeavyLightArmor = new System.Windows.Forms.Label();
+			this.rdoHeavyArmor = new System.Windows.Forms.RadioButton();
+			this.rdoLightArmor = new System.Windows.Forms.RadioButton();
 			this.lblSize = new System.Windows.Forms.Label();
 			this.cmbSize = new System.Windows.Forms.ComboBox();
 			this.txtName = new System.Windows.Forms.TextBox();
@@ -79,17 +82,17 @@
 			this.txtConstitution = new System.Windows.Forms.TextBox();
 			this.txtDexterity = new System.Windows.Forms.TextBox();
 			this.tabSkills = new System.Windows.Forms.TabPage();
-			this.txtSkillInfo = new System.Windows.Forms.TextBox();
+			this.skillsSplitContainer = new System.Windows.Forms.SplitContainer();
 			this.lblSkillsInstructions = new System.Windows.Forms.Label();
 			this.clbSkills = new System.Windows.Forms.CheckedListBox();
+			this.txtSkillInfo = new System.Windows.Forms.TextBox();
 			this.tabTalents = new System.Windows.Forms.TabPage();
-			this.txtTalentInfo = new System.Windows.Forms.TextBox();
+			this.talentsSplitContainer = new System.Windows.Forms.SplitContainer();
 			this.lblTalentsInstructions = new System.Windows.Forms.Label();
 			this.clbTalents = new System.Windows.Forms.CheckedListBox();
+			this.txtTalentInfo = new System.Windows.Forms.TextBox();
 			this.tabSpells = new System.Windows.Forms.TabPage();
 			this.txtSpellInfo = new System.Windows.Forms.TextBox();
-			this.lblSpellsInstructions = new System.Windows.Forms.Label();
-			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.lblACLight = new System.Windows.Forms.Label();
 			this.lblACHeavy = new System.Windows.Forms.Label();
 			this.lblInitiative = new System.Windows.Forms.Label();
@@ -136,9 +139,9 @@
 			this.exportPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.rdoLightArmor = new System.Windows.Forms.RadioButton();
-			this.rdoHeavyArmor = new System.Windows.Forms.RadioButton();
-			this.lblHeavyLightArmor = new System.Windows.Forms.Label();
+			this.spellsSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.lblSpellsInstructions = new System.Windows.Forms.Label();
+			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -147,14 +150,27 @@
 			this.tabInfo.SuspendLayout();
 			this.tabAttributes.SuspendLayout();
 			this.tabSkills.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.skillsSplitContainer)).BeginInit();
+			this.skillsSplitContainer.Panel1.SuspendLayout();
+			this.skillsSplitContainer.Panel2.SuspendLayout();
+			this.skillsSplitContainer.SuspendLayout();
 			this.tabTalents.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.talentsSplitContainer)).BeginInit();
+			this.talentsSplitContainer.Panel1.SuspendLayout();
+			this.talentsSplitContainer.Panel2.SuspendLayout();
+			this.talentsSplitContainer.SuspendLayout();
 			this.tabSpells.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.spellsSplitContainer)).BeginInit();
+			this.spellsSplitContainer.Panel1.SuspendLayout();
+			this.spellsSplitContainer.Panel2.SuspendLayout();
+			this.spellsSplitContainer.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
 			// 
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
 			this.splitContainer1.IsSplitterFixed = true;
 			this.splitContainer1.Location = new System.Drawing.Point(0, 24);
 			this.splitContainer1.Name = "splitContainer1";
@@ -217,10 +233,11 @@
 			this.tabControl1.Controls.Add(this.tabSkills);
 			this.tabControl1.Controls.Add(this.tabTalents);
 			this.tabControl1.Controls.Add(this.tabSpells);
-			this.tabControl1.Location = new System.Drawing.Point(3, 0);
+			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl1.Location = new System.Drawing.Point(0, 0);
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(494, 358);
+			this.tabControl1.Size = new System.Drawing.Size(499, 359);
 			this.tabControl1.TabIndex = 0;
 			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
@@ -253,10 +270,41 @@
 			this.tabInfo.Location = new System.Drawing.Point(4, 22);
 			this.tabInfo.Name = "tabInfo";
 			this.tabInfo.Padding = new System.Windows.Forms.Padding(3);
-			this.tabInfo.Size = new System.Drawing.Size(486, 332);
+			this.tabInfo.Size = new System.Drawing.Size(491, 333);
 			this.tabInfo.TabIndex = 0;
 			this.tabInfo.Text = "Info";
 			this.tabInfo.UseVisualStyleBackColor = true;
+			// 
+			// lblHeavyLightArmor
+			// 
+			this.lblHeavyLightArmor.AutoSize = true;
+			this.lblHeavyLightArmor.Location = new System.Drawing.Point(118, 292);
+			this.lblHeavyLightArmor.Name = "lblHeavyLightArmor";
+			this.lblHeavyLightArmor.Size = new System.Drawing.Size(98, 13);
+			this.lblHeavyLightArmor.TabIndex = 22;
+			this.lblHeavyLightArmor.Text = "Heavy/Light armor:";
+			// 
+			// rdoHeavyArmor
+			// 
+			this.rdoHeavyArmor.AutoSize = true;
+			this.rdoHeavyArmor.Location = new System.Drawing.Point(222, 276);
+			this.rdoHeavyArmor.Name = "rdoHeavyArmor";
+			this.rdoHeavyArmor.Size = new System.Drawing.Size(85, 17);
+			this.rdoHeavyArmor.TabIndex = 21;
+			this.rdoHeavyArmor.TabStop = true;
+			this.rdoHeavyArmor.Text = "Heavy armor";
+			this.rdoHeavyArmor.UseVisualStyleBackColor = true;
+			// 
+			// rdoLightArmor
+			// 
+			this.rdoLightArmor.AutoSize = true;
+			this.rdoLightArmor.Location = new System.Drawing.Point(222, 299);
+			this.rdoLightArmor.Name = "rdoLightArmor";
+			this.rdoLightArmor.Size = new System.Drawing.Size(77, 17);
+			this.rdoLightArmor.TabIndex = 20;
+			this.rdoLightArmor.TabStop = true;
+			this.rdoLightArmor.Text = "Light armor";
+			this.rdoLightArmor.UseVisualStyleBackColor = true;
 			// 
 			// lblSize
 			// 
@@ -466,7 +514,7 @@
 			this.tabAttributes.Location = new System.Drawing.Point(4, 22);
 			this.tabAttributes.Name = "tabAttributes";
 			this.tabAttributes.Padding = new System.Windows.Forms.Padding(3);
-			this.tabAttributes.Size = new System.Drawing.Size(486, 332);
+			this.tabAttributes.Size = new System.Drawing.Size(491, 333);
 			this.tabAttributes.TabIndex = 1;
 			this.tabAttributes.Text = "Attributes";
 			this.tabAttributes.UseVisualStyleBackColor = true;
@@ -754,97 +802,136 @@
 			// 
 			// tabSkills
 			// 
+			this.tabSkills.Controls.Add(this.skillsSplitContainer);
 			this.tabSkills.Controls.Add(this.txtSkillInfo);
-			this.tabSkills.Controls.Add(this.lblSkillsInstructions);
-			this.tabSkills.Controls.Add(this.clbSkills);
 			this.tabSkills.Location = new System.Drawing.Point(4, 22);
 			this.tabSkills.Name = "tabSkills";
-			this.tabSkills.Size = new System.Drawing.Size(486, 332);
+			this.tabSkills.Size = new System.Drawing.Size(491, 333);
 			this.tabSkills.TabIndex = 2;
 			this.tabSkills.Text = "Skills";
 			this.tabSkills.UseVisualStyleBackColor = true;
 			// 
-			// txtSkillInfo
+			// skillsSplitContainer
 			// 
-			this.txtSkillInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtSkillInfo.Location = new System.Drawing.Point(0, 245);
-			this.txtSkillInfo.Multiline = true;
-			this.txtSkillInfo.Name = "txtSkillInfo";
-			this.txtSkillInfo.ReadOnly = true;
-			this.txtSkillInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtSkillInfo.Size = new System.Drawing.Size(486, 87);
-			this.txtSkillInfo.TabIndex = 3;
+			this.skillsSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.skillsSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.skillsSplitContainer.IsSplitterFixed = true;
+			this.skillsSplitContainer.Location = new System.Drawing.Point(0, 0);
+			this.skillsSplitContainer.Name = "skillsSplitContainer";
+			this.skillsSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// skillsSplitContainer.Panel1
+			// 
+			this.skillsSplitContainer.Panel1.Controls.Add(this.lblSkillsInstructions);
+			// 
+			// skillsSplitContainer.Panel2
+			// 
+			this.skillsSplitContainer.Panel2.Controls.Add(this.clbSkills);
+			this.skillsSplitContainer.Size = new System.Drawing.Size(491, 246);
+			this.skillsSplitContainer.SplitterDistance = 25;
+			this.skillsSplitContainer.TabIndex = 4;
 			// 
 			// lblSkillsInstructions
 			// 
 			this.lblSkillsInstructions.AutoSize = true;
-			this.lblSkillsInstructions.Location = new System.Drawing.Point(5, 15);
+			this.lblSkillsInstructions.Location = new System.Drawing.Point(3, 0);
 			this.lblSkillsInstructions.Name = "lblSkillsInstructions";
 			this.lblSkillsInstructions.Size = new System.Drawing.Size(291, 13);
-			this.lblSkillsInstructions.TabIndex = 1;
+			this.lblSkillsInstructions.TabIndex = 3;
 			this.lblSkillsInstructions.Text = "Choose 5 skills to receive 25 points. The rest will receive 10.";
 			// 
 			// clbSkills
 			// 
 			this.clbSkills.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.clbSkills.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.clbSkills.FormattingEnabled = true;
-			this.clbSkills.Location = new System.Drawing.Point(0, 31);
+			this.clbSkills.Location = new System.Drawing.Point(0, 0);
 			this.clbSkills.Name = "clbSkills";
-			this.clbSkills.Size = new System.Drawing.Size(486, 212);
-			this.clbSkills.TabIndex = 0;
+			this.clbSkills.Size = new System.Drawing.Size(491, 217);
+			this.clbSkills.TabIndex = 2;
 			this.clbSkills.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSkills_ItemCheck);
 			this.clbSkills.SelectedIndexChanged += new System.EventHandler(this.clbSkills_SelectedIndexChanged);
 			// 
+			// txtSkillInfo
+			// 
+			this.txtSkillInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.txtSkillInfo.Location = new System.Drawing.Point(0, 246);
+			this.txtSkillInfo.Multiline = true;
+			this.txtSkillInfo.Name = "txtSkillInfo";
+			this.txtSkillInfo.ReadOnly = true;
+			this.txtSkillInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtSkillInfo.Size = new System.Drawing.Size(491, 87);
+			this.txtSkillInfo.TabIndex = 3;
+			// 
 			// tabTalents
 			// 
+			this.tabTalents.Controls.Add(this.talentsSplitContainer);
 			this.tabTalents.Controls.Add(this.txtTalentInfo);
-			this.tabTalents.Controls.Add(this.lblTalentsInstructions);
-			this.tabTalents.Controls.Add(this.clbTalents);
 			this.tabTalents.Location = new System.Drawing.Point(4, 22);
 			this.tabTalents.Name = "tabTalents";
-			this.tabTalents.Size = new System.Drawing.Size(486, 332);
+			this.tabTalents.Size = new System.Drawing.Size(491, 333);
 			this.tabTalents.TabIndex = 3;
 			this.tabTalents.Text = "Talents";
 			this.tabTalents.UseVisualStyleBackColor = true;
 			// 
-			// txtTalentInfo
+			// talentsSplitContainer
 			// 
-			this.txtTalentInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtTalentInfo.Location = new System.Drawing.Point(0, 245);
-			this.txtTalentInfo.Multiline = true;
-			this.txtTalentInfo.Name = "txtTalentInfo";
-			this.txtTalentInfo.ReadOnly = true;
-			this.txtTalentInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtTalentInfo.Size = new System.Drawing.Size(486, 87);
-			this.txtTalentInfo.TabIndex = 6;
+			this.talentsSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.talentsSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.talentsSplitContainer.IsSplitterFixed = true;
+			this.talentsSplitContainer.Location = new System.Drawing.Point(0, 0);
+			this.talentsSplitContainer.Name = "talentsSplitContainer";
+			this.talentsSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// talentsSplitContainer.Panel1
+			// 
+			this.talentsSplitContainer.Panel1.Controls.Add(this.lblTalentsInstructions);
+			// 
+			// talentsSplitContainer.Panel2
+			// 
+			this.talentsSplitContainer.Panel2.Controls.Add(this.clbTalents);
+			this.talentsSplitContainer.Size = new System.Drawing.Size(491, 246);
+			this.talentsSplitContainer.SplitterDistance = 25;
+			this.talentsSplitContainer.TabIndex = 7;
 			// 
 			// lblTalentsInstructions
 			// 
 			this.lblTalentsInstructions.AutoSize = true;
-			this.lblTalentsInstructions.Location = new System.Drawing.Point(5, 15);
+			this.lblTalentsInstructions.Location = new System.Drawing.Point(8, 9);
 			this.lblTalentsInstructions.Name = "lblTalentsInstructions";
 			this.lblTalentsInstructions.Size = new System.Drawing.Size(172, 13);
-			this.lblTalentsInstructions.TabIndex = 2;
+			this.lblTalentsInstructions.TabIndex = 4;
 			this.lblTalentsInstructions.Text = "Select the talents you wish to take.";
 			// 
 			// clbTalents
 			// 
+			this.clbTalents.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.clbTalents.FormattingEnabled = true;
-			this.clbTalents.Location = new System.Drawing.Point(0, 31);
+			this.clbTalents.Location = new System.Drawing.Point(0, 0);
 			this.clbTalents.Name = "clbTalents";
-			this.clbTalents.Size = new System.Drawing.Size(486, 214);
-			this.clbTalents.TabIndex = 1;
+			this.clbTalents.Size = new System.Drawing.Size(491, 217);
+			this.clbTalents.TabIndex = 3;
 			this.clbTalents.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTalents_ItemCheck);
 			this.clbTalents.SelectedIndexChanged += new System.EventHandler(this.clbTalents_SelectedIndexChanged);
 			// 
+			// txtTalentInfo
+			// 
+			this.txtTalentInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.txtTalentInfo.Location = new System.Drawing.Point(0, 246);
+			this.txtTalentInfo.Multiline = true;
+			this.txtTalentInfo.Name = "txtTalentInfo";
+			this.txtTalentInfo.ReadOnly = true;
+			this.txtTalentInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+			this.txtTalentInfo.Size = new System.Drawing.Size(491, 87);
+			this.txtTalentInfo.TabIndex = 6;
+			// 
 			// tabSpells
 			// 
+			this.tabSpells.Controls.Add(this.spellsSplitContainer);
 			this.tabSpells.Controls.Add(this.txtSpellInfo);
-			this.tabSpells.Controls.Add(this.lblSpellsInstructions);
-			this.tabSpells.Controls.Add(this.clbSpells);
 			this.tabSpells.Location = new System.Drawing.Point(4, 22);
 			this.tabSpells.Name = "tabSpells";
-			this.tabSpells.Size = new System.Drawing.Size(486, 332);
+			this.tabSpells.Size = new System.Drawing.Size(491, 333);
 			this.tabSpells.TabIndex = 4;
 			this.tabSpells.Text = "Spells";
 			this.tabSpells.UseVisualStyleBackColor = true;
@@ -852,31 +939,13 @@
 			// txtSpellInfo
 			// 
 			this.txtSpellInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtSpellInfo.Location = new System.Drawing.Point(0, 245);
+			this.txtSpellInfo.Location = new System.Drawing.Point(0, 246);
 			this.txtSpellInfo.Multiline = true;
 			this.txtSpellInfo.Name = "txtSpellInfo";
 			this.txtSpellInfo.ReadOnly = true;
 			this.txtSpellInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtSpellInfo.Size = new System.Drawing.Size(486, 87);
+			this.txtSpellInfo.Size = new System.Drawing.Size(491, 87);
 			this.txtSpellInfo.TabIndex = 7;
-			// 
-			// lblSpellsInstructions
-			// 
-			this.lblSpellsInstructions.AutoSize = true;
-			this.lblSpellsInstructions.Location = new System.Drawing.Point(3, 2);
-			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
-			this.lblSpellsInstructions.Size = new System.Drawing.Size(0, 13);
-			this.lblSpellsInstructions.TabIndex = 1;
-			// 
-			// clbSpells
-			// 
-			this.clbSpells.FormattingEnabled = true;
-			this.clbSpells.Location = new System.Drawing.Point(0, 31);
-			this.clbSpells.Name = "clbSpells";
-			this.clbSpells.Size = new System.Drawing.Size(486, 214);
-			this.clbSpells.TabIndex = 0;
-			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
-			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
 			// 
 			// lblACLight
 			// 
@@ -1290,36 +1359,45 @@
 			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
 			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
 			// 
-			// rdoLightArmor
+			// spellsSplitContainer
 			// 
-			this.rdoLightArmor.AutoSize = true;
-			this.rdoLightArmor.Location = new System.Drawing.Point(222, 299);
-			this.rdoLightArmor.Name = "rdoLightArmor";
-			this.rdoLightArmor.Size = new System.Drawing.Size(77, 17);
-			this.rdoLightArmor.TabIndex = 20;
-			this.rdoLightArmor.TabStop = true;
-			this.rdoLightArmor.Text = "Light armor";
-			this.rdoLightArmor.UseVisualStyleBackColor = true;
+			this.spellsSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.spellsSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.spellsSplitContainer.IsSplitterFixed = true;
+			this.spellsSplitContainer.Location = new System.Drawing.Point(0, 0);
+			this.spellsSplitContainer.Name = "spellsSplitContainer";
+			this.spellsSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
 			// 
-			// rdoHeavyArmor
+			// spellsSplitContainer.Panel1
 			// 
-			this.rdoHeavyArmor.AutoSize = true;
-			this.rdoHeavyArmor.Location = new System.Drawing.Point(222, 276);
-			this.rdoHeavyArmor.Name = "rdoHeavyArmor";
-			this.rdoHeavyArmor.Size = new System.Drawing.Size(85, 17);
-			this.rdoHeavyArmor.TabIndex = 21;
-			this.rdoHeavyArmor.TabStop = true;
-			this.rdoHeavyArmor.Text = "Heavy armor";
-			this.rdoHeavyArmor.UseVisualStyleBackColor = true;
+			this.spellsSplitContainer.Panel1.Controls.Add(this.lblSpellsInstructions);
 			// 
-			// lblHeavyLightArmor
+			// spellsSplitContainer.Panel2
 			// 
-			this.lblHeavyLightArmor.AutoSize = true;
-			this.lblHeavyLightArmor.Location = new System.Drawing.Point(118, 292);
-			this.lblHeavyLightArmor.Name = "lblHeavyLightArmor";
-			this.lblHeavyLightArmor.Size = new System.Drawing.Size(98, 13);
-			this.lblHeavyLightArmor.TabIndex = 22;
-			this.lblHeavyLightArmor.Text = "Heavy/Light armor:";
+			this.spellsSplitContainer.Panel2.Controls.Add(this.clbSpells);
+			this.spellsSplitContainer.Size = new System.Drawing.Size(491, 246);
+			this.spellsSplitContainer.SplitterDistance = 25;
+			this.spellsSplitContainer.TabIndex = 8;
+			// 
+			// lblSpellsInstructions
+			// 
+			this.lblSpellsInstructions.AutoSize = true;
+			this.lblSpellsInstructions.Location = new System.Drawing.Point(8, 9);
+			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
+			this.lblSpellsInstructions.Size = new System.Drawing.Size(77, 13);
+			this.lblSpellsInstructions.TabIndex = 3;
+			this.lblSpellsInstructions.Text = "Temporary text";
+			// 
+			// clbSpells
+			// 
+			this.clbSpells.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.clbSpells.FormattingEnabled = true;
+			this.clbSpells.Location = new System.Drawing.Point(0, 0);
+			this.clbSpells.Name = "clbSpells";
+			this.clbSpells.Size = new System.Drawing.Size(491, 217);
+			this.clbSpells.TabIndex = 2;
+			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
+			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
 			// 
 			// Window
 			// 
@@ -1328,9 +1406,9 @@
 			this.ClientSize = new System.Drawing.Size(684, 383);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.menuStrip1);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MainMenuStrip = this.menuStrip1;
 			this.MaximizeBox = false;
+			this.MinimumSize = new System.Drawing.Size(700, 422);
 			this.Name = "Window";
 			this.Text = "Solipstry Character Creator";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Window_FormClosing);
@@ -1347,12 +1425,27 @@
 			this.tabAttributes.PerformLayout();
 			this.tabSkills.ResumeLayout(false);
 			this.tabSkills.PerformLayout();
+			this.skillsSplitContainer.Panel1.ResumeLayout(false);
+			this.skillsSplitContainer.Panel1.PerformLayout();
+			this.skillsSplitContainer.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.skillsSplitContainer)).EndInit();
+			this.skillsSplitContainer.ResumeLayout(false);
 			this.tabTalents.ResumeLayout(false);
 			this.tabTalents.PerformLayout();
+			this.talentsSplitContainer.Panel1.ResumeLayout(false);
+			this.talentsSplitContainer.Panel1.PerformLayout();
+			this.talentsSplitContainer.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.talentsSplitContainer)).EndInit();
+			this.talentsSplitContainer.ResumeLayout(false);
 			this.tabSpells.ResumeLayout(false);
 			this.tabSpells.PerformLayout();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.spellsSplitContainer.Panel1.ResumeLayout(false);
+			this.spellsSplitContainer.Panel1.PerformLayout();
+			this.spellsSplitContainer.Panel2.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.spellsSplitContainer)).EndInit();
+			this.spellsSplitContainer.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1413,13 +1506,7 @@
 		private System.Windows.Forms.Button btnAttr3;
 		private System.Windows.Forms.Button btnAttr2;
 		private System.Windows.Forms.Button btnAttr1;
-		private System.Windows.Forms.CheckedListBox clbSpells;
 		private System.Windows.Forms.CheckBox chkHomebrew;
-		private System.Windows.Forms.CheckedListBox clbSkills;
-		private System.Windows.Forms.Label lblSkillsInstructions;
-		private System.Windows.Forms.CheckedListBox clbTalents;
-		private System.Windows.Forms.Label lblTalentsInstructions;
-		private System.Windows.Forms.Label lblSpellsInstructions;
 		private System.Windows.Forms.TextBox txtSkillInfo;
 		private System.Windows.Forms.TextBox txtTalentInfo;
 		private System.Windows.Forms.TextBox txtSpellInfo;
@@ -1471,6 +1558,15 @@
 		private System.Windows.Forms.Label lblHeavyLightArmor;
 		private System.Windows.Forms.RadioButton rdoHeavyArmor;
 		private System.Windows.Forms.RadioButton rdoLightArmor;
+		private System.Windows.Forms.SplitContainer skillsSplitContainer;
+		private System.Windows.Forms.Label lblSkillsInstructions;
+		private System.Windows.Forms.CheckedListBox clbSkills;
+		private System.Windows.Forms.SplitContainer talentsSplitContainer;
+		private System.Windows.Forms.Label lblTalentsInstructions;
+		private System.Windows.Forms.CheckedListBox clbTalents;
+		private System.Windows.Forms.SplitContainer spellsSplitContainer;
+		private System.Windows.Forms.Label lblSpellsInstructions;
+		private System.Windows.Forms.CheckedListBox clbSpells;
     }
 }
 
