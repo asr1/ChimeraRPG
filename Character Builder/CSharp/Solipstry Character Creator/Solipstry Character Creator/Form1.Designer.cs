@@ -142,6 +142,7 @@
 			this.spellsSplitContainer = new System.Windows.Forms.SplitContainer();
 			this.lblSpellsInstructions = new System.Windows.Forms.Label();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
+			this.lblPrimarySkillsRemaining = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -822,13 +823,14 @@
 			// 
 			// skillsSplitContainer.Panel1
 			// 
+			this.skillsSplitContainer.Panel1.Controls.Add(this.lblPrimarySkillsRemaining);
 			this.skillsSplitContainer.Panel1.Controls.Add(this.lblSkillsInstructions);
 			// 
 			// skillsSplitContainer.Panel2
 			// 
 			this.skillsSplitContainer.Panel2.Controls.Add(this.clbSkills);
 			this.skillsSplitContainer.Size = new System.Drawing.Size(491, 246);
-			this.skillsSplitContainer.SplitterDistance = 25;
+			this.skillsSplitContainer.SplitterDistance = 30;
 			this.skillsSplitContainer.TabIndex = 4;
 			// 
 			// lblSkillsInstructions
@@ -847,7 +849,7 @@
 			this.clbSkills.FormattingEnabled = true;
 			this.clbSkills.Location = new System.Drawing.Point(0, 0);
 			this.clbSkills.Name = "clbSkills";
-			this.clbSkills.Size = new System.Drawing.Size(491, 217);
+			this.clbSkills.Size = new System.Drawing.Size(491, 212);
 			this.clbSkills.TabIndex = 2;
 			this.clbSkills.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSkills_ItemCheck);
 			this.clbSkills.SelectedIndexChanged += new System.EventHandler(this.clbSkills_SelectedIndexChanged);
@@ -1399,6 +1401,15 @@
 			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
 			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
 			// 
+			// lblPrimarySkillsRemaining
+			// 
+			this.lblPrimarySkillsRemaining.AutoSize = true;
+			this.lblPrimarySkillsRemaining.Location = new System.Drawing.Point(3, 13);
+			this.lblPrimarySkillsRemaining.Name = "lblPrimarySkillsRemaining";
+			this.lblPrimarySkillsRemaining.Size = new System.Drawing.Size(122, 13);
+			this.lblPrimarySkillsRemaining.TabIndex = 4;
+			this.lblPrimarySkillsRemaining.Text = "5 primary skills remaining";
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1567,6 +1578,7 @@
 		private System.Windows.Forms.SplitContainer spellsSplitContainer;
 		private System.Windows.Forms.Label lblSpellsInstructions;
 		private System.Windows.Forms.CheckedListBox clbSpells;
+		private System.Windows.Forms.Label lblPrimarySkillsRemaining;
     }
 }
 

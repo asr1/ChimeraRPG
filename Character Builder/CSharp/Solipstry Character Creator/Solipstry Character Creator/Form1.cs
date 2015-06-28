@@ -987,6 +987,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 				}
 			}
 
+			lblPrimarySkillsRemaining.Text = Math.Max(5 - primarySkillCount, 0).ToString() + " primary skills remaining";
+
 			CheckHomebrew();
 
 			UpdateInformation();
