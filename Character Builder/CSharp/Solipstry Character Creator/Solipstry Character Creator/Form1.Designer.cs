@@ -1376,7 +1376,7 @@
 			// 
 			this.spellsSplitContainer.Panel2.Controls.Add(this.clbSpells);
 			this.spellsSplitContainer.Size = new System.Drawing.Size(491, 246);
-			this.spellsSplitContainer.SplitterDistance = 25;
+			this.spellsSplitContainer.SplitterDistance = 43;
 			this.spellsSplitContainer.TabIndex = 8;
 			// 
 			// lblSpellsInstructions
@@ -1394,7 +1394,7 @@
 			this.clbSpells.FormattingEnabled = true;
 			this.clbSpells.Location = new System.Drawing.Point(0, 0);
 			this.clbSpells.Name = "clbSpells";
-			this.clbSpells.Size = new System.Drawing.Size(491, 217);
+			this.clbSpells.Size = new System.Drawing.Size(491, 199);
 			this.clbSpells.TabIndex = 2;
 			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
 			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
