@@ -143,6 +143,7 @@
 			this.lblSpellsInstructions = new System.Windows.Forms.Label();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.lblPrimarySkillsRemaining = new System.Windows.Forms.Label();
+			this.lblTalentsRemaining = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -887,13 +888,14 @@
 			// 
 			// talentsSplitContainer.Panel1
 			// 
+			this.talentsSplitContainer.Panel1.Controls.Add(this.lblTalentsRemaining);
 			this.talentsSplitContainer.Panel1.Controls.Add(this.lblTalentsInstructions);
 			// 
 			// talentsSplitContainer.Panel2
 			// 
 			this.talentsSplitContainer.Panel2.Controls.Add(this.clbTalents);
 			this.talentsSplitContainer.Size = new System.Drawing.Size(491, 246);
-			this.talentsSplitContainer.SplitterDistance = 25;
+			this.talentsSplitContainer.SplitterDistance = 39;
 			this.talentsSplitContainer.TabIndex = 7;
 			// 
 			// lblTalentsInstructions
@@ -911,7 +913,7 @@
 			this.clbTalents.FormattingEnabled = true;
 			this.clbTalents.Location = new System.Drawing.Point(0, 0);
 			this.clbTalents.Name = "clbTalents";
-			this.clbTalents.Size = new System.Drawing.Size(491, 217);
+			this.clbTalents.Size = new System.Drawing.Size(491, 203);
 			this.clbTalents.TabIndex = 3;
 			this.clbTalents.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTalents_ItemCheck);
 			this.clbTalents.SelectedIndexChanged += new System.EventHandler(this.clbTalents_SelectedIndexChanged);
@@ -1410,6 +1412,15 @@
 			this.lblPrimarySkillsRemaining.TabIndex = 4;
 			this.lblPrimarySkillsRemaining.Text = "5 primary skills remaining";
 			// 
+			// lblTalentsRemaining
+			// 
+			this.lblTalentsRemaining.AutoSize = true;
+			this.lblTalentsRemaining.Location = new System.Drawing.Point(8, 22);
+			this.lblTalentsRemaining.Name = "lblTalentsRemaining";
+			this.lblTalentsRemaining.Size = new System.Drawing.Size(101, 13);
+			this.lblTalentsRemaining.TabIndex = 5;
+			this.lblTalentsRemaining.Text = "1 talent(s) remaining";
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1579,6 +1590,7 @@
 		private System.Windows.Forms.Label lblSpellsInstructions;
 		private System.Windows.Forms.CheckedListBox clbSpells;
 		private System.Windows.Forms.Label lblPrimarySkillsRemaining;
+		private System.Windows.Forms.Label lblTalentsRemaining;
     }
 }
 

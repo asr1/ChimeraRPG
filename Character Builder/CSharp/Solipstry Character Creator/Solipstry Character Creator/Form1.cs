@@ -52,6 +52,9 @@ namespace Solipstry_Character_Creator
 		private Button btnDropFrom; //Button that the drag and drop originated from
 
 		private int primarySkillCount; //Number of skills set as primary skills
+		private int talentsTaken; //Number of talents the user has chosen
+
+		private int talentsAvailable; //Number of talents the character can have without being homebrewed
 
 		private bool sorting; //Whether or not a CheckedListBox is being sorted
 
@@ -92,6 +95,8 @@ namespace Solipstry_Character_Creator
 
 			spellsMenuStrip.Items.Add(newSpellItem);
 			clbSpells.ContextMenuStrip = spellsMenuStrip;
+
+			talentsAvailable = 1; //First level characters can only take one talent
 
 			multipleTimesTalents = new List<string>
 			{
@@ -1006,7 +1011,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 			else
 			{
-				Console.WriteLine("Hi");
 				DataSet ds = PerformQuery(skillsConnection,
 					"SELECT desc FROM Skills WHERE skill_name = '" + skillName + "'", "Skills");
 				DataRow row = ds.Tables["Skills"].Rows[0];
@@ -1063,10 +1067,12 @@ finished: //If the function has determined the character is homebrewed, jump her
 				if(e.NewValue == CheckState.Checked)
 				{
 					character.customTalents.Add(talentName);
+					++talentsTaken;
 				}
 				else
 				{
 					character.customTalents.Remove(talentName);
+					--talentsTaken;
 				}
 			}
 			else
@@ -1173,7 +1179,9 @@ finished: //If the function has determined the character is homebrewed, jump her
 						SortCheckedListBox(clbTalents);
 						clbTalents.SelectedIndex = e.Index + 1;
 					}
-				}
+
+					++talentsTaken;
+				} //endif new value == checked
 				else
 				{
 					character.talents.Remove(clbTalents.SelectedItem.ToString());
@@ -1278,9 +1286,15 @@ finished: //If the function has determined the character is homebrewed, jump her
 					{
 						clbTalents.Items.RemoveAt(e.Index);
 					}
+
+					--talentsTaken;
 				}
 			}
+
+			lblTalentsRemaining.Text = Math.Max(talentsAvailable - talentsTaken, 0).ToString() + " talent(s) remaining";
+
 			UpdateInformation();
+			
 			CheckHomebrew();
 		}
 		#endregion
