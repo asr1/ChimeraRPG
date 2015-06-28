@@ -54,6 +54,7 @@ namespace Solipstry_Character_Creator
 		private int primarySkillCount; //Number of skills set as primary skills
 		private int talentsTaken; //Number of talents the user has chosen
 
+		private int primarySkillsAvailable; //Number of skills the use can select as primary
 		private int talentsAvailable; //Number of talents the character can have without being homebrewed
 
 		private bool sorting; //Whether or not a CheckedListBox is being sorted
@@ -96,6 +97,7 @@ namespace Solipstry_Character_Creator
 			spellsMenuStrip.Items.Add(newSpellItem);
 			clbSpells.ContextMenuStrip = spellsMenuStrip;
 
+			primarySkillsAvailable = 5; //Can only have 5 primary skills
 			talentsAvailable = 1; //First level characters can only take one talent
 
 			multipleTimesTalents = new List<string>
@@ -620,7 +622,14 @@ namespace Solipstry_Character_Creator
 			}
 
 			//Check the number of primary skills (more than 5 is homebrewed)
-			if(primarySkillCount > 5)
+			if(primarySkillCount > primarySkillsAvailable)
+			{
+				hb = true;
+				goto finished;
+			}
+
+			//Check the number of talents taken
+			if(talentsTaken > talentsAvailable)
 			{
 				hb = true;
 				goto finished;
@@ -992,7 +1001,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 				}
 			}
 
-			lblPrimarySkillsRemaining.Text = Math.Max(5 - primarySkillCount, 0).ToString() + " primary skills remaining";
+			lblPrimarySkillsRemaining.Text = Math.Max(primarySkillsAvailable - primarySkillCount, 0).ToString() + " primary skills remaining";
 
 			CheckHomebrew();
 
