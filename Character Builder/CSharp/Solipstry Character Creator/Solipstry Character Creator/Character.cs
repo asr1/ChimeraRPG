@@ -75,7 +75,7 @@ namespace Solipstry_Character_Creator
 			speed = 20;
 			strength = 20;
 			wisdom = 20;
-
+			size = "Medium";
 			initiative = 2;
 
 			for (int i = 0; i < skills.Length; ++i)

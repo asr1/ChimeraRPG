@@ -24,9 +24,17 @@ namespace Solipstry_Character_Creator
 {
     public partial class Window : Form
     {
+		//Access strings for the databases
 		private const string SPELLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Spells.accdb";
 		private const string TALENTS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Talents.accdb";
 		private const string SKILLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Skills.accdb";
+
+		//States for displaying different schools of magic
+		private const int DISPLAY_ALL_SPELLS = 0;
+		private const int DISPLAY_ALTERATION = 1;
+		private const int DISPLAY_CONJURATION = 2;
+		private const int DISPLAY_DESTRUCTION = 3;
+		private const int DISPLAY_RESTORATION = 4;
 
 		//List of talents that modify attributes, skills, etc.
 		private List<string> modifyingTalents;
@@ -49,15 +57,27 @@ namespace Solipstry_Character_Creator
 		//Keeps track of any modified attributes or skills
 		private List<ModifiedScore> modifiedScores;
 
-		private Button btnDropFrom; //Button that the drag and drop originated from
+		//Button that the drag and drop originated from
+		private Button btnDropFrom;
 
-		private int primarySkillCount; //Number of skills set as primary skills
-		private int talentsTaken; //Number of talents the user has chosen
+		//Number of skills set as primary skills
+		private int primarySkillCount;
+		//Number of talents the user has chosen
+		private int talentsTaken;
 
-		private int primarySkillsAvailable; //Number of skills the use can select as primary
-		private int talentsAvailable; //Number of talents the character can have without being homebrewed
+		//Number of skills the use can select as primary
+		private int primarySkillsAvailable;
+		//Number of talents the character can have without being homebrewed 
+		private int talentsAvailable;
 
-		private bool sorting; //Whether or not a CheckedListBox is being sorted
+		//Whether to display all talents/spells or only ones the character is eligble for
+		private bool displayHomebrewOptions; 
+
+		//Whether or not a CheckedListBox is being sorted
+		private bool sorting; 
+
+		//State machine variable for which school of magic to display
+		private int spellDisplay;
 
 		#region Program setup
 		public Window()
@@ -71,6 +91,10 @@ namespace Solipstry_Character_Creator
 			customSpells = new List<CustomSpell>();
 
 			modifiedScores = new List<ModifiedScore>();
+
+			displayHomebrewOptions = false;
+
+			spellDisplay = DISPLAY_ALL_SPELLS;
 
 			//Create context menu strips
 			ContextMenuStrip talentsMenuStrip = new ContextMenuStrip();
@@ -174,8 +198,8 @@ namespace Solipstry_Character_Creator
 				Console.WriteLine("Error opening connection to database: {0}", e.Message);
 			}
 
-			FillSpellsList();
-			FillTalentsList();
+			DisplayEligibleSpells();
+			DisplayEligibleTalents();
 			FillSkillsList();
 
 			UpdateInformation();
@@ -190,49 +214,6 @@ namespace Solipstry_Character_Creator
 
 			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each" +
 				Environment.NewLine + "school is equal to your modifier in that school.";
-		}
-
-		/// <summary>
-		/// Queries the spell table and adds all spells to the CheckListBox for spells
-		/// </summary>
-		private void FillSpellsList()
-		{
-			DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name FROM Spells", "Spells");
-			DataRowCollection rows = ds.Tables["Spells"].Rows;
-			List<string> spellList = new List<string>();
-
-			foreach(DataRow dr in rows)
-			{
-				spellList.Add(dr[0].ToString());
-			}
-			spellList.Sort();
-
-			foreach(string spell in spellList)
-			{
-				clbSpells.Items.Add(spell);
-			}
-		}
-
-		/// <summary>
-		/// Queries the talents table and adds the name of all talents to the CheckListBox
-		/// for talents
-		/// </summary>
-		private void FillTalentsList()
-		{
-			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name FROM Talents", "Talents");
-			DataRowCollection rows = ds.Tables["Talents"].Rows;
-			List<string> talentList = new List<string>();
-
-			foreach(DataRow dr in rows)
-			{
-				talentList.Add(dr[0].ToString());
-			}
-			talentList.Sort();
-
-			foreach(string talent in talentList)
-			{
-				clbTalents.Items.Add(talent);
-			}
 		}
 
 		/// <summary>
@@ -1796,6 +1777,188 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 
 			sorting = false;
+		}
+
+		private void viewHomebrewOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			displayHomebrewOptions = viewHomebrewOptionsToolStripMenuItem.Checked;
+			
+			//Keep track of which talents and spells were checked
+			List<string> checkedTalents = new List<string>();
+			List<string> checkedSpells = new List<string>();
+
+			checkedTalents.AddRange(character.talents);
+			checkedSpells.AddRange(character.spells);
+
+			sorting = true; //Don't do anything when check states change
+
+			clbTalents.Items.Clear();
+			clbSpells.Items.Clear();
+
+			if (displayHomebrewOptions)
+			{
+				//Display talents and spells the character is not eligible to take
+				DisplayAllTalents();
+				DisplayAllSpells();
+			}
+			else
+			{
+				//Disply only talents and spells the character is eligible for
+				DisplayEligibleTalents();
+				DisplayEligibleSpells();
+			}
+
+			//Re-check anything that needs to be checked
+			for (int n = 0; n < clbTalents.Items.Count; ++n)
+			{
+				if(checkedTalents.Contains(clbTalents.Items[n].ToString()))
+				{
+					clbTalents.SetItemChecked(n, true);
+					checkedTalents.Remove(clbTalents.Items[n].ToString());
+				}
+			}
+			
+			for (int n = 0; n < clbSpells.Items.Count; ++n)
+			{
+				if(checkedSpells.Contains(clbSpells.Items[n].ToString()))
+				{
+					clbSpells.SetItemChecked(n, true);
+					checkedSpells.Remove(clbSpells.Items[n].ToString());
+				}
+			}
+			
+			sorting = false;
+		}
+
+		/// <summary>
+		/// Adds only the talents the character is qualified for to the talents CheckedListBox
+		/// </summary>
+		private void DisplayEligibleTalents()
+		{
+			//Query the talent database for all talents
+			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name FROM Talents", "Talents");
+
+			//Add only eligible talents
+			foreach(DataRow row in ds.Tables["Talents"].Rows)
+			{
+				string talentName = row[0].ToString();
+
+				if(!CheckTalentHomebrew(talentName))
+				{
+					clbTalents.Items.Add(talentName);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Adds all talents to the talents CheckedListBox
+		/// </summary>
+		private void DisplayAllTalents()
+		{
+			//Query the talent database for all talents
+			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name FROM Talents", "Talents");
+
+			//Add only eligible talents
+			foreach (DataRow row in ds.Tables["Talents"].Rows)
+			{
+				string talentName = row[0].ToString();
+				clbTalents.Items.Add(talentName);
+			}
+		}
+
+		/// <summary>
+		/// Displays only spells the character is qualified to take. This method also takes into account
+		/// the school of magic the user was viewing
+		/// </summary>
+		private void DisplayEligibleSpells()
+		{
+			List<string> spells;
+		
+			if(spellDisplay == DISPLAY_ALL_SPELLS)
+			{
+				spells = new List<string>();
+
+				DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name FROM Spells", "Spells");
+
+				foreach(DataRow row in ds.Tables["Spells"].Rows)
+				{
+					spells.Add(row[0].ToString());
+				}
+			}
+			else
+			{
+				spells = GetSpellsBySchool();	
+			}
+
+			foreach(string spell in spells)
+			{
+				if(!CheckSpellHomebrew(spell))
+				{
+					clbSpells.Items.Add(spell);
+				}
+			}
+		}
+
+		/// <summary>
+		/// Displays all spells. This method also takes into account the school of magic the user was viewing
+		/// </summary>
+		private void DisplayAllSpells()
+		{
+			List<string> spells;
+
+			if (spellDisplay == DISPLAY_ALL_SPELLS)
+			{
+				spells = new List<string>();
+
+				DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name FROM Spells", "Spells");
+
+				foreach (DataRow row in ds.Tables["Spells"].Rows)
+				{
+					spells.Add(row[0].ToString());
+				}
+			}
+			else
+			{
+				spells = GetSpellsBySchool();
+			}
+
+			clbSpells.Items.AddRange(spells.ToArray());
+		}
+
+		/// <summary>
+		/// Queries the spells database for only spells of the school specified by the user (stored in spellDisplay)
+		/// </summary>
+		/// <returns>Spells of the specified school in  list</returns>
+		private List<string> GetSpellsBySchool()
+		{
+			List<string> spells = new List<string>();
+
+			string school = null;
+			switch (spellDisplay)
+			{
+				case DISPLAY_ALTERATION:
+					school = "Alteration";
+					break;
+				case DISPLAY_CONJURATION:
+					school = "Conjuration";
+					break;
+				case DISPLAY_DESTRUCTION:
+					school = "Destruction";
+					break;
+				case DISPLAY_RESTORATION:
+					school = "Restoration";
+					break;
+			}
+
+			string query = "SELECT spell_name FROM Spells WHERE school='" + school + "'";
+			DataSet ds = PerformQuery(spellsConnection, query, "Spells");
+
+			foreach(DataRow row in ds.Tables["Spells"].Rows)
+			{
+				spells.Add(row[0].ToString());
+			}
+
+			return spells;
 		}
 	}
 }

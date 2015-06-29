@@ -145,6 +145,8 @@
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.lblPrimarySkillsRemaining = new System.Windows.Forms.Label();
 			this.lblTalentsRemaining = new System.Windows.Forms.Label();
+			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.viewHomebrewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -1327,7 +1329,8 @@
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.viewToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(684, 24);
@@ -1421,6 +1424,22 @@
 			this.lblTalentsRemaining.Size = new System.Drawing.Size(101, 13);
 			this.lblTalentsRemaining.TabIndex = 5;
 			this.lblTalentsRemaining.Text = "1 talent(s) remaining";
+			// 
+			// viewToolStripMenuItem
+			// 
+			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewHomebrewOptionsToolStripMenuItem});
+			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+			this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.viewToolStripMenuItem.Text = "View";
+			// 
+			// viewHomebrewOptionsToolStripMenuItem
+			// 
+			this.viewHomebrewOptionsToolStripMenuItem.CheckOnClick = true;
+			this.viewHomebrewOptionsToolStripMenuItem.Name = "viewHomebrewOptionsToolStripMenuItem";
+			this.viewHomebrewOptionsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+			this.viewHomebrewOptionsToolStripMenuItem.Text = "View homebrew options";
+			this.viewHomebrewOptionsToolStripMenuItem.Click += new System.EventHandler(this.viewHomebrewOptionsToolStripMenuItem_Click);
 			// 
 			// Window
 			// 
@@ -1593,6 +1612,8 @@
 		private System.Windows.Forms.CheckedListBox clbSpells;
 		private System.Windows.Forms.Label lblPrimarySkillsRemaining;
 		private System.Windows.Forms.Label lblTalentsRemaining;
+		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem viewHomebrewOptionsToolStripMenuItem;
     }
 }
 
