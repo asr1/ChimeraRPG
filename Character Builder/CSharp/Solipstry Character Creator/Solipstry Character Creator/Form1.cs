@@ -212,8 +212,8 @@ namespace Solipstry_Character_Creator
 			cmbSize.SelectedIndex = 1; //Medium size
 			rdoHeavyArmor.Checked = true; //Heavy armor
 
-			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can know for each" +
-				Environment.NewLine + "school is equal to your modifier in that school.";
+			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can" +
+				Environment.NewLine + "know for each school is equal to your modifier in that school.";
 		}
 
 		/// <summary>
