@@ -439,7 +439,7 @@ namespace Solipstry_Character_Creator
 		private void CalculateDerivedTraits()
 		{
 			character.movement = 3 + character.CalculateModifier(character.speed);
-			character.hitPoints = (int)Math.Truncate(1.5 * (double)character.CalculateModifier(character.constitution));
+			character.hitPoints = (int)Math.Truncate(1.5 * (double)character.constitution);
 			character.initiative = character.CalculateModifier(character.speed);
 
 			character.magicTotal = 5 * character.CalculateModifier(character.wisdom);
