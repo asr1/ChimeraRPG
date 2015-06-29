@@ -147,6 +147,8 @@
 			this.lblTalentsRemaining = new System.Windows.Forms.Label();
 			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewHomebrewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmbSchoolDisplay = new System.Windows.Forms.ComboBox();
+			this.lblSchoolDisplay = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -1378,6 +1380,8 @@
 			// 
 			// spellsSplitContainer.Panel1
 			// 
+			this.spellsSplitContainer.Panel1.Controls.Add(this.lblSchoolDisplay);
+			this.spellsSplitContainer.Panel1.Controls.Add(this.cmbSchoolDisplay);
 			this.spellsSplitContainer.Panel1.Controls.Add(this.lblSpellsInstructions);
 			// 
 			// spellsSplitContainer.Panel2
@@ -1390,7 +1394,7 @@
 			// lblSpellsInstructions
 			// 
 			this.lblSpellsInstructions.AutoSize = true;
-			this.lblSpellsInstructions.Location = new System.Drawing.Point(8, 9);
+			this.lblSpellsInstructions.Location = new System.Drawing.Point(8, 3);
 			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
 			this.lblSpellsInstructions.Size = new System.Drawing.Size(77, 13);
 			this.lblSpellsInstructions.TabIndex = 3;
@@ -1440,6 +1444,31 @@
 			this.viewHomebrewOptionsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
 			this.viewHomebrewOptionsToolStripMenuItem.Text = "View homebrew options";
 			this.viewHomebrewOptionsToolStripMenuItem.Click += new System.EventHandler(this.viewHomebrewOptionsToolStripMenuItem_Click);
+			// 
+			// cmbSchoolDisplay
+			// 
+			this.cmbSchoolDisplay.FormattingEnabled = true;
+			this.cmbSchoolDisplay.Items.AddRange(new object[] {
+            "All Schools",
+            "Alteration",
+            "Conjuration",
+            "Destruction",
+            "Restoration",
+            "Meta"});
+			this.cmbSchoolDisplay.Location = new System.Drawing.Point(320, 19);
+			this.cmbSchoolDisplay.Name = "cmbSchoolDisplay";
+			this.cmbSchoolDisplay.Size = new System.Drawing.Size(168, 21);
+			this.cmbSchoolDisplay.TabIndex = 4;
+			this.cmbSchoolDisplay.SelectedIndexChanged += new System.EventHandler(this.cmbSchoolDisplay_SelectedIndexChanged);
+			// 
+			// lblSchoolDisplay
+			// 
+			this.lblSchoolDisplay.AutoSize = true;
+			this.lblSchoolDisplay.Location = new System.Drawing.Point(317, 3);
+			this.lblSchoolDisplay.Name = "lblSchoolDisplay";
+			this.lblSchoolDisplay.Size = new System.Drawing.Size(90, 13);
+			this.lblSchoolDisplay.TabIndex = 5;
+			this.lblSchoolDisplay.Text = "School to display:";
 			// 
 			// Window
 			// 
@@ -1614,6 +1643,8 @@
 		private System.Windows.Forms.Label lblTalentsRemaining;
 		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem viewHomebrewOptionsToolStripMenuItem;
+		private System.Windows.Forms.ComboBox cmbSchoolDisplay;
+		private System.Windows.Forms.Label lblSchoolDisplay;
     }
 }
 

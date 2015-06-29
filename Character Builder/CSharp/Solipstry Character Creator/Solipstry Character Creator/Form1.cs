@@ -35,6 +35,7 @@ namespace Solipstry_Character_Creator
 		private const int DISPLAY_CONJURATION = 2;
 		private const int DISPLAY_DESTRUCTION = 3;
 		private const int DISPLAY_RESTORATION = 4;
+		private const int DISPLAY_META = 5;
 
 		//List of talents that modify attributes, skills, etc.
 		private List<string> modifyingTalents;
@@ -210,6 +211,7 @@ namespace Solipstry_Character_Creator
 			//Set combo boxes and radio buttons to default values
 			cmbAttributeMethod.SelectedIndex = 0; //All 20s for attributes
 			cmbSize.SelectedIndex = 1; //Medium size
+			cmbSchoolDisplay.SelectedIndex = 0; //Display all schools of magic
 			rdoHeavyArmor.Checked = true; //Heavy armor
 
 			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can" +
@@ -380,8 +382,6 @@ namespace Solipstry_Character_Creator
 		{
 			foreach(ModifiedScore mod in modifiedScores)
 			{
-				Console.WriteLine(mod.modifiedBy + " : " + mod.modifiedScore);
-
 				switch(mod.modifiedBy)
 				{
 					case "Devout Follower":
@@ -890,9 +890,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			if(IsCustomSpell(spellName))
 			{
-				Console.WriteLine("{0} is a custom spell", spellName);
-
-
 				 if(e.NewValue == CheckState.Unchecked)
 				 {
 					 character.customSpells.Remove(spellName);
@@ -1948,6 +1945,9 @@ finished: //If the function has determined the character is homebrewed, jump her
 				case DISPLAY_RESTORATION:
 					school = "Restoration";
 					break;
+				case DISPLAY_META:
+					school = "Meta";
+					break;
 			}
 
 			string query = "SELECT spell_name FROM Spells WHERE school='" + school + "'";
@@ -1959,6 +1959,40 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 
 			return spells;
+		}
+
+		private void cmbSchoolDisplay_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			spellDisplay = cmbSchoolDisplay.SelectedIndex;
+
+			//Keep track of which spells were checked
+			List<string> checkedSpells = new List<string>();
+
+			checkedSpells.AddRange(character.spells);
+
+			sorting = true; //Don't do anything when check states change
+			clbSpells.Items.Clear();
+
+			if (displayHomebrewOptions)
+			{
+				DisplayAllSpells();
+			}
+			else
+			{
+				DisplayEligibleSpells();
+			}
+
+			//Re-check anything that needs to be checked
+			for (int n = 0; n < clbSpells.Items.Count; ++n)
+			{
+				if (checkedSpells.Contains(clbSpells.Items[n].ToString()))
+				{
+					clbSpells.SetItemChecked(n, true);
+					checkedSpells.Remove(clbSpells.Items[n].ToString());
+				}
+			}
+
+			sorting = false;
 		}
 	}
 }
