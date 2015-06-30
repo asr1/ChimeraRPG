@@ -66,10 +66,28 @@ namespace Solipstry_Character_Creator
 		//Number of talents the user has chosen
 		private int talentsTaken;
 
+		//Number of alteration spells the user has chosen
+		private int alterationTaken;
+		//Number of conjuration spells the user has chosen
+		private int conjurationTaken;
+		//Number of destruction spells the user has chosen
+		private int destructionTaken;
+		//Number of restoration spells the user has taken
+		private int restorationTaken;
+
 		//Number of skills the use can select as primary
 		private int primarySkillsAvailable;
 		//Number of talents the character can have without being homebrewed 
 		private int talentsAvailable;
+		
+		//Number of alteration spells the character can have without being homebrewed
+		private int alterationAvailable;
+		//Number of conjuration spells the character can have without being homebrewed
+		private int conjurationAvailable;
+		//Number of destruction spells the character can have without being homebrewed
+		private int destructionAvailable;
+		//Number of restoration spells the character can have without being homebrewed
+		private int restorationAvailable;
 
 		//Whether to display all talents/spells or only ones the character is eligble for
 		private bool displayHomebrewOptions; 
@@ -124,6 +142,13 @@ namespace Solipstry_Character_Creator
 
 			primarySkillsAvailable = 5; //Can only have 5 primary skills
 			talentsAvailable = 1; //First level characters can only take one talent
+			
+			//User can take 1 of each spell by default
+			alterationAvailable = 1;
+			conjurationAvailable = 1;
+			destructionAvailable = 1;
+			restorationAvailable = 1;
+
 
 			multipleTimesTalents = new List<string>
 			{
@@ -616,6 +641,16 @@ namespace Solipstry_Character_Creator
 				goto finished;
 			}
 
+			//Check the number of each spell the user has taken
+			if(alterationTaken > alterationAvailable ||
+				conjurationTaken > conjurationAvailable ||
+				destructionTaken > destructionAvailable ||
+				restorationTaken > restorationAvailable)
+			{
+				hb = true;
+				goto finished;
+			}
+
 			//Check each spell
 			foreach(string spell in character.spells)
 			{
@@ -901,44 +936,114 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 			else
 			{
+				string school = GetSpellSchool(spellName);
+
 				if (e.NewValue == CheckState.Unchecked)
 				{
-					character.spells.Remove(clbSpells.SelectedItem.ToString());
-					character.metaSpells[clbSpells.SelectedItem.ToString()] = null;
+					switch(school)
+					{
+						case "Alteration":
+							--alterationTaken;
+							break;
+						case "Conjuration":
+							--conjurationTaken;
+							break;
+						case "Destruction":
+							--destructionTaken;
+							break;
+						case "Restoration":
+							--restorationTaken;
+							break;
+						case "Meta":
+							switch(character.metaSpells[spellName])
+							{
+								case "Alteration":
+									--alterationTaken;
+									break;
+								case "Conjuration":
+									--conjurationTaken;
+									break;
+								case "Destruction":
+									--destructionTaken;
+									break;
+								case "Restoration":
+									--restorationTaken;
+									break;
+							}
+							break;
+					}
+
+					character.spells.Remove(spellName);
+					character.metaSpells[spellName] = null;
 				}
 				else
 				{
-					//Check if the spell is a meta spell
-					DataRow row = PerformQuery(spellsConnection, "SELECT school FROM Spells WHERE spell_name = '" + clbSpells.SelectedItem.ToString() + "'", "Spells").Tables["Spells"].Rows[0];
-
-					if (row[0].ToString().Equals("Meta"))
+					if (school.Equals("Meta"))
 					{
 						//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
-						string school = "";
-						school = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
+						string chosenSchool = "";
+						chosenSchool = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
 																			"School selection");
 
 						//Make sure the school is valid
-						while (!IsValidSchool(school))
+						while (!IsValidSchool(chosenSchool))
 						{
-							if (school.Equals(""))
+							if (chosenSchool.Equals(""))
 							{
 								e.NewValue = CheckState.Unchecked;
 								return;
 							}
 
-							school = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
+							chosenSchool = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
 																				"School selection");
 						}
 
 						//Make the school initial case (for later use)
-						school = char.ToUpper(school[0]) + school.Substring(1).ToLower();
-						character.metaSpells[clbSpells.SelectedItem.ToString()] = school;
+						chosenSchool = char.ToUpper(chosenSchool[0]) + chosenSchool.Substring(1).ToLower();
+						character.metaSpells[spellName] = chosenSchool;
 					}
 
-					character.spells.Add(clbSpells.SelectedItem.ToString());
+					switch (school)
+					{
+						case "Alteration":
+							++alterationTaken;
+							break;
+						case "Conjuration":
+							++conjurationTaken;
+							break;
+						case "Destruction":
+							++destructionTaken;
+							break;
+						case "Restoration":
+							++restorationTaken;
+							break;
+						case "Meta":
+							switch (character.metaSpells[spellName])
+							{
+								case "Alteration":
+									++alterationTaken;
+									break;
+								case "Conjuration":
+									++conjurationTaken;
+									break;
+								case "Destruction":
+									++destructionTaken;
+									break;
+								case "Restoration":
+									++restorationTaken;
+									break;
+							}
+							break;
+					}
+
+					character.spells.Add(spellName);
 				}
 			}
+
+			lblAlterationRemaining.Text = Math.Max(0, alterationAvailable - alterationTaken).ToString() + " Alteration spell(s) remaining";
+			lblConjurationRemaining.Text = Math.Max(0, conjurationAvailable - conjurationTaken).ToString() + " Conjuration spell(s) remaining";
+			lblDestructionRemaining.Text = Math.Max(0, destructionAvailable - destructionTaken).ToString() + " Destruction spell(s) remaining";
+			lblRestorationRemaining.Text = Math.Max(0, restorationAvailable - restorationTaken).ToString() + " Restoration spell(s) remaining";
 
 			CheckHomebrew();
 		}
@@ -984,6 +1089,16 @@ finished: //If the function has determined the character is homebrewed, jump her
 			CheckHomebrew();
 
 			UpdateInformation();
+
+			alterationAvailable = character.CalculateModifier(character.skills[Skills.ALTERATION]);
+			conjurationAvailable = character.CalculateModifier(character.skills[Skills.CONJURATION]);
+			destructionAvailable = character.CalculateModifier(character.skills[Skills.DESTRUCTION]);
+			restorationAvailable = character.CalculateModifier(character.skills[Skills.RESTORATION]);
+
+			lblAlterationRemaining.Text = Math.Max(0, alterationAvailable - alterationTaken).ToString() + " Alteration spell(s) remaining";
+			lblConjurationRemaining.Text = Math.Max(0, conjurationAvailable - conjurationTaken).ToString() + " Conjuration spell(s) remaining";
+			lblDestructionRemaining.Text = Math.Max(0, destructionAvailable - destructionTaken).ToString() + " Destruction spell(s) remaining";
+			lblRestorationRemaining.Text = Math.Max(0, restorationAvailable - restorationTaken).ToString() + " Restoration spell(s) remaining";
 		}
 
 		private void clbSkills_SelectedIndexChanged(object sender, EventArgs e)
@@ -1959,6 +2074,19 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 
 			return spells;
+		}
+
+		/// <summary>
+		/// Gets the sechool the specified spell belongs to
+		/// </summary>
+		/// <param name="spellName">Spell to get the school of</param>
+		/// <returns>School of the spell</returns>
+		private string GetSpellSchool(string spellName)
+		{
+			//Query the spell database for the school
+			string query = "SELECT school FROM Spells WHERE spell_name='" + spellName + "'";
+			DataSet ds = PerformQuery(spellsConnection, query, "Spells");
+			return ds.Tables["Spells"].Rows[0][0].ToString();
 		}
 
 		private void cmbSchoolDisplay_SelectedIndexChanged(object sender, EventArgs e)

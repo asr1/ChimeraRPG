@@ -84,15 +84,22 @@
 			this.txtDexterity = new System.Windows.Forms.TextBox();
 			this.tabSkills = new System.Windows.Forms.TabPage();
 			this.skillsSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.lblPrimarySkillsRemaining = new System.Windows.Forms.Label();
 			this.lblSkillsInstructions = new System.Windows.Forms.Label();
 			this.clbSkills = new System.Windows.Forms.CheckedListBox();
 			this.txtSkillInfo = new System.Windows.Forms.TextBox();
 			this.tabTalents = new System.Windows.Forms.TabPage();
 			this.talentsSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.lblTalentsRemaining = new System.Windows.Forms.Label();
 			this.lblTalentsInstructions = new System.Windows.Forms.Label();
 			this.clbTalents = new System.Windows.Forms.CheckedListBox();
 			this.txtTalentInfo = new System.Windows.Forms.TextBox();
 			this.tabSpells = new System.Windows.Forms.TabPage();
+			this.spellsSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.lblSchoolDisplay = new System.Windows.Forms.Label();
+			this.cmbSchoolDisplay = new System.Windows.Forms.ComboBox();
+			this.lblSpellsInstructions = new System.Windows.Forms.Label();
+			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.txtSpellInfo = new System.Windows.Forms.TextBox();
 			this.lblACLight = new System.Windows.Forms.Label();
 			this.lblACHeavy = new System.Windows.Forms.Label();
@@ -140,15 +147,12 @@
 			this.exportPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.spellsSplitContainer = new System.Windows.Forms.SplitContainer();
-			this.lblSpellsInstructions = new System.Windows.Forms.Label();
-			this.clbSpells = new System.Windows.Forms.CheckedListBox();
-			this.lblPrimarySkillsRemaining = new System.Windows.Forms.Label();
-			this.lblTalentsRemaining = new System.Windows.Forms.Label();
 			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewHomebrewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.cmbSchoolDisplay = new System.Windows.Forms.ComboBox();
-			this.lblSchoolDisplay = new System.Windows.Forms.Label();
+			this.lblAlterationRemaining = new System.Windows.Forms.Label();
+			this.lblDestructionRemaining = new System.Windows.Forms.Label();
+			this.lblConjurationRemaining = new System.Windows.Forms.Label();
+			this.lblRestorationRemaining = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -167,11 +171,11 @@
 			this.talentsSplitContainer.Panel2.SuspendLayout();
 			this.talentsSplitContainer.SuspendLayout();
 			this.tabSpells.SuspendLayout();
-			this.menuStrip1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.spellsSplitContainer)).BeginInit();
 			this.spellsSplitContainer.Panel1.SuspendLayout();
 			this.spellsSplitContainer.Panel2.SuspendLayout();
 			this.spellsSplitContainer.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -839,6 +843,15 @@
 			this.skillsSplitContainer.SplitterDistance = 30;
 			this.skillsSplitContainer.TabIndex = 4;
 			// 
+			// lblPrimarySkillsRemaining
+			// 
+			this.lblPrimarySkillsRemaining.AutoSize = true;
+			this.lblPrimarySkillsRemaining.Location = new System.Drawing.Point(3, 13);
+			this.lblPrimarySkillsRemaining.Name = "lblPrimarySkillsRemaining";
+			this.lblPrimarySkillsRemaining.Size = new System.Drawing.Size(122, 13);
+			this.lblPrimarySkillsRemaining.TabIndex = 4;
+			this.lblPrimarySkillsRemaining.Text = "5 primary skills remaining";
+			// 
 			// lblSkillsInstructions
 			// 
 			this.lblSkillsInstructions.AutoSize = true;
@@ -900,13 +913,22 @@
 			// 
 			this.talentsSplitContainer.Panel2.Controls.Add(this.clbTalents);
 			this.talentsSplitContainer.Size = new System.Drawing.Size(491, 246);
-			this.talentsSplitContainer.SplitterDistance = 39;
+			this.talentsSplitContainer.SplitterDistance = 30;
 			this.talentsSplitContainer.TabIndex = 7;
+			// 
+			// lblTalentsRemaining
+			// 
+			this.lblTalentsRemaining.AutoSize = true;
+			this.lblTalentsRemaining.Location = new System.Drawing.Point(3, 13);
+			this.lblTalentsRemaining.Name = "lblTalentsRemaining";
+			this.lblTalentsRemaining.Size = new System.Drawing.Size(101, 13);
+			this.lblTalentsRemaining.TabIndex = 5;
+			this.lblTalentsRemaining.Text = "1 talent(s) remaining";
 			// 
 			// lblTalentsInstructions
 			// 
 			this.lblTalentsInstructions.AutoSize = true;
-			this.lblTalentsInstructions.Location = new System.Drawing.Point(8, 9);
+			this.lblTalentsInstructions.Location = new System.Drawing.Point(3, 0);
 			this.lblTalentsInstructions.Name = "lblTalentsInstructions";
 			this.lblTalentsInstructions.Size = new System.Drawing.Size(172, 13);
 			this.lblTalentsInstructions.TabIndex = 4;
@@ -918,7 +940,7 @@
 			this.clbTalents.FormattingEnabled = true;
 			this.clbTalents.Location = new System.Drawing.Point(0, 0);
 			this.clbTalents.Name = "clbTalents";
-			this.clbTalents.Size = new System.Drawing.Size(491, 203);
+			this.clbTalents.Size = new System.Drawing.Size(491, 212);
 			this.clbTalents.TabIndex = 3;
 			this.clbTalents.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTalents_ItemCheck);
 			this.clbTalents.SelectedIndexChanged += new System.EventHandler(this.clbTalents_SelectedIndexChanged);
@@ -944,6 +966,77 @@
 			this.tabSpells.TabIndex = 4;
 			this.tabSpells.Text = "Spells";
 			this.tabSpells.UseVisualStyleBackColor = true;
+			// 
+			// spellsSplitContainer
+			// 
+			this.spellsSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.spellsSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+			this.spellsSplitContainer.IsSplitterFixed = true;
+			this.spellsSplitContainer.Location = new System.Drawing.Point(0, 0);
+			this.spellsSplitContainer.Name = "spellsSplitContainer";
+			this.spellsSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// spellsSplitContainer.Panel1
+			// 
+			this.spellsSplitContainer.Panel1.Controls.Add(this.lblRestorationRemaining);
+			this.spellsSplitContainer.Panel1.Controls.Add(this.lblConjurationRemaining);
+			this.spellsSplitContainer.Panel1.Controls.Add(this.lblDestructionRemaining);
+			this.spellsSplitContainer.Panel1.Controls.Add(this.lblAlterationRemaining);
+			this.spellsSplitContainer.Panel1.Controls.Add(this.lblSchoolDisplay);
+			this.spellsSplitContainer.Panel1.Controls.Add(this.cmbSchoolDisplay);
+			this.spellsSplitContainer.Panel1.Controls.Add(this.lblSpellsInstructions);
+			// 
+			// spellsSplitContainer.Panel2
+			// 
+			this.spellsSplitContainer.Panel2.Controls.Add(this.clbSpells);
+			this.spellsSplitContainer.Size = new System.Drawing.Size(491, 246);
+			this.spellsSplitContainer.SplitterDistance = 80;
+			this.spellsSplitContainer.TabIndex = 8;
+			// 
+			// lblSchoolDisplay
+			// 
+			this.lblSchoolDisplay.AutoSize = true;
+			this.lblSchoolDisplay.Location = new System.Drawing.Point(317, 3);
+			this.lblSchoolDisplay.Name = "lblSchoolDisplay";
+			this.lblSchoolDisplay.Size = new System.Drawing.Size(90, 13);
+			this.lblSchoolDisplay.TabIndex = 5;
+			this.lblSchoolDisplay.Text = "School to display:";
+			// 
+			// cmbSchoolDisplay
+			// 
+			this.cmbSchoolDisplay.FormattingEnabled = true;
+			this.cmbSchoolDisplay.Items.AddRange(new object[] {
+            "All Schools",
+            "Alteration",
+            "Conjuration",
+            "Destruction",
+            "Restoration",
+            "Meta"});
+			this.cmbSchoolDisplay.Location = new System.Drawing.Point(320, 19);
+			this.cmbSchoolDisplay.Name = "cmbSchoolDisplay";
+			this.cmbSchoolDisplay.Size = new System.Drawing.Size(168, 21);
+			this.cmbSchoolDisplay.TabIndex = 4;
+			this.cmbSchoolDisplay.SelectedIndexChanged += new System.EventHandler(this.cmbSchoolDisplay_SelectedIndexChanged);
+			// 
+			// lblSpellsInstructions
+			// 
+			this.lblSpellsInstructions.AutoSize = true;
+			this.lblSpellsInstructions.Location = new System.Drawing.Point(3, 0);
+			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
+			this.lblSpellsInstructions.Size = new System.Drawing.Size(77, 13);
+			this.lblSpellsInstructions.TabIndex = 3;
+			this.lblSpellsInstructions.Text = "Temporary text";
+			// 
+			// clbSpells
+			// 
+			this.clbSpells.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.clbSpells.FormattingEnabled = true;
+			this.clbSpells.Location = new System.Drawing.Point(0, 0);
+			this.clbSpells.Name = "clbSpells";
+			this.clbSpells.Size = new System.Drawing.Size(491, 162);
+			this.clbSpells.TabIndex = 2;
+			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
+			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
 			// 
 			// txtSpellInfo
 			// 
@@ -1369,66 +1462,6 @@
 			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
 			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
 			// 
-			// spellsSplitContainer
-			// 
-			this.spellsSplitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.spellsSplitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
-			this.spellsSplitContainer.IsSplitterFixed = true;
-			this.spellsSplitContainer.Location = new System.Drawing.Point(0, 0);
-			this.spellsSplitContainer.Name = "spellsSplitContainer";
-			this.spellsSplitContainer.Orientation = System.Windows.Forms.Orientation.Horizontal;
-			// 
-			// spellsSplitContainer.Panel1
-			// 
-			this.spellsSplitContainer.Panel1.Controls.Add(this.lblSchoolDisplay);
-			this.spellsSplitContainer.Panel1.Controls.Add(this.cmbSchoolDisplay);
-			this.spellsSplitContainer.Panel1.Controls.Add(this.lblSpellsInstructions);
-			// 
-			// spellsSplitContainer.Panel2
-			// 
-			this.spellsSplitContainer.Panel2.Controls.Add(this.clbSpells);
-			this.spellsSplitContainer.Size = new System.Drawing.Size(491, 246);
-			this.spellsSplitContainer.SplitterDistance = 43;
-			this.spellsSplitContainer.TabIndex = 8;
-			// 
-			// lblSpellsInstructions
-			// 
-			this.lblSpellsInstructions.AutoSize = true;
-			this.lblSpellsInstructions.Location = new System.Drawing.Point(8, 3);
-			this.lblSpellsInstructions.Name = "lblSpellsInstructions";
-			this.lblSpellsInstructions.Size = new System.Drawing.Size(77, 13);
-			this.lblSpellsInstructions.TabIndex = 3;
-			this.lblSpellsInstructions.Text = "Temporary text";
-			// 
-			// clbSpells
-			// 
-			this.clbSpells.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.clbSpells.FormattingEnabled = true;
-			this.clbSpells.Location = new System.Drawing.Point(0, 0);
-			this.clbSpells.Name = "clbSpells";
-			this.clbSpells.Size = new System.Drawing.Size(491, 199);
-			this.clbSpells.TabIndex = 2;
-			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
-			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
-			// 
-			// lblPrimarySkillsRemaining
-			// 
-			this.lblPrimarySkillsRemaining.AutoSize = true;
-			this.lblPrimarySkillsRemaining.Location = new System.Drawing.Point(3, 13);
-			this.lblPrimarySkillsRemaining.Name = "lblPrimarySkillsRemaining";
-			this.lblPrimarySkillsRemaining.Size = new System.Drawing.Size(122, 13);
-			this.lblPrimarySkillsRemaining.TabIndex = 4;
-			this.lblPrimarySkillsRemaining.Text = "5 primary skills remaining";
-			// 
-			// lblTalentsRemaining
-			// 
-			this.lblTalentsRemaining.AutoSize = true;
-			this.lblTalentsRemaining.Location = new System.Drawing.Point(8, 22);
-			this.lblTalentsRemaining.Name = "lblTalentsRemaining";
-			this.lblTalentsRemaining.Size = new System.Drawing.Size(101, 13);
-			this.lblTalentsRemaining.TabIndex = 5;
-			this.lblTalentsRemaining.Text = "1 talent(s) remaining";
-			// 
 			// viewToolStripMenuItem
 			// 
 			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1445,30 +1478,41 @@
 			this.viewHomebrewOptionsToolStripMenuItem.Text = "View homebrew options";
 			this.viewHomebrewOptionsToolStripMenuItem.Click += new System.EventHandler(this.viewHomebrewOptionsToolStripMenuItem_Click);
 			// 
-			// cmbSchoolDisplay
+			// lblAlterationRemaining
 			// 
-			this.cmbSchoolDisplay.FormattingEnabled = true;
-			this.cmbSchoolDisplay.Items.AddRange(new object[] {
-            "All Schools",
-            "Alteration",
-            "Conjuration",
-            "Destruction",
-            "Restoration",
-            "Meta"});
-			this.cmbSchoolDisplay.Location = new System.Drawing.Point(320, 19);
-			this.cmbSchoolDisplay.Name = "cmbSchoolDisplay";
-			this.cmbSchoolDisplay.Size = new System.Drawing.Size(168, 21);
-			this.cmbSchoolDisplay.TabIndex = 4;
-			this.cmbSchoolDisplay.SelectedIndexChanged += new System.EventHandler(this.cmbSchoolDisplay_SelectedIndexChanged);
+			this.lblAlterationRemaining.AutoSize = true;
+			this.lblAlterationRemaining.Location = new System.Drawing.Point(3, 26);
+			this.lblAlterationRemaining.Name = "lblAlterationRemaining";
+			this.lblAlterationRemaining.Size = new System.Drawing.Size(143, 13);
+			this.lblAlterationRemaining.TabIndex = 6;
+			this.lblAlterationRemaining.Text = "1 Alteration spell(s) remaining";
 			// 
-			// lblSchoolDisplay
+			// lblDestructionRemaining
 			// 
-			this.lblSchoolDisplay.AutoSize = true;
-			this.lblSchoolDisplay.Location = new System.Drawing.Point(317, 3);
-			this.lblSchoolDisplay.Name = "lblSchoolDisplay";
-			this.lblSchoolDisplay.Size = new System.Drawing.Size(90, 13);
-			this.lblSchoolDisplay.TabIndex = 5;
-			this.lblSchoolDisplay.Text = "School to display:";
+			this.lblDestructionRemaining.AutoSize = true;
+			this.lblDestructionRemaining.Location = new System.Drawing.Point(3, 52);
+			this.lblDestructionRemaining.Name = "lblDestructionRemaining";
+			this.lblDestructionRemaining.Size = new System.Drawing.Size(153, 13);
+			this.lblDestructionRemaining.TabIndex = 7;
+			this.lblDestructionRemaining.Text = "1 Destruction spell(s) remaining";
+			// 
+			// lblConjurationRemaining
+			// 
+			this.lblConjurationRemaining.AutoSize = true;
+			this.lblConjurationRemaining.Location = new System.Drawing.Point(3, 39);
+			this.lblConjurationRemaining.Name = "lblConjurationRemaining";
+			this.lblConjurationRemaining.Size = new System.Drawing.Size(152, 13);
+			this.lblConjurationRemaining.TabIndex = 8;
+			this.lblConjurationRemaining.Text = "1 Conjuration spell(s) remaining";
+			// 
+			// lblRestorationRemaining
+			// 
+			this.lblRestorationRemaining.AutoSize = true;
+			this.lblRestorationRemaining.Location = new System.Drawing.Point(3, 65);
+			this.lblRestorationRemaining.Name = "lblRestorationRemaining";
+			this.lblRestorationRemaining.Size = new System.Drawing.Size(153, 13);
+			this.lblRestorationRemaining.TabIndex = 9;
+			this.lblRestorationRemaining.Text = "1 Restoration spell(s) remaining";
 			// 
 			// Window
 			// 
@@ -1511,13 +1555,13 @@
 			this.talentsSplitContainer.ResumeLayout(false);
 			this.tabSpells.ResumeLayout(false);
 			this.tabSpells.PerformLayout();
-			this.menuStrip1.ResumeLayout(false);
-			this.menuStrip1.PerformLayout();
 			this.spellsSplitContainer.Panel1.ResumeLayout(false);
 			this.spellsSplitContainer.Panel1.PerformLayout();
 			this.spellsSplitContainer.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.spellsSplitContainer)).EndInit();
 			this.spellsSplitContainer.ResumeLayout(false);
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1645,6 +1689,10 @@
 		private System.Windows.Forms.ToolStripMenuItem viewHomebrewOptionsToolStripMenuItem;
 		private System.Windows.Forms.ComboBox cmbSchoolDisplay;
 		private System.Windows.Forms.Label lblSchoolDisplay;
+		private System.Windows.Forms.Label lblAlterationRemaining;
+		private System.Windows.Forms.Label lblDestructionRemaining;
+		private System.Windows.Forms.Label lblConjurationRemaining;
+		private System.Windows.Forms.Label lblRestorationRemaining;
     }
 }
 
