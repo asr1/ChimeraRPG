@@ -5,7 +5,6 @@
 *.userprefs
 *.pdb
 *.laccdb
-*.pfx
 
 /CharacterSheetCreator
 /Character Builder/CSharp/Solipstry Character Creator/Solipstry Character Creator/bin
