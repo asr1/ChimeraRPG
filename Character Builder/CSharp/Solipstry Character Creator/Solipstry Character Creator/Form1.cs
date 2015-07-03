@@ -17,7 +17,6 @@ using System.IO;
 
 using Microsoft;
 
-using iTextSharp.text;
 using iTextSharp.text.pdf;
 
 namespace Solipstry_Character_Creator
@@ -1438,7 +1437,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			//Notify the user about anything they need to mark on their own
 			MessageBox.Show("You need to write down the effects of talents marked with *");
-			
+
 			//Load the pdf
 			PdfReader reader = new PdfReader("Editable Character Sheet.pdf");
 			PdfStamper stamper = new PdfStamper(reader, new FileStream(saveLocation, FileMode.Create));
@@ -1659,8 +1658,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 			#endregion
 			
-			//TODO Custom things
-
 			stamper.FormFlattening = false;
 			stamper.Close();
 		}

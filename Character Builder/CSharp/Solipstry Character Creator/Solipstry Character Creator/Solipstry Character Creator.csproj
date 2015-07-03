@@ -57,7 +57,7 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>408F726CD5B66B40F9431FABF6D76910D6B4BAE1</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>3ECA1233BFC4408F17DC8EBAC2BC6B4D88CE46CA</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>Solipstry Character Creator_TemporaryKey.pfx</ManifestKeyFile>
@@ -68,9 +68,12 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\..\Downloads\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
