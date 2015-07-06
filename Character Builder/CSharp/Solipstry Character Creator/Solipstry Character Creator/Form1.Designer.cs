@@ -153,6 +153,7 @@
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewHomebrewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -1460,8 +1461,8 @@
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.helpToolStripMenuItem,
-            this.viewToolStripMenuItem});
+            this.viewToolStripMenuItem,
+            this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(684, 24);
@@ -1486,7 +1487,8 @@
 			// helpToolStripMenuItem
 			// 
 			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sendBugReportToolStripMenuItem});
+            this.sendBugReportToolStripMenuItem,
+            this.viewSourceToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.helpToolStripMenuItem.Text = "Help";
@@ -1513,6 +1515,13 @@
 			this.viewHomebrewOptionsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
 			this.viewHomebrewOptionsToolStripMenuItem.Text = "View homebrew options";
 			this.viewHomebrewOptionsToolStripMenuItem.Click += new System.EventHandler(this.viewHomebrewOptionsToolStripMenuItem_Click);
+			// 
+			// viewSourceToolStripMenuItem
+			// 
+			this.viewSourceToolStripMenuItem.Name = "viewSourceToolStripMenuItem";
+			this.viewSourceToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.viewSourceToolStripMenuItem.Text = "View Source";
+			this.viewSourceToolStripMenuItem.Click += new System.EventHandler(this.viewSourceToolStripMenuItem_Click);
 			// 
 			// Window
 			// 
@@ -1693,6 +1702,7 @@
 		private System.Windows.Forms.Label lblDestructionRemaining;
 		private System.Windows.Forms.Label lblConjurationRemaining;
 		private System.Windows.Forms.Label lblRestorationRemaining;
+		private System.Windows.Forms.ToolStripMenuItem viewSourceToolStripMenuItem;
     }
 }
 
