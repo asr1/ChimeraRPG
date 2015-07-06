@@ -96,6 +96,10 @@
 			this.txtTalentInfo = new System.Windows.Forms.TextBox();
 			this.tabSpells = new System.Windows.Forms.TabPage();
 			this.spellsSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.lblRestorationRemaining = new System.Windows.Forms.Label();
+			this.lblConjurationRemaining = new System.Windows.Forms.Label();
+			this.lblDestructionRemaining = new System.Windows.Forms.Label();
+			this.lblAlterationRemaining = new System.Windows.Forms.Label();
 			this.lblSchoolDisplay = new System.Windows.Forms.Label();
 			this.cmbSchoolDisplay = new System.Windows.Forms.ComboBox();
 			this.lblSpellsInstructions = new System.Windows.Forms.Label();
@@ -149,10 +153,6 @@
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewHomebrewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.lblAlterationRemaining = new System.Windows.Forms.Label();
-			this.lblDestructionRemaining = new System.Windows.Forms.Label();
-			this.lblConjurationRemaining = new System.Windows.Forms.Label();
-			this.lblRestorationRemaining = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -993,6 +993,42 @@
 			this.spellsSplitContainer.SplitterDistance = 80;
 			this.spellsSplitContainer.TabIndex = 8;
 			// 
+			// lblRestorationRemaining
+			// 
+			this.lblRestorationRemaining.AutoSize = true;
+			this.lblRestorationRemaining.Location = new System.Drawing.Point(3, 65);
+			this.lblRestorationRemaining.Name = "lblRestorationRemaining";
+			this.lblRestorationRemaining.Size = new System.Drawing.Size(153, 13);
+			this.lblRestorationRemaining.TabIndex = 9;
+			this.lblRestorationRemaining.Text = "1 Restoration spell(s) remaining";
+			// 
+			// lblConjurationRemaining
+			// 
+			this.lblConjurationRemaining.AutoSize = true;
+			this.lblConjurationRemaining.Location = new System.Drawing.Point(3, 39);
+			this.lblConjurationRemaining.Name = "lblConjurationRemaining";
+			this.lblConjurationRemaining.Size = new System.Drawing.Size(152, 13);
+			this.lblConjurationRemaining.TabIndex = 8;
+			this.lblConjurationRemaining.Text = "1 Conjuration spell(s) remaining";
+			// 
+			// lblDestructionRemaining
+			// 
+			this.lblDestructionRemaining.AutoSize = true;
+			this.lblDestructionRemaining.Location = new System.Drawing.Point(3, 52);
+			this.lblDestructionRemaining.Name = "lblDestructionRemaining";
+			this.lblDestructionRemaining.Size = new System.Drawing.Size(153, 13);
+			this.lblDestructionRemaining.TabIndex = 7;
+			this.lblDestructionRemaining.Text = "1 Destruction spell(s) remaining";
+			// 
+			// lblAlterationRemaining
+			// 
+			this.lblAlterationRemaining.AutoSize = true;
+			this.lblAlterationRemaining.Location = new System.Drawing.Point(3, 26);
+			this.lblAlterationRemaining.Name = "lblAlterationRemaining";
+			this.lblAlterationRemaining.Size = new System.Drawing.Size(143, 13);
+			this.lblAlterationRemaining.TabIndex = 6;
+			this.lblAlterationRemaining.Text = "1 Alteration spell(s) remaining";
+			// 
 			// lblSchoolDisplay
 			// 
 			this.lblSchoolDisplay.AutoSize = true;
@@ -1477,42 +1513,6 @@
 			this.viewHomebrewOptionsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
 			this.viewHomebrewOptionsToolStripMenuItem.Text = "View homebrew options";
 			this.viewHomebrewOptionsToolStripMenuItem.Click += new System.EventHandler(this.viewHomebrewOptionsToolStripMenuItem_Click);
-			// 
-			// lblAlterationRemaining
-			// 
-			this.lblAlterationRemaining.AutoSize = true;
-			this.lblAlterationRemaining.Location = new System.Drawing.Point(3, 26);
-			this.lblAlterationRemaining.Name = "lblAlterationRemaining";
-			this.lblAlterationRemaining.Size = new System.Drawing.Size(143, 13);
-			this.lblAlterationRemaining.TabIndex = 6;
-			this.lblAlterationRemaining.Text = "1 Alteration spell(s) remaining";
-			// 
-			// lblDestructionRemaining
-			// 
-			this.lblDestructionRemaining.AutoSize = true;
-			this.lblDestructionRemaining.Location = new System.Drawing.Point(3, 52);
-			this.lblDestructionRemaining.Name = "lblDestructionRemaining";
-			this.lblDestructionRemaining.Size = new System.Drawing.Size(153, 13);
-			this.lblDestructionRemaining.TabIndex = 7;
-			this.lblDestructionRemaining.Text = "1 Destruction spell(s) remaining";
-			// 
-			// lblConjurationRemaining
-			// 
-			this.lblConjurationRemaining.AutoSize = true;
-			this.lblConjurationRemaining.Location = new System.Drawing.Point(3, 39);
-			this.lblConjurationRemaining.Name = "lblConjurationRemaining";
-			this.lblConjurationRemaining.Size = new System.Drawing.Size(152, 13);
-			this.lblConjurationRemaining.TabIndex = 8;
-			this.lblConjurationRemaining.Text = "1 Conjuration spell(s) remaining";
-			// 
-			// lblRestorationRemaining
-			// 
-			this.lblRestorationRemaining.AutoSize = true;
-			this.lblRestorationRemaining.Location = new System.Drawing.Point(3, 65);
-			this.lblRestorationRemaining.Name = "lblRestorationRemaining";
-			this.lblRestorationRemaining.Size = new System.Drawing.Size(153, 13);
-			this.lblRestorationRemaining.TabIndex = 9;
-			this.lblRestorationRemaining.Text = "1 Restoration spell(s) remaining";
 			// 
 			// Window
 			// 
