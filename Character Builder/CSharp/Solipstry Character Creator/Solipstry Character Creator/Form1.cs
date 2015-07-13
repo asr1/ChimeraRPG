@@ -326,8 +326,6 @@ namespace Solipstry_Character_Creator
 			UpdateBasicInformation();
 			UpdateInformation();
 
-            //TODO: Update character information
-
 			CheckHomebrew();
         }
 
@@ -335,8 +333,7 @@ namespace Solipstry_Character_Creator
         {
             character.size = (string) cmbSize.SelectedItem;
 			CheckHomebrew(); //Some talents depend on size
-            //TODO: Update character information
-        }
+		}
    
         private void cmbAttributeMethod_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -512,9 +509,6 @@ namespace Solipstry_Character_Creator
 
 			character.magicTotal = 5 * character.wisdom;
 			character.magicRegen = character.intelligence;
-
-			//TODO Update these from talents
-			//TODO Calculate enlightenment points
 		}
 
 		private void UpdateQuickPane()
@@ -700,8 +694,6 @@ namespace Solipstry_Character_Creator
 					goto finished;
 				}
 			}
-
-			//TODO: Check other homebrew things
 
 finished: //If the function has determined the character is homebrewed, jump here to skip unnecessary checks
 			chkHomebrew.Checked = hb;
