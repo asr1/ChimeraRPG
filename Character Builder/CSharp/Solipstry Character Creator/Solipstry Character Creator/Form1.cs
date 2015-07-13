@@ -1002,29 +1002,25 @@ finished: //If the function has determined the character is homebrewed, jump her
 				{
 					if (school.Equals("Meta"))
 					{
-						//TODO REWRITE TO USE SELECTION DIALOG
+						List<string> schools = new List<string>();
+						schools.Add("Alteration");
+						schools.Add("Conjuration");
+						schools.Add("Destruction");
+						schools.Add("Restoration");
+					
+						//Have the user select which school to use for the meta spell
+						SelectionDialog schoolSelector = new SelectionDialog(schools, "Select a school to use");
+						DialogResult result = schoolSelector.ShowDialog();
 
-						//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
-						string chosenSchool = "";
-						chosenSchool = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
-																			"School selection");
-
-						//Make sure the school is valid
-						while (!IsValidSchool(chosenSchool))
+						if(result == DialogResult.OK)
 						{
-							if (chosenSchool.Equals(""))
-							{
-								e.NewValue = CheckState.Unchecked;
-								return;
-							}
-
-							chosenSchool = Microsoft.VisualBasic.Interaction.InputBox("Invalid school. Please use alteration, conjuration, destruction, or restoration",
-																				"School selection");
+							character.metaSpells[spellName] = schoolSelector.GetSelectedItem();
 						}
-
-						//Make the school initial case (for later use)
-						chosenSchool = char.ToUpper(chosenSchool[0]) + chosenSchool.Substring(1).ToLower();
-						character.metaSpells[spellName] = chosenSchool;
+						else
+						{
+							e.NewValue = e.CurrentValue;
+							return;
+						}
 					}
 
 					switch (school)
