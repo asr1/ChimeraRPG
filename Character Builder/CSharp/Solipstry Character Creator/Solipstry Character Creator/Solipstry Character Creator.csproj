@@ -191,6 +191,9 @@
     <Content Include="LICENSE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="NOTICE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Skills.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -76,6 +76,13 @@ namespace Solipstry_Character_Creator
 		//Keeps track of any modified attributes or skills
 		private List<ModifiedScore> modifiedScores;
 
+		//Modifiers to the number of spells that can be taken per school
+		//due to the Student of Magic talent
+		private int somAlteration;
+		private int somConjuration;
+		private int somDestruction;
+		private int somRestoration;
+
 		//Button that the drag and drop originated from
 		private Button btnDropFrom;
 
@@ -128,6 +135,11 @@ namespace Solipstry_Character_Creator
 			customSpells = new List<CustomSpell>();
 
 			modifiedScores = new List<ModifiedScore>();
+
+			somAlteration = 0;
+			somConjuration = 0;
+			somDestruction = 0;
+			somRestoration = 0;
 
 			displayHomebrewOptions = false;
 
@@ -660,10 +672,10 @@ namespace Solipstry_Character_Creator
 			}
 
 			//Check the number of each spell the user has taken
-			if(alterationTaken > alterationAvailable ||
-				conjurationTaken > conjurationAvailable ||
-				destructionTaken > destructionAvailable ||
-				restorationTaken > restorationAvailable)
+			if(alterationTaken > alterationAvailable + somAlteration ||
+				conjurationTaken > conjurationAvailable + somConjuration ||
+				destructionTaken > destructionAvailable + somDestruction ||
+				restorationTaken > restorationAvailable + somRestoration)
 			{
 				hb = true;
 				goto finished;
@@ -998,6 +1010,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 				{
 					if (school.Equals("Meta"))
 					{
+						//TODO REWRITE TO USE SELECTION DIALOG
+
 						//If the spell is meta magic, prompt the user to find out which school they want to use for the spell
 						string chosenSchool = "";
 						chosenSchool = Microsoft.VisualBasic.Interaction.InputBox("Which school would you like to use for the spell?",
@@ -1058,10 +1072,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 				}
 			}
 
-			lblAlterationRemaining.Text = Math.Max(0, alterationAvailable - alterationTaken).ToString() + " Alteration spell(s) remaining";
-			lblConjurationRemaining.Text = Math.Max(0, conjurationAvailable - conjurationTaken).ToString() + " Conjuration spell(s) remaining";
-			lblDestructionRemaining.Text = Math.Max(0, destructionAvailable - destructionTaken).ToString() + " Destruction spell(s) remaining";
-			lblRestorationRemaining.Text = Math.Max(0, restorationAvailable - restorationTaken).ToString() + " Restoration spell(s) remaining";
+			UpdateSpellsRemainingLabels();
 
 			CheckHomebrew();
 		}
@@ -1113,10 +1124,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 			destructionAvailable = character.CalculateModifier(character.skills[Skills.DESTRUCTION]);
 			restorationAvailable = character.CalculateModifier(character.skills[Skills.RESTORATION]);
 
-			lblAlterationRemaining.Text = Math.Max(0, alterationAvailable - alterationTaken).ToString() + " Alteration spell(s) remaining";
-			lblConjurationRemaining.Text = Math.Max(0, conjurationAvailable - conjurationTaken).ToString() + " Conjuration spell(s) remaining";
-			lblDestructionRemaining.Text = Math.Max(0, destructionAvailable - destructionTaken).ToString() + " Destruction spell(s) remaining";
-			lblRestorationRemaining.Text = Math.Max(0, restorationAvailable - restorationTaken).ToString() + " Restoration spell(s) remaining";
+			UpdateSpellsRemainingLabels();	
 		}
 
 		private void clbSkills_SelectedIndexChanged(object sender, EventArgs e)
@@ -1261,8 +1269,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 								foreach(string spell in clbSpells.Items)
 								{
-									//Spell is valid if it is not taken, not homebrewed, and the character meets the requirements
-									if(!clbSpells.CheckedItems.Contains(spell) && !IsCustomSpell(spell) && !CheckSpellHomebrew(spell))
+									//Spell is valid if it is not homebrewed and the character meets the requirements
+									if(!IsCustomSpell(spell) && !CheckSpellHomebrew(spell))
 									{
 										validSpells.Add(spell);
 									}
@@ -1277,12 +1285,30 @@ finished: //If the function has determined the character is homebrewed, jump her
 									modified.modifiedScore = selection.GetSelectedItem();
 									clbSpells.SelectedItem = modified.modifiedScore;
 									clbSpells.SetItemChecked(clbSpells.SelectedIndex, true);
+
+									switch(GetSpellSchool(selection.GetSelectedItem()))
+									{
+										case "Alteration":
+											++somAlteration;
+											break;
+										case "Conjuration":
+											++somConjuration;
+											break;
+										case "Destruction":
+											++somDestruction;
+											break;
+										case "Restoration":
+											++somRestoration;
+											break;
+									}
 								}
 								else
 								{
 									e.NewValue = e.CurrentValue;
 									return;
 								}
+
+								UpdateSpellsRemainingLabels();
 
 								break;
 						}
@@ -1365,17 +1391,33 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 								if(result == DialogResult.OK)
 								{
-									for(int n = 0; n < modifiedScores.Count; ++n)
+									//Remove the spell from the list of modified spells
+									for(int n = 0; n > modifiedScores.Count; ++n)
 									{
-										if(modifiedScores[n].modifiedScore.Equals(spellSelector.GetSelectedItem()) &&
-											modifiedScores[n].modifiedBy.Equals("Student of Magic"))
+										if(modifiedScores[n].modifiedScore.Equals(spellSelector.GetSelectedItem()))
 										{
-											clbSpells.SelectedItem = modifiedScores[n].modifiedScore;
-											clbSpells.SetItemChecked(clbSpells.SelectedIndex, false);
-
 											modifiedScores.RemoveAt(n);
 											break;
 										}
+									}
+
+									clbSpells.SelectedItem = spellSelector.GetSelectedItem();
+									clbSpells.SetItemChecked(clbSpells.SelectedIndex, false);
+
+									switch (GetSpellSchool(spellSelector.GetSelectedItem()))
+									{
+										case "Alteration":
+											--somAlteration;
+											break;
+										case "Conjuration":
+											--somConjuration;
+											break;
+										case "Destruction":
+											--somDestruction;
+											break;
+										case "Restoration":
+											--somRestoration;
+											break;
 									}
 								}
 								else
@@ -1383,6 +1425,8 @@ finished: //If the function has determined the character is homebrewed, jump her
 									e.NewValue = e.CurrentValue;
 									return;
 								}
+
+								UpdateSpellsRemainingLabels();
 
 								break;
 							default:
@@ -2145,6 +2189,14 @@ finished: //If the function has determined the character is homebrewed, jump her
 			}
 
 			sorting = false;
+		}
+
+		private void UpdateSpellsRemainingLabels()
+		{
+			lblAlterationRemaining.Text = Math.Max(0, alterationAvailable - alterationTaken + somAlteration).ToString() + " Alteration spell(s) remaining";
+			lblConjurationRemaining.Text = Math.Max(0, conjurationAvailable - conjurationTaken + somConjuration).ToString() + " Conjuration spell(s) remaining";
+			lblDestructionRemaining.Text = Math.Max(0, destructionAvailable - destructionTaken + somDestruction).ToString() + " Destruction spell(s) remaining";
+			lblRestorationRemaining.Text = Math.Max(0, restorationAvailable - restorationTaken + somRestoration).ToString() + " Restoration spell(s) remaining";
 		}
 	}
 }
