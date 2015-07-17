@@ -1044,6 +1044,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			string skillName = clbSkills.SelectedItem.ToString();
 
+			//Custom skills
 			if (IsCustomSkill(skillName))
 			{
 				if(e.NewValue == CheckState.Unchecked)
@@ -1057,6 +1058,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 					character.customSkills[skillName] += 15;
 				}
 			}
+			//Built in skills
 			else
 			{
 				if (e.NewValue == CheckState.Unchecked)
@@ -1148,6 +1150,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 			string talentName = clbTalents.Items[e.Index].ToString();
 
+			//Custom talents
 			if(customTalents.Contains(talentName))
 			{
 				if(e.NewValue == CheckState.Checked)
@@ -1161,6 +1164,7 @@ finished: //If the function has determined the character is homebrewed, jump her
 					--talentsTaken;
 				}
 			}
+			//Built in talents
 			else
 			{
 				if(e.NewValue == CheckState.Checked)
