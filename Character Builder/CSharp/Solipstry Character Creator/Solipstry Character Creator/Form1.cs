@@ -962,7 +962,9 @@ finished: //If the function has determined the character is homebrewed, jump her
 
 				if (e.NewValue == CheckState.Unchecked)
 				{
-					switch(school)
+					//If the spell is a meta spell, use the chosen school. Otherwise use the school for the spell
+					//as listed in the database
+					switch (school.Equals("Meta") ? character.metaSpells[spellName] : school)
 					{
 						case "Alteration":
 							--alterationTaken;
@@ -975,23 +977,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 							break;
 						case "Restoration":
 							--restorationTaken;
-							break;
-						case "Meta":
-							switch(character.metaSpells[spellName])
-							{
-								case "Alteration":
-									--alterationTaken;
-									break;
-								case "Conjuration":
-									--conjurationTaken;
-									break;
-								case "Destruction":
-									--destructionTaken;
-									break;
-								case "Restoration":
-									--restorationTaken;
-									break;
-							}
 							break;
 					}
 
@@ -1023,7 +1008,9 @@ finished: //If the function has determined the character is homebrewed, jump her
 						}
 					}
 
-					switch (school)
+					//If the spell is a meta spell, use the chosen school. Otherwise use the school for the spell
+					//as listed in the database
+					switch (school.Equals("Meta") ? character.metaSpells[spellName] : school)
 					{
 						case "Alteration":
 							++alterationTaken;
@@ -1036,23 +1023,6 @@ finished: //If the function has determined the character is homebrewed, jump her
 							break;
 						case "Restoration":
 							++restorationTaken;
-							break;
-						case "Meta":
-							switch (character.metaSpells[spellName])
-							{
-								case "Alteration":
-									++alterationTaken;
-									break;
-								case "Conjuration":
-									++conjurationTaken;
-									break;
-								case "Destruction":
-									++destructionTaken;
-									break;
-								case "Restoration":
-									++restorationTaken;
-									break;
-							}
 							break;
 					}
 
