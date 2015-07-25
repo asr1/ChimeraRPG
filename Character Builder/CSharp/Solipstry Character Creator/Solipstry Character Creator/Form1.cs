@@ -1429,7 +1429,18 @@ namespace Solipstry_Character_Creator
 				}
 			}
 
-			lblTalentsRemaining.Text = Math.Max(talentsAvailable - talentsTaken, 0).ToString() + " talent(s) remaining";
+			//Show how many talents over/under the homebrew limit the user is
+			int talentsRemaining = talentsAvailable - talentsTaken;
+
+			if(talentsRemaining < 0)
+			{
+				lblTalentsRemaining.Text = Math.Abs(talentsRemaining)
+					+ " talent(s) over limit";
+			}
+			else
+			{
+				lblTalentsRemaining.Text = talentsRemaining + " talent(s) remaining";
+			}
 
 			UpdateInformation();
 			
