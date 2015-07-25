@@ -1469,282 +1469,6 @@ namespace Solipstry_Character_Creator
 			}
 		}
 
-		private void ExportPDF(string saveLocation)
-		{
-			UpdateInformation(); //Make sure the character's information is up to date
-
-			bool halfCostSpells = false;
-			foreach(ModifiedScore mod in modifiedScores)
-			{
-				if(mod.modifiedBy.Equals("More Efficient, Less Wasteful"))
-				{
-					halfCostSpells = true;
-					break;
-				}
-			}
-
-			//Notify the user about anything they need to mark on their own
-			MessageBox.Show("You need to write down the effects of talents marked with *");
-
-			//Load the pdf
-			PdfReader reader = new PdfReader("Editable Character Sheet.pdf");
-			PdfStamper stamper = new PdfStamper(reader, new FileStream(saveLocation, FileMode.Create));
-			AcroFields fields = stamper.AcroFields;
-
-			//Fill out the fields
-			fields.SetField("name", character.name);
-			fields.SetField("class", character._class);
-			fields.SetField("race", character.race);
-			fields.SetField("height", character.height);
-			fields.SetField("weight", character.weight);
-			fields.SetField("age", character.age);
-			fields.SetField("occupation", character.occupation);
-			fields.SetField("aspiration", character.aspiration);
-			fields.SetField("background", character.background);
-
-			fields.SetField("hp_total", character.hitPoints.ToString());
-			fields.SetField("mp_total", character.magicTotal.ToString());
-			fields.SetField("mp_regen", character.magicRegen.ToString());
-
-			fields.SetField("cha_score", character.charisma.ToString());
-			fields.SetField("con_score", character.constitution.ToString());
-			fields.SetField("dex_score", character.dexterity.ToString());
-			fields.SetField("int_score", character.intelligence.ToString());
-			fields.SetField("lck_score", character.luck.ToString());
-			fields.SetField("spd_score", character.speed.ToString());
-			fields.SetField("str_score", character.strength.ToString());
-			fields.SetField("wis_score", character.wisdom.ToString());
-			fields.SetField("cha_mod", character.CalculateModifier(character.charisma).ToString());
-			fields.SetField("con_mod", character.CalculateModifier(character.constitution).ToString());
-			fields.SetField("dex_mod", character.CalculateModifier(character.dexterity).ToString());
-			fields.SetField("int_mod", character.CalculateModifier(character.intelligence).ToString());
-			fields.SetField("lck_mod", character.CalculateModifier(character.luck).ToString());
-			fields.SetField("spd_mod", character.CalculateModifier(character.speed).ToString());
-			fields.SetField("str_mod", character.CalculateModifier(character.strength).ToString());
-			fields.SetField("wis_mod", character.CalculateModifier(character.wisdom).ToString());
-
-			fields.SetField("armor_class", (rdoHeavyArmor.Checked ? character.acHeavy : character.acLight).ToString());
-			fields.SetField("will", character.will.ToString());
-			fields.SetField("fortitude", character.fortitude.ToString());
-			fields.SetField("reflex", (rdoHeavyArmor.Checked ? character.reflexHeavy : character.reflexLight).ToString());
-			fields.SetField("fortune_base", character.CalculateModifier(character.luck).ToString());
-			fields.SetField("movement", character.movement.ToString());
-			fields.SetField("initiative", character.initiative.ToString());
-
-			fields.SetField("enlightenment_total", character.enlightenment.ToString());
-
-			#region Export skills
-			//Make iterating through the skills easier
-			string[] skills = 
-			{
-				"acrobatics",
-				"alteration",
-				"athletics",
-				"block",
-				"chemistry",
-				"conjuration",
-				"craft",
-				"destruction",
-				"disguise",
-				"engineering",
-				"enlightenment",
-				"escape",
-				"heavy_armor",
-				"interaction",
-				"knowledge",
-				"language",
-				"light_armor",
-				"medicine",
-				"melee_weapon",
-				"survival",
-				"perception",
-				"ranged_combat",
-				"restoration",
-				"ride_drive",
-				"security",
-				"sense_motive",
-				"sleight_of_hand",
-				"stealth",
-				"unarmed_combat"
-			};
-
-			foreach(string skill in skills)
-			{
-				string strScore = skill + "_score";
-				string strMod = skill + "_mod";
-
-				int score = character.GetSkillValue(skill);
-				int mod = character.CalculateModifier(score);
-
-				fields.SetField(strScore, score.ToString());
-				fields.SetField(strMod, mod.ToString());
-			}
-
-			int customSkillNum = 1;
-			foreach(CustomSkill skill in customSkills)
-			{
-				string strName = "custom_skill_" + customSkillNum + "_name";
-				string strAttr = "custom_skill_" + customSkillNum + "_attribute";
-				string strScore = "custom_skill_" + customSkillNum + "_score";
-				string strMod = "custom_skill_" + customSkillNum + "_mod";
-				++customSkillNum;
-
-				fields.SetField(strName, skill.name);
-				fields.SetField(strAttr, skill.governingAttribute);
-				fields.SetField(strScore, character.customSkills[skill.name].ToString());
-				fields.SetField(strMod, character.CalculateModifier(character.customSkills[skill.name]).ToString());
-			}
-			#endregion
-
-			#region Export talents/skill perks
-			int talentNum = 1;
-			foreach(string talent in character.talents)
-			{
-				string infoToWrite = talent;
-
-				//Check if the talent modifies anything
-				if(modifyingTalents.Contains(talent))
-				{
-					for(int n = 0; n < modifiedScores.Count; ++n)
-					{
-						if(modifiedScores[n].modifiedBy.Equals(talent))
-						{
-							string fieldValue = talent;
-
-							//Indicate that the user needs to mark what they took the talent for
-							if (modifiedScores[n].userMarks)
-							{
-								fieldValue += "*";
-							}
-
-							//Indicate what the user took the talent for
-							if (!string.IsNullOrWhiteSpace(modifiedScores[n].modifiedScore))
-							{
-								fieldValue += " - " + modifiedScores[n].modifiedScore;
-							}
-
-							fields.SetField("talent_skill_" + talentNum, fieldValue);
-
-							modifiedScores.RemoveAt(n);
-						}
-					}
-				}
-				else
-				{
-					fields.SetField("talent_skill_" + talentNum, talent);
-				}
-				
-				++talentNum;
-			}
-
-			foreach(string talent in character.customTalents)
-			{
-				fields.SetField("talent_skill_" + talentNum, talent + "*");
-				++talentNum;
-			}
-
-			//Skill perks
-			foreach(string skill in skills)
-			{
-				//Query for skill perks the character is eligible for
-				string query = "SELECT perk FROM Perks WHERE skill_name='" + ConvertToProperName(skill) + "' AND min_score<=" + character.GetSkillValue(skill);
-				DataTable perkTable = PerformQuery(skillsConnection, query, "Perks").Tables["Perks"];
-
-				foreach(DataRow row in perkTable.Rows)
-				{
-					fields.SetField("talent_skill_" + talentNum, row[0].ToString());
-
-					++talentNum;
-				}
-			}
-
-			#endregion
-
-			#region Export spells
-			int spellNum = 1;
-			foreach(string spell in character.spells)
-			{
-				string strName = "spell_" + spellNum + "_name";
-				string strCost = "spell_" + spellNum + "_cost";
-				string strSchool = "spell_" + spellNum + "_school";
-				string strEffect = "spell_" + spellNum + "_effect";
-				++spellNum;
-
-				DataSet ds = PerformQuery(spellsConnection,
-					"SELECT cost, school, effect FROM Spells WHERE spell_name='" + spell + "'",
-					"Spells");
-				DataRow row = ds.Tables["Spells"].Rows[0];
-
-				fields.SetField(strName, spell);
-				fields.SetField(strCost, halfCostSpells ? (TryParseInteger(row[0].ToString()) / 2).ToString() : row[0].ToString());
-				fields.SetField(strSchool, row[1].ToString());
-				fields.SetField(strEffect, row[2].ToString());
-
-				string school = row[1].ToString();
-				if(school.Equals("Meta"))
-				{
-					school = character.metaSpells[spell];
-				}
-
-				fields.SetField(strSchool, school);
-			}
-
-			foreach(string spell in character.customSpells)
-			{
-				string strName = "spell_" + spellNum + "_name";
-				string strCost = "spell_" + spellNum + "_cost";
-				string strSchool = "spell_" + spellNum + "_school";
-				string strEffect = "spell_" + spellNum + "_effect";
-				++spellNum;
-
-				CustomSpell customSpell = GetCustomSpell(spell);
-
-				fields.SetField(strName, spell);
-				fields.SetField(strCost, halfCostSpells ? (TryParseInteger(customSpell.cost) / 2).ToString() : customSpell.cost);
-				fields.SetField(strSchool, customSpell.school);
-				fields.SetField(strEffect, customSpell.effect);
-			}
-			#endregion
-			
-			stamper.FormFlattening = false;
-			stamper.Close();
-		}
-
-		/// <summary>
-		/// Converts a skill name to it's proper name (i.e. heavy_armor to Heavy Armor)
-		/// </summary>
-		/// <param name="skillName">Skill to convert</param>
-		/// <returns>Proper name of the skill</returns>
-		private string ConvertToProperName(string skillName)
-		{
-			skillName = skillName.Replace('_', ' ');
-			//Make each word in the string initial case (heavy armor to Heavy Armor)
-			skillName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(skillName.ToLower());
-
-			return skillName;
-		}
-
-		private void exportPDFToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			//Display a dialog to obtain file name
-			SaveFileDialog saveDialog = new SaveFileDialog();
-			saveDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
-			saveDialog.Filter = "PDF (*.pdf)|";
-			saveDialog.FilterIndex = 1;
-
-			if(saveDialog.ShowDialog() == DialogResult.OK)
-			{
-				string file = saveDialog.FileName;
-				if(!file.EndsWith(".pdf"))
-				{
-					file = file + ".pdf";
-				}
-
-				ExportPDF(file);
-			}
-		}
-
-
 		private void viewSourceToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			//Link to the github page for Solipstry
@@ -2225,5 +1949,302 @@ namespace Solipstry_Character_Creator
 				lblRestorationRemaining.Text = restorationRemaining + " Restoration spell(s) remaining";
 			}
 		}
+
+		#region PDF export
+		private void btnExport_Click(object sender, EventArgs e)
+		{
+			//Display a dialog to obtain file name
+			SaveFileDialog saveDialog = new SaveFileDialog();
+			saveDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
+			saveDialog.Filter = "PDF (*.pdf)|";
+			saveDialog.FilterIndex = 1;
+
+			if (saveDialog.ShowDialog() == DialogResult.OK)
+			{
+				string file = saveDialog.FileName;
+				if (!file.EndsWith(".pdf"))
+				{
+					file = file + ".pdf";
+				}
+
+				ExportPDF(file);
+			}
+		}
+
+		private void exportPDFToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			//Display a dialog to obtain file name
+			SaveFileDialog saveDialog = new SaveFileDialog();
+			saveDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
+			saveDialog.Filter = "PDF (*.pdf)|";
+			saveDialog.FilterIndex = 1;
+
+			if (saveDialog.ShowDialog() == DialogResult.OK)
+			{
+				string file = saveDialog.FileName;
+				if (!file.EndsWith(".pdf"))
+				{
+					file = file + ".pdf";
+				}
+
+				ExportPDF(file);
+			}
+		}
+
+		private void ExportPDF(string saveLocation)
+		{
+			UpdateInformation(); //Make sure the character's information is up to date
+
+			bool halfCostSpells = false;
+			foreach (ModifiedScore mod in modifiedScores)
+			{
+				if (mod.modifiedBy.Equals("More Efficient, Less Wasteful"))
+				{
+					halfCostSpells = true;
+					break;
+				}
+			}
+
+			//Notify the user about anything they need to mark on their own
+			MessageBox.Show("You need to write down the effects of talents marked with *");
+
+			//Load the pdf
+			PdfReader reader = new PdfReader("Editable Character Sheet.pdf");
+			PdfStamper stamper = new PdfStamper(reader, new FileStream(saveLocation, FileMode.Create));
+			AcroFields fields = stamper.AcroFields;
+
+			//Fill out the fields
+			fields.SetField("name", character.name);
+			fields.SetField("class", character._class);
+			fields.SetField("race", character.race);
+			fields.SetField("height", character.height);
+			fields.SetField("weight", character.weight);
+			fields.SetField("age", character.age);
+			fields.SetField("occupation", character.occupation);
+			fields.SetField("aspiration", character.aspiration);
+			fields.SetField("background", character.background);
+
+			fields.SetField("hp_total", character.hitPoints.ToString());
+			fields.SetField("mp_total", character.magicTotal.ToString());
+			fields.SetField("mp_regen", character.magicRegen.ToString());
+
+			fields.SetField("cha_score", character.charisma.ToString());
+			fields.SetField("con_score", character.constitution.ToString());
+			fields.SetField("dex_score", character.dexterity.ToString());
+			fields.SetField("int_score", character.intelligence.ToString());
+			fields.SetField("lck_score", character.luck.ToString());
+			fields.SetField("spd_score", character.speed.ToString());
+			fields.SetField("str_score", character.strength.ToString());
+			fields.SetField("wis_score", character.wisdom.ToString());
+			fields.SetField("cha_mod", character.CalculateModifier(character.charisma).ToString());
+			fields.SetField("con_mod", character.CalculateModifier(character.constitution).ToString());
+			fields.SetField("dex_mod", character.CalculateModifier(character.dexterity).ToString());
+			fields.SetField("int_mod", character.CalculateModifier(character.intelligence).ToString());
+			fields.SetField("lck_mod", character.CalculateModifier(character.luck).ToString());
+			fields.SetField("spd_mod", character.CalculateModifier(character.speed).ToString());
+			fields.SetField("str_mod", character.CalculateModifier(character.strength).ToString());
+			fields.SetField("wis_mod", character.CalculateModifier(character.wisdom).ToString());
+
+			fields.SetField("armor_class", (rdoHeavyArmor.Checked ? character.acHeavy : character.acLight).ToString());
+			fields.SetField("will", character.will.ToString());
+			fields.SetField("fortitude", character.fortitude.ToString());
+			fields.SetField("reflex", (rdoHeavyArmor.Checked ? character.reflexHeavy : character.reflexLight).ToString());
+			fields.SetField("fortune_base", character.CalculateModifier(character.luck).ToString());
+			fields.SetField("movement", character.movement.ToString());
+			fields.SetField("initiative", character.initiative.ToString());
+
+			fields.SetField("enlightenment_total", character.enlightenment.ToString());
+
+			#region Export skills
+			//Make iterating through the skills easier
+			string[] skills = 
+			{
+				"acrobatics",
+				"alteration",
+				"athletics",
+				"block",
+				"chemistry",
+				"conjuration",
+				"craft",
+				"destruction",
+				"disguise",
+				"engineering",
+				"enlightenment",
+				"escape",
+				"heavy_armor",
+				"interaction",
+				"knowledge",
+				"language",
+				"light_armor",
+				"medicine",
+				"melee_weapon",
+				"survival",
+				"perception",
+				"ranged_combat",
+				"restoration",
+				"ride_drive",
+				"security",
+				"sense_motive",
+				"sleight_of_hand",
+				"stealth",
+				"unarmed_combat"
+			};
+
+			foreach (string skill in skills)
+			{
+				string strScore = skill + "_score";
+				string strMod = skill + "_mod";
+
+				int score = character.GetSkillValue(skill);
+				int mod = character.CalculateModifier(score);
+
+				fields.SetField(strScore, score.ToString());
+				fields.SetField(strMod, mod.ToString());
+			}
+
+			int customSkillNum = 1;
+			foreach (CustomSkill skill in customSkills)
+			{
+				string strName = "custom_skill_" + customSkillNum + "_name";
+				string strAttr = "custom_skill_" + customSkillNum + "_attribute";
+				string strScore = "custom_skill_" + customSkillNum + "_score";
+				string strMod = "custom_skill_" + customSkillNum + "_mod";
+				++customSkillNum;
+
+				fields.SetField(strName, skill.name);
+				fields.SetField(strAttr, skill.governingAttribute);
+				fields.SetField(strScore, character.customSkills[skill.name].ToString());
+				fields.SetField(strMod, character.CalculateModifier(character.customSkills[skill.name]).ToString());
+			}
+			#endregion
+
+			#region Export talents/skill perks
+			int talentNum = 1;
+			foreach (string talent in character.talents)
+			{
+				string infoToWrite = talent;
+
+				//Check if the talent modifies anything
+				if (modifyingTalents.Contains(talent))
+				{
+					for (int n = 0; n < modifiedScores.Count; ++n)
+					{
+						if (modifiedScores[n].modifiedBy.Equals(talent))
+						{
+							string fieldValue = talent;
+
+							//Indicate that the user needs to mark what they took the talent for
+							if (modifiedScores[n].userMarks)
+							{
+								fieldValue += "*";
+							}
+
+							//Indicate what the user took the talent for
+							if (!string.IsNullOrWhiteSpace(modifiedScores[n].modifiedScore))
+							{
+								fieldValue += " - " + modifiedScores[n].modifiedScore;
+							}
+
+							fields.SetField("talent_skill_" + talentNum, fieldValue);
+
+							modifiedScores.RemoveAt(n);
+						}
+					}
+				}
+				else
+				{
+					fields.SetField("talent_skill_" + talentNum, talent);
+				}
+
+				++talentNum;
+			}
+
+			foreach (string talent in character.customTalents)
+			{
+				fields.SetField("talent_skill_" + talentNum, talent + "*");
+				++talentNum;
+			}
+
+			//Skill perks
+			foreach (string skill in skills)
+			{
+				//Query for skill perks the character is eligible for
+				string query = "SELECT perk FROM Perks WHERE skill_name='" + ConvertToProperName(skill) + "' AND min_score<=" + character.GetSkillValue(skill);
+				DataTable perkTable = PerformQuery(skillsConnection, query, "Perks").Tables["Perks"];
+
+				foreach (DataRow row in perkTable.Rows)
+				{
+					fields.SetField("talent_skill_" + talentNum, row[0].ToString());
+
+					++talentNum;
+				}
+			}
+
+			#endregion
+
+			#region Export spells
+			int spellNum = 1;
+			foreach (string spell in character.spells)
+			{
+				string strName = "spell_" + spellNum + "_name";
+				string strCost = "spell_" + spellNum + "_cost";
+				string strSchool = "spell_" + spellNum + "_school";
+				string strEffect = "spell_" + spellNum + "_effect";
+				++spellNum;
+
+				DataSet ds = PerformQuery(spellsConnection,
+					"SELECT cost, school, effect FROM Spells WHERE spell_name='" + spell + "'",
+					"Spells");
+				DataRow row = ds.Tables["Spells"].Rows[0];
+
+				fields.SetField(strName, spell);
+				fields.SetField(strCost, halfCostSpells ? (TryParseInteger(row[0].ToString()) / 2).ToString() : row[0].ToString());
+				fields.SetField(strSchool, row[1].ToString());
+				fields.SetField(strEffect, row[2].ToString());
+
+				string school = row[1].ToString();
+				if (school.Equals("Meta"))
+				{
+					school = character.metaSpells[spell];
+				}
+
+				fields.SetField(strSchool, school);
+			}
+
+			foreach (string spell in character.customSpells)
+			{
+				string strName = "spell_" + spellNum + "_name";
+				string strCost = "spell_" + spellNum + "_cost";
+				string strSchool = "spell_" + spellNum + "_school";
+				string strEffect = "spell_" + spellNum + "_effect";
+				++spellNum;
+
+				CustomSpell customSpell = GetCustomSpell(spell);
+
+				fields.SetField(strName, spell);
+				fields.SetField(strCost, halfCostSpells ? (TryParseInteger(customSpell.cost) / 2).ToString() : customSpell.cost);
+				fields.SetField(strSchool, customSpell.school);
+				fields.SetField(strEffect, customSpell.effect);
+			}
+			#endregion
+
+			stamper.FormFlattening = false;
+			stamper.Close();
+		}
+
+		/// <summary>
+		/// Converts a skill name to it's proper name (i.e. heavy_armor to Heavy Armor)
+		/// </summary>
+		/// <param name="skillName">Skill to convert</param>
+		/// <returns>Proper name of the skill</returns>
+		private string ConvertToProperName(string skillName)
+		{
+			skillName = skillName.Replace('_', ' ');
+			//Make each word in the string initial case (heavy armor to Heavy Armor)
+			skillName = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(skillName.ToLower());
+
+			return skillName;
+		}
+		#endregion
 	}
 }

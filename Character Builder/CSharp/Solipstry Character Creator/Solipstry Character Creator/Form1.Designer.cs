@@ -30,7 +30,7 @@
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
+			this.tabExport = new System.Windows.Forms.TabControl();
 			this.tabInfo = new System.Windows.Forms.TabPage();
 			this.lblHeavyLightArmor = new System.Windows.Forms.Label();
 			this.rdoHeavyArmor = new System.Windows.Forms.RadioButton();
@@ -154,11 +154,13 @@
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblHomebrewed = new System.Windows.Forms.Label();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.btnExport = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			this.tabControl1.SuspendLayout();
+			this.tabExport.SuspendLayout();
 			this.tabInfo.SuspendLayout();
 			this.tabAttributes.SuspendLayout();
 			this.tabSkills.SuspendLayout();
@@ -177,6 +179,7 @@
 			this.spellsSplitContainer.Panel2.SuspendLayout();
 			this.spellsSplitContainer.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
+			this.tabPage1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -189,7 +192,7 @@
 			// 
 			// splitContainer1.Panel1
 			// 
-			this.splitContainer1.Panel1.Controls.Add(this.tabControl1);
+			this.splitContainer1.Panel1.Controls.Add(this.tabExport);
 			// 
 			// splitContainer1.Panel2
 			// 
@@ -238,20 +241,21 @@
 			this.splitContainer1.SplitterDistance = 499;
 			this.splitContainer1.TabIndex = 0;
 			// 
-			// tabControl1
+			// tabExport
 			// 
-			this.tabControl1.Controls.Add(this.tabInfo);
-			this.tabControl1.Controls.Add(this.tabAttributes);
-			this.tabControl1.Controls.Add(this.tabSkills);
-			this.tabControl1.Controls.Add(this.tabTalents);
-			this.tabControl1.Controls.Add(this.tabSpells);
-			this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabControl1.Location = new System.Drawing.Point(0, 0);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(499, 359);
-			this.tabControl1.TabIndex = 0;
-			this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+			this.tabExport.Controls.Add(this.tabInfo);
+			this.tabExport.Controls.Add(this.tabAttributes);
+			this.tabExport.Controls.Add(this.tabSkills);
+			this.tabExport.Controls.Add(this.tabTalents);
+			this.tabExport.Controls.Add(this.tabSpells);
+			this.tabExport.Controls.Add(this.tabPage1);
+			this.tabExport.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabExport.Location = new System.Drawing.Point(0, 0);
+			this.tabExport.Name = "tabExport";
+			this.tabExport.SelectedIndex = 0;
+			this.tabExport.Size = new System.Drawing.Size(499, 359);
+			this.tabExport.TabIndex = 0;
+			this.tabExport.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
 			// tabInfo
 			// 
@@ -1524,6 +1528,29 @@
 			this.lblHomebrewed.Text = "You are homebrewed";
 			this.lblHomebrewed.Visible = false;
 			// 
+			// tabPage1
+			// 
+			this.tabPage1.Controls.Add(this.btnExport);
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage1.Size = new System.Drawing.Size(491, 333);
+			this.tabPage1.TabIndex = 5;
+			this.tabPage1.Text = "Export Character";
+			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// btnExport
+			// 
+			this.btnExport.BackColor = System.Drawing.Color.DeepSkyBlue;
+			this.btnExport.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnExport.Location = new System.Drawing.Point(3, 3);
+			this.btnExport.Name = "btnExport";
+			this.btnExport.Size = new System.Drawing.Size(485, 327);
+			this.btnExport.TabIndex = 0;
+			this.btnExport.Text = "Export Character";
+			this.btnExport.UseVisualStyleBackColor = false;
+			this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1544,7 +1571,7 @@
 			this.splitContainer1.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
-			this.tabControl1.ResumeLayout(false);
+			this.tabExport.ResumeLayout(false);
 			this.tabInfo.ResumeLayout(false);
 			this.tabInfo.PerformLayout();
 			this.tabAttributes.ResumeLayout(false);
@@ -1572,6 +1599,7 @@
 			this.spellsSplitContainer.ResumeLayout(false);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.tabPage1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1580,7 +1608,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabControl tabExport;
         private System.Windows.Forms.TabPage tabInfo;
         private System.Windows.Forms.TabPage tabAttributes;
         private System.Windows.Forms.TabPage tabSkills;
@@ -1704,6 +1732,8 @@
 		private System.Windows.Forms.Label lblRestorationRemaining;
 		private System.Windows.Forms.ToolStripMenuItem viewSourceToolStripMenuItem;
 		private System.Windows.Forms.Label lblHomebrewed;
+		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.Button btnExport;
     }
 }
 
