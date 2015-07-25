@@ -1668,54 +1668,74 @@ namespace Solipstry_Character_Creator
 			sorting = false;
 		}
 
-		private void viewHomebrewOptionsToolStripMenuItem_Click(object sender, EventArgs e)
+		#region Display all/only eligible spells and talents
+		private void chkAllTalents_CheckedChanged(object sender, EventArgs e)
 		{
-			displayHomebrewOptions = viewHomebrewOptionsToolStripMenuItem.Checked;
-			
-			//Keep track of which talents and spells were checked
+			//Keep track of which talents were checked
 			List<string> checkedTalents = new List<string>();
-			List<string> checkedSpells = new List<string>();
 
 			checkedTalents.AddRange(character.talents);
-			checkedSpells.AddRange(character.spells);
 
 			sorting = true; //Don't do anything when check states change
 
 			clbTalents.Items.Clear();
-			clbSpells.Items.Clear();
 
-			if (displayHomebrewOptions)
+			//Display all talents if the check box is checked
+			if (chkAllTalents.Checked)
 			{
-				//Display talents and spells the character is not eligible to take
 				DisplayAllTalents();
-				DisplayAllSpells();
 			}
+			//Display only eligible talents if the check box is not checked
 			else
 			{
-				//Disply only talents and spells the character is eligible for
 				DisplayEligibleTalents();
-				DisplayEligibleSpells();
 			}
 
 			//Re-check anything that needs to be checked
 			for (int n = 0; n < clbTalents.Items.Count; ++n)
 			{
-				if(checkedTalents.Contains(clbTalents.Items[n].ToString()))
+				if (checkedTalents.Contains(clbTalents.Items[n].ToString()))
 				{
 					clbTalents.SetItemChecked(n, true);
 					checkedTalents.Remove(clbTalents.Items[n].ToString());
 				}
 			}
-			
+
+			sorting = false;
+		}
+
+		private void chkAllSpells_CheckedChanged(object sender, EventArgs e)
+		{
+			//Keep track of which spells were checked
+			List<string> checkedSpells = new List<string>();
+
+			checkedSpells.AddRange(character.spells);
+
+			sorting = true; //Don't do anything when check states change
+
+			clbSpells.Items.Clear();
+
+			//Display all spells if the check box is checked
+			if (chkAllSpells.Checked)
+			{
+				DisplayAllSpells();
+			}
+			//Display only eligible spells if the check box is not checked
+			else
+			{
+				DisplayEligibleSpells();
+			}
+
+			//Re-check anything that needs to be checked
 			for (int n = 0; n < clbSpells.Items.Count; ++n)
 			{
-				if(checkedSpells.Contains(clbSpells.Items[n].ToString()))
+				if (checkedSpells.Contains(clbSpells.Items[n].ToString()))
 				{
 					clbSpells.SetItemChecked(n, true);
 					checkedSpells.Remove(clbSpells.Items[n].ToString());
 				}
 			}
-			
+
 			sorting = false;
 		}
 
@@ -1813,6 +1833,7 @@ namespace Solipstry_Character_Creator
 
 			clbSpells.Items.AddRange(spells.ToArray());
 		}
+		#endregion
 
 		/// <summary>
 		/// Queries the spells database for only spells of the school specified by the user (stored in spellDisplay)
@@ -1952,26 +1973,6 @@ namespace Solipstry_Character_Creator
 
 		#region PDF export
 		private void btnExport_Click(object sender, EventArgs e)
-		{
-			//Display a dialog to obtain file name
-			SaveFileDialog saveDialog = new SaveFileDialog();
-			saveDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
-			saveDialog.Filter = "PDF (*.pdf)|";
-			saveDialog.FilterIndex = 1;
-
-			if (saveDialog.ShowDialog() == DialogResult.OK)
-			{
-				string file = saveDialog.FileName;
-				if (!file.EndsWith(".pdf"))
-				{
-					file = file + ".pdf";
-				}
-
-				ExportPDF(file);
-			}
-		}
-
-		private void exportPDFToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			//Display a dialog to obtain file name
 			SaveFileDialog saveDialog = new SaveFileDialog();

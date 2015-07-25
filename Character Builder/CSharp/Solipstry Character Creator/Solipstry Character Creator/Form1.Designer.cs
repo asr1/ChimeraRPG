@@ -90,12 +90,14 @@
 			this.txtSkillInfo = new System.Windows.Forms.TextBox();
 			this.tabTalents = new System.Windows.Forms.TabPage();
 			this.talentsSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.chkAllTalents = new System.Windows.Forms.CheckBox();
 			this.lblTalentsRemaining = new System.Windows.Forms.Label();
 			this.lblTalentsInstructions = new System.Windows.Forms.Label();
 			this.clbTalents = new System.Windows.Forms.CheckedListBox();
 			this.txtTalentInfo = new System.Windows.Forms.TextBox();
 			this.tabSpells = new System.Windows.Forms.TabPage();
 			this.spellsSplitContainer = new System.Windows.Forms.SplitContainer();
+			this.chkAllSpells = new System.Windows.Forms.CheckBox();
 			this.lblRestorationRemaining = new System.Windows.Forms.Label();
 			this.lblConjurationRemaining = new System.Windows.Forms.Label();
 			this.lblDestructionRemaining = new System.Windows.Forms.Label();
@@ -105,6 +107,9 @@
 			this.lblSpellsInstructions = new System.Windows.Forms.Label();
 			this.clbSpells = new System.Windows.Forms.CheckedListBox();
 			this.txtSpellInfo = new System.Windows.Forms.TextBox();
+			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.btnExport = new System.Windows.Forms.Button();
+			this.lblHomebrewed = new System.Windows.Forms.Label();
 			this.lblACLight = new System.Windows.Forms.Label();
 			this.lblACHeavy = new System.Windows.Forms.Label();
 			this.lblInitiative = new System.Windows.Forms.Label();
@@ -146,14 +151,9 @@
 			this.lblQuickConstitution = new System.Windows.Forms.Label();
 			this.lblQuickCharisma = new System.Windows.Forms.Label();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.viewHomebrewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.lblHomebrewed = new System.Windows.Forms.Label();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.btnExport = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -176,8 +176,8 @@
 			this.spellsSplitContainer.Panel1.SuspendLayout();
 			this.spellsSplitContainer.Panel2.SuspendLayout();
 			this.spellsSplitContainer.SuspendLayout();
-			this.menuStrip1.SuspendLayout();
 			this.tabPage1.SuspendLayout();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -909,6 +909,7 @@
 			// 
 			// talentsSplitContainer.Panel1
 			// 
+			this.talentsSplitContainer.Panel1.Controls.Add(this.chkAllTalents);
 			this.talentsSplitContainer.Panel1.Controls.Add(this.lblTalentsRemaining);
 			this.talentsSplitContainer.Panel1.Controls.Add(this.lblTalentsInstructions);
 			// 
@@ -918,6 +919,17 @@
 			this.talentsSplitContainer.Size = new System.Drawing.Size(491, 246);
 			this.talentsSplitContainer.SplitterDistance = 30;
 			this.talentsSplitContainer.TabIndex = 7;
+			// 
+			// chkAllTalents
+			// 
+			this.chkAllTalents.AutoSize = true;
+			this.chkAllTalents.Location = new System.Drawing.Point(339, 12);
+			this.chkAllTalents.Name = "chkAllTalents";
+			this.chkAllTalents.Size = new System.Drawing.Size(149, 17);
+			this.chkAllTalents.TabIndex = 6;
+			this.chkAllTalents.Text = "Display homebrew options";
+			this.chkAllTalents.UseVisualStyleBackColor = true;
+			this.chkAllTalents.CheckedChanged += new System.EventHandler(this.chkAllTalents_CheckedChanged);
 			// 
 			// lblTalentsRemaining
 			// 
@@ -981,6 +993,7 @@
 			// 
 			// spellsSplitContainer.Panel1
 			// 
+			this.spellsSplitContainer.Panel1.Controls.Add(this.chkAllSpells);
 			this.spellsSplitContainer.Panel1.Controls.Add(this.lblRestorationRemaining);
 			this.spellsSplitContainer.Panel1.Controls.Add(this.lblConjurationRemaining);
 			this.spellsSplitContainer.Panel1.Controls.Add(this.lblDestructionRemaining);
@@ -995,6 +1008,17 @@
 			this.spellsSplitContainer.Size = new System.Drawing.Size(491, 246);
 			this.spellsSplitContainer.SplitterDistance = 80;
 			this.spellsSplitContainer.TabIndex = 8;
+			// 
+			// chkAllSpells
+			// 
+			this.chkAllSpells.AutoSize = true;
+			this.chkAllSpells.Location = new System.Drawing.Point(339, 64);
+			this.chkAllSpells.Name = "chkAllSpells";
+			this.chkAllSpells.Size = new System.Drawing.Size(149, 17);
+			this.chkAllSpells.TabIndex = 10;
+			this.chkAllSpells.Text = "Display homebrew options";
+			this.chkAllSpells.UseVisualStyleBackColor = true;
+			this.chkAllSpells.CheckedChanged += new System.EventHandler(this.chkAllSpells_CheckedChanged);
 			// 
 			// lblRestorationRemaining
 			// 
@@ -1087,6 +1111,41 @@
 			this.txtSpellInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.txtSpellInfo.Size = new System.Drawing.Size(491, 87);
 			this.txtSpellInfo.TabIndex = 7;
+			// 
+			// tabPage1
+			// 
+			this.tabPage1.Controls.Add(this.btnExport);
+			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Name = "tabPage1";
+			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+			this.tabPage1.Size = new System.Drawing.Size(491, 333);
+			this.tabPage1.TabIndex = 5;
+			this.tabPage1.Text = "Export Character";
+			this.tabPage1.UseVisualStyleBackColor = true;
+			// 
+			// btnExport
+			// 
+			this.btnExport.BackColor = System.Drawing.Color.DeepSkyBlue;
+			this.btnExport.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.btnExport.Location = new System.Drawing.Point(3, 3);
+			this.btnExport.Name = "btnExport";
+			this.btnExport.Size = new System.Drawing.Size(485, 327);
+			this.btnExport.TabIndex = 0;
+			this.btnExport.Text = "Export Character";
+			this.btnExport.UseVisualStyleBackColor = false;
+			this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+			// 
+			// lblHomebrewed
+			// 
+			this.lblHomebrewed.AutoSize = true;
+			this.lblHomebrewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblHomebrewed.ForeColor = System.Drawing.Color.Red;
+			this.lblHomebrewed.Location = new System.Drawing.Point(3, 342);
+			this.lblHomebrewed.Name = "lblHomebrewed";
+			this.lblHomebrewed.Size = new System.Drawing.Size(126, 13);
+			this.lblHomebrewed.TabIndex = 41;
+			this.lblHomebrewed.Text = "You are homebrewed";
+			this.lblHomebrewed.Visible = false;
 			// 
 			// lblACLight
 			// 
@@ -1451,29 +1510,12 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(684, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
-			// 
-			// viewToolStripMenuItem
-			// 
-			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.viewHomebrewOptionsToolStripMenuItem});
-			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-			this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-			this.viewToolStripMenuItem.Text = "View";
-			// 
-			// viewHomebrewOptionsToolStripMenuItem
-			// 
-			this.viewHomebrewOptionsToolStripMenuItem.CheckOnClick = true;
-			this.viewHomebrewOptionsToolStripMenuItem.Name = "viewHomebrewOptionsToolStripMenuItem";
-			this.viewHomebrewOptionsToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
-			this.viewHomebrewOptionsToolStripMenuItem.Text = "View homebrew options";
-			this.viewHomebrewOptionsToolStripMenuItem.Click += new System.EventHandler(this.viewHomebrewOptionsToolStripMenuItem_Click);
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -1497,41 +1539,6 @@
 			this.viewSourceToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.viewSourceToolStripMenuItem.Text = "View Source";
 			this.viewSourceToolStripMenuItem.Click += new System.EventHandler(this.viewSourceToolStripMenuItem_Click);
-			// 
-			// lblHomebrewed
-			// 
-			this.lblHomebrewed.AutoSize = true;
-			this.lblHomebrewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.lblHomebrewed.ForeColor = System.Drawing.Color.Red;
-			this.lblHomebrewed.Location = new System.Drawing.Point(3, 342);
-			this.lblHomebrewed.Name = "lblHomebrewed";
-			this.lblHomebrewed.Size = new System.Drawing.Size(126, 13);
-			this.lblHomebrewed.TabIndex = 41;
-			this.lblHomebrewed.Text = "You are homebrewed";
-			this.lblHomebrewed.Visible = false;
-			// 
-			// tabPage1
-			// 
-			this.tabPage1.Controls.Add(this.btnExport);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(491, 333);
-			this.tabPage1.TabIndex = 5;
-			this.tabPage1.Text = "Export Character";
-			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// btnExport
-			// 
-			this.btnExport.BackColor = System.Drawing.Color.DeepSkyBlue;
-			this.btnExport.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.btnExport.Location = new System.Drawing.Point(3, 3);
-			this.btnExport.Name = "btnExport";
-			this.btnExport.Size = new System.Drawing.Size(485, 327);
-			this.btnExport.TabIndex = 0;
-			this.btnExport.Text = "Export Character";
-			this.btnExport.UseVisualStyleBackColor = false;
-			this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
 			// 
 			// Window
 			// 
@@ -1579,9 +1586,9 @@
 			this.spellsSplitContainer.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.spellsSplitContainer)).EndInit();
 			this.spellsSplitContainer.ResumeLayout(false);
+			this.tabPage1.ResumeLayout(false);
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			this.tabPage1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -1702,8 +1709,6 @@
 		private System.Windows.Forms.CheckedListBox clbSpells;
 		private System.Windows.Forms.Label lblPrimarySkillsRemaining;
 		private System.Windows.Forms.Label lblTalentsRemaining;
-		private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem viewHomebrewOptionsToolStripMenuItem;
 		private System.Windows.Forms.ComboBox cmbSchoolDisplay;
 		private System.Windows.Forms.Label lblSchoolDisplay;
 		private System.Windows.Forms.Label lblAlterationRemaining;
@@ -1714,6 +1719,8 @@
 		private System.Windows.Forms.Label lblHomebrewed;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.Button btnExport;
+		private System.Windows.Forms.CheckBox chkAllTalents;
+		private System.Windows.Forms.CheckBox chkAllSpells;
     }
 }
 
