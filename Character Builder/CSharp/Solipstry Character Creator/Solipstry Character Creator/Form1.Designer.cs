@@ -146,8 +146,6 @@
 			this.lblQuickConstitution = new System.Windows.Forms.Label();
 			this.lblQuickCharisma = new System.Windows.Forms.Label();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.exportPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewHomebrewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1453,7 +1451,6 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem,
             this.viewToolStripMenuItem,
             this.helpToolStripMenuItem});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -1461,21 +1458,6 @@
 			this.menuStrip1.Size = new System.Drawing.Size(684, 24);
 			this.menuStrip1.TabIndex = 1;
 			this.menuStrip1.Text = "menuStrip1";
-			// 
-			// fileToolStripMenuItem
-			// 
-			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exportPDFToolStripMenuItem});
-			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-			this.fileToolStripMenuItem.Text = "File";
-			// 
-			// exportPDFToolStripMenuItem
-			// 
-			this.exportPDFToolStripMenuItem.Name = "exportPDFToolStripMenuItem";
-			this.exportPDFToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
-			this.exportPDFToolStripMenuItem.Text = "Export PDF";
-			this.exportPDFToolStripMenuItem.Click += new System.EventHandler(this.exportPDFToolStripMenuItem_Click);
 			// 
 			// viewToolStripMenuItem
 			// 
@@ -1706,8 +1688,6 @@
 		private System.Windows.Forms.Label lblACHeavy;
 		private System.Windows.Forms.Label lblInitiative;
 		private System.Windows.Forms.Label lblHP;
-		private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem exportPDFToolStripMenuItem;
 		private System.Windows.Forms.Label lblHeavyLightArmor;
 		private System.Windows.Forms.RadioButton rdoHeavyArmor;
 		private System.Windows.Forms.RadioButton rdoLightArmor;
