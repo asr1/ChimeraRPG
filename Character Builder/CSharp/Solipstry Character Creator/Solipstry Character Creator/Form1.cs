@@ -2155,10 +2155,52 @@ namespace Solipstry_Character_Creator
 
 		private void UpdateSpellsRemainingLabels()
 		{
-			lblAlterationRemaining.Text = Math.Max(0, alterationAvailable - alterationTaken + somAlteration).ToString() + " Alteration spell(s) remaining";
-			lblConjurationRemaining.Text = Math.Max(0, conjurationAvailable - conjurationTaken + somConjuration).ToString() + " Conjuration spell(s) remaining";
-			lblDestructionRemaining.Text = Math.Max(0, destructionAvailable - destructionTaken + somDestruction).ToString() + " Destruction spell(s) remaining";
-			lblRestorationRemaining.Text = Math.Max(0, restorationAvailable - restorationTaken + somRestoration).ToString() + " Restoration spell(s) remaining";
+			//How many spells from each school the user has taken over the homebrew limit
+			int alterationRemaining = alterationAvailable - alterationTaken + somAlteration;
+			int conjurationRemaining = conjurationAvailable - conjurationTaken + somConjuration;
+			int destructionRemaining = destructionAvailable - destructionTaken + somDestruction;
+			int restorationRemaining = restorationAvailable - restorationTaken + somRestoration;
+
+			//Tell user how many spells over/under the limit they are
+			if(alterationRemaining < 0)
+			{
+				lblAlterationRemaining.Text = Math.Abs(alterationRemaining)
+					+ " Alteration spell(s) over limit";
+			}
+			else
+			{
+				lblAlterationRemaining.Text = alterationRemaining + " Alteration spell(s) remaining";
+			}
+			
+			if(conjurationRemaining < 0)
+			{
+				lblConjurationRemaining.Text = Math.Abs(conjurationRemaining)
+					+ " Conjuration spell(s) over limit";
+			}
+			else
+			{
+				lblConjurationRemaining.Text = conjurationRemaining + " Conjuration spell(s) remaining";
+			}
+
+			if(destructionRemaining < 0)
+			{
+				lblDestructionRemaining.Text = Math.Abs(destructionRemaining)
+					+ " Destruction spell(s) over limit";
+			}
+			else
+			{
+				lblDestructionRemaining.Text = destructionRemaining + " Destruction spell(s) remaining";
+			}
+
+			if(restorationRemaining < 0)
+			{
+				lblRestorationRemaining.Text = Math.Abs(restorationRemaining)
+					+ " Restoration spell(s) over limit";
+			}
+			else
+			{
+				lblRestorationRemaining.Text = restorationRemaining + " Restoration spell(s) remaining";
+			}
 		}
 	}
 }
