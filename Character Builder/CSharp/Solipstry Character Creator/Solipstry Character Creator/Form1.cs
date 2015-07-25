@@ -1073,7 +1073,19 @@ namespace Solipstry_Character_Creator
 				}
 			}
 
-			lblPrimarySkillsRemaining.Text = Math.Max(primarySkillsAvailable - primarySkillCount, 0).ToString() + " primary skills remaining";
+			//Show how many primary skills over/under the homebrew limit the user is
+			int primarySkillsRemaining = primarySkillsAvailable - primarySkillCount;
+
+			if(primarySkillsRemaining < 0)
+			{
+				lblPrimarySkillsRemaining.Text = Math.Abs(primarySkillsRemaining)
+					+ " primary skill(s) over limit";
+			}
+			else
+			{
+				lblPrimarySkillsRemaining.Text = primarySkillsRemaining
+					+ " primary skill(s) remaining";
+			}
 
 			CheckHomebrew();
 
