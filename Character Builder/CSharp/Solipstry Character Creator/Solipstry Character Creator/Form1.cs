@@ -695,8 +695,8 @@ namespace Solipstry_Character_Creator
 				}
 			}
 
-finished: //If the function has determined the character is homebrewed, jump here to skip unnecessary checks
-			chkHomebrew.Checked = hb;
+		finished: //If the function has determined the character is homebrewed, jump here to skip unnecessary checks
+			lblHomebrewed.Visible = hb;
 		}
 
 		/// <summary>

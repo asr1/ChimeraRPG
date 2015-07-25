@@ -145,15 +145,15 @@
 			this.lblQuickDexterity = new System.Windows.Forms.Label();
 			this.lblQuickConstitution = new System.Windows.Forms.Label();
 			this.lblQuickCharisma = new System.Windows.Forms.Label();
-			this.chkHomebrew = new System.Windows.Forms.CheckBox();
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.exportPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewHomebrewOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.lblHomebrewed = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -193,6 +193,7 @@
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.Controls.Add(this.lblHomebrewed);
 			this.splitContainer1.Panel2.Controls.Add(this.lblACLight);
 			this.splitContainer1.Panel2.Controls.Add(this.lblACHeavy);
 			this.splitContainer1.Panel2.Controls.Add(this.lblInitiative);
@@ -233,7 +234,6 @@
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickDexterity);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickConstitution);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickCharisma);
-			this.splitContainer1.Panel2.Controls.Add(this.chkHomebrew);
 			this.splitContainer1.Size = new System.Drawing.Size(684, 359);
 			this.splitContainer1.SplitterDistance = 499;
 			this.splitContainer1.TabIndex = 0;
@@ -1446,17 +1446,6 @@
 			this.lblQuickCharisma.TabIndex = 1;
 			this.lblQuickCharisma.Text = " ";
 			// 
-			// chkHomebrew
-			// 
-			this.chkHomebrew.AutoSize = true;
-			this.chkHomebrew.Enabled = false;
-			this.chkHomebrew.Location = new System.Drawing.Point(3, 337);
-			this.chkHomebrew.Name = "chkHomebrew";
-			this.chkHomebrew.Size = new System.Drawing.Size(89, 17);
-			this.chkHomebrew.TabIndex = 0;
-			this.chkHomebrew.Text = "Homebrewed";
-			this.chkHomebrew.UseVisualStyleBackColor = true;
-			// 
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1484,22 +1473,6 @@
 			this.exportPDFToolStripMenuItem.Text = "Export PDF";
 			this.exportPDFToolStripMenuItem.Click += new System.EventHandler(this.exportPDFToolStripMenuItem_Click);
 			// 
-			// helpToolStripMenuItem
-			// 
-			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sendBugReportToolStripMenuItem,
-            this.viewSourceToolStripMenuItem});
-			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-			this.helpToolStripMenuItem.Text = "Help";
-			// 
-			// sendBugReportToolStripMenuItem
-			// 
-			this.sendBugReportToolStripMenuItem.Name = "sendBugReportToolStripMenuItem";
-			this.sendBugReportToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
-			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
-			// 
 			// viewToolStripMenuItem
 			// 
 			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1516,12 +1489,40 @@
 			this.viewHomebrewOptionsToolStripMenuItem.Text = "View homebrew options";
 			this.viewHomebrewOptionsToolStripMenuItem.Click += new System.EventHandler(this.viewHomebrewOptionsToolStripMenuItem_Click);
 			// 
+			// helpToolStripMenuItem
+			// 
+			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendBugReportToolStripMenuItem,
+            this.viewSourceToolStripMenuItem});
+			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+			this.helpToolStripMenuItem.Text = "Help";
+			// 
+			// sendBugReportToolStripMenuItem
+			// 
+			this.sendBugReportToolStripMenuItem.Name = "sendBugReportToolStripMenuItem";
+			this.sendBugReportToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.sendBugReportToolStripMenuItem.Text = "Send Bug Report";
+			this.sendBugReportToolStripMenuItem.Click += new System.EventHandler(this.sendBugReportToolStripMenuItem_Click);
+			// 
 			// viewSourceToolStripMenuItem
 			// 
 			this.viewSourceToolStripMenuItem.Name = "viewSourceToolStripMenuItem";
 			this.viewSourceToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.viewSourceToolStripMenuItem.Text = "View Source";
 			this.viewSourceToolStripMenuItem.Click += new System.EventHandler(this.viewSourceToolStripMenuItem_Click);
+			// 
+			// lblHomebrewed
+			// 
+			this.lblHomebrewed.AutoSize = true;
+			this.lblHomebrewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblHomebrewed.ForeColor = System.Drawing.Color.Red;
+			this.lblHomebrewed.Location = new System.Drawing.Point(3, 342);
+			this.lblHomebrewed.Name = "lblHomebrewed";
+			this.lblHomebrewed.Size = new System.Drawing.Size(126, 13);
+			this.lblHomebrewed.TabIndex = 41;
+			this.lblHomebrewed.Text = "You are homebrewed";
+			this.lblHomebrewed.Visible = false;
 			// 
 			// Window
 			// 
@@ -1631,7 +1632,6 @@
 		private System.Windows.Forms.Button btnAttr3;
 		private System.Windows.Forms.Button btnAttr2;
 		private System.Windows.Forms.Button btnAttr1;
-		private System.Windows.Forms.CheckBox chkHomebrew;
 		private System.Windows.Forms.TextBox txtSkillInfo;
 		private System.Windows.Forms.TextBox txtTalentInfo;
 		private System.Windows.Forms.TextBox txtSpellInfo;
@@ -1703,6 +1703,7 @@
 		private System.Windows.Forms.Label lblConjurationRemaining;
 		private System.Windows.Forms.Label lblRestorationRemaining;
 		private System.Windows.Forms.ToolStripMenuItem viewSourceToolStripMenuItem;
+		private System.Windows.Forms.Label lblHomebrewed;
     }
 }
 
