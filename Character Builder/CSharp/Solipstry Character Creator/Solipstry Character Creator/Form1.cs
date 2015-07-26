@@ -524,8 +524,16 @@ namespace Solipstry_Character_Creator
 
 			lblHP.Text = character.hitPoints.ToString();
 			lblInitiative.Text = character.initiative.ToString();
-			lblACHeavy.Text = character.acHeavy.ToString();
-			lblACLight.Text = character.acLight.ToString();
+			
+			//Display AC based on current armor chocie
+			if(rdoHeavyArmor.Checked)
+			{
+				lblAc.Text = character.acHeavy.ToString();
+			}
+			else
+			{
+				lblAc.Text = character.acLight.ToString();
+			}
 
 			lblMagicTotal.Text = character.magicTotal.ToString();
 			lblMagicRegen.Text = character.magicRegen.ToString();
@@ -534,8 +542,16 @@ namespace Solipstry_Character_Creator
 
 			lblWill.Text = character.will.ToString();
 			lblFortitude.Text = character.fortitude.ToString();
-			lblReflexHeavy.Text = character.reflexHeavy.ToString();
-			lblReflexLight.Text = character.reflexLight.ToString();
+
+			//Display reflex based on current armor choice
+			if(rdoHeavyArmor.Checked)
+			{
+				lblReflex.Text = character.reflexHeavy.ToString();
+			}
+			else
+			{
+				lblReflex.Text = character.reflexLight.ToString();
+			}
 		}
 		#endregion
 
@@ -2247,5 +2263,10 @@ namespace Solipstry_Character_Creator
 			return skillName;
 		}
 		#endregion
+
+		private void rdoHeavyArmor_CheckedChanged(object sender, EventArgs e)
+		{
+			UpdateInformation();
+		}
 	}
 }
