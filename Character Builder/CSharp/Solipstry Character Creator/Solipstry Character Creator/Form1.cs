@@ -55,6 +55,9 @@ namespace Solipstry_Character_Creator
 		private const int DISPLAY_RESTORATION = 4;
 		private const int DISPLAY_META = 5;
 
+		//Spacing between talent names and the short description
+		private const int TALENT_DESC_SPACING = 35;
+
 		//List of talents that modify attributes, skills, etc.
 		private List<string> modifyingTalents;
 
@@ -1146,7 +1149,7 @@ namespace Solipstry_Character_Creator
 			}
 
 			//Get information about the talent
-			string talentName = clbTalents.SelectedItem.ToString();
+			string talentName = clbTalents.SelectedItem.ToString().Substring(0, TALENT_DESC_SPACING).Trim();
 
 			if(customTalents.Contains(talentName))
 			{
@@ -1176,7 +1179,7 @@ namespace Solipstry_Character_Creator
 				return;
 			}
 
-			string talentName = clbTalents.Items[e.Index].ToString();
+			string talentName = clbTalents.SelectedItem.ToString().Substring(0, TALENT_DESC_SPACING).Trim();
 
 			//Custom talents
 			if(customTalents.Contains(talentName))
@@ -1761,7 +1764,7 @@ namespace Solipstry_Character_Creator
 		private void DisplayEligibleTalents()
 		{
 			//Query the talent database for all talents
-			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name FROM Talents", "Talents");
+			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name, short_desc FROM Talents", "Talents");
 
 			//Add only eligible talents
 			foreach(DataRow row in ds.Tables["Talents"].Rows)
@@ -1770,7 +1773,7 @@ namespace Solipstry_Character_Creator
 
 				if(!CheckTalentHomebrew(talentName))
 				{
-					clbTalents.Items.Add(talentName);
+					clbTalents.Items.Add(String.Format("{0,-" + TALENT_DESC_SPACING + "} {1}", talentName, row[1].ToString()));
 				}
 			}
 		}
@@ -1781,13 +1784,13 @@ namespace Solipstry_Character_Creator
 		private void DisplayAllTalents()
 		{
 			//Query the talent database for all talents
-			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name FROM Talents", "Talents");
+			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name, short_desc FROM Talents", "Talents");
 
 			//Add only eligible talents
 			foreach (DataRow row in ds.Tables["Talents"].Rows)
 			{
 				string talentName = row[0].ToString();
-				clbTalents.Items.Add(talentName);
+				clbTalents.Items.Add(String.Format("{0,-" + TALENT_DESC_SPACING + "} {1}", talentName, row[1].ToString()));
 			}
 		}
 
