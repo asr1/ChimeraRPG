@@ -1096,11 +1096,13 @@ namespace Solipstry_Character_Creator
 			{
 				lblPrimarySkillsRemaining.Text = Math.Abs(primarySkillsRemaining)
 					+ " primary skill(s) over limit";
+				lblPrimarySkillsRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
 				lblPrimarySkillsRemaining.Text = primarySkillsRemaining
 					+ " primary skill(s) remaining";
+				lblPrimarySkillsRemaining.ForeColor = Color.Black;
 			}
 
 			CheckHomebrew();
@@ -1452,10 +1454,12 @@ namespace Solipstry_Character_Creator
 			{
 				lblTalentsRemaining.Text = Math.Abs(talentsRemaining)
 					+ " talent(s) over limit";
+				lblTalentsRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
 				lblTalentsRemaining.Text = talentsRemaining + " talent(s) remaining";
+				lblTalentsRemaining.ForeColor = Color.Black;
 			}
 
 			UpdateInformation();
@@ -1950,40 +1954,48 @@ namespace Solipstry_Character_Creator
 			{
 				lblAlterationRemaining.Text = Math.Abs(alterationRemaining)
 					+ " Alteration spell(s) over limit";
+				lblAlterationRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
 				lblAlterationRemaining.Text = alterationRemaining + " Alteration spell(s) remaining";
+				lblAlterationRemaining.ForeColor = Color.Black;
 			}
 			
 			if(conjurationRemaining < 0)
 			{
 				lblConjurationRemaining.Text = Math.Abs(conjurationRemaining)
 					+ " Conjuration spell(s) over limit";
+				lblConjurationRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
 				lblConjurationRemaining.Text = conjurationRemaining + " Conjuration spell(s) remaining";
+				lblConjurationRemaining.ForeColor = Color.Black;
 			}
 
 			if(destructionRemaining < 0)
 			{
 				lblDestructionRemaining.Text = Math.Abs(destructionRemaining)
 					+ " Destruction spell(s) over limit";
+				lblDestructionRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
 				lblDestructionRemaining.Text = destructionRemaining + " Destruction spell(s) remaining";
+				lblDestructionRemaining.ForeColor = Color.Black;
 			}
 
 			if(restorationRemaining < 0)
 			{
 				lblRestorationRemaining.Text = Math.Abs(restorationRemaining)
 					+ " Restoration spell(s) over limit";
+				lblRestorationRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
 				lblRestorationRemaining.Text = restorationRemaining + " Restoration spell(s) remaining";
+				lblRestorationRemaining.ForeColor = Color.Black;
 			}
 		}
 
