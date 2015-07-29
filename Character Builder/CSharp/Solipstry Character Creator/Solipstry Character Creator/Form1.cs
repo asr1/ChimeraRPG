@@ -56,7 +56,7 @@ namespace Solipstry_Character_Creator
 		private const int DISPLAY_META = 5;
 
 		//Spacing between talent names and the short description
-		private const int TALENT_DESC_SPACING = 35;
+		private const int TALENT_DESC_SPACING = 27;
 
 		//List of talents that modify attributes, skills, etc.
 		private List<string> modifyingTalents;
