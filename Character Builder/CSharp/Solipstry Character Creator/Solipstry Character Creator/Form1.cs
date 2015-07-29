@@ -56,7 +56,7 @@ namespace Solipstry_Character_Creator
 		private const int DISPLAY_META = 5;
 
 		//Spacing between talent names and the short description
-		private const int TALENT_DESC_SPACING = 27;
+		private const int TALENT_DESC_SPACING = 29;
 
 		//List of talents that modify attributes, skills, etc.
 		private List<string> modifyingTalents;
@@ -262,11 +262,6 @@ namespace Solipstry_Character_Creator
 			FillSkillsList();
 
 			UpdateInformation();
-
-			foreach (Control ctrl in this.Controls)
-			{
-				ctrl.Font = new Font("Courier New", 8.25f);
-			}
 		}
 
 		private void Window_Load(object sender, EventArgs e)
