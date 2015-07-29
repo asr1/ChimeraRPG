@@ -262,6 +262,11 @@ namespace Solipstry_Character_Creator
 			FillSkillsList();
 
 			UpdateInformation();
+
+			foreach (Control ctrl in this.Controls)
+			{
+				ctrl.Font = new Font("Courier New", 8.25f);
+			}
 		}
 
 		private void Window_Load(object sender, EventArgs e)
@@ -271,9 +276,6 @@ namespace Solipstry_Character_Creator
 			cmbSize.SelectedIndex = 1; //Medium size
 			cmbSchoolDisplay.SelectedIndex = 0; //Display all schools of magic
 			rdoHeavyArmor.Checked = true; //Heavy armor
-
-			lblSpellsInstructions.Text = "Select the spells you wish to take. The number of spells you can" +
-				Environment.NewLine + "know for each school is equal to your modifier in that school.";
 		}
 
 		/// <summary>
