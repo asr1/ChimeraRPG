@@ -21,39 +21,67 @@ namespace Solipstry_Character_Creator
 {
 	public class Skills
 	{
-		public static int ACROBATICS = 0;
-		public static int ALTERATION = 1;
-		public static int ATHLETICS = 2;
-		public static int BLOCK = 3;
-		public static int CHEMISTRY = 4;
-		public static int CONJURATION = 5;
-		public static int CRAFT = 6;
-		public static int DESTRUCTION = 7;
-		public static int DISGUISE = 8;
-		public static int ENGINEERING = 9;
-		public static int ENLIGHTENMENT = 10;
-		public static int ESCAPE = 11;
-		public static int HEAVY_ARMOR = 12;
-		public static int INTERACTION = 13;
-		public static int KNOWLEDGE = 14;
-		public static int LANGUAGE = 15;
-		public static int LIGHT_ARMOR = 16;
-		public static int MEDICINE = 17;
-		public static int MELEE_WEAPON = 18;
-		public static int SURVIVAL = 19;
-		public static int PERCEPTION = 20;
-		public static int RANGED_COMBAT = 21;
-		public static int RESTORATION = 22;
-		public static int RIDE_DRIVE = 23;
-		public static int SECURITY = 24;
-		public static int SENSE_MOTIVE = 25;
-		public static int SLEIGHT_OF_HAND = 26;
-		public static int STEALTH = 27;
-		public static int UNARMED_COMBAT = 28;
-		public static int CUSTOM_1 = 29;
-		public static int CUSTOM_2 = 30;
-		public static int CUSTOM_3 = 31;
-		public static int CUSTOM_4 = 32;
-		public static int CUSTOM_5 = 33;
+		public const int ACROBATICS = 0;
+		public const int ALTERATION = 1;
+		public const int ATHLETICS = 2;
+		public const int BLOCK = 3;
+		public const int CHEMISTRY = 4;
+		public const int CONJURATION = 5;
+		public const int CRAFT = 6;
+		public const int DESTRUCTION = 7;
+		public const int DISGUISE = 8;
+		public const int ENGINEERING = 9;
+		public const int ENLIGHTENMENT = 10;
+		public const int ESCAPE = 11;
+		public const int HEAVY_ARMOR = 12;
+		public const int INTERACTION = 13;
+		public const int KNOWLEDGE = 14;
+		public const int LANGUAGE = 15;
+		public const int LIGHT_ARMOR = 16;
+		public const int MEDICINE = 17;
+		public const int MELEE_WEAPON = 18;
+		public const int SURVIVAL = 19;
+		public const int PERCEPTION = 20;
+		public const int RANGED_COMBAT = 21;
+		public const int RESTORATION = 22;
+		public const int RIDE_DRIVE = 23;
+		public const int SECURITY = 24;
+		public const int SENSE_MOTIVE = 25;
+		public const int SLEIGHT_OF_HAND = 26;
+		public const int STEALTH = 27;
+		public const int UNARMED_COMBAT = 28;
+
+		public static string[] SKILLS = 
+		{
+			"Acrobatics",
+			"Alteration",
+			"Athletics",
+			"Block",
+			"Chemistry",
+			"Conjuration",
+			"Craft",
+			"Destruction",
+			"Disguise",
+			"Engineering",
+			"Enlightenment",
+			"Escape",
+			"Heavy Armor",
+			"Interaction",
+			"Knowledge",
+			"Language",
+			"Light Armor",
+			"Medicine",
+			"Melee Weapon",
+			"Survival",
+			"Perception",
+			"Ranged Combat",
+			"Restoration",
+			"Ride/Drive",
+			"Security",
+			"Sense Motive",
+			"Sleight of Hand",
+			"Stealth",
+			"Unarmed Combat"
+		};
 	};
 }

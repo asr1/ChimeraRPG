@@ -2085,41 +2085,7 @@ namespace Solipstry_Character_Creator
 			fields.SetField("enlightenment_total", character.enlightenment.ToString());
 
 			#region Export skills
-			//Make iterating through the skills easier
-			string[] skills = 
-			{
-				"acrobatics",
-				"alteration",
-				"athletics",
-				"block",
-				"chemistry",
-				"conjuration",
-				"craft",
-				"destruction",
-				"disguise",
-				"engineering",
-				"enlightenment",
-				"escape",
-				"heavy_armor",
-				"interaction",
-				"knowledge",
-				"language",
-				"light_armor",
-				"medicine",
-				"melee_weapon",
-				"survival",
-				"perception",
-				"ranged_combat",
-				"restoration",
-				"ride_drive",
-				"security",
-				"sense_motive",
-				"sleight_of_hand",
-				"stealth",
-				"unarmed_combat"
-			};
-
-			foreach (string skill in skills)
+			foreach (string skill in Skills.SKILLS)
 			{
 				string strScore = skill + "_score";
 				string strMod = skill + "_mod";
@@ -2195,7 +2161,7 @@ namespace Solipstry_Character_Creator
 			}
 
 			//Skill perks
-			foreach (string skill in skills)
+			foreach (string skill in Skills.SKILLS)
 			{
 				//Query for skill perks the character is eligible for
 				string query = "SELECT perk FROM Perks WHERE skill_name='" + ConvertToProperName(skill) + "' AND min_score<=" + character.GetSkillValue(skill);
