@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
     <PublisherName>Solipstry</PublisherName>
-    <ApplicationRevision>11</ApplicationRevision>
+    <ApplicationRevision>13</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -58,7 +58,7 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>3ECA1233BFC4408F17DC8EBAC2BC6B4D88CE46CA</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>408F726CD5B66B40F9431FABF6D76910D6B4BAE1</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestKeyFile>Solipstry Character Creator_TemporaryKey.pfx</ManifestKeyFile>
