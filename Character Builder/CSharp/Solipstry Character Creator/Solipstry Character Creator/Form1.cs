@@ -537,7 +537,7 @@ namespace Solipstry_Character_Creator
 
 			lblMagicTotal.Text = character.magicTotal.ToString();
 			lblMagicRegen.Text = character.magicRegen.ToString();
-			lblEnlightenment.Text = character.enlightenment.ToString();
+			lblEnlightenment.Text = (character.enlightenment + character.CalculateModifier(character.GetAttributeValue("CHA"))).ToString();
 			lblFortunePoints.Text = character.fortunePoints.ToString();
 
 			lblWill.Text = character.will.ToString();
