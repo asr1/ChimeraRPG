@@ -2090,7 +2090,22 @@ namespace Solipstry_Character_Creator
 				string strScore = skill + "_score";
 				string strMod = skill + "_mod";
 
+				//Calculate the final score for the skill
+				DataSet ds = PerformQuery(skillsConnection,
+					"SELECT governing_attr FROM Skills WHERE skill_name='" + skill + "'", "Skills");
+				string governingAttr = ds.Tables["Skills"].Rows[0][0].ToString();
 				int score = character.GetSkillValue(skill);
+
+				score += character.CalculateModifier(character.GetAttributeValue(governingAttr));
+
+				foreach(ModifiedScore modScore in modifiedScores)
+				{
+					if(modScore.modifiedBy.Equals("Skill Specialization") && modScore.modifiedScore.Equals(skill))
+					{
+						score += 3;
+					}
+				}
+
 				int mod = character.CalculateModifier(score);
 
 				fields.SetField(strScore, score.ToString());
