@@ -332,6 +332,7 @@ namespace Solipstry_Character_Creator
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
         {
             character.size = (string) cmbSize.SelectedItem;
+			UpdateInformation();
 			CheckHomebrew(); //Some talents depend on size
 		}
    
@@ -503,11 +504,29 @@ namespace Solipstry_Character_Creator
 			
 			character.reflexLight = 5 + character.CalculateModifier(Math.Max(character.speed, character.dexterity)) + character.CalculateModifier(character.skills[Skills.LIGHT_ARMOR]);
 			character.reflexHeavy = character.CalculateModifier(Math.Max(character.speed, character.dexterity)) + character.CalculateModifier(character.skills[Skills.HEAVY_ARMOR]);
+			
 			character.will = 10 + character.CalculateModifier(character.wisdom);
 			character.fortitude = 10 + character.CalculateModifier(character.constitution);
 
 			character.magicTotal = 5 * character.wisdom;
 			character.magicRegen = character.intelligence;
+
+			switch(cmbSize.SelectedIndex)
+			{
+				case 0: //Small
+					++character.reflexHeavy;
+					++character.reflexLight;
+
+					character.skills[Skills.STEALTH] += 5;
+
+					break;
+				case 2:
+					--character.reflexHeavy;
+					--character.reflexLight;
+
+					character.skills[Skills.STEALTH] -= 5;
+					break;
+			}
 		}
 
 		private void UpdateQuickPane()
