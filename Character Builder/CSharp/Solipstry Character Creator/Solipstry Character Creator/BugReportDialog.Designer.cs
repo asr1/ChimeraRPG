@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BugReportDialog));
 			this.btnSend = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.lblBugDesc = new System.Windows.Forms.Label();
@@ -101,6 +102,7 @@
 			this.Controls.Add(this.lblBugDesc);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnSend);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "BugReportDialog";
 			this.Text = "BugReportDialog";
 			this.ResumeLayout(false);

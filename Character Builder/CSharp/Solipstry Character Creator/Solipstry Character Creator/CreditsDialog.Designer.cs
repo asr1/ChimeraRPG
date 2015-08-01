@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CreditsDialog));
 			this.lblGiveMeCredit = new System.Windows.Forms.Label();
 			this.lblGiveThemCredit = new System.Windows.Forms.Label();
 			this.lblAlexAndRachel = new System.Windows.Forms.Label();
@@ -77,6 +78,7 @@
 			this.Controls.Add(this.lblGiveMeCredit);
 			this.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.Name = "CreditsDialog";
 			this.Text = "Credits";
