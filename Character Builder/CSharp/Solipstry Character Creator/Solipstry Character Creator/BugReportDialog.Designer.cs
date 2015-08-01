@@ -39,9 +39,9 @@
 			// 
 			// btnSend
 			// 
-			this.btnSend.Location = new System.Drawing.Point(332, 237);
+			this.btnSend.Location = new System.Drawing.Point(387, 255);
 			this.btnSend.Name = "btnSend";
-			this.btnSend.Size = new System.Drawing.Size(75, 23);
+			this.btnSend.Size = new System.Drawing.Size(87, 25);
 			this.btnSend.TabIndex = 3;
 			this.btnSend.Text = "Send";
 			this.btnSend.UseVisualStyleBackColor = true;
@@ -49,9 +49,9 @@
 			// 
 			// btnCancel
 			// 
-			this.btnCancel.Location = new System.Drawing.Point(251, 237);
+			this.btnCancel.Location = new System.Drawing.Point(293, 255);
 			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(75, 23);
+			this.btnCancel.Size = new System.Drawing.Size(87, 25);
 			this.btnCancel.TabIndex = 2;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
@@ -60,48 +60,49 @@
 			// lblBugDesc
 			// 
 			this.lblBugDesc.AutoSize = true;
-			this.lblBugDesc.Location = new System.Drawing.Point(12, 29);
+			this.lblBugDesc.Location = new System.Drawing.Point(14, 31);
 			this.lblBugDesc.Name = "lblBugDesc";
-			this.lblBugDesc.Size = new System.Drawing.Size(114, 13);
+			this.lblBugDesc.Size = new System.Drawing.Size(168, 14);
 			this.lblBugDesc.TabIndex = 5;
 			this.lblBugDesc.Text = "Description of the bug:";
 			// 
 			// txtBugDesc
 			// 
-			this.txtBugDesc.Location = new System.Drawing.Point(15, 45);
+			this.txtBugDesc.Location = new System.Drawing.Point(17, 48);
 			this.txtBugDesc.Multiline = true;
 			this.txtBugDesc.Name = "txtBugDesc";
 			this.txtBugDesc.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtBugDesc.Size = new System.Drawing.Size(392, 186);
+			this.txtBugDesc.Size = new System.Drawing.Size(457, 200);
 			this.txtBugDesc.TabIndex = 1;
 			// 
 			// lblFromEmail
 			// 
 			this.lblFromEmail.AutoSize = true;
-			this.lblFromEmail.Location = new System.Drawing.Point(12, 9);
+			this.lblFromEmail.Location = new System.Drawing.Point(14, 10);
 			this.lblFromEmail.Name = "lblFromEmail";
-			this.lblFromEmail.Size = new System.Drawing.Size(105, 13);
+			this.lblFromEmail.Size = new System.Drawing.Size(161, 14);
 			this.lblFromEmail.TabIndex = 5;
 			this.lblFromEmail.Text = "Your email (optional):";
 			// 
 			// txtFromEmail
 			// 
-			this.txtFromEmail.Location = new System.Drawing.Point(123, 6);
+			this.txtFromEmail.Location = new System.Drawing.Point(181, 6);
 			this.txtFromEmail.Name = "txtFromEmail";
-			this.txtFromEmail.Size = new System.Drawing.Size(284, 20);
+			this.txtFromEmail.Size = new System.Drawing.Size(293, 20);
 			this.txtFromEmail.TabIndex = 4;
 			// 
 			// BugReportDialog
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(419, 272);
+			this.ClientSize = new System.Drawing.Size(489, 293);
 			this.Controls.Add(this.txtFromEmail);
 			this.Controls.Add(this.lblFromEmail);
 			this.Controls.Add(this.txtBugDesc);
 			this.Controls.Add(this.lblBugDesc);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnSend);
+			this.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "BugReportDialog";
 			this.Text = "BugReportDialog";

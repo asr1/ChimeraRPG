@@ -43,9 +43,9 @@
 			// 
 			// btnCancel
 			// 
-			this.btnCancel.Location = new System.Drawing.Point(122, 178);
+			this.btnCancel.Location = new System.Drawing.Point(142, 192);
 			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(75, 23);
+			this.btnCancel.Size = new System.Drawing.Size(87, 25);
 			this.btnCancel.TabIndex = 4;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
@@ -53,9 +53,9 @@
 			// 
 			// btnOk
 			// 
-			this.btnOk.Location = new System.Drawing.Point(203, 178);
+			this.btnOk.Location = new System.Drawing.Point(237, 192);
 			this.btnOk.Name = "btnOk";
-			this.btnOk.Size = new System.Drawing.Size(75, 23);
+			this.btnOk.Size = new System.Drawing.Size(87, 25);
 			this.btnOk.TabIndex = 5;
 			this.btnOk.Text = "OK";
 			this.btnOk.UseVisualStyleBackColor = true;
@@ -64,25 +64,25 @@
 			// lblSpellName
 			// 
 			this.lblSpellName.AutoSize = true;
-			this.lblSpellName.Location = new System.Drawing.Point(12, 9);
+			this.lblSpellName.Location = new System.Drawing.Point(11, 10);
 			this.lblSpellName.Name = "lblSpellName";
-			this.lblSpellName.Size = new System.Drawing.Size(38, 13);
+			this.lblSpellName.Size = new System.Drawing.Size(42, 14);
 			this.lblSpellName.TabIndex = 2;
 			this.lblSpellName.Text = "Name:";
 			// 
 			// txtSpellName
 			// 
-			this.txtSpellName.Location = new System.Drawing.Point(12, 25);
+			this.txtSpellName.Location = new System.Drawing.Point(14, 27);
 			this.txtSpellName.Name = "txtSpellName";
-			this.txtSpellName.Size = new System.Drawing.Size(266, 20);
+			this.txtSpellName.Size = new System.Drawing.Size(310, 20);
 			this.txtSpellName.TabIndex = 0;
 			// 
 			// lblCost
 			// 
 			this.lblCost.AutoSize = true;
-			this.lblCost.Location = new System.Drawing.Point(15, 48);
+			this.lblCost.Location = new System.Drawing.Point(11, 52);
 			this.lblCost.Name = "lblCost";
-			this.lblCost.Size = new System.Drawing.Size(28, 13);
+			this.lblCost.Size = new System.Drawing.Size(35, 14);
 			this.lblCost.TabIndex = 4;
 			this.lblCost.Text = "Cost";
 			// 
@@ -94,49 +94,49 @@
             "Conjuration",
             "Destruction",
             "Restoration"});
-			this.cmbSchool.Location = new System.Drawing.Point(110, 64);
+			this.cmbSchool.Location = new System.Drawing.Point(128, 69);
 			this.cmbSchool.Name = "cmbSchool";
-			this.cmbSchool.Size = new System.Drawing.Size(168, 21);
+			this.cmbSchool.Size = new System.Drawing.Size(195, 22);
 			this.cmbSchool.TabIndex = 2;
 			// 
 			// lblSchool
 			// 
 			this.lblSchool.AutoSize = true;
-			this.lblSchool.Location = new System.Drawing.Point(107, 48);
+			this.lblSchool.Location = new System.Drawing.Point(125, 52);
 			this.lblSchool.Name = "lblSchool";
-			this.lblSchool.Size = new System.Drawing.Size(43, 13);
+			this.lblSchool.Size = new System.Drawing.Size(56, 14);
 			this.lblSchool.TabIndex = 6;
 			this.lblSchool.Text = "School:";
 			// 
 			// txtCost
 			// 
-			this.txtCost.Location = new System.Drawing.Point(12, 64);
+			this.txtCost.Location = new System.Drawing.Point(14, 69);
 			this.txtCost.Name = "txtCost";
-			this.txtCost.Size = new System.Drawing.Size(92, 20);
+			this.txtCost.Size = new System.Drawing.Size(107, 20);
 			this.txtCost.TabIndex = 1;
 			// 
 			// lblEffect
 			// 
 			this.lblEffect.AutoSize = true;
-			this.lblEffect.Location = new System.Drawing.Point(15, 87);
+			this.lblEffect.Location = new System.Drawing.Point(14, 94);
 			this.lblEffect.Name = "lblEffect";
-			this.lblEffect.Size = new System.Drawing.Size(38, 13);
+			this.lblEffect.Size = new System.Drawing.Size(56, 14);
 			this.lblEffect.TabIndex = 7;
 			this.lblEffect.Text = "Effect:";
 			// 
 			// txtEffect
 			// 
-			this.txtEffect.Location = new System.Drawing.Point(12, 103);
+			this.txtEffect.Location = new System.Drawing.Point(14, 111);
 			this.txtEffect.Multiline = true;
 			this.txtEffect.Name = "txtEffect";
-			this.txtEffect.Size = new System.Drawing.Size(266, 69);
+			this.txtEffect.Size = new System.Drawing.Size(310, 74);
 			this.txtEffect.TabIndex = 3;
 			// 
 			// CustomSpellForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(290, 213);
+			this.ClientSize = new System.Drawing.Size(338, 229);
 			this.Controls.Add(this.txtEffect);
 			this.Controls.Add(this.lblEffect);
 			this.Controls.Add(this.txtCost);
@@ -147,6 +147,7 @@
 			this.Controls.Add(this.lblSpellName);
 			this.Controls.Add(this.btnOk);
 			this.Controls.Add(this.btnCancel);
+			this.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;

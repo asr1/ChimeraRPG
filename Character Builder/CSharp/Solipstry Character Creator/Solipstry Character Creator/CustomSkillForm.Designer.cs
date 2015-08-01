@@ -40,9 +40,10 @@
 			// 
 			// btnCancel
 			// 
-			this.btnCancel.Location = new System.Drawing.Point(122, 91);
+			this.btnCancel.Location = new System.Drawing.Point(165, 99);
+			this.btnCancel.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(75, 23);
+			this.btnCancel.Size = new System.Drawing.Size(88, 25);
 			this.btnCancel.TabIndex = 3;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
@@ -50,9 +51,10 @@
 			// 
 			// btnOk
 			// 
-			this.btnOk.Location = new System.Drawing.Point(203, 91);
+			this.btnOk.Location = new System.Drawing.Point(261, 99);
+			this.btnOk.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.btnOk.Name = "btnOk";
-			this.btnOk.Size = new System.Drawing.Size(75, 23);
+			this.btnOk.Size = new System.Drawing.Size(88, 25);
 			this.btnOk.TabIndex = 4;
 			this.btnOk.Text = "OK";
 			this.btnOk.UseVisualStyleBackColor = true;
@@ -60,26 +62,29 @@
 			// 
 			// txtSkillName
 			// 
-			this.txtSkillName.Location = new System.Drawing.Point(15, 25);
+			this.txtSkillName.Location = new System.Drawing.Point(18, 27);
+			this.txtSkillName.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.txtSkillName.Name = "txtSkillName";
-			this.txtSkillName.Size = new System.Drawing.Size(263, 20);
+			this.txtSkillName.Size = new System.Drawing.Size(307, 20);
 			this.txtSkillName.TabIndex = 0;
 			// 
 			// lblName
 			// 
 			this.lblName.AutoSize = true;
-			this.lblName.Location = new System.Drawing.Point(12, 9);
+			this.lblName.Location = new System.Drawing.Point(15, 9);
+			this.lblName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblName.Name = "lblName";
-			this.lblName.Size = new System.Drawing.Size(38, 13);
+			this.lblName.Size = new System.Drawing.Size(42, 14);
 			this.lblName.TabIndex = 3;
 			this.lblName.Text = "Name:";
 			// 
 			// lblAttribute
 			// 
 			this.lblAttribute.AutoSize = true;
-			this.lblAttribute.Location = new System.Drawing.Point(12, 48);
+			this.lblAttribute.Location = new System.Drawing.Point(15, 52);
+			this.lblAttribute.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblAttribute.Name = "lblAttribute";
-			this.lblAttribute.Size = new System.Drawing.Size(100, 13);
+			this.lblAttribute.Size = new System.Drawing.Size(147, 14);
 			this.lblAttribute.TabIndex = 4;
 			this.lblAttribute.Text = "Governing attribute:";
 			// 
@@ -95,26 +100,28 @@
             "Speed",
             "Strength",
             "Wisdom"});
-			this.cmbSkillAttr.Location = new System.Drawing.Point(15, 64);
+			this.cmbSkillAttr.Location = new System.Drawing.Point(18, 69);
+			this.cmbSkillAttr.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.cmbSkillAttr.Name = "cmbSkillAttr";
-			this.cmbSkillAttr.Size = new System.Drawing.Size(121, 21);
+			this.cmbSkillAttr.Size = new System.Drawing.Size(140, 22);
 			this.cmbSkillAttr.TabIndex = 1;
 			// 
 			// chkPrimary
 			// 
 			this.chkPrimary.AutoSize = true;
-			this.chkPrimary.Location = new System.Drawing.Point(151, 66);
+			this.chkPrimary.Location = new System.Drawing.Point(177, 71);
+			this.chkPrimary.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.chkPrimary.Name = "chkPrimary";
-			this.chkPrimary.Size = new System.Drawing.Size(127, 17);
+			this.chkPrimary.Size = new System.Drawing.Size(180, 18);
 			this.chkPrimary.TabIndex = 2;
 			this.chkPrimary.Text = "Take as primary skill?";
 			this.chkPrimary.UseVisualStyleBackColor = true;
 			// 
 			// CustomSkillForm
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(290, 126);
+			this.ClientSize = new System.Drawing.Size(362, 136);
 			this.Controls.Add(this.chkPrimary);
 			this.Controls.Add(this.cmbSkillAttr);
 			this.Controls.Add(this.lblAttribute);
@@ -122,8 +129,10 @@
 			this.Controls.Add(this.txtSkillName);
 			this.Controls.Add(this.btnOk);
 			this.Controls.Add(this.btnCancel);
+			this.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
 			this.MaximizeBox = false;
 			this.Name = "CustomSkillForm";
 			this.Text = "Create Custom Skill";

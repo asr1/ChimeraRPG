@@ -36,9 +36,9 @@
 			// 
 			// btnOk
 			// 
-			this.btnOk.Location = new System.Drawing.Point(207, 39);
+			this.btnOk.Location = new System.Drawing.Point(241, 42);
 			this.btnOk.Name = "btnOk";
-			this.btnOk.Size = new System.Drawing.Size(75, 23);
+			this.btnOk.Size = new System.Drawing.Size(87, 25);
 			this.btnOk.TabIndex = 2;
 			this.btnOk.Text = "OK";
 			this.btnOk.UseVisualStyleBackColor = true;
@@ -46,9 +46,9 @@
 			// 
 			// btnCancel
 			// 
-			this.btnCancel.Location = new System.Drawing.Point(126, 39);
+			this.btnCancel.Location = new System.Drawing.Point(147, 42);
 			this.btnCancel.Name = "btnCancel";
-			this.btnCancel.Size = new System.Drawing.Size(75, 23);
+			this.btnCancel.Size = new System.Drawing.Size(87, 25);
 			this.btnCancel.TabIndex = 1;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
@@ -57,19 +57,20 @@
 			// cmbItems
 			// 
 			this.cmbItems.FormattingEnabled = true;
-			this.cmbItems.Location = new System.Drawing.Point(12, 12);
+			this.cmbItems.Location = new System.Drawing.Point(14, 13);
 			this.cmbItems.Name = "cmbItems";
-			this.cmbItems.Size = new System.Drawing.Size(270, 21);
+			this.cmbItems.Size = new System.Drawing.Size(314, 22);
 			this.cmbItems.TabIndex = 0;
 			// 
 			// SelectionDialog
 			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(294, 74);
+			this.ClientSize = new System.Drawing.Size(343, 80);
 			this.Controls.Add(this.cmbItems);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnOk);
+			this.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "SelectionDialog";
 			this.ResumeLayout(false);

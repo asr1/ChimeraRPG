@@ -58,10 +58,10 @@
     <OutputPath>bin\x86\Release\</OutputPath>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>408F726CD5B66B40F9431FABF6D76910D6B4BAE1</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>2264F4D7379579CB0276FCBCC1C46D37CCEF38ED</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>Solipstry Character Creator_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>Solipstry Character Creator_1_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -73,9 +73,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="itextsharp, Version=5.5.6.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\itextsharp.dll</HintPath>
+    <Reference Include="itextsharp">
+      <HintPath>..\..\..\..\..\Libraries\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
@@ -97,6 +96,12 @@
       <DependentUpon>BugReportDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Character.cs" />
+    <Compile Include="CreditsDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditsDialog.Designer.cs">
+      <DependentUpon>CreditsDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomSkill.cs" />
     <Compile Include="CustomSkillForm.cs">
       <SubType>Form</SubType>
@@ -130,6 +135,9 @@
     <Compile Include="SmtpCredentials.cs" />
     <EmbeddedResource Include="BugReportDialog.resx">
       <DependentUpon>BugReportDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreditsDialog.resx">
+      <DependentUpon>CreditsDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomSkillForm.resx">
       <DependentUpon>CustomSkillForm.cs</DependentUpon>
@@ -165,6 +173,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Solipstry Character Creator_1_TemporaryKey.pfx" />
     <None Include="Solipstry Character Creator_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
