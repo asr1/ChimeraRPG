@@ -38,7 +38,6 @@
 			this.lblSize = new System.Windows.Forms.Label();
 			this.cmbSize = new System.Windows.Forms.ComboBox();
 			this.txtName = new System.Windows.Forms.TextBox();
-			this.txtClass = new System.Windows.Forms.TextBox();
 			this.txtRace = new System.Windows.Forms.TextBox();
 			this.txtHeight = new System.Windows.Forms.TextBox();
 			this.txtWeight = new System.Windows.Forms.TextBox();
@@ -53,7 +52,6 @@
 			this.lblWeight = new System.Windows.Forms.Label();
 			this.lblHeight = new System.Windows.Forms.Label();
 			this.lblRace = new System.Windows.Forms.Label();
-			this.lblClass = new System.Windows.Forms.Label();
 			this.lblName = new System.Windows.Forms.Label();
 			this.tabAttributes = new System.Windows.Forms.TabPage();
 			this.btnAttr8 = new System.Windows.Forms.Button();
@@ -228,7 +226,7 @@
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickConstitution);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickCharisma);
 			this.splitContainer1.Size = new System.Drawing.Size(798, 388);
-			this.splitContainer1.SplitterDistance = 611;
+			this.splitContainer1.SplitterDistance = 610;
 			this.splitContainer1.SplitterWidth = 5;
 			this.splitContainer1.TabIndex = 0;
 			// 
@@ -244,7 +242,7 @@
 			this.tabExport.Location = new System.Drawing.Point(0, 0);
 			this.tabExport.Name = "tabExport";
 			this.tabExport.SelectedIndex = 0;
-			this.tabExport.Size = new System.Drawing.Size(611, 388);
+			this.tabExport.Size = new System.Drawing.Size(610, 388);
 			this.tabExport.TabIndex = 0;
 			this.tabExport.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
@@ -256,7 +254,6 @@
 			this.tabInfo.Controls.Add(this.lblSize);
 			this.tabInfo.Controls.Add(this.cmbSize);
 			this.tabInfo.Controls.Add(this.txtName);
-			this.tabInfo.Controls.Add(this.txtClass);
 			this.tabInfo.Controls.Add(this.txtRace);
 			this.tabInfo.Controls.Add(this.txtHeight);
 			this.tabInfo.Controls.Add(this.txtWeight);
@@ -271,13 +268,12 @@
 			this.tabInfo.Controls.Add(this.lblWeight);
 			this.tabInfo.Controls.Add(this.lblHeight);
 			this.tabInfo.Controls.Add(this.lblRace);
-			this.tabInfo.Controls.Add(this.lblClass);
 			this.tabInfo.Controls.Add(this.lblName);
 			this.tabInfo.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.tabInfo.Location = new System.Drawing.Point(4, 23);
 			this.tabInfo.Name = "tabInfo";
 			this.tabInfo.Padding = new System.Windows.Forms.Padding(3);
-			this.tabInfo.Size = new System.Drawing.Size(603, 361);
+			this.tabInfo.Size = new System.Drawing.Size(602, 361);
 			this.tabInfo.TabIndex = 0;
 			this.tabInfo.Text = "Info";
 			this.tabInfo.UseVisualStyleBackColor = true;
@@ -345,14 +341,6 @@
 			this.txtName.Size = new System.Drawing.Size(180, 20);
 			this.txtName.TabIndex = 0;
 			this.txtName.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
-			// 
-			// txtClass
-			// 
-			this.txtClass.Location = new System.Drawing.Point(237, 269);
-			this.txtClass.Name = "txtClass";
-			this.txtClass.Size = new System.Drawing.Size(180, 20);
-			this.txtClass.TabIndex = 9;
-			this.txtClass.TextChanged += new System.EventHandler(this.BasicInformationTextBox_TextChanged);
 			// 
 			// txtRace
 			// 
@@ -473,15 +461,6 @@
 			this.lblRace.TabIndex = 2;
 			this.lblRace.Text = "Race";
 			// 
-			// lblClass
-			// 
-			this.lblClass.AutoSize = true;
-			this.lblClass.Location = new System.Drawing.Point(138, 272);
-			this.lblClass.Name = "lblClass";
-			this.lblClass.Size = new System.Drawing.Size(42, 14);
-			this.lblClass.TabIndex = 1;
-			this.lblClass.Text = "Class";
-			// 
 			// lblName
 			// 
 			this.lblName.AutoSize = true;
@@ -522,7 +501,7 @@
 			this.tabAttributes.Location = new System.Drawing.Point(4, 22);
 			this.tabAttributes.Name = "tabAttributes";
 			this.tabAttributes.Padding = new System.Windows.Forms.Padding(3);
-			this.tabAttributes.Size = new System.Drawing.Size(603, 362);
+			this.tabAttributes.Size = new System.Drawing.Size(602, 362);
 			this.tabAttributes.TabIndex = 1;
 			this.tabAttributes.Text = "Attributes";
 			this.tabAttributes.UseVisualStyleBackColor = true;
@@ -814,7 +793,7 @@
 			this.tabSkills.Controls.Add(this.txtSkillInfo);
 			this.tabSkills.Location = new System.Drawing.Point(4, 22);
 			this.tabSkills.Name = "tabSkills";
-			this.tabSkills.Size = new System.Drawing.Size(603, 362);
+			this.tabSkills.Size = new System.Drawing.Size(602, 362);
 			this.tabSkills.TabIndex = 2;
 			this.tabSkills.Text = "Skills";
 			this.tabSkills.UseVisualStyleBackColor = true;
@@ -836,7 +815,7 @@
 			// skillsSplitContainer.Panel2
 			// 
 			this.skillsSplitContainer.Panel2.Controls.Add(this.clbSkills);
-			this.skillsSplitContainer.Size = new System.Drawing.Size(603, 269);
+			this.skillsSplitContainer.Size = new System.Drawing.Size(602, 269);
 			this.skillsSplitContainer.SplitterDistance = 30;
 			this.skillsSplitContainer.TabIndex = 4;
 			// 
@@ -865,7 +844,7 @@
 			this.clbSkills.FormattingEnabled = true;
 			this.clbSkills.Location = new System.Drawing.Point(0, 0);
 			this.clbSkills.Name = "clbSkills";
-			this.clbSkills.Size = new System.Drawing.Size(603, 235);
+			this.clbSkills.Size = new System.Drawing.Size(602, 235);
 			this.clbSkills.TabIndex = 2;
 			this.clbSkills.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSkills_ItemCheck);
 			this.clbSkills.SelectedIndexChanged += new System.EventHandler(this.clbSkills_SelectedIndexChanged);
@@ -878,7 +857,7 @@
 			this.txtSkillInfo.Name = "txtSkillInfo";
 			this.txtSkillInfo.ReadOnly = true;
 			this.txtSkillInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtSkillInfo.Size = new System.Drawing.Size(603, 93);
+			this.txtSkillInfo.Size = new System.Drawing.Size(602, 93);
 			this.txtSkillInfo.TabIndex = 3;
 			// 
 			// tabTalents
@@ -887,7 +866,7 @@
 			this.tabTalents.Controls.Add(this.txtTalentInfo);
 			this.tabTalents.Location = new System.Drawing.Point(4, 22);
 			this.tabTalents.Name = "tabTalents";
-			this.tabTalents.Size = new System.Drawing.Size(603, 362);
+			this.tabTalents.Size = new System.Drawing.Size(602, 362);
 			this.tabTalents.TabIndex = 3;
 			this.tabTalents.Text = "Talents";
 			this.tabTalents.UseVisualStyleBackColor = true;
@@ -910,7 +889,7 @@
 			// talentsSplitContainer.Panel2
 			// 
 			this.talentsSplitContainer.Panel2.Controls.Add(this.clbTalents);
-			this.talentsSplitContainer.Size = new System.Drawing.Size(603, 269);
+			this.talentsSplitContainer.Size = new System.Drawing.Size(602, 269);
 			this.talentsSplitContainer.SplitterDistance = 30;
 			this.talentsSplitContainer.TabIndex = 7;
 			// 
@@ -951,7 +930,7 @@
 			this.clbTalents.FormattingEnabled = true;
 			this.clbTalents.Location = new System.Drawing.Point(0, 0);
 			this.clbTalents.Name = "clbTalents";
-			this.clbTalents.Size = new System.Drawing.Size(603, 235);
+			this.clbTalents.Size = new System.Drawing.Size(602, 235);
 			this.clbTalents.TabIndex = 3;
 			this.clbTalents.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTalents_ItemCheck);
 			this.clbTalents.SelectedIndexChanged += new System.EventHandler(this.clbTalents_SelectedIndexChanged);
@@ -964,7 +943,7 @@
 			this.txtTalentInfo.Name = "txtTalentInfo";
 			this.txtTalentInfo.ReadOnly = true;
 			this.txtTalentInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtTalentInfo.Size = new System.Drawing.Size(603, 93);
+			this.txtTalentInfo.Size = new System.Drawing.Size(602, 93);
 			this.txtTalentInfo.TabIndex = 6;
 			// 
 			// tabSpells
@@ -973,7 +952,7 @@
 			this.tabSpells.Controls.Add(this.txtSpellInfo);
 			this.tabSpells.Location = new System.Drawing.Point(4, 22);
 			this.tabSpells.Name = "tabSpells";
-			this.tabSpells.Size = new System.Drawing.Size(603, 362);
+			this.tabSpells.Size = new System.Drawing.Size(602, 362);
 			this.tabSpells.TabIndex = 4;
 			this.tabSpells.Text = "Spells";
 			this.tabSpells.UseVisualStyleBackColor = true;
@@ -1001,7 +980,7 @@
 			// spellsSplitContainer.Panel2
 			// 
 			this.spellsSplitContainer.Panel2.Controls.Add(this.clbSpells);
-			this.spellsSplitContainer.Size = new System.Drawing.Size(603, 269);
+			this.spellsSplitContainer.Size = new System.Drawing.Size(602, 269);
 			this.spellsSplitContainer.SplitterDistance = 80;
 			this.spellsSplitContainer.TabIndex = 8;
 			// 
@@ -1092,7 +1071,7 @@
 			this.clbSpells.FormattingEnabled = true;
 			this.clbSpells.Location = new System.Drawing.Point(0, 0);
 			this.clbSpells.Name = "clbSpells";
-			this.clbSpells.Size = new System.Drawing.Size(603, 185);
+			this.clbSpells.Size = new System.Drawing.Size(602, 185);
 			this.clbSpells.TabIndex = 2;
 			this.clbSpells.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSpells_ItemCheck);
 			this.clbSpells.SelectedIndexChanged += new System.EventHandler(this.clbSpells_SelectedIndexChanged);
@@ -1105,7 +1084,7 @@
 			this.txtSpellInfo.Name = "txtSpellInfo";
 			this.txtSpellInfo.ReadOnly = true;
 			this.txtSpellInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtSpellInfo.Size = new System.Drawing.Size(603, 93);
+			this.txtSpellInfo.Size = new System.Drawing.Size(602, 93);
 			this.txtSpellInfo.TabIndex = 7;
 			// 
 			// tabPage1
@@ -1114,7 +1093,7 @@
 			this.tabPage1.Location = new System.Drawing.Point(4, 22);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(603, 362);
+			this.tabPage1.Size = new System.Drawing.Size(602, 362);
 			this.tabPage1.TabIndex = 5;
 			this.tabPage1.Text = "Export Character";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -1125,7 +1104,7 @@
 			this.btnExport.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.btnExport.Location = new System.Drawing.Point(3, 3);
 			this.btnExport.Name = "btnExport";
-			this.btnExport.Size = new System.Drawing.Size(597, 356);
+			this.btnExport.Size = new System.Drawing.Size(596, 356);
 			this.btnExport.TabIndex = 0;
 			this.btnExport.Text = "Export Character";
 			this.btnExport.UseVisualStyleBackColor = false;
@@ -1565,8 +1544,7 @@
         private System.Windows.Forms.TabPage tabSkills;
         private System.Windows.Forms.TabPage tabTalents;
         private System.Windows.Forms.TabPage tabSpells;
-        private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.Label lblClass;
+		private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblRace;
         private System.Windows.Forms.Label lblWeight;
         private System.Windows.Forms.Label lblHeight;
@@ -1581,8 +1559,7 @@
         private System.Windows.Forms.TextBox txtWeight;
         private System.Windows.Forms.TextBox txtAge;
         private System.Windows.Forms.TextBox txtRace;
-        private System.Windows.Forms.TextBox txtName;
-        private System.Windows.Forms.TextBox txtClass;
+		private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblSize;
         private System.Windows.Forms.ComboBox cmbSize;
         private System.Windows.Forms.Label lblLuck;

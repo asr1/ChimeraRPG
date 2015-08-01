@@ -478,7 +478,6 @@ namespace Solipstry_Character_Creator
 		private void UpdateBasicInformation()
 		{
 			character.name = txtName.Text;
-			character._class = txtClass.Text;
 			character.race = txtRace.Text;
 			character.height = txtHeight.Text;
 			character.weight = txtWeight.Text;
@@ -2044,7 +2043,6 @@ namespace Solipstry_Character_Creator
 
 			//Fill out the fields
 			fields.SetField("name", character.name);
-			fields.SetField("class", character._class);
 			fields.SetField("race", character.race);
 			fields.SetField("height", character.height);
 			fields.SetField("weight", character.weight);

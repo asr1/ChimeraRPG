@@ -25,7 +25,6 @@ namespace Solipstry_Character_Creator
     {
 		//Basic information
         public string name;
-        public string _class;
         public string race;
 		public string age;
         public string height;
