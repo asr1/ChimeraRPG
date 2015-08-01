@@ -148,6 +148,7 @@
 			this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -1461,7 +1462,8 @@
 			// 
 			this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sendBugReportToolStripMenuItem,
-            this.viewSourceToolStripMenuItem});
+            this.viewSourceToolStripMenuItem,
+            this.creditsToolStripMenuItem});
 			this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
 			this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
 			this.helpToolStripMenuItem.Text = "Help";
@@ -1479,6 +1481,13 @@
 			this.viewSourceToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.viewSourceToolStripMenuItem.Text = "View Source";
 			this.viewSourceToolStripMenuItem.Click += new System.EventHandler(this.viewSourceToolStripMenuItem_Click);
+			// 
+			// creditsToolStripMenuItem
+			// 
+			this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
+			this.creditsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+			this.creditsToolStripMenuItem.Text = "Credits";
+			this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
 			// 
 			// Window
 			// 
@@ -1656,6 +1665,7 @@
 		private System.Windows.Forms.Button btnExport;
 		private System.Windows.Forms.CheckBox chkAllTalents;
 		private System.Windows.Forms.CheckBox chkAllSpells;
+		private System.Windows.Forms.ToolStripMenuItem creditsToolStripMenuItem;
     }
 }
 

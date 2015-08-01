@@ -1494,6 +1494,11 @@ namespace Solipstry_Character_Creator
 			System.Diagnostics.Process.Start("https://github.com/asr1/Solipstry/tree/master/Character%20Builder/CSharp/Solipstry%20Character%20Creator");
 		}
 
+
+		private void creditsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			new CreditsDialog().ShowDialog();
+		}
 		#endregion
 
 		private void BasicInformationTextBox_TextChanged(object sender, EventArgs e)
