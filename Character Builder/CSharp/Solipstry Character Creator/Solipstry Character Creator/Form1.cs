@@ -467,11 +467,10 @@ namespace Solipstry_Character_Creator
 						character.hitPoints += 5;
 						break;
 					case "Skill Specialization":
-						character.UpdateSkillScore(mod.modifiedScore, character.GetSkillValue(mod.modifiedScore) + 3);
-
 						if(mod.modifiedScore.Equals("Enlightenment"))
 						{
 							character.enlightenment = character.GetSkillValue("Enlightenment");
+							character.enlightenment += 3;
 						}
 						break;
 				}
@@ -518,15 +517,10 @@ namespace Solipstry_Character_Creator
 				case 0: //Small
 					++character.reflexHeavy;
 					++character.reflexLight;
-
-					character.skills[Skills.STEALTH] += 5;
-
 					break;
-				case 2:
+				case 2: //Large
 					--character.reflexHeavy;
 					--character.reflexLight;
-
-					character.skills[Skills.STEALTH] -= 5;
 					break;
 			}
 		}
@@ -2125,14 +2119,17 @@ namespace Solipstry_Character_Creator
 			fields.SetField("enlightenment_total", character.enlightenment.ToString());
 
 			#region Export skills
-			foreach (string skill in Skills.SKILLS)
+			foreach (string skillName in Skills.SKILLS)
 			{
+				//Transform the skill name to the representation used in the character sheet
+				string skill = skillName.Replace(' ', '_').Replace('/', '_').ToLower();
+
 				string strScore = skill + "_score";
 				string strMod = skill + "_mod";
 
 				//Calculate the final score for the skill
 				DataSet ds = PerformQuery(skillsConnection,
-					"SELECT governing_attr FROM Skills WHERE skill_name='" + skill + "'", "Skills");
+					"SELECT governing_attr FROM Skills WHERE skill_name='" + skillName + "'", "Skills");
 				DataRow row = ds.Tables["Skills"].Rows[0];
 				string governingAttr = row[0].ToString();
 
@@ -2142,9 +2139,22 @@ namespace Solipstry_Character_Creator
 
 				foreach(ModifiedScore modScore in modifiedScores)
 				{
-					if(modScore.modifiedBy.Equals("Skill Specialization") && modScore.modifiedScore.Equals(skill))
+					if(modScore.modifiedBy.Equals("Skill Specialization") && modScore.modifiedScore.Equals(skillName))
 					{
 						score += 3;
+					}
+				}
+
+				if(skillName.Equals("Stealth"))
+				{
+					switch(cmbSize.SelectedIndex)
+					{
+						case 0: //Small
+							score += 5;
+							break;
+						case 2: //Large
+							score -= 5;
+							break;
 					}
 				}
 
