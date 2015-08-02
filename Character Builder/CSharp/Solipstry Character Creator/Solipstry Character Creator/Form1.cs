@@ -50,7 +50,7 @@ namespace Solipstry_Character_Creator
 		//States for displaying different schools of magic
 		private const int DISPLAY_ALL_SPELLS = 0;
 		private const int DISPLAY_ALTERATION = 1;
-		private const int DISPLAY_CONJURATION = 2;
+		private const int DISPLAY_CREATION = 2;
 		private const int DISPLAY_DESTRUCTION = 3;
 		private const int DISPLAY_RESTORATION = 4;
 		private const int DISPLAY_META = 5;
@@ -84,7 +84,7 @@ namespace Solipstry_Character_Creator
 		//Modifiers to the number of spells that can be taken per school
 		//due to the Student of Magic talent
 		private int somAlteration;
-		private int somConjuration;
+		private int somCreation;
 		private int somDestruction;
 		private int somRestoration;
 
@@ -98,8 +98,8 @@ namespace Solipstry_Character_Creator
 
 		//Number of alteration spells the user has chosen
 		private int alterationTaken;
-		//Number of conjuration spells the user has chosen
-		private int conjurationTaken;
+		//Number of creation spells the user has chosen
+		private int creationTaken;
 		//Number of destruction spells the user has chosen
 		private int destructionTaken;
 		//Number of restoration spells the user has taken
@@ -112,8 +112,8 @@ namespace Solipstry_Character_Creator
 		
 		//Number of alteration spells the character can have without being homebrewed
 		private int alterationAvailable;
-		//Number of conjuration spells the character can have without being homebrewed
-		private int conjurationAvailable;
+		//Number of creation spells the character can have without being homebrewed
+		private int creationAvailable;
 		//Number of destruction spells the character can have without being homebrewed
 		private int destructionAvailable;
 		//Number of restoration spells the character can have without being homebrewed
@@ -142,7 +142,7 @@ namespace Solipstry_Character_Creator
 			modifiedScores = new List<ModifiedScore>();
 
 			somAlteration = 0;
-			somConjuration = 0;
+			somCreation = 0;
 			somDestruction = 0;
 			somRestoration = 0;
 
@@ -180,7 +180,7 @@ namespace Solipstry_Character_Creator
 			
 			//User can take 1 of each spell by default
 			alterationAvailable = 1;
-			conjurationAvailable = 1;
+			creationAvailable = 1;
 			destructionAvailable = 1;
 			restorationAvailable = 1;
 
@@ -697,7 +697,7 @@ namespace Solipstry_Character_Creator
 
 			//Check the number of each spell the user has taken
 			if(alterationTaken > alterationAvailable + somAlteration ||
-				conjurationTaken > conjurationAvailable + somConjuration ||
+				creationTaken > creationAvailable + somCreation ||
 				destructionTaken > destructionAvailable + somDestruction ||
 				restorationTaken > restorationAvailable + somRestoration)
 			{
@@ -752,7 +752,7 @@ namespace Solipstry_Character_Creator
 			{
 				//Check which kind of prereq it is (skill level or other spell)
 				if(pr.StartsWith("Destruction") ||
-				   pr.StartsWith("Conjuration") ||
+				   pr.StartsWith("Creation") ||
 				   pr.StartsWith("Alteration") ||
 				   pr.StartsWith("Restoration"))
 				{
@@ -929,7 +929,7 @@ namespace Solipstry_Character_Creator
 		private bool IsValidSchool(string school)
 		{
 			school = school.ToLower();
-			return school.Equals("alteration") || school.Equals("destruction") || school.Equals("restoration") || school.Equals("conjuration");
+			return school.Equals("alteration") || school.Equals("destruction") || school.Equals("restoration") || school.Equals("creation");
 		}
 		#endregion
 
@@ -1008,8 +1008,8 @@ namespace Solipstry_Character_Creator
 						case "Alteration":
 							--alterationTaken;
 							break;
-						case "Conjuration":
-							--conjurationTaken;
+						case "Creation":
+							--creationTaken;
 							break;
 						case "Destruction":
 							--destructionTaken;
@@ -1028,7 +1028,7 @@ namespace Solipstry_Character_Creator
 					{
 						List<string> schools = new List<string>();
 						schools.Add("Alteration");
-						schools.Add("Conjuration");
+						schools.Add("Creation");
 						schools.Add("Destruction");
 						schools.Add("Restoration");
 					
@@ -1054,8 +1054,8 @@ namespace Solipstry_Character_Creator
 						case "Alteration":
 							++alterationTaken;
 							break;
-						case "Conjuration":
-							++conjurationTaken;
+						case "Creation":
+							++creationTaken;
 							break;
 						case "Destruction":
 							++destructionTaken;
@@ -1133,7 +1133,7 @@ namespace Solipstry_Character_Creator
 			UpdateInformation();
 
 			alterationAvailable = character.CalculateModifier(character.skills[Skills.ALTERATION]);
-			conjurationAvailable = character.CalculateModifier(character.skills[Skills.CONJURATION]);
+			creationAvailable = character.CalculateModifier(character.skills[Skills.CREATION]);
 			destructionAvailable = character.CalculateModifier(character.skills[Skills.DESTRUCTION]);
 			restorationAvailable = character.CalculateModifier(character.skills[Skills.RESTORATION]);
 
@@ -1307,8 +1307,8 @@ namespace Solipstry_Character_Creator
 										case "Alteration":
 											++somAlteration;
 											break;
-										case "Conjuration":
-											++somConjuration;
+										case "Creation":
+											++somCreation;
 											break;
 										case "Destruction":
 											++somDestruction;
@@ -1425,8 +1425,8 @@ namespace Solipstry_Character_Creator
 										case "Alteration":
 											--somAlteration;
 											break;
-										case "Conjuration":
-											--somConjuration;
+										case "Creation":
+											--somCreation;
 											break;
 										case "Destruction":
 											--somDestruction;
@@ -1904,8 +1904,8 @@ namespace Solipstry_Character_Creator
 				case DISPLAY_ALTERATION:
 					school = "Alteration";
 					break;
-				case DISPLAY_CONJURATION:
-					school = "Conjuration";
+				case DISPLAY_CREATION:
+					school = "Creation";
 					break;
 				case DISPLAY_DESTRUCTION:
 					school = "Destruction";
@@ -1980,7 +1980,7 @@ namespace Solipstry_Character_Creator
 		{
 			//How many spells from each school the user has taken over the homebrew limit
 			int alterationRemaining = alterationAvailable - alterationTaken + somAlteration;
-			int conjurationRemaining = conjurationAvailable - conjurationTaken + somConjuration;
+			int creationRemaining = creationAvailable - creationTaken + somCreation;
 			int destructionRemaining = destructionAvailable - destructionTaken + somDestruction;
 			int restorationRemaining = restorationAvailable - restorationTaken + somRestoration;
 
@@ -1997,16 +1997,16 @@ namespace Solipstry_Character_Creator
 				lblAlterationRemaining.ForeColor = Color.Black;
 			}
 			
-			if(conjurationRemaining < 0)
+			if(creationRemaining < 0)
 			{
-				lblConjurationRemaining.Text = Math.Abs(conjurationRemaining)
-					+ " Conjuration spell(s) over limit";
-				lblConjurationRemaining.ForeColor = Color.Red;
+				lblCreationRemaining.Text = Math.Abs(creationRemaining)
+					+ " Creation spell(s) over limit";
+				lblCreationRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
-				lblConjurationRemaining.Text = conjurationRemaining + " Conjuration spell(s) remaining";
-				lblConjurationRemaining.ForeColor = Color.Black;
+				lblCreationRemaining.Text = creationRemaining + " Creation spell(s) remaining";
+				lblCreationRemaining.ForeColor = Color.Black;
 			}
 
 			if(destructionRemaining < 0)

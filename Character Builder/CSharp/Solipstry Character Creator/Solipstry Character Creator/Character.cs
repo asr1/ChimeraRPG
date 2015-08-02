@@ -157,8 +157,8 @@ namespace Solipstry_Character_Creator
 				case "chemistry":
 					index = Skills.CHEMISTRY;
 					break;
-				case "conjuration":
-					index = Skills.CONJURATION;
+				case "creation":
+					index = Skills.CREATION;
 					break;
 				case "craft":
 					index = Skills.CRAFT;
@@ -267,8 +267,8 @@ namespace Solipstry_Character_Creator
 				case "chemistry":
 					index = Skills.CHEMISTRY;
 					break;
-				case "conjuration":
-					index = Skills.CONJURATION;
+				case "creaton":
+					index = Skills.CREATION;
 					break;
 				case "craft":
 					index = Skills.CRAFT;

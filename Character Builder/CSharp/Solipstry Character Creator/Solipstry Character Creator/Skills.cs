@@ -26,8 +26,8 @@ namespace Solipstry_Character_Creator
 		public const int ATHLETICS = 2;
 		public const int BLOCK = 3;
 		public const int CHEMISTRY = 4;
-		public const int CONJURATION = 5;
-		public const int CRAFT = 6;
+		public const int CRAFT = 5;
+		public const int CREATION = 6;
 		public const int DESTRUCTION = 7;
 		public const int DISGUISE = 8;
 		public const int ENGINEERING = 9;
@@ -58,7 +58,7 @@ namespace Solipstry_Character_Creator
 			"Athletics",
 			"Block",
 			"Chemistry",
-			"Conjuration",
+			"Creation",
 			"Craft",
 			"Destruction",
 			"Disguise",

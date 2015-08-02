@@ -91,7 +91,7 @@
 			this.cmbSchool.FormattingEnabled = true;
 			this.cmbSchool.Items.AddRange(new object[] {
             "Alteration",
-            "Conjuration",
+            "Creation",
             "Destruction",
             "Restoration"});
 			this.cmbSchool.Location = new System.Drawing.Point(128, 69);
