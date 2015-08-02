@@ -42,7 +42,7 @@ namespace Solipstry_Character_Creator
 		public const int MELEE_WEAPON = 18;
 		public const int SURVIVAL = 19;
 		public const int PERCEPTION = 20;
-		public const int RANGED_COMBAT = 21;
+		public const int RANGED = 21;
 		public const int RESTORATION = 22;
 		public const int RIDE_DRIVE = 23;
 		public const int SECURITY = 24;
@@ -74,7 +74,7 @@ namespace Solipstry_Character_Creator
 			"Melee Weapon",
 			"Survival",
 			"Perception",
-			"Ranged Combat",
+			"Ranged",
 			"Restoration",
 			"Ride/Drive",
 			"Security",
