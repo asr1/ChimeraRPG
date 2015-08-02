@@ -57,6 +57,8 @@ namespace Solipstry_Character_Creator
 
 		//Spacing between talent names and the short description
 		private const int TALENT_DESC_SPACING = 29;
+		//Spacing between spell names and schools
+		private const int SPELL_SPACING = 30;
 
 		//List of talents that modify attributes, skills, etc.
 		private List<string> modifyingTalents;
@@ -940,9 +942,12 @@ namespace Solipstry_Character_Creator
 		#region CheckListBox handlers
 		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			//Only use the substring if displaying all school's of magic
+			string displayedSpell = clbSpells.SelectedItem.ToString();
+			string spellName = (spellDisplay == DISPLAY_ALL_SPELLS) ?
+				displayedSpell.Substring(0, SPELL_SPACING) : displayedSpell;
+			
 			//Get information about the spell
-			string spellName = clbSpells.SelectedItem.ToString();
-
 			if(IsCustomSpell(spellName))
 			{
 				CustomSpell spell = GetCustomSpell(spellName);
@@ -977,7 +982,13 @@ namespace Solipstry_Character_Creator
 				return;
 			}
 
+
 			string spellName = clbSpells.Items[e.Index].ToString();
+			//Trim the school from the spell name if it is being displayed
+			if(spellDisplay == DISPLAY_ALL_SPELLS)
+			{
+				spellName = spellName.Substring(0, SPELL_SPACING);
+			}
 
 			if(IsCustomSpell(spellName))
 			{
@@ -1279,10 +1290,11 @@ namespace Solipstry_Character_Creator
 
 								foreach(string spell in clbSpells.Items)
 								{
+									string spellName = spell.Substring(0, SPELL_SPACING);
 									//Spell is valid if it is not homebrewed and the character meets the requirements
-									if(!IsCustomSpell(spell) && !CheckSpellHomebrew(spell))
+									if(!IsCustomSpell(spellName) && !CheckSpellHomebrew(spellName))
 									{
-										validSpells.Add(spell);
+										validSpells.Add(spellName);
 									}
 								}
 
@@ -1830,11 +1842,12 @@ namespace Solipstry_Character_Creator
 			{
 				spells = new List<string>();
 
-				DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name FROM Spells", "Spells");
+				DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name, school FROM Spells", "Spells");
 
-				foreach(DataRow row in ds.Tables["Spells"].Rows)
+				foreach (DataRow row in ds.Tables["Spells"].Rows)
 				{
-					spells.Add(row[0].ToString());
+					spells.Add(String.Format("{0,-" + SPELL_SPACING + "} {1}",
+						row[0].ToString(), row[1].ToString()));
 				}
 			}
 			else
@@ -1844,7 +1857,11 @@ namespace Solipstry_Character_Creator
 
 			foreach(string spell in spells)
 			{
-				if(!CheckSpellHomebrew(spell))
+				//Only use the substring if displaying all school's of magic
+				string spellName = (spellDisplay == DISPLAY_ALL_SPELLS) ?
+					spell.Substring(0, SPELL_SPACING) : spell;
+
+				if(!CheckSpellHomebrew(spellName))
 				{
 					clbSpells.Items.Add(spell);
 				}
@@ -1862,11 +1879,12 @@ namespace Solipstry_Character_Creator
 			{
 				spells = new List<string>();
 
-				DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name FROM Spells", "Spells");
+				DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name, school FROM Spells", "Spells");
 
 				foreach (DataRow row in ds.Tables["Spells"].Rows)
 				{
-					spells.Add(row[0].ToString());
+					spells.Add(String.Format("{0,-" + SPELL_SPACING + "} {1}",
+						row[0].ToString(), row[1].ToString()));
 				}
 			}
 			else
@@ -2115,7 +2133,9 @@ namespace Solipstry_Character_Creator
 				//Calculate the final score for the skill
 				DataSet ds = PerformQuery(skillsConnection,
 					"SELECT governing_attr FROM Skills WHERE skill_name='" + skill + "'", "Skills");
-				string governingAttr = ds.Tables["Skills"].Rows[0][0].ToString();
+				DataRow row = ds.Tables["Skills"].Rows[0];
+				string governingAttr = row[0].ToString();
+
 				int score = character.GetSkillValue(skill);
 
 				score += character.CalculateModifier(character.GetAttributeValue(governingAttr));

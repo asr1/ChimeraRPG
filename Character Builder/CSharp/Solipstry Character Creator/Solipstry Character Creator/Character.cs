@@ -210,7 +210,7 @@ namespace Solipstry_Character_Creator
 					break;
 				case "ranged combat":
 				case "ranged_combat":
-					index = Skills.RANGED_COMBAT;
+					index = Skills.RANGED;
 					break;
 				case "restoration":
 					index = Skills.RESTORATION;
@@ -320,7 +320,7 @@ namespace Solipstry_Character_Creator
 					break;
 				case "ranged combat":
 				case "ranged_combat":
-					index = Skills.RANGED_COMBAT;
+					index = Skills.RANGED;
 					break;
 				case "restoration":
 					index = Skills.RESTORATION;
