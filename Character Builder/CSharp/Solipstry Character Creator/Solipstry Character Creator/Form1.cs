@@ -2282,6 +2282,12 @@ namespace Solipstry_Character_Creator
 
 			stamper.FormFlattening = false;
 			stamper.Close();
+
+			//Open the PDF if the user wants it opened
+			if (chkOpenSheet.Checked) 
+			{
+				System.Diagnostics.Process.Start(saveLocation);
+			}
 		}
 
 		/// <summary>
