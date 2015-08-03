@@ -36,15 +36,15 @@ namespace Solipstry_Character_Creator
         public string size; //Small, medium, large
 
 		public int[] skills;
-		public List<string> spells;
+		public List<string> abilities;
 		public List<string> talents;
 
 		public List<string> customTalents;
 		public Dictionary<string, int> customSkills;
-		public List<string> customSpells;
+		public List<string> customAbilities;
 
-		//Keeps track of which school meta spells are using
-		public Dictionary<string, string> metaSpells;
+		//Keeps track of which school meta abilities are using
+		public Dictionary<string, string> metaAbilities;
 
 		//Attributes
         public int charisma;
@@ -74,13 +74,13 @@ namespace Solipstry_Character_Creator
 		public Character()
 		{
 			skills = new int[36];
-			spells = new List<string>();
+			abilities = new List<string>();
 			talents = new List<string>();
-			metaSpells = new Dictionary<string, string>();
+			metaAbilities = new Dictionary<string, string>();
 
 			customTalents = new List<string>();
 			customSkills = new Dictionary<string, int>();
-			customSpells = new List<string>();
+			customAbilities = new List<string>();
 
 			//Set everything to its default values
 			charisma = 20;

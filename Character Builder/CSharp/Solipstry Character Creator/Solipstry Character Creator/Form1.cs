@@ -43,12 +43,12 @@ namespace Solipstry_Character_Creator
     public partial class Window : Form
     {
 		//Access strings for the databases
-		private const string SPELLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Spells.accdb";
+		private const string ABILITIES_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Abilities.accdb";
 		private const string TALENTS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Talents.accdb";
 		private const string SKILLS_ACCESS_STRING = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=Skills.accdb";
 
 		//States for displaying different schools of magic
-		private const int DISPLAY_ALL_SPELLS = 0;
+		private const int DISPLAY_ALL_ABILITIES = 0;
 		private const int DISPLAY_ALTERATION = 1;
 		private const int DISPLAY_CREATION = 2;
 		private const int DISPLAY_DESTRUCTION = 3;
@@ -57,8 +57,8 @@ namespace Solipstry_Character_Creator
 
 		//Spacing between talent names and the short description
 		private const int TALENT_DESC_SPACING = 29;
-		//Spacing between spell names and schools
-		private const int SPELL_SPACING = 30;
+		//Spacing between ability names and schools
+		private const int ABILITY_SPACING = 30;
 
 		//List of talents that modify attributes, skills, etc.
 		private List<string> modifyingTalents;
@@ -66,7 +66,7 @@ namespace Solipstry_Character_Creator
 		//List of talents that can be taken multiple times
 		private List<string> multipleTimesTalents;
 
-		private OleDbConnection spellsConnection;
+		private OleDbConnection abilitiesConnection;
 		private OleDbConnection talentsConnection;
 		private OleDbConnection skillsConnection;
 
@@ -76,12 +76,12 @@ namespace Solipstry_Character_Creator
 
 		private List<string> customTalents;
 		private List<CustomSkill> customSkills;
-		private List<CustomSpell> customSpells;
+		private List<CustomAbility> customAbilities;
 
 		//Keeps track of any modified attributes or skills
 		private List<ModifiedScore> modifiedScores;
 
-		//Modifiers to the number of spells that can be taken per school
+		//Modifiers to the number of abilities that can be taken per school
 		//due to the Student of Magic talent
 		private int somAlteration;
 		private int somCreation;
@@ -96,13 +96,13 @@ namespace Solipstry_Character_Creator
 		//Number of talents the user has chosen
 		private int talentsTaken;
 
-		//Number of alteration spells the user has chosen
+		//Number of alteration abilities the user has chosen
 		private int alterationTaken;
-		//Number of creation spells the user has chosen
+		//Number of creation abilities the user has chosen
 		private int creationTaken;
-		//Number of destruction spells the user has chosen
+		//Number of destruction abilities the user has chosen
 		private int destructionTaken;
-		//Number of restoration spells the user has taken
+		//Number of restoration abilities the user has taken
 		private int restorationTaken;
 
 		//Number of skills the use can select as primary
@@ -110,23 +110,23 @@ namespace Solipstry_Character_Creator
 		//Number of talents the character can have without being homebrewed 
 		private int talentsAvailable;
 		
-		//Number of alteration spells the character can have without being homebrewed
+		//Number of alteration abilities the character can have without being homebrewed
 		private int alterationAvailable;
-		//Number of creation spells the character can have without being homebrewed
+		//Number of creation abilities the character can have without being homebrewed
 		private int creationAvailable;
-		//Number of destruction spells the character can have without being homebrewed
+		//Number of destruction abilities the character can have without being homebrewed
 		private int destructionAvailable;
-		//Number of restoration spells the character can have without being homebrewed
+		//Number of restoration abilities the character can have without being homebrewed
 		private int restorationAvailable;
 
-		//Whether to display all talents/spells or only ones the character is eligble for
+		//Whether to display all talents/abilities or only ones the character is eligble for
 		private bool displayHomebrewOptions; 
 
 		//Whether or not a CheckedListBox is being sorted
 		private bool sorting; 
 
 		//State machine variable for which school of magic to display
-		private int spellDisplay;
+		private int abilityDisplay;
 
 		#region Program setup
 		public Window()
@@ -137,7 +137,7 @@ namespace Solipstry_Character_Creator
 
 			customTalents = new List<string>();
 			customSkills = new List<CustomSkill>();
-			customSpells = new List<CustomSpell>();
+			customAbilities = new List<CustomAbility>();
 
 			modifiedScores = new List<ModifiedScore>();
 
@@ -148,7 +148,7 @@ namespace Solipstry_Character_Creator
 
 			displayHomebrewOptions = false;
 
-			spellDisplay = DISPLAY_ALL_SPELLS;
+			abilityDisplay = DISPLAY_ALL_ABILITIES;
 
 			//Create context menu strips
 			ContextMenuStrip talentsMenuStrip = new ContextMenuStrip();
@@ -167,18 +167,18 @@ namespace Solipstry_Character_Creator
 			skillsMenuStrip.Items.Add(newSkillItem);
 			clbSkills.ContextMenuStrip = skillsMenuStrip;
 
-			ContextMenuStrip spellsMenuStrip = new ContextMenuStrip();
-			ToolStripMenuItem newSpellItem = new ToolStripMenuItem("New Spell");
-			newSpellItem.Name = "New Spell";
-			newSpellItem.Click += new EventHandler(newSpellMenuItem_Click);
+			ContextMenuStrip abilitiesMenuStrip = new ContextMenuStrip();
+			ToolStripMenuItem newAbilityItem = new ToolStripMenuItem("New Ability");
+			newAbilityItem.Name = "New Ability";
+			newAbilityItem.Click += new EventHandler(newAbilityMenuItem_Click);
 
-			spellsMenuStrip.Items.Add(newSpellItem);
-			clbSpells.ContextMenuStrip = spellsMenuStrip;
+			abilitiesMenuStrip.Items.Add(newAbilityItem);
+			clbAbilities.ContextMenuStrip = abilitiesMenuStrip;
 
 			primarySkillsAvailable = 5; //Can only have 5 primary skills
 			talentsAvailable = 1; //First level characters can only take one talent
 			
-			//User can take 1 of each spell by default
+			//User can take 1 of each ability by default
 			alterationAvailable = 1;
 			creationAvailable = 1;
 			destructionAvailable = 1;
@@ -245,12 +245,12 @@ namespace Solipstry_Character_Creator
 			attributeTextBoxes.Add(txtWisdom);
 
 			//Initialize database connections
-			spellsConnection = new OleDbConnection(SPELLS_ACCESS_STRING);
+			abilitiesConnection = new OleDbConnection(ABILITIES_ACCESS_STRING);
 			talentsConnection = new OleDbConnection(TALENTS_ACCESS_STRING);
 			skillsConnection = new OleDbConnection(SKILLS_ACCESS_STRING);
 			try
 			{
-				spellsConnection.Open();
+				abilitiesConnection.Open();
 				talentsConnection.Open();
 				skillsConnection.Open();
 			}
@@ -259,7 +259,7 @@ namespace Solipstry_Character_Creator
 				Console.WriteLine("Error opening connection to database: {0}", e.Message);
 			}
 
-			DisplayEligibleSpells();
+			DisplayEligibleAbilities();
 			DisplayEligibleTalents();
 			FillSkillsList();
 
@@ -651,7 +651,7 @@ namespace Solipstry_Character_Creator
 		private void Window_FormClosing(object sender, FormClosingEventArgs e)
 		{
 			//Close all database connections
-			spellsConnection.Close();
+			abilitiesConnection.Close();
 			talentsConnection.Close();
 			skillsConnection.Close();
 		}
@@ -661,8 +661,8 @@ namespace Solipstry_Character_Creator
 		{
 			bool hb = false; //Whether or not the character is homebrewed
 
-			//Check custom talents, spells, and talents
-			if(character.customTalents.Count > 0 || customSkills.Count > 0 || character.customSpells.Count > 0)
+			//Check custom talents, abilities, and talents
+			if(character.customTalents.Count > 0 || customSkills.Count > 0 || character.customAbilities.Count > 0)
 			{
 				hb = true;
 				goto finished;
@@ -695,7 +695,7 @@ namespace Solipstry_Character_Creator
 				goto finished;
 			}
 
-			//Check the number of each spell the user has taken
+			//Check the number of each ability the user has taken
 			if(alterationTaken > alterationAvailable + somAlteration ||
 				creationTaken > creationAvailable + somCreation ||
 				destructionTaken > destructionAvailable + somDestruction ||
@@ -705,10 +705,10 @@ namespace Solipstry_Character_Creator
 				goto finished;
 			}
 
-			//Check each spell
-			foreach(string spell in character.spells)
+			//Check each ability
+			foreach(string ability in character.abilities)
 			{
-				if(CheckSpellHomebrew(spell))
+				if(CheckAbilityHomebrew(ability))
 				{
 					hb = true;
 					goto finished;
@@ -730,15 +730,15 @@ namespace Solipstry_Character_Creator
 		}
 
 		/// <summary>
-		/// Checks if the character is homebrewed based off of a spell
+		/// Checks if the character is homebrewed based off of a ability
 		/// </summary>
-		/// <param name="spell">Spell to check</param>
+		/// <param name="ability">Ability to check</param>
 		/// <returns>True if the character is homebrewed, false otherwise</returns>
-		private bool CheckSpellHomebrew(string spell)
+		private bool CheckAbilityHomebrew(string ability)
 		{
-			//Get the prerequisites for the spell from the database
-			DataSet ds = PerformQuery(spellsConnection, "SELECT prereq FROM Spells WHERE spell_name = '" + spell + "'", "Spells");
-			DataRow row = ds.Tables["Spells"].Rows[0];
+			//Get the prerequisites for the ability from the database
+			DataSet ds = PerformQuery(abilitiesConnection, "SELECT prereq FROM Abilities WHERE ability_name = '" + ability + "'", "Abilities");
+			DataRow row = ds.Tables["Abilities"].Rows[0];
 			
 			//Don't need to check prereqs if there are none
 			if(row[0].ToString().Equals(""))
@@ -750,7 +750,7 @@ namespace Solipstry_Character_Creator
 
 			foreach(string pr in prereqs)
 			{
-				//Check which kind of prereq it is (skill level or other spell)
+				//Check which kind of prereq it is (skill level or other ability)
 				if(pr.StartsWith("Destruction") ||
 				   pr.StartsWith("Creation") ||
 				   pr.StartsWith("Alteration") ||
@@ -766,23 +766,23 @@ namespace Solipstry_Character_Creator
 				}
 				else if(pr.StartsWith("[Meta]"))
 				{
-					if(!character.spells.Contains(spell))
+					if(!character.abilities.Contains(ability))
 					{
 						return false;
 					}
 
 					string[] split = pr.Split(' ');
 
-					//Check the skill value of the school associated with the meta magic spell
-					if(character.GetSkillValue(character.metaSpells[spell]) < TryParseInteger(split[1]))
+					//Check the skill value of the school associated with the meta magic ability
+					if(character.GetSkillValue(character.metaAbilities[ability]) < TryParseInteger(split[1]))
 					{
 						return true;
 					}
 				}
 				else
 				{
-					//If the character doesn't have the prerequisite spells, its homebrewed
-					if(!character.spells.Contains(pr))
+					//If the character doesn't have the prerequisite abilities, its homebrewed
+					if(!character.abilities.Contains(pr))
 					{
 						return true;
 					}
@@ -856,12 +856,12 @@ namespace Solipstry_Character_Creator
 						}
 					}
 				}
-				//Check if the prereq is one of the empulse spells
-				else if(prereq.Equals("Empulse Spell"))
+				//Check if the prereq is one of the empulse abilities
+				else if(prereq.Equals("Empulse Ability"))
 				{
 					//Only need to check if they have Empulse I
-					//(if the character doesn't, and has other empulse spells it's homebrewed anyways)
-					if(!character.spells.Contains("Empulse I"))
+					//(if the character doesn't, and has other empulse abilities it's homebrewed anyways)
+					if(!character.abilities.Contains("Empulse I"))
 					{
 						return true;
 					}
@@ -874,10 +874,10 @@ namespace Solipstry_Character_Creator
 						return true;
 					}
 				}
-				//Check if it's a spell prereq
-				else if(clbSpells.Items.Contains(prereq))
+				//Check if it's a ability prereq
+				else if(clbAbilities.Items.Contains(prereq))
 				{
-					if(!character.spells.Contains(prereq))
+					if(!character.abilities.Contains(prereq))
 					{
 						return true;
 					}
@@ -934,42 +934,42 @@ namespace Solipstry_Character_Creator
 		#endregion
 
 		#region CheckListBox handlers
-		private void clbSpells_SelectedIndexChanged(object sender, EventArgs e)
+		private void clbAbilities_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			//Only use the substring if displaying all school's of magic
-			string displayedSpell = clbSpells.SelectedItem.ToString();
-			string spellName = (spellDisplay == DISPLAY_ALL_SPELLS) ?
-				displayedSpell.Substring(0, SPELL_SPACING) : displayedSpell;
+			string displayedAbility = clbAbilities.SelectedItem.ToString();
+			string abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
+				displayedAbility.Substring(0, ABILITY_SPACING) : displayedAbility;
 			
-			//Get information about the spell
-			if(IsCustomSpell(spellName))
+			//Get information about the ability
+			if(IsCustomAbility(abilityName))
 			{
-				CustomSpell spell = GetCustomSpell(spellName);
+				CustomAbility ability = GetCustomAbility(abilityName);
 
-				txtSpellInfo.Text = spellName + Environment.NewLine +
-					"School: " + spell.school + Environment.NewLine +
-					"Cost: " + spell.cost;
+				txtAbilityInfo.Text = abilityName + Environment.NewLine +
+					"School: " + ability.school + Environment.NewLine +
+					"Cost: " + ability.cost;
 			}
 			else
 			{
-				DataSet ds = PerformQuery(spellsConnection,
-					"SELECT cost, school, prereq, effect FROM Spells WHERE spell_name = '" + spellName + "'",
-					"Spells");
-				DataRow row = ds.Tables["Spells"].Rows[0];
+				DataSet ds = PerformQuery(abilitiesConnection,
+					"SELECT cost, school, prereq, effect FROM Abilities WHERE ability_name = '" + abilityName + "'",
+					"Abilities");
+				DataRow row = ds.Tables["Abilities"].Rows[0];
 
 				//Update the talent quick info view with the talent information
-				txtSpellInfo.Text = spellName +
+				txtAbilityInfo.Text = abilityName +
 					Environment.NewLine + "School: " + row[1] +
 					Environment.NewLine + "Cost: " + row[0] +
 					Environment.NewLine + "Prerequisites: " +
 					(string.IsNullOrWhiteSpace(row[2].ToString()) ? "None" : row[2]) +
 					Environment.NewLine + row[3];
-				txtSpellInfo.SelectionStart = 0;
-				txtSpellInfo.SelectionLength = 0;
+				txtAbilityInfo.SelectionStart = 0;
+				txtAbilityInfo.SelectionLength = 0;
 			}
 		}
 
-		private void clbSpells_ItemCheck(object sender, ItemCheckEventArgs e)
+		private void clbAbilities_ItemCheck(object sender, ItemCheckEventArgs e) //HERE
 		{
 			if(sorting)
 			{
@@ -977,33 +977,35 @@ namespace Solipstry_Character_Creator
 			}
 
 
-			string spellName = clbSpells.Items[e.Index].ToString();
-			//Trim the school from the spell name if it is being displayed
-			if(spellDisplay == DISPLAY_ALL_SPELLS)
+			string abilityName = clbAbilities.Items[e.Index].ToString();
+			//Trim the school from the ability name if it is being displayed
+			if(abilityDisplay == DISPLAY_ALL_ABILITIES)
 			{
-				spellName = spellName.Substring(0, SPELL_SPACING);
+				abilityName = abilityName.Substring(0, ABILITY_SPACING);
 			}
 
-			if(IsCustomSpell(spellName))
+			abilityName = abilityName.Trim();
+
+			if(IsCustomAbility(abilityName))
 			{
 				 if(e.NewValue == CheckState.Unchecked)
 				 {
-					 character.customSpells.Remove(spellName);
+					 character.customAbilities.Remove(abilityName);
 				 }
 				 else
 				 {
-					 character.customSpells.Add(spellName);
+					 character.customAbilities.Add(abilityName);
 				 }
 			}
 			else
 			{
-				string school = GetSpellSchool(spellName);
+				string school = GetAbilitySchool(abilityName);
 
 				if (e.NewValue == CheckState.Unchecked)
 				{
-					//If the spell is a meta spell, use the chosen school. Otherwise use the school for the spell
+					//If the ability is a meta ability, use the chosen school. Otherwise use the school for the ability
 					//as listed in the database
-					switch (school.Equals("Meta") ? character.metaSpells[spellName] : school)
+					switch (school.Equals("Meta") ? character.metaAbilities[abilityName] : school)
 					{
 						case "Alteration":
 							--alterationTaken;
@@ -1019,8 +1021,8 @@ namespace Solipstry_Character_Creator
 							break;
 					}
 
-					character.spells.Remove(spellName);
-					character.metaSpells[spellName] = null;
+					character.abilities.Remove(abilityName);
+					character.metaAbilities[abilityName] = null;
 				}
 				else
 				{
@@ -1032,13 +1034,13 @@ namespace Solipstry_Character_Creator
 						schools.Add("Destruction");
 						schools.Add("Restoration");
 					
-						//Have the user select which school to use for the meta spell
+						//Have the user select which school to use for the meta ability
 						SelectionDialog schoolSelector = new SelectionDialog(schools, "Select a school to use");
 						DialogResult result = schoolSelector.ShowDialog();
 
 						if(result == DialogResult.OK)
 						{
-							character.metaSpells[spellName] = schoolSelector.GetSelectedItem();
+							character.metaAbilities[abilityName] = schoolSelector.GetSelectedItem();
 						}
 						else
 						{
@@ -1047,9 +1049,9 @@ namespace Solipstry_Character_Creator
 						}
 					}
 
-					//If the spell is a meta spell, use the chosen school. Otherwise use the school for the spell
+					//If the ability is a meta ability, use the chosen school. Otherwise use the school for the ability
 					//as listed in the database
-					switch (school.Equals("Meta") ? character.metaSpells[spellName] : school)
+					switch (school.Equals("Meta") ? character.metaAbilities[abilityName] : school)
 					{
 						case "Alteration":
 							++alterationTaken;
@@ -1065,11 +1067,11 @@ namespace Solipstry_Character_Creator
 							break;
 					}
 
-					character.spells.Add(spellName);
+					character.abilities.Add(abilityName);
 				}
 			}
 
-			UpdateSpellsRemainingLabels();
+			UpdateAbilitiesRemainingLabels();
 
 			CheckHomebrew();
 		}
@@ -1137,13 +1139,13 @@ namespace Solipstry_Character_Creator
 			destructionAvailable = character.CalculateModifier(character.skills[Skills.DESTRUCTION]);
 			restorationAvailable = character.CalculateModifier(character.skills[Skills.RESTORATION]);
 
-			UpdateSpellsRemainingLabels();	
+			UpdateAbilitiesRemainingLabels();	
 		}
 
-		private void clbSkills_SelectedIndexChanged(object sender, EventArgs e)
+		private void clbSkills_SelectedIndexChanged(object sender, EventArgs e) 
 		{
 			//Get information about the skill
-			string skillName = clbSkills.SelectedItem.ToString();
+			string skillName = clbSkills.SelectedItem.ToString().Trim();
 
 			if (IsCustomSkill(skillName))
 			{
@@ -1278,31 +1280,31 @@ namespace Solipstry_Character_Creator
 								}
 
 								break;
-							case "Student of Magic": //additional spell with requirements met
-								//Figure out which spells the user can take
-								List<string> validSpells = new List<string>();
+							case "Student of Magic": //additional abilities with requirements met
+								//Figure out which abilities the user can take
+								List<string> validAbilities = new List<string>();
 
-								foreach(string spell in clbSpells.Items)
+								foreach(string ability in clbAbilities.Items)
 								{
-									string spellName = spell.Substring(0, SPELL_SPACING);
-									//Spell is valid if it is not homebrewed and the character meets the requirements
-									if(!IsCustomSpell(spellName) && !CheckSpellHomebrew(spellName))
+									string abilityName = ability.Substring(0, ABILITY_SPACING);
+									//Ability is valid if it is not homebrewed and the character meets the requirements
+									if(!IsCustomAbility(abilityName) && !CheckAbilityHomebrew(abilityName))
 									{
-										validSpells.Add(spellName);
+										validAbilities.Add(abilityName);
 									}
 								}
 
-								//Have the user select the spell they want
-								selection = new SelectionDialog(validSpells, "Select a Spell");
+								//Have the user select the ability they want
+								selection = new SelectionDialog(validAbilities, "Select an Ability");
 								result = selection.ShowDialog();
 
 								if(result == DialogResult.OK)
 								{
 									modified.modifiedScore = selection.GetSelectedItem();
-									clbSpells.SelectedItem = modified.modifiedScore;
-									clbSpells.SetItemChecked(clbSpells.SelectedIndex, true);
+									clbAbilities.SelectedItem = modified.modifiedScore;
+									clbAbilities.SetItemChecked(clbAbilities.SelectedIndex, true);
 
-									switch(GetSpellSchool(selection.GetSelectedItem()))
+									switch(GetAbilitySchool(selection.GetSelectedItem()))
 									{
 										case "Alteration":
 											++somAlteration;
@@ -1324,7 +1326,7 @@ namespace Solipstry_Character_Creator
 									return;
 								}
 
-								UpdateSpellsRemainingLabels();
+								UpdateAbilitiesRemainingLabels();
 
 								break;
 						}
@@ -1390,37 +1392,37 @@ namespace Solipstry_Character_Creator
 								}
 
 								break;
-							case "Student of Magic": //additional spell with requirements met
-								List<string> modifiedSpells = new List<string>();
+							case "Student of Magic": //additional ability with requirements met
+								List<string> modifiedAbilities = new List<string>();
 
-								//Find the spells that were added with Student of Magic
+								//Find the abilities that were added with Student of Magic
 								foreach(ModifiedScore mod in modifiedScores)
 								{
 									if(mod.modifiedBy.Equals("Student of Magic"))
 									{
-										modifiedSpells.Add(mod.modifiedScore);
+										modifiedAbilities.Add(mod.modifiedScore);
 									}
 								}
 
-								SelectionDialog spellSelector = new SelectionDialog(modifiedSpells, "Which spell to remove?");
-								result = spellSelector.ShowDialog();
+								SelectionDialog abilitySelector = new SelectionDialog(modifiedAbilities, "Which ability to remove?");
+								result = abilitySelector.ShowDialog();
 
 								if(result == DialogResult.OK)
 								{
-									//Remove the spell from the list of modified spells
+									//Remove the ability from the list of modified abilities
 									for(int n = 0; n > modifiedScores.Count; ++n)
 									{
-										if(modifiedScores[n].modifiedScore.Equals(spellSelector.GetSelectedItem()))
+										if(modifiedScores[n].modifiedScore.Equals(abilitySelector.GetSelectedItem()))
 										{
 											modifiedScores.RemoveAt(n);
 											break;
 										}
 									}
 
-									clbSpells.SelectedItem = spellSelector.GetSelectedItem();
-									clbSpells.SetItemChecked(clbSpells.SelectedIndex, false);
+									clbAbilities.SelectedItem = abilitySelector.GetSelectedItem();
+									clbAbilities.SetItemChecked(clbAbilities.SelectedIndex, false);
 
-									switch (GetSpellSchool(spellSelector.GetSelectedItem()))
+									switch (GetAbilitySchool(abilitySelector.GetSelectedItem()))
 									{
 										case "Alteration":
 											--somAlteration;
@@ -1442,7 +1444,7 @@ namespace Solipstry_Character_Creator
 									return;
 								}
 
-								UpdateSpellsRemainingLabels();
+								UpdateAbilitiesRemainingLabels();
 
 								break;
 							default:
@@ -1551,27 +1553,27 @@ namespace Solipstry_Character_Creator
 			CheckHomebrew();
 		}
 
-		private void newSpellMenuItem_Click(object sender, EventArgs e)
+		private void newAbilityMenuItem_Click(object sender, EventArgs e)
 		{
-			CustomSpellForm frmSpell = new CustomSpellForm();
-			DialogResult result = frmSpell.ShowDialog();
+			CustomAbilityForm frmAbility = new CustomAbilityForm();
+			DialogResult result = frmAbility.ShowDialog();
 
 			if(result == DialogResult.OK)
 			{
-				CustomSpell newSpell = new CustomSpell();
-				newSpell.name = frmSpell.GetSpellName();
-				newSpell.school = frmSpell.GetSchool();
-				newSpell.cost = frmSpell.GetCost();
-				newSpell.effect = frmSpell.GetEffect();
+				CustomAbility newAbility = new CustomAbility();
+				newAbility.name = frmAbility.GetAbilityName();
+				newAbility.school = frmAbility.GetSchool();
+				newAbility.cost = frmAbility.GetCost();
+				newAbility.effect = frmAbility.GetEffect();
 
-				customSpells.Add(newSpell);
+				customAbilities.Add(newAbility);
 
-				//Add the spell to the check list box and check it
-				clbSpells.Items.Add(newSpell.name);
-				clbSpells.SetItemChecked(clbSpells.Items.Count - 1, true);
+				//Add the ability to the check list box and check it
+				clbAbilities.Items.Add(newAbility.name);
+				clbAbilities.SetItemChecked(clbAbilities.Items.Count - 1, true);
 
-				SortCheckedListBox(clbSpells);
-				clbSpells.SelectedItem = newSpell.name;
+				SortCheckedListBox(clbAbilities);
+				clbAbilities.SelectedItem = newAbility.name;
 			}
 
 			CheckHomebrew();
@@ -1641,15 +1643,15 @@ namespace Solipstry_Character_Creator
 		}
 
 		/// <summary>
-		/// Checks if the specified spell is a custom spell
+		/// Checks if the specified ability is a custom ability
 		/// </summary>
-		/// <param name="spellName">Skill to check</param>
-		/// <returns>True if the spell is custom, false otherwise</returns>
-		private bool IsCustomSpell(string spellName)
+		/// <param name="abilityName">Ability to check</param>
+		/// <returns>True if the ability is custom, false otherwise</returns>
+		private bool IsCustomAbility(string abilityName)
 		{
-			foreach(CustomSpell spell in customSpells)
+			foreach(CustomAbility ability in customAbilities)
 			{
-				if(spell.name.Equals(spellName))
+				if(ability.name.Equals(abilityName))
 				{
 					return true;
 				}
@@ -1659,17 +1661,17 @@ namespace Solipstry_Character_Creator
 		}
 
 		/// <summary>
-		/// Gets information about a custom spell
+		/// Gets information about a custom ability
 		/// </summary>
-		/// <param name="spellName">Name of the spell to get</param>
-		/// <returns>CustomSpell object if the spell is a custom spell, null otherwise</returns>
-		private CustomSpell GetCustomSpell(string spellName)
+		/// <param name="abilityName">Name of the ability to get</param>
+		/// <returns>CustomAbility object if the ability is a custom ability, null otherwise</returns>
+		private CustomAbility GetCustomAbility(string abilityName)
 		{
-			foreach (CustomSpell spell in customSpells)
+			foreach (CustomAbility ability in customAbilities)
 			{
-				if (spell.name.Equals(spellName))
+				if (ability.name.Equals(abilityName))
 				{
-					return spell;
+					return ability;
 				}
 			}
 
@@ -1717,7 +1719,7 @@ namespace Solipstry_Character_Creator
 			sorting = false;
 		}
 
-		#region Display all/only eligible spells and talents
+		#region Display all/only eligible abilities and talents
 		private void chkAllTalents_CheckedChanged(object sender, EventArgs e)
 		{
 			//Keep track of which talents were checked
@@ -1753,35 +1755,40 @@ namespace Solipstry_Character_Creator
 			sorting = false;
 		}
 
-		private void chkAllSpells_CheckedChanged(object sender, EventArgs e)
+		private void chkAllAbilities_CheckedChanged(object sender, EventArgs e)
 		{
-			//Keep track of which spells were checked
-			List<string> checkedSpells = new List<string>();
+			//Keep track of which abilities were checked
+			List<string> checkedAbilities = new List<string>();
 
-			checkedSpells.AddRange(character.spells);
+			checkedAbilities.AddRange(character.abilities);
 
 			sorting = true; //Don't do anything when check states change
 
-			clbSpells.Items.Clear();
+			clbAbilities.Items.Clear();
 
-			//Display all spells if the check box is checked
-			if (chkAllSpells.Checked)
+			//Display all abilities if the check box is checked
+			if (chkAllAbilities.Checked)
 			{
-				DisplayAllSpells();
+				DisplayAllAbilities();
 			}
-			//Display only eligible spells if the check box is not checked
+			//Display only eligible abilities if the check box is not checked
 			else
 			{
-				DisplayEligibleSpells();
+				DisplayEligibleAbilities();
 			}
 
 			//Re-check anything that needs to be checked
-			for (int n = 0; n < clbSpells.Items.Count; ++n)
+			for (int n = 0; n < clbAbilities.Items.Count; ++n)
 			{
-				if (checkedSpells.Contains(clbSpells.Items[n].ToString()))
+				//Truncate the string if it contains the ability's school
+				string abilityName = clbAbilities.Items[n].ToString();
+				abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
+					abilityName.Substring(0, ABILITY_SPACING) : abilityName;
+
+				if (checkedAbilities.Contains(abilityName.Trim()))
 				{
-					clbSpells.SetItemChecked(n, true);
-					checkedSpells.Remove(clbSpells.Items[n].ToString());
+					clbAbilities.SetItemChecked(n, true);
+					checkedAbilities.Remove(abilityName);
 				}
 			}
 
@@ -1825,81 +1832,81 @@ namespace Solipstry_Character_Creator
 		}
 
 		/// <summary>
-		/// Displays only spells the character is qualified to take. This method also takes into account
+		/// Displays only abilities the character is qualified to take. This method also takes into account
 		/// the school of magic the user was viewing
 		/// </summary>
-		private void DisplayEligibleSpells()
+		private void DisplayEligibleAbilities()
 		{
-			List<string> spells;
+			List<string> abilties;
 		
-			if(spellDisplay == DISPLAY_ALL_SPELLS)
+			if(abilityDisplay == DISPLAY_ALL_ABILITIES)
 			{
-				spells = new List<string>();
+				abilties = new List<string>();
 
-				DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name, school FROM Spells", "Spells");
+				DataSet ds = PerformQuery(abilitiesConnection, "SELECT ability_name, school FROM Abilities", "Abilities");
 
-				foreach (DataRow row in ds.Tables["Spells"].Rows)
+				foreach (DataRow row in ds.Tables["Abilities"].Rows)
 				{
-					spells.Add(String.Format("{0,-" + SPELL_SPACING + "} {1}",
+					abilties.Add(String.Format("{0,-" + ABILITY_SPACING + "} {1}",
 						row[0].ToString(), row[1].ToString()));
 				}
 			}
 			else
 			{
-				spells = GetSpellsBySchool();	
+				abilties = GetAbilitiesBySchool();	
 			}
 
-			foreach(string spell in spells)
+			foreach(string ability in abilties)
 			{
 				//Only use the substring if displaying all school's of magic
-				string spellName = (spellDisplay == DISPLAY_ALL_SPELLS) ?
-					spell.Substring(0, SPELL_SPACING) : spell;
+				string abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
+					ability.Substring(0, ABILITY_SPACING) : ability;
 
-				if(!CheckSpellHomebrew(spellName))
+				if(!CheckAbilityHomebrew(abilityName))
 				{
-					clbSpells.Items.Add(spell);
+					clbAbilities.Items.Add(ability);
 				}
 			}
 		}
 
 		/// <summary>
-		/// Displays all spells. This method also takes into account the school of magic the user was viewing
+		/// Displays all abilities. This method also takes into account the school of magic the user was viewing
 		/// </summary>
-		private void DisplayAllSpells()
+		private void DisplayAllAbilities()
 		{
-			List<string> spells;
+			List<string> abilities;
 
-			if (spellDisplay == DISPLAY_ALL_SPELLS)
+			if (abilityDisplay == DISPLAY_ALL_ABILITIES)
 			{
-				spells = new List<string>();
+				abilities = new List<string>();
 
-				DataSet ds = PerformQuery(spellsConnection, "SELECT spell_name, school FROM Spells", "Spells");
+				DataSet ds = PerformQuery(abilitiesConnection, "SELECT ability_name, school FROM ABilities", "Abilities");
 
-				foreach (DataRow row in ds.Tables["Spells"].Rows)
+				foreach (DataRow row in ds.Tables["Abilities"].Rows)
 				{
-					spells.Add(String.Format("{0,-" + SPELL_SPACING + "} {1}",
+					abilities.Add(String.Format("{0,-" + ABILITY_SPACING + "} {1}",
 						row[0].ToString(), row[1].ToString()));
 				}
 			}
 			else
 			{
-				spells = GetSpellsBySchool();
+				abilities = GetAbilitiesBySchool();
 			}
 
-			clbSpells.Items.AddRange(spells.ToArray());
+			clbAbilities.Items.AddRange(abilities.ToArray());
 		}
 		#endregion
 
 		/// <summary>
-		/// Queries the spells database for only spells of the school specified by the user (stored in spellDisplay)
+		/// Queries the abilities database for only abilities of the school specified by the user (stored in abilityDisplay)
 		/// </summary>
-		/// <returns>Spells of the specified school in  list</returns>
-		private List<string> GetSpellsBySchool()
+		/// <returns>Abilities of the specified school in  list</returns>
+		private List<string> GetAbilitiesBySchool()
 		{
-			List<string> spells = new List<string>();
+			List<string> abilities = new List<string>();
 
 			string school = null;
-			switch (spellDisplay)
+			switch (abilityDisplay)
 			{
 				case DISPLAY_ALTERATION:
 					school = "Alteration";
@@ -1918,118 +1925,127 @@ namespace Solipstry_Character_Creator
 					break;
 			}
 
-			string query = "SELECT spell_name FROM Spells WHERE school='" + school + "'";
-			DataSet ds = PerformQuery(spellsConnection, query, "Spells");
+			string query = "SELECT ability_name FROM Abilities WHERE school='" + school + "'";
+			DataSet ds = PerformQuery(abilitiesConnection, query, "Abilities");
 
-			foreach(DataRow row in ds.Tables["Spells"].Rows)
+			foreach(DataRow row in ds.Tables["Abilities"].Rows)
 			{
-				spells.Add(row[0].ToString());
+				abilities.Add(row[0].ToString());
 			}
 
-			return spells;
+			return abilities;
 		}
 
 		/// <summary>
-		/// Gets the sechool the specified spell belongs to
+		/// Gets the sechool the specified ability belongs to
 		/// </summary>
-		/// <param name="spellName">Spell to get the school of</param>
-		/// <returns>School of the spell</returns>
-		private string GetSpellSchool(string spellName)
+		/// <param name="abilityName">Ability to get the school of</param>
+		/// <returns>School of the ability</returns>
+		private string GetAbilitySchool(string abilityName)
 		{
-			//Query the spell database for the school
-			string query = "SELECT school FROM Spells WHERE spell_name='" + spellName + "'";
-			DataSet ds = PerformQuery(spellsConnection, query, "Spells");
-			return ds.Tables["Spells"].Rows[0][0].ToString();
+			//Query the ability database for the school
+			string query = "SELECT school FROM Abilities WHERE ability_name='" + abilityName + "'";
+			DataSet ds = PerformQuery(abilitiesConnection, query, "Abilities");
+			return ds.Tables["Abilities"].Rows[0][0].ToString();
 		}
 
-		private void cmbSchoolDisplay_SelectedIndexChanged(object sender, EventArgs e)
+		private void cmbSchoolDisplay_SelectedIndexChanged(object sender, EventArgs e) //HERE
 		{
-			spellDisplay = cmbSchoolDisplay.SelectedIndex;
+			abilityDisplay = cmbSchoolDisplay.SelectedIndex;
 
-			//Keep track of which spells were checked
-			List<string> checkedSpells = new List<string>();
+			//Keep track of which abilities were checked
+			List<string> checkedAbilities = new List<string>();
 
-			checkedSpells.AddRange(character.spells);
+			checkedAbilities.AddRange(character.abilities);
 
 			sorting = true; //Don't do anything when check states change
-			clbSpells.Items.Clear();
+			clbAbilities.Items.Clear();
 
 			if (displayHomebrewOptions)
 			{
-				DisplayAllSpells();
+				DisplayAllAbilities();
 			}
 			else
 			{
-				DisplayEligibleSpells();
+				DisplayEligibleAbilities();
 			}
 
 			//Re-check anything that needs to be checked
-			for (int n = 0; n < clbSpells.Items.Count; ++n)
+			for (int n = 0; n < clbAbilities.Items.Count; ++n)
 			{
-				if (checkedSpells.Contains(clbSpells.Items[n].ToString()))
+				//Truncate the string if it contains the ability's school
+				string abilityName = clbAbilities.Items[n].ToString();
+				abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
+					abilityName.Substring(0, ABILITY_SPACING) : abilityName;
+				
+				if (checkedAbilities.Contains(abilityName.Trim()))
 				{
-					clbSpells.SetItemChecked(n, true);
-					checkedSpells.Remove(clbSpells.Items[n].ToString());
+					clbAbilities.SetItemChecked(n, true);
+					checkedAbilities.Remove(abilityName);
 				}
 			}
 
 			sorting = false;
 		}
 
-		private void UpdateSpellsRemainingLabels()
+		private void UpdateAbilitiesRemainingLabels()
 		{
-			//How many spells from each school the user has taken over the homebrew limit
+			//How many abilities from each school the user has taken over the homebrew limit
 			int alterationRemaining = alterationAvailable - alterationTaken + somAlteration;
 			int creationRemaining = creationAvailable - creationTaken + somCreation;
 			int destructionRemaining = destructionAvailable - destructionTaken + somDestruction;
 			int restorationRemaining = restorationAvailable - restorationTaken + somRestoration;
 
-			//Tell user how many spells over/under the limit they are
+			//Tell user how many abilities over/under the limit they are
 			if(alterationRemaining < 0)
 			{
-				lblAlterationRemaining.Text = Math.Abs(alterationRemaining)
-					+ " Alteration spell(s) over limit";
+				lblAlterationRemaining.Text = Math.Abs(alterationRemaining) + " Alteration" + 
+					(alterationRemaining == -1 ? " ability " : " abilities ") + "over limit";
 				lblAlterationRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
-				lblAlterationRemaining.Text = alterationRemaining + " Alteration spell(s) remaining";
+				lblAlterationRemaining.Text = alterationRemaining + " Alteration" + 
+					(alterationRemaining == 1 ? " ability " : " abilities ") + "remaining";
 				lblAlterationRemaining.ForeColor = Color.Black;
 			}
 			
 			if(creationRemaining < 0)
 			{
-				lblCreationRemaining.Text = Math.Abs(creationRemaining)
-					+ " Creation spell(s) over limit";
+				lblCreationRemaining.Text = Math.Abs(creationRemaining) + " Creation" + 
+					(creationRemaining == -1 ? " ability " : " abilities ") + "over limit";
 				lblCreationRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
-				lblCreationRemaining.Text = creationRemaining + " Creation spell(s) remaining";
+				lblCreationRemaining.Text = creationRemaining + " Creation" + 
+					(creationRemaining == 1 ? " ability " : " abilities ") + "remaining";
 				lblCreationRemaining.ForeColor = Color.Black;
 			}
 
 			if(destructionRemaining < 0)
 			{
-				lblDestructionRemaining.Text = Math.Abs(destructionRemaining)
-					+ " Destruction spell(s) over limit";
+				lblDestructionRemaining.Text = Math.Abs(destructionRemaining) + " Destruction" +
+					(destructionRemaining == -1 ? " ability " : " abilities ") + "over limit";
 				lblDestructionRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
-				lblDestructionRemaining.Text = destructionRemaining + " Destruction spell(s) remaining";
+				lblDestructionRemaining.Text = destructionRemaining + " Destruction" + 
+					(destructionRemaining == 1 ? " ability " : " abilities ") + "remaining";
 				lblDestructionRemaining.ForeColor = Color.Black;
 			}
 
 			if(restorationRemaining < 0)
 			{
-				lblRestorationRemaining.Text = Math.Abs(restorationRemaining)
-					+ " Restoration spell(s) over limit";
+				lblRestorationRemaining.Text = Math.Abs(restorationRemaining) + " Restoration" +
+					(restorationRemaining == -1 ? " ability " : " abilities ") + "over limit";
 				lblRestorationRemaining.ForeColor = Color.Red;
 			}
 			else
 			{
-				lblRestorationRemaining.Text = restorationRemaining + " Restoration spell(s) remaining";
+				lblRestorationRemaining.Text = restorationRemaining + " Restoration" + 
+					(restorationRemaining == 1 ? " ability " : " abilities ") + "remaining";
 				lblRestorationRemaining.ForeColor = Color.Black;
 			}
 		}
@@ -2059,12 +2075,12 @@ namespace Solipstry_Character_Creator
 		{
 			UpdateInformation(); //Make sure the character's information is up to date
 
-			bool halfCostSpells = false;
+			bool halfCostAbilities = false;
 			foreach (ModifiedScore mod in modifiedScores)
 			{
 				if (mod.modifiedBy.Equals("More Efficient, Less Wasteful"))
 				{
-					halfCostSpells = true;
+					halfCostAbilities = true;
 					break;
 				}
 			}
@@ -2244,49 +2260,49 @@ namespace Solipstry_Character_Creator
 
 			#endregion
 
-			#region Export spells
-			int spellNum = 1;
-			foreach (string spell in character.spells)
+			#region Export abilities
+			int abilityNum = 1;
+			foreach (string ability in character.abilities)
 			{
-				string strName = "spell_" + spellNum + "_name";
-				string strCost = "spell_" + spellNum + "_cost";
-				string strSchool = "spell_" + spellNum + "_school";
-				string strEffect = "spell_" + spellNum + "_effect";
-				++spellNum;
+				string strName = "spell" + abilityNum + "_name";
+				string strCost = "spell_" + abilityNum + "_cost";
+				string strSchool = "spell_" + abilityNum + "_school";
+				string strEffect = "spell_" + abilityNum + "_effect";
+				++abilityNum;
 
-				DataSet ds = PerformQuery(spellsConnection,
-					"SELECT cost, school, effect FROM Spells WHERE spell_name='" + spell + "'",
-					"Spells");
-				DataRow row = ds.Tables["Spells"].Rows[0];
+				DataSet ds = PerformQuery(abilitiesConnection,
+					"SELECT cost, school, effect FROM Abilities WHERE ability_name='" + ability + "'",
+					"Ablilities");
+				DataRow row = ds.Tables["Abilities"].Rows[0];
 
-				fields.SetField(strName, spell);
-				fields.SetField(strCost, halfCostSpells ? (TryParseInteger(row[0].ToString()) / 2).ToString() : row[0].ToString());
+				fields.SetField(strName, ability);
+				fields.SetField(strCost, halfCostAbilities ? (TryParseInteger(row[0].ToString()) / 2).ToString() : row[0].ToString());
 				fields.SetField(strSchool, row[1].ToString());
 				fields.SetField(strEffect, row[2].ToString());
 
 				string school = row[1].ToString();
 				if (school.Equals("Meta"))
 				{
-					school = character.metaSpells[spell];
+					school = character.metaAbilities[ability];
 				}
 
 				fields.SetField(strSchool, school);
 			}
 
-			foreach (string spell in character.customSpells)
+			foreach (string ability in character.customAbilities)
 			{
-				string strName = "spell_" + spellNum + "_name";
-				string strCost = "spell_" + spellNum + "_cost";
-				string strSchool = "spell_" + spellNum + "_school";
-				string strEffect = "spell_" + spellNum + "_effect";
-				++spellNum;
+				string strName = "spell_" + abilityNum + "_name";
+				string strCost = "spell_" + abilityNum + "_cost";
+				string strSchool = "spell_" + abilityNum + "_school";
+				string strEffect = "spell_" + abilityNum + "_effect";
+				++abilityNum;
 
-				CustomSpell customSpell = GetCustomSpell(spell);
+				CustomAbility customAbility = GetCustomAbility(ability);
 
-				fields.SetField(strName, spell);
-				fields.SetField(strCost, halfCostSpells ? (TryParseInteger(customSpell.cost) / 2).ToString() : customSpell.cost);
-				fields.SetField(strSchool, customSpell.school);
-				fields.SetField(strEffect, customSpell.effect);
+				fields.SetField(strName, ability);
+				fields.SetField(strCost, halfCostAbilities ? (TryParseInteger(customAbility.cost) / 2).ToString() : customAbility.cost);
+				fields.SetField(strSchool, customAbility.school);
+				fields.SetField(strEffect, customAbility.effect);
 			}
 			#endregion
 

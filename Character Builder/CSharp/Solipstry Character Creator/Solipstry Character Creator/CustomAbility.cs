@@ -24,7 +24,7 @@ using System.Text;
 
 namespace Solipstry_Character_Creator
 {
-	class CustomSpell
+	class CustomAbility
 	{
 		public string name;
 		public string cost;

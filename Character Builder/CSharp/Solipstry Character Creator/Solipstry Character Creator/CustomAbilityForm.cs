@@ -28,9 +28,9 @@ using System.Windows.Forms;
 
 namespace Solipstry_Character_Creator
 {
-	public partial class CustomSpellForm : Form
+	public partial class CustomAbilityForm : Form
 	{
-		public CustomSpellForm()
+		public CustomAbilityForm()
 		{
 			InitializeComponent();
 		}
@@ -43,10 +43,10 @@ namespace Solipstry_Character_Creator
 
 		private void btnOk_Click(object sender, EventArgs e)
 		{
-			if(String.IsNullOrWhiteSpace(txtSpellName.Text))
+			if(String.IsNullOrWhiteSpace(txtAbilityName.Text))
 			{
-				MessageBox.Show("Please enter a spell name");
-				txtSpellName.Focus();
+				MessageBox.Show("Please enter an ability name");
+				txtAbilityName.Focus();
 				return;
 			}
 
@@ -54,42 +54,42 @@ namespace Solipstry_Character_Creator
 			this.Close();
 		}
 
-		private void CustomSpellForm_Load(object sender, EventArgs e)
+		private void CustomAbilityForm_Load(object sender, EventArgs e)
 		{
 			cmbSchool.SelectedIndex = 0;
 		}
 
 		/// <summary>
-		/// Gets the name of the spell
+		/// Gets the name of the ability
 		/// </summary>
-		/// <returns>Name of the spell</returns>
-		public string GetSpellName()
+		/// <returns>Name of the ability</returns>
+		public string GetAbilityName()
 		{
-			return txtSpellName.Text;
+			return txtAbilityName.Text;
 		}
 
 		/// <summary>
-		/// Gets the cost of the spell
+		/// Gets the cost of the ability
 		/// </summary>
-		/// <returns>Gets the cost of the spell, or 0 if one was not entered</returns>
+		/// <returns>Gets the cost of the ability, or 0 if one was not entered</returns>
 		public string GetCost()
 		{
 			return String.IsNullOrWhiteSpace(txtCost.Text) ? "0" : txtCost.Text;
 		}
 
 		/// <summary>
-		/// Gets the school the spell belongs to
+		/// Gets the school the ability belongs to
 		/// </summary>
-		/// <returns>The school of the spell</returns>
+		/// <returns>The school of the ability</returns>
 		public string GetSchool()
 		{
 			return cmbSchool.SelectedItem.ToString();
 		}
 
 		/// <summary>
-		/// Gets the effect of the spell
+		/// Gets the effect of the ability
 		/// </summary>
-		/// <returns>The spell's effect</returns>
+		/// <returns>The ability's effect</returns>
 		public string GetEffect()
 		{
 			return txtEffect.Text;

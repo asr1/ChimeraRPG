@@ -1,6 +1,6 @@
 ﻿namespace Solipstry_Character_Creator
 {
-	partial class CustomSpellForm
+	partial class CustomAbilityForm
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -28,11 +28,11 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomSpellForm));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomAbilityForm));
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnOk = new System.Windows.Forms.Button();
-			this.lblSpellName = new System.Windows.Forms.Label();
-			this.txtSpellName = new System.Windows.Forms.TextBox();
+			this.lblAbilityName = new System.Windows.Forms.Label();
+			this.txtAbilityName = new System.Windows.Forms.TextBox();
 			this.lblCost = new System.Windows.Forms.Label();
 			this.cmbSchool = new System.Windows.Forms.ComboBox();
 			this.lblSchool = new System.Windows.Forms.Label();
@@ -61,21 +61,21 @@
 			this.btnOk.UseVisualStyleBackColor = true;
 			this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
 			// 
-			// lblSpellName
+			// lblAbilityName
 			// 
-			this.lblSpellName.AutoSize = true;
-			this.lblSpellName.Location = new System.Drawing.Point(11, 10);
-			this.lblSpellName.Name = "lblSpellName";
-			this.lblSpellName.Size = new System.Drawing.Size(42, 14);
-			this.lblSpellName.TabIndex = 2;
-			this.lblSpellName.Text = "Name:";
+			this.lblAbilityName.AutoSize = true;
+			this.lblAbilityName.Location = new System.Drawing.Point(11, 10);
+			this.lblAbilityName.Name = "lblAbilityName";
+			this.lblAbilityName.Size = new System.Drawing.Size(42, 14);
+			this.lblAbilityName.TabIndex = 2;
+			this.lblAbilityName.Text = "Name:";
 			// 
-			// txtSpellName
+			// txtAbilityName
 			// 
-			this.txtSpellName.Location = new System.Drawing.Point(14, 27);
-			this.txtSpellName.Name = "txtSpellName";
-			this.txtSpellName.Size = new System.Drawing.Size(310, 20);
-			this.txtSpellName.TabIndex = 0;
+			this.txtAbilityName.Location = new System.Drawing.Point(14, 27);
+			this.txtAbilityName.Name = "txtAbilityName";
+			this.txtAbilityName.Size = new System.Drawing.Size(310, 20);
+			this.txtAbilityName.TabIndex = 0;
 			// 
 			// lblCost
 			// 
@@ -132,7 +132,7 @@
 			this.txtEffect.Size = new System.Drawing.Size(310, 74);
 			this.txtEffect.TabIndex = 3;
 			// 
-			// CustomSpellForm
+			// CustomAbilityForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -143,17 +143,17 @@
 			this.Controls.Add(this.lblSchool);
 			this.Controls.Add(this.cmbSchool);
 			this.Controls.Add(this.lblCost);
-			this.Controls.Add(this.txtSpellName);
-			this.Controls.Add(this.lblSpellName);
+			this.Controls.Add(this.txtAbilityName);
+			this.Controls.Add(this.lblAbilityName);
 			this.Controls.Add(this.btnOk);
 			this.Controls.Add(this.btnCancel);
 			this.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximizeBox = false;
-			this.Name = "CustomSpellForm";
-			this.Text = "Create Custom Skill";
-			this.Load += new System.EventHandler(this.CustomSpellForm_Load);
+			this.Name = "CustomAbilityForm";
+			this.Text = "Create Custom Ability";
+			this.Load += new System.EventHandler(this.CustomAbilityForm_Load);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -163,8 +163,8 @@
 
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Button btnOk;
-		private System.Windows.Forms.Label lblSpellName;
-		private System.Windows.Forms.TextBox txtSpellName;
+		private System.Windows.Forms.Label lblAbilityName;
+		private System.Windows.Forms.TextBox txtAbilityName;
 		private System.Windows.Forms.Label lblCost;
 		private System.Windows.Forms.ComboBox cmbSchool;
 		private System.Windows.Forms.Label lblSchool;
