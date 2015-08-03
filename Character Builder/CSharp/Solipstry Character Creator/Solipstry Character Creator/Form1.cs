@@ -1339,7 +1339,7 @@ namespace Solipstry_Character_Creator
 					if (multipleTimesTalents.Contains(talentName))
 					{
 						//Add the talent to the list so it can be taken again
-						clbTalents.Items.Add(talentName);
+						clbTalents.Items.Add(clbTalents.SelectedItem.ToString());
 						SortCheckedListBox(clbTalents);
 						clbTalents.SelectedIndex = e.Index + 1;
 					}
@@ -1745,10 +1745,20 @@ namespace Solipstry_Character_Creator
 			//Re-check anything that needs to be checked
 			for (int n = 0; n < clbTalents.Items.Count; ++n)
 			{
-				if (checkedTalents.Contains(clbTalents.Items[n].ToString()))
+				string talentName = clbTalents.Items[n].ToString();
+				talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
+
+				if (checkedTalents.Contains(talentName))
 				{
 					clbTalents.SetItemChecked(n, true);
-					checkedTalents.Remove(clbTalents.Items[n].ToString());
+					checkedTalents.Remove(talentName);
+
+					//Re-add the talent if it can be taken multiple times
+					if(multipleTimesTalents.Contains(talentName))
+					{
+						clbTalents.Items.Add(clbTalents.Items[n].ToString());
+						SortCheckedListBox(clbTalents);
+					}
 				}
 			}
 
