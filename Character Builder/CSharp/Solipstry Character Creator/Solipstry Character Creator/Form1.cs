@@ -2390,7 +2390,64 @@ namespace Solipstry_Character_Creator
 		#region Searching talents/abilities
 		private void btnAbilitiesSearch_Click(object sender, EventArgs e)
 		{
+			string search = txtAbilitiesSearch.Text;
 
+			//Keep track of which talents were checked
+			List<string> checkedAbilities = new List<string>();
+
+			checkedAbilities.AddRange(character.abilities);
+
+			//Display all abilities if the check box is checked
+			if (chkAllAbilities.Checked)
+			{
+				DisplayAllAbilities();
+			}
+			//Display only eligible talents if the check box is not checked
+			else
+			{
+				DisplayEligibleAbilities();
+			}
+
+			sorting = true; //Don't do anything when check states change
+
+			//Don't need to perform a query if they're not searching for anything
+			if (!String.IsNullOrWhiteSpace(search))
+			{
+				//Search through the displayed talents to find the talents that match the search string
+				List<string> displayedAbilities = new List<string>();
+				foreach (string ability in clbAbilities.Items)
+				{
+					displayedAbilities.Add(ability);
+				}
+
+				var toDisplay = from ability in displayedAbilities
+								where ability.ToLower().Contains(search.ToLower())
+								select ability;
+
+				clbAbilities.Items.Clear();
+
+				foreach (object obj in toDisplay)
+				{
+					clbAbilities.Items.Add(obj);
+				}
+			}
+
+			//Re-check anything that needs to be checked
+			for (int n = 0; n < clbAbilities.Items.Count; ++n)
+			{
+				//Truncate the string if it contains the ability's school
+				string abilityName = clbAbilities.Items[n].ToString();
+				abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
+					abilityName.Substring(0, ABILITY_SPACING) : abilityName;
+
+				if (checkedAbilities.Contains(abilityName.Trim()))
+				{
+					clbAbilities.SetItemChecked(n, true);
+					checkedAbilities.Remove(abilityName);
+				}
+			}
+
+			sorting = false;
 		}
 
 		private void btnTalentsSearch_Click(object sender, EventArgs e)
@@ -2459,7 +2516,6 @@ namespace Solipstry_Character_Creator
 
 			sorting = false;
 		}
-		#endregion
 
 		private void txtTalentsSearch_KeyDown(object sender, KeyEventArgs e)
 		{
@@ -2468,5 +2524,14 @@ namespace Solipstry_Character_Creator
 				btnTalentsSearch.PerformClick();
 			}
 		}
+
+		private void txtAbilitiesSearch_KeyDown(object sender, KeyEventArgs e)
+		{
+			if (e.KeyCode == Keys.Enter)
+			{
+				btnAbilitiesSearch.PerformClick();
+			}
+		}
+		#endregion
 	}
 }

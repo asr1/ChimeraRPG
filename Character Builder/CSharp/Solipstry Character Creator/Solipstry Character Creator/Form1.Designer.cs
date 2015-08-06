@@ -1137,7 +1137,7 @@
 			this.lblHomebrewed.AutoSize = true;
 			this.lblHomebrewed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblHomebrewed.ForeColor = System.Drawing.Color.Red;
-			this.lblHomebrewed.Location = new System.Drawing.Point(3, 368);
+			this.lblHomebrewed.Location = new System.Drawing.Point(3, 411);
 			this.lblHomebrewed.Name = "lblHomebrewed";
 			this.lblHomebrewed.Size = new System.Drawing.Size(126, 13);
 			this.lblHomebrewed.TabIndex = 41;
@@ -1526,6 +1526,7 @@
 			this.txtAbilitiesSearch.Name = "txtAbilitiesSearch";
 			this.txtAbilitiesSearch.Size = new System.Drawing.Size(113, 20);
 			this.txtAbilitiesSearch.TabIndex = 12;
+			this.txtAbilitiesSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtAbilitiesSearch_KeyDown);
 			// 
 			// btnTalentsSearch
 			// 
