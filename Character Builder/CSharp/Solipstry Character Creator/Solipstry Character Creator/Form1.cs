@@ -2063,6 +2063,39 @@ namespace Solipstry_Character_Creator
 		#region PDF export
 		private void btnExport_Click(object sender, EventArgs e)
 		{
+			//Check if the user didn't fill something out
+			string missingThings = "";
+
+			if(primarySkillsAvailable - primarySkillCount > 0)
+			{
+				missingThings += "\nPrimary skills";
+			}
+
+			if(talentsAvailable - talentsTaken > 0)
+			{
+				missingThings += "\nTalents";
+			}
+
+			if(alterationAvailable - alterationTaken + somAlteration > 0 ||
+				creationAvailable - creationTaken + somCreation > 0 ||
+				destructionAvailable - destructionTaken + somDestruction > 0 ||
+				restorationAvailable - restorationTaken + somRestoration > 0)
+			{
+				missingThings += "\nAbilities";
+			}
+
+			//If the user didn't fill something out, prompt them if they wish to continue
+			if(!String.IsNullOrWhiteSpace(missingThings))
+			{
+				DialogResult result = MessageBox.Show("You didn't fill out the following fields:\n" + missingThings + 
+					"\n\nContinue without filling them out?", "Missing fields", MessageBoxButtons.YesNo);
+
+				if(result == DialogResult.No)
+				{
+					return;
+				}
+			}
+
 			//Display a dialog to obtain file name
 			SaveFileDialog saveDialog = new SaveFileDialog();
 			saveDialog.InitialDirectory = Environment.SpecialFolder.MyDocuments.ToString();
