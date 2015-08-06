@@ -1173,7 +1173,11 @@ namespace Solipstry_Character_Creator
 			}
 
 			//Get information about the talent
-			string talentName = clbTalents.SelectedItem.ToString().Substring(0, TALENT_DESC_SPACING).Trim();
+			string talentName = clbTalents.SelectedItem.ToString();
+			if(talentName.Length > TALENT_DESC_SPACING)
+			{
+				talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
+			}
 
 			if(customTalents.Contains(talentName))
 			{
@@ -1203,7 +1207,11 @@ namespace Solipstry_Character_Creator
 				return;
 			}
 
-			string talentName = clbTalents.SelectedItem.ToString().Substring(0, TALENT_DESC_SPACING).Trim();
+			string talentName = clbTalents.SelectedItem.ToString();
+			if(talentName.Length > TALENT_DESC_SPACING)
+			{
+				talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
+			}
 
 			//Custom talents
 			if(customTalents.Contains(talentName))
@@ -1544,10 +1552,10 @@ namespace Solipstry_Character_Creator
 
 				//Add the talent to the check list box and check it
 				clbTalents.Items.Add(talentName);
+				clbTalents.SelectedItem = talentName;
 				clbTalents.SetItemChecked(clbTalents.Items.Count - 1, true);
 
 				SortCheckedListBox(clbTalents);
-				clbTalents.SelectedItem = talentName;
 			}
 
 			CheckHomebrew();
@@ -1724,7 +1732,7 @@ namespace Solipstry_Character_Creator
 		{
 			//Keep track of which talents were checked
 			List<string> checkedTalents = new List<string>();
-
+			checkedTalents.AddRange(character.customTalents);
 			checkedTalents.AddRange(character.talents);
 
 			sorting = true; //Don't do anything when check states change
@@ -1746,7 +1754,11 @@ namespace Solipstry_Character_Creator
 			for (int n = 0; n < clbTalents.Items.Count; ++n)
 			{
 				string talentName = clbTalents.Items[n].ToString();
-				talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
+
+				if (talentName.Length > TALENT_DESC_SPACING)
+				{
+					talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
+				}
 
 				if (checkedTalents.Contains(talentName))
 				{
@@ -1757,10 +1769,11 @@ namespace Solipstry_Character_Creator
 					if(multipleTimesTalents.Contains(talentName))
 					{
 						clbTalents.Items.Add(clbTalents.Items[n].ToString());
-						SortCheckedListBox(clbTalents);
 					}
 				}
 			}
+
+			SortCheckedListBox(clbTalents);
 
 			sorting = false;
 		}
@@ -1825,6 +1838,12 @@ namespace Solipstry_Character_Creator
 					clbTalents.Items.Add(String.Format("{0,-" + TALENT_DESC_SPACING + "} {1}", talentName, row[1].ToString()));
 				}
 			}
+
+			//Display custom talents also
+			foreach(string talent in customTalents)
+			{
+				clbTalents.Items.Add(talent);
+			}
 		}
 
 		/// <summary>
@@ -1842,6 +1861,13 @@ namespace Solipstry_Character_Creator
 			{
 				string talentName = row[0].ToString();
 				clbTalents.Items.Add(String.Format("{0,-" + TALENT_DESC_SPACING + "} {1}", talentName, row[1].ToString()));
+			}
+
+			//Display custom talents also
+			foreach (string talent in 
+				customTalents)
+			{
+				clbTalents.Items.Add(talent);
 			}
 		}
 
@@ -2456,8 +2482,8 @@ namespace Solipstry_Character_Creator
 
 			//Keep track of which talents were checked
 			List<string> checkedTalents = new List<string>();
-
 			checkedTalents.AddRange(character.talents);
+			checkedTalents.AddRange(character.customTalents);
 
 			//Display all talents if the check box is checked
 			if (chkAllTalents.Checked)
@@ -2498,8 +2524,11 @@ namespace Solipstry_Character_Creator
 			for (int n = 0; n < clbTalents.Items.Count; ++n)
 			{
 				string talentName = clbTalents.Items[n].ToString();
-				talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
-
+				
+				if(talentName.Length > TALENT_DESC_SPACING)
+				{
+					talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
+				}
 				if (checkedTalents.Contains(talentName))
 				{
 					clbTalents.SetItemChecked(n, true);
@@ -2509,10 +2538,11 @@ namespace Solipstry_Character_Creator
 					if (multipleTimesTalents.Contains(talentName))
 					{
 						clbTalents.Items.Add(clbTalents.Items[n].ToString());
-						SortCheckedListBox(clbTalents);
 					}
 				}
 			}
+
+			SortCheckedListBox(clbTalents);
 
 			sorting = false;
 		}
