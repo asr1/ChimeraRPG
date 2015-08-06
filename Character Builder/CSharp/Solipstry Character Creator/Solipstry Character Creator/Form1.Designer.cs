@@ -150,6 +150,10 @@
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.btnAbilitiesSearch = new System.Windows.Forms.Button();
+			this.txtAbilitiesSearch = new System.Windows.Forms.TextBox();
+			this.btnTalentsSearch = new System.Windows.Forms.Button();
+			this.txtTalentsSearch = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -227,7 +231,7 @@
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickDexterity);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickConstitution);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickCharisma);
-			this.splitContainer1.Size = new System.Drawing.Size(798, 388);
+			this.splitContainer1.Size = new System.Drawing.Size(798, 428);
 			this.splitContainer1.SplitterDistance = 604;
 			this.splitContainer1.SplitterWidth = 5;
 			this.splitContainer1.TabIndex = 0;
@@ -244,7 +248,7 @@
 			this.tabExport.Location = new System.Drawing.Point(0, 0);
 			this.tabExport.Name = "tabExport";
 			this.tabExport.SelectedIndex = 0;
-			this.tabExport.Size = new System.Drawing.Size(604, 388);
+			this.tabExport.Size = new System.Drawing.Size(604, 428);
 			this.tabExport.TabIndex = 0;
 			this.tabExport.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
@@ -868,7 +872,7 @@
 			this.tabTalents.Controls.Add(this.txtTalentInfo);
 			this.tabTalents.Location = new System.Drawing.Point(4, 23);
 			this.tabTalents.Name = "tabTalents";
-			this.tabTalents.Size = new System.Drawing.Size(596, 361);
+			this.tabTalents.Size = new System.Drawing.Size(596, 401);
 			this.tabTalents.TabIndex = 3;
 			this.tabTalents.Text = "Talents";
 			this.tabTalents.UseVisualStyleBackColor = true;
@@ -884,6 +888,8 @@
 			// 
 			// talentsSplitContainer.Panel1
 			// 
+			this.talentsSplitContainer.Panel1.Controls.Add(this.txtTalentsSearch);
+			this.talentsSplitContainer.Panel1.Controls.Add(this.btnTalentsSearch);
 			this.talentsSplitContainer.Panel1.Controls.Add(this.chkAllTalents);
 			this.talentsSplitContainer.Panel1.Controls.Add(this.lblTalentsRemaining);
 			this.talentsSplitContainer.Panel1.Controls.Add(this.lblTalentsInstructions);
@@ -891,8 +897,8 @@
 			// talentsSplitContainer.Panel2
 			// 
 			this.talentsSplitContainer.Panel2.Controls.Add(this.clbTalents);
-			this.talentsSplitContainer.Size = new System.Drawing.Size(596, 268);
-			this.talentsSplitContainer.SplitterDistance = 30;
+			this.talentsSplitContainer.Size = new System.Drawing.Size(596, 308);
+			this.talentsSplitContainer.SplitterDistance = 57;
 			this.talentsSplitContainer.TabIndex = 7;
 			// 
 			// chkAllTalents
@@ -932,7 +938,7 @@
 			this.clbTalents.FormattingEnabled = true;
 			this.clbTalents.Location = new System.Drawing.Point(0, 0);
 			this.clbTalents.Name = "clbTalents";
-			this.clbTalents.Size = new System.Drawing.Size(596, 234);
+			this.clbTalents.Size = new System.Drawing.Size(596, 247);
 			this.clbTalents.TabIndex = 3;
 			this.clbTalents.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTalents_ItemCheck);
 			this.clbTalents.SelectedIndexChanged += new System.EventHandler(this.clbTalents_SelectedIndexChanged);
@@ -940,7 +946,7 @@
 			// txtTalentInfo
 			// 
 			this.txtTalentInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtTalentInfo.Location = new System.Drawing.Point(0, 268);
+			this.txtTalentInfo.Location = new System.Drawing.Point(0, 308);
 			this.txtTalentInfo.Multiline = true;
 			this.txtTalentInfo.Name = "txtTalentInfo";
 			this.txtTalentInfo.ReadOnly = true;
@@ -954,7 +960,7 @@
 			this.tabAbilities.Controls.Add(this.txtAbilityInfo);
 			this.tabAbilities.Location = new System.Drawing.Point(4, 23);
 			this.tabAbilities.Name = "tabAbilities";
-			this.tabAbilities.Size = new System.Drawing.Size(596, 361);
+			this.tabAbilities.Size = new System.Drawing.Size(596, 401);
 			this.tabAbilities.TabIndex = 4;
 			this.tabAbilities.Text = "Abilities";
 			this.tabAbilities.UseVisualStyleBackColor = true;
@@ -970,6 +976,8 @@
 			// 
 			// abilitiesSplitContainer.Panel1
 			// 
+			this.abilitiesSplitContainer.Panel1.Controls.Add(this.txtAbilitiesSearch);
+			this.abilitiesSplitContainer.Panel1.Controls.Add(this.btnAbilitiesSearch);
 			this.abilitiesSplitContainer.Panel1.Controls.Add(this.chkAllAbilities);
 			this.abilitiesSplitContainer.Panel1.Controls.Add(this.lblRestorationRemaining);
 			this.abilitiesSplitContainer.Panel1.Controls.Add(this.lblCreationRemaining);
@@ -982,8 +990,8 @@
 			// abilitiesSplitContainer.Panel2
 			// 
 			this.abilitiesSplitContainer.Panel2.Controls.Add(this.clbAbilities);
-			this.abilitiesSplitContainer.Size = new System.Drawing.Size(596, 268);
-			this.abilitiesSplitContainer.SplitterDistance = 80;
+			this.abilitiesSplitContainer.Size = new System.Drawing.Size(596, 308);
+			this.abilitiesSplitContainer.SplitterDistance = 107;
 			this.abilitiesSplitContainer.TabIndex = 8;
 			// 
 			// chkAllAbilities
@@ -1073,7 +1081,7 @@
 			this.clbAbilities.FormattingEnabled = true;
 			this.clbAbilities.Location = new System.Drawing.Point(0, 0);
 			this.clbAbilities.Name = "clbAbilities";
-			this.clbAbilities.Size = new System.Drawing.Size(596, 184);
+			this.clbAbilities.Size = new System.Drawing.Size(596, 197);
 			this.clbAbilities.TabIndex = 2;
 			this.clbAbilities.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbAbilities_ItemCheck);
 			this.clbAbilities.SelectedIndexChanged += new System.EventHandler(this.clbAbilities_SelectedIndexChanged);
@@ -1081,7 +1089,7 @@
 			// txtAbilityInfo
 			// 
 			this.txtAbilityInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtAbilityInfo.Location = new System.Drawing.Point(0, 268);
+			this.txtAbilityInfo.Location = new System.Drawing.Point(0, 308);
 			this.txtAbilityInfo.Multiline = true;
 			this.txtAbilityInfo.Name = "txtAbilityInfo";
 			this.txtAbilityInfo.ReadOnly = true;
@@ -1502,11 +1510,46 @@
 			this.creditsToolStripMenuItem.Text = "Credits";
 			this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
 			// 
+			// btnAbilitiesSearch
+			// 
+			this.btnAbilitiesSearch.Location = new System.Drawing.Point(518, 81);
+			this.btnAbilitiesSearch.Name = "btnAbilitiesSearch";
+			this.btnAbilitiesSearch.Size = new System.Drawing.Size(75, 23);
+			this.btnAbilitiesSearch.TabIndex = 11;
+			this.btnAbilitiesSearch.Text = "Search";
+			this.btnAbilitiesSearch.UseVisualStyleBackColor = true;
+			this.btnAbilitiesSearch.Click += new System.EventHandler(this.btnAbilitiesSearch_Click);
+			// 
+			// txtAbilitiesSearch
+			// 
+			this.txtAbilitiesSearch.Location = new System.Drawing.Point(398, 82);
+			this.txtAbilitiesSearch.Name = "txtAbilitiesSearch";
+			this.txtAbilitiesSearch.Size = new System.Drawing.Size(113, 20);
+			this.txtAbilitiesSearch.TabIndex = 12;
+			// 
+			// btnTalentsSearch
+			// 
+			this.btnTalentsSearch.Location = new System.Drawing.Point(518, 32);
+			this.btnTalentsSearch.Name = "btnTalentsSearch";
+			this.btnTalentsSearch.Size = new System.Drawing.Size(75, 23);
+			this.btnTalentsSearch.TabIndex = 7;
+			this.btnTalentsSearch.Text = "Search";
+			this.btnTalentsSearch.UseVisualStyleBackColor = true;
+			this.btnTalentsSearch.Click += new System.EventHandler(this.btnTalentsSearch_Click);
+			// 
+			// txtTalentsSearch
+			// 
+			this.txtTalentsSearch.Location = new System.Drawing.Point(400, 35);
+			this.txtTalentsSearch.Name = "txtTalentsSearch";
+			this.txtTalentsSearch.Size = new System.Drawing.Size(112, 20);
+			this.txtTalentsSearch.TabIndex = 8;
+			this.txtTalentsSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTalentsSearch_KeyDown);
+			// 
 			// Window
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(798, 412);
+			this.ClientSize = new System.Drawing.Size(798, 452);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.menuStrip1);
 			this.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1681,6 +1724,10 @@
 		private System.Windows.Forms.CheckBox chkAllAbilities;
 		private System.Windows.Forms.ToolStripMenuItem creditsToolStripMenuItem;
 		private System.Windows.Forms.CheckBox chkOpenSheet;
+		private System.Windows.Forms.Button btnAbilitiesSearch;
+		private System.Windows.Forms.TextBox txtAbilitiesSearch;
+		private System.Windows.Forms.Button btnTalentsSearch;
+		private System.Windows.Forms.TextBox txtTalentsSearch;
     }
 }
 

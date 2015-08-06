@@ -1810,6 +1810,8 @@ namespace Solipstry_Character_Creator
 		/// </summary>
 		private void DisplayEligibleTalents()
 		{
+			clbTalents.Items.Clear();
+
 			//Query the talent database for all talents
 			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name, short_desc FROM Talents", "Talents");
 
@@ -1830,6 +1832,8 @@ namespace Solipstry_Character_Creator
 		/// </summary>
 		private void DisplayAllTalents()
 		{
+			clbTalents.Items.Clear();
+
 			//Query the talent database for all talents
 			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name, short_desc FROM Talents", "Talents");
 
@@ -1847,6 +1851,8 @@ namespace Solipstry_Character_Creator
 		/// </summary>
 		private void DisplayEligibleAbilities()
 		{
+			clbAbilities.Items.Clear();
+
 			List<string> abilties;
 		
 			if(abilityDisplay == DISPLAY_ALL_ABILITIES)
@@ -1884,6 +1890,8 @@ namespace Solipstry_Character_Creator
 		/// </summary>
 		private void DisplayAllAbilities()
 		{
+			clbAbilities.Items.Clear();
+
 			List<string> abilities;
 
 			if (abilityDisplay == DISPLAY_ALL_ABILITIES)
@@ -2377,6 +2385,88 @@ namespace Solipstry_Character_Creator
 		private void rdoHeavyArmor_CheckedChanged(object sender, EventArgs e)
 		{
 			UpdateInformation();
+		}
+
+		#region Searching talents/abilities
+		private void btnAbilitiesSearch_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnTalentsSearch_Click(object sender, EventArgs e)
+		{
+			string search = txtTalentsSearch.Text;
+
+			//Keep track of which talents were checked
+			List<string> checkedTalents = new List<string>();
+
+			checkedTalents.AddRange(character.talents);
+
+			//Display all talents if the check box is checked
+			if (chkAllTalents.Checked)
+			{
+				DisplayAllTalents();
+			}
+			//Display only eligible talents if the check box is not checked
+			else
+			{
+				DisplayEligibleTalents();
+			}
+
+			sorting = true; //Don't do anything when check states change
+
+			//Don't need to perform a query if they're not searching for anything
+			if (!String.IsNullOrWhiteSpace(search))
+			{
+				//Search through the displayed talents to find the talents that match the search string
+				List<string> displayedTalents = new List<string>();
+				foreach (string talent in clbTalents.Items)
+				{
+					displayedTalents.Add(talent);
+				}
+
+				var toDisplay = from talent in displayedTalents
+								where talent.ToLower().Contains(search.ToLower())
+								select talent;
+
+				clbTalents.Items.Clear();
+
+				foreach (object obj in toDisplay)
+				{
+					clbTalents.Items.Add(obj);
+				}
+			}
+
+			//Re-check anything that needs to be checked
+			for (int n = 0; n < clbTalents.Items.Count; ++n)
+			{
+				string talentName = clbTalents.Items[n].ToString();
+				talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
+
+				if (checkedTalents.Contains(talentName))
+				{
+					clbTalents.SetItemChecked(n, true);
+					checkedTalents.Remove(talentName);
+
+					//Re-add the talent if it can be taken multiple times
+					if (multipleTimesTalents.Contains(talentName))
+					{
+						clbTalents.Items.Add(clbTalents.Items[n].ToString());
+						SortCheckedListBox(clbTalents);
+					}
+				}
+			}
+
+			sorting = false;
+		}
+		#endregion
+
+		private void txtTalentsSearch_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				btnTalentsSearch.PerformClick();
+			}
 		}
 	}
 }
