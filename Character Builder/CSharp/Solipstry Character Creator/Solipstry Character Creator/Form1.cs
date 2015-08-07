@@ -2474,40 +2474,58 @@ namespace Solipstry_Character_Creator
 			checkedAbilities.AddRange(character.abilities);
 			checkedAbilities.AddRange(character.customAbilities);
 
-			//Display all abilities if the check box is checked
-			if (chkAllAbilities.Checked)
+			//Only perform query if there is something to search for
+			if (!String.IsNullOrWhiteSpace(search))
 			{
-				DisplayAllAbilities();
-			}
-			//Display only eligible talents if the check box is not checked
-			else
-			{
-				DisplayEligibleAbilities();
+				clbAbilities.Items.Clear();
+
+				string query = "SELECT ability_name, school FROM Abilities WHERE effect LIKE '%" + search + "%' OR ability_name LIKE '%" + search + "%'";
+				DataSet ds = PerformQuery(abilitiesConnection, query, "Abilities");
+
+				foreach (DataRow row in ds.Tables["Abilities"].Rows)
+				{
+					string abilityName = row[0].ToString();
+
+					if(chkAllAbilities.Checked && CheckAbilityHomebrew(abilityName))
+					{
+						continue;
+					}
+
+					//Only display an ability if it has the same school as what the user selected
+					if(abilityDisplay != DISPLAY_ALL_ABILITIES)
+					{
+						string schoolToDisplay = null;
+
+						switch(abilityDisplay)
+						{
+							case DISPLAY_ALTERATION:
+								schoolToDisplay = "Alteration";
+								break;
+							case DISPLAY_CREATION:
+								schoolToDisplay = "Creation";
+								break;
+							case DISPLAY_DESTRUCTION:
+								schoolToDisplay = "Destruction";
+								break;
+							case DISPLAY_META:
+								schoolToDisplay = "Meta";
+								break;
+							case DISPLAY_RESTORATION:
+								schoolToDisplay = "Restoration";
+								break;
+						}
+
+						if(!schoolToDisplay.Equals(row[1].ToString()))
+						{
+							continue;
+						}
+					}
+
+					clbAbilities.Items.Add(abilityName);
+				}
 			}
 
 			sorting = true; //Don't do anything when check states change
-
-			//Don't need to perform a query if they're not searching for anything
-			if (!String.IsNullOrWhiteSpace(search))
-			{
-				//Search through the displayed talents to find the talents that match the search string
-				List<string> displayedAbilities = new List<string>();
-				foreach (string ability in clbAbilities.Items)
-				{
-					displayedAbilities.Add(ability);
-				}
-
-				var toDisplay = from ability in displayedAbilities
-								where ability.ToLower().Contains(search.ToLower())
-								select ability;
-
-				clbAbilities.Items.Clear();
-
-				foreach (object obj in toDisplay)
-				{
-					clbAbilities.Items.Add(obj);
-				}
-			}
 
 			//Re-check anything that needs to be checked
 			for (int n = 0; n < clbAbilities.Items.Count; ++n)
@@ -2540,40 +2558,28 @@ namespace Solipstry_Character_Creator
 			checkedTalents.AddRange(character.talents);
 			checkedTalents.AddRange(character.customTalents);
 
-			//Display all talents if the check box is checked
-			if (chkAllTalents.Checked)
+			//Only perform query if there is something to search for
+			if (!String.IsNullOrWhiteSpace(search))
 			{
-				DisplayAllTalents();
-			}
-			//Display only eligible talents if the check box is not checked
-			else
-			{
-				DisplayEligibleTalents();
+				clbTalents.Items.Clear();
+
+				string query = "SELECT talent_name FROM Talents WHERE desc LIKE '%" + search + "%' OR talent_name LIKE '%" + search + "%'";
+				DataSet ds = PerformQuery(talentsConnection, query, "Talents");
+
+				foreach(DataRow row in ds.Tables["Talents"].Rows)
+				{
+					string talentName = row[0].ToString();
+
+					if(chkAllTalents.Checked && CheckTalentHomebrew(talentName))
+					{
+						continue;
+					}
+
+					clbTalents.Items.Add(talentName);
+				}
 			}
 
 			sorting = true; //Don't do anything when check states change
-
-			//Don't need to perform a query if they're not searching for anything
-			if (!String.IsNullOrWhiteSpace(search))
-			{
-				//Search through the displayed talents to find the talents that match the search string
-				List<string> displayedTalents = new List<string>();
-				foreach (string talent in clbTalents.Items)
-				{
-					displayedTalents.Add(talent);
-				}
-
-				var toDisplay = from talent in displayedTalents
-								where talent.ToLower().Contains(search.ToLower())
-								select talent;
-
-				clbTalents.Items.Clear();
-
-				foreach (object obj in toDisplay)
-				{
-					clbTalents.Items.Add(obj);
-				}
-			}
 
 			//Re-check anything that needs to be checked
 			for (int n = 0; n < clbTalents.Items.Count; ++n)
