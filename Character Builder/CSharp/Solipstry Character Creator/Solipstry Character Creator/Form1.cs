@@ -1878,13 +1878,6 @@ namespace Solipstry_Character_Creator
 				string talentName = row[0].ToString();
 				clbTalents.Items.Add(String.Format("{0,-" + TALENT_DESC_SPACING + "} {1}", talentName, row[1].ToString()));
 			}
-
-			//Display custom talents also
-			foreach (string talent in 
-				customTalents)
-			{
-				clbTalents.Items.Add(talent);
-			}
 		}
 
 		/// <summary>
@@ -1907,12 +1900,6 @@ namespace Solipstry_Character_Creator
 				{
 					abilities.Add(String.Format("{0,-" + ABILITY_SPACING + "} {1}",
 						row[0].ToString(), row[1].ToString()));
-				}
-
-				//Display custom abilities
-				foreach (CustomAbility ability in customAbilities)
-				{
-					abilities.Add(ability.name);
 				}
 			}
 			else
