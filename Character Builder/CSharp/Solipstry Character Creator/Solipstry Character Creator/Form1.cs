@@ -766,9 +766,10 @@ namespace Solipstry_Character_Creator
 				}
 				else if(pr.StartsWith("[Meta]"))
 				{
+					//If the character hasn't taken the ability and chosen a school for it, don't mark it as homebrewed
 					if(!character.abilities.Contains(ability))
 					{
-						return false;
+						continue;
 					}
 
 					string[] split = pr.Split(' ');
