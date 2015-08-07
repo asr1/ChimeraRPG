@@ -119,9 +119,6 @@ namespace Solipstry_Character_Creator
 		//Number of restoration abilities the character can have without being homebrewed
 		private int restorationAvailable;
 
-		//Whether to display all talents/abilities or only ones the character is eligble for
-		private bool displayHomebrewOptions; 
-
 		//Whether or not a CheckedListBox is being sorted
 		private bool sorting; 
 
@@ -145,8 +142,6 @@ namespace Solipstry_Character_Creator
 			somCreation = 0;
 			somDestruction = 0;
 			somRestoration = 0;
-
-			displayHomebrewOptions = false;
 
 			abilityDisplay = DISPLAY_ALL_ABILITIES;
 
@@ -736,6 +731,11 @@ namespace Solipstry_Character_Creator
 		/// <returns>True if the character is homebrewed, false otherwise</returns>
 		private bool CheckAbilityHomebrew(string ability)
 		{
+			if(IsCustomAbility(ability))
+			{
+				return true;
+			}
+
 			//Get the prerequisites for the ability from the database
 			DataSet ds = PerformQuery(abilitiesConnection, "SELECT prereq FROM Abilities WHERE ability_name = '" + ability + "'", "Abilities");
 			DataRow row = ds.Tables["Abilities"].Rows[0];
@@ -936,11 +936,13 @@ namespace Solipstry_Character_Creator
 		#region CheckListBox handlers
 		private void clbAbilities_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			//Only use the substring if displaying all school's of magic
-			string displayedAbility = clbAbilities.SelectedItem.ToString();
-			string abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
-				displayedAbility.Substring(0, ABILITY_SPACING) : displayedAbility;
-			
+			//Only use the substring if displaying the school
+			string abilityName = clbAbilities.SelectedItem.ToString();
+			if(abilityName.Length > ABILITY_SPACING)
+			{
+				abilityName = abilityName.Substring(0, ABILITY_SPACING);
+			}
+
 			//Get information about the ability
 			if(IsCustomAbility(abilityName))
 			{
@@ -969,7 +971,7 @@ namespace Solipstry_Character_Creator
 			}
 		}
 
-		private void clbAbilities_ItemCheck(object sender, ItemCheckEventArgs e) //HERE
+		private void clbAbilities_ItemCheck(object sender, ItemCheckEventArgs e)
 		{
 			if(sorting)
 			{
@@ -978,8 +980,8 @@ namespace Solipstry_Character_Creator
 
 
 			string abilityName = clbAbilities.Items[e.Index].ToString();
-			//Trim the school from the ability name if it is being displayed
-			if(abilityDisplay == DISPLAY_ALL_ABILITIES)
+			//Remove the school display from the ability name if necessary
+			if(abilityName.Length > ABILITY_SPACING)
 			{
 				abilityName = abilityName.Substring(0, ABILITY_SPACING);
 			}
@@ -1294,9 +1296,14 @@ namespace Solipstry_Character_Creator
 
 								foreach(string ability in clbAbilities.Items)
 								{
-									string abilityName = ability.Substring(0, ABILITY_SPACING);
+									string abilityName = ability;
+									if(abilityName.Length > ABILITY_SPACING)
+									{
+										abilityName = abilityName.Substring(0, ABILITY_SPACING);
+									}
+
 									//Ability is valid if it is not homebrewed and the character meets the requirements
-									if(!IsCustomAbility(abilityName) && !CheckAbilityHomebrew(abilityName))
+									if(!CheckAbilityHomebrew(abilityName))
 									{
 										validAbilities.Add(abilityName);
 									}
@@ -1555,7 +1562,8 @@ namespace Solipstry_Character_Creator
 				clbTalents.SelectedItem = talentName;
 				clbTalents.SetItemChecked(clbTalents.Items.Count - 1, true);
 
-				SortCheckedListBox(clbTalents);
+				//Switch to showing homebrew options for talents
+				chkAllTalents.Checked = true;
 			}
 
 			CheckHomebrew();
@@ -1582,6 +1590,16 @@ namespace Solipstry_Character_Creator
 
 				SortCheckedListBox(clbAbilities);
 				clbAbilities.SelectedItem = newAbility.name;
+
+				//Switch to showing homebrew options for abilities
+				chkAllAbilities.Checked = true;
+
+				//If not displaying all schools, switch to the school of the new ability
+				if(abilityDisplay != DISPLAY_ALL_ABILITIES)
+				{
+					cmbSchoolDisplay.SelectedItem = newAbility.school;
+				}
+				
 			}
 
 			CheckHomebrew();
@@ -1782,8 +1800,8 @@ namespace Solipstry_Character_Creator
 		{
 			//Keep track of which abilities were checked
 			List<string> checkedAbilities = new List<string>();
-
 			checkedAbilities.AddRange(character.abilities);
+			checkedAbilities.AddRange(character.customAbilities);
 
 			sorting = true; //Don't do anything when check states change
 
@@ -1805,8 +1823,10 @@ namespace Solipstry_Character_Creator
 			{
 				//Truncate the string if it contains the ability's school
 				string abilityName = clbAbilities.Items[n].ToString();
-				abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
-					abilityName.Substring(0, ABILITY_SPACING) : abilityName;
+				if(abilityName.Length > ABILITY_SPACING)
+				{
+					abilityName = abilityName.Substring(0, ABILITY_SPACING);
+				}
 
 				if (checkedAbilities.Contains(abilityName.Trim()))
 				{
@@ -1814,6 +1834,8 @@ namespace Solipstry_Character_Creator
 					checkedAbilities.Remove(abilityName);
 				}
 			}
+
+			SortCheckedListBox(clbAbilities);
 
 			sorting = false;
 		}
@@ -1837,12 +1859,6 @@ namespace Solipstry_Character_Creator
 				{
 					clbTalents.Items.Add(String.Format("{0,-" + TALENT_DESC_SPACING + "} {1}", talentName, row[1].ToString()));
 				}
-			}
-
-			//Display custom talents also
-			foreach(string talent in customTalents)
-			{
-				clbTalents.Items.Add(talent);
 			}
 		}
 
@@ -1879,36 +1895,47 @@ namespace Solipstry_Character_Creator
 		{
 			clbAbilities.Items.Clear();
 
-			List<string> abilties;
+			List<string> abilities;
 		
 			if(abilityDisplay == DISPLAY_ALL_ABILITIES)
 			{
-				abilties = new List<string>();
+				abilities = new List<string>();
 
 				DataSet ds = PerformQuery(abilitiesConnection, "SELECT ability_name, school FROM Abilities", "Abilities");
 
 				foreach (DataRow row in ds.Tables["Abilities"].Rows)
 				{
-					abilties.Add(String.Format("{0,-" + ABILITY_SPACING + "} {1}",
+					abilities.Add(String.Format("{0,-" + ABILITY_SPACING + "} {1}",
 						row[0].ToString(), row[1].ToString()));
+				}
+
+				//Display custom abilities
+				foreach (CustomAbility ability in customAbilities)
+				{
+					abilities.Add(ability.name);
 				}
 			}
 			else
 			{
-				abilties = GetAbilitiesBySchool();	
+				abilities = GetAbilitiesBySchool();	
 			}
 
-			foreach(string ability in abilties)
+			foreach(string ability in abilities)
 			{
 				//Only use the substring if displaying all school's of magic
-				string abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
-					ability.Substring(0, ABILITY_SPACING) : ability;
+				string abilityName = ability;
+				if(abilityName.Length > ABILITY_SPACING)
+				{
+					abilityName = abilityName.Substring(0, ABILITY_SPACING);
+				}
 
 				if(!CheckAbilityHomebrew(abilityName))
 				{
 					clbAbilities.Items.Add(ability);
 				}
 			}
+
+			SortCheckedListBox(clbAbilities);
 		}
 
 		/// <summary>
@@ -1931,6 +1958,11 @@ namespace Solipstry_Character_Creator
 					abilities.Add(String.Format("{0,-" + ABILITY_SPACING + "} {1}",
 						row[0].ToString(), row[1].ToString()));
 				}
+
+				foreach(CustomAbility ability in customAbilities)
+				{
+					abilities.Add(ability.name);
+				}
 			}
 			else
 			{
@@ -1938,6 +1970,8 @@ namespace Solipstry_Character_Creator
 			}
 
 			clbAbilities.Items.AddRange(abilities.ToArray());
+
+			SortCheckedListBox(clbAbilities);
 		}
 		#endregion
 
@@ -1977,6 +2011,14 @@ namespace Solipstry_Character_Creator
 				abilities.Add(row[0].ToString());
 			}
 
+			foreach(CustomAbility ability in customAbilities)
+			{
+				if(ability.school.Equals(school))
+				{
+					abilities.Add(ability.name);
+				}
+			}
+
 			return abilities;
 		}
 
@@ -1987,25 +2029,44 @@ namespace Solipstry_Character_Creator
 		/// <returns>School of the ability</returns>
 		private string GetAbilitySchool(string abilityName)
 		{
-			//Query the ability database for the school
-			string query = "SELECT school FROM Abilities WHERE ability_name='" + abilityName + "'";
-			DataSet ds = PerformQuery(abilitiesConnection, query, "Abilities");
-			return ds.Tables["Abilities"].Rows[0][0].ToString();
+			string school = null;
+
+			if (IsCustomAbility(abilityName))
+			{
+				foreach(CustomAbility ability in customAbilities)
+				{
+					if(ability.name.Equals(abilityName))
+					{
+						school = ability.school;
+						break;
+					}
+				}
+			}
+			else
+			{
+				//Query the ability database for the school
+				string query = "SELECT school FROM Abilities WHERE ability_name='" + abilityName + "'";
+				DataSet ds = PerformQuery(abilitiesConnection, query, "Abilities");
+				school = ds.Tables["Abilities"].Rows[0][0].ToString();
+			}
+
+			return school;
 		}
 
-		private void cmbSchoolDisplay_SelectedIndexChanged(object sender, EventArgs e) //HERE
+		private void cmbSchoolDisplay_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			abilityDisplay = cmbSchoolDisplay.SelectedIndex;
 
 			//Keep track of which abilities were checked
 			List<string> checkedAbilities = new List<string>();
-
 			checkedAbilities.AddRange(character.abilities);
+			checkedAbilities.AddRange(character.customAbilities);
 
 			sorting = true; //Don't do anything when check states change
+
 			clbAbilities.Items.Clear();
 
-			if (displayHomebrewOptions)
+			if (chkAllAbilities.Checked)
 			{
 				DisplayAllAbilities();
 			}
@@ -2019,8 +2080,10 @@ namespace Solipstry_Character_Creator
 			{
 				//Truncate the string if it contains the ability's school
 				string abilityName = clbAbilities.Items[n].ToString();
-				abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
-					abilityName.Substring(0, ABILITY_SPACING) : abilityName;
+				if(abilityName.Length > ABILITY_SPACING)
+				{
+					abilityName = abilityName.Substring(0, ABILITY_SPACING);
+				}
 				
 				if (checkedAbilities.Contains(abilityName.Trim()))
 				{
@@ -2420,8 +2483,8 @@ namespace Solipstry_Character_Creator
 
 			//Keep track of which talents were checked
 			List<string> checkedAbilities = new List<string>();
-
 			checkedAbilities.AddRange(character.abilities);
+			checkedAbilities.AddRange(character.customAbilities);
 
 			//Display all abilities if the check box is checked
 			if (chkAllAbilities.Checked)
@@ -2463,8 +2526,10 @@ namespace Solipstry_Character_Creator
 			{
 				//Truncate the string if it contains the ability's school
 				string abilityName = clbAbilities.Items[n].ToString();
-				abilityName = (abilityDisplay == DISPLAY_ALL_ABILITIES) ?
-					abilityName.Substring(0, ABILITY_SPACING) : abilityName;
+				if(abilityName.Length > ABILITY_SPACING)
+				{
+					abilityName = abilityName.Substring(0, ABILITY_SPACING);
+				}
 
 				if (checkedAbilities.Contains(abilityName.Trim()))
 				{
@@ -2472,6 +2537,8 @@ namespace Solipstry_Character_Creator
 					checkedAbilities.Remove(abilityName);
 				}
 			}
+
+			SortCheckedListBox(clbAbilities);
 
 			sorting = false;
 		}
