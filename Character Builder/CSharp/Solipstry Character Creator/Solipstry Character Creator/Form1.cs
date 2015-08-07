@@ -1303,7 +1303,7 @@ namespace Solipstry_Character_Creator
 									}
 
 									//Ability is valid if it is not homebrewed and the character meets the requirements
-									if(!CheckAbilityHomebrew(abilityName))
+									if(IsCustomAbility(abilityName) || !CheckAbilityHomebrew(abilityName))
 									{
 										validAbilities.Add(abilityName);
 									}
