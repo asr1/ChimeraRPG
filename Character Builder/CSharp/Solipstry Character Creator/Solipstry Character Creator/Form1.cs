@@ -874,22 +874,6 @@ namespace Solipstry_Character_Creator
 						return true;
 					}
 				}
-				//Check if it's a talent prereq
-				else if(clbTalents.Items.Contains(prereq))
-				{
-					if(!character.talents.Contains(prereq))
-					{
-						return true;
-					}
-				}
-				//Check if it's a ability prereq
-				else if(clbAbilities.Items.Contains(prereq))
-				{
-					if(!character.abilities.Contains(prereq))
-					{
-						return true;
-					}
-				}
 				//Check if it's a size prereq
 				else if(prereq.ToLower().Contains("creature") &&
 					(prereq.ToLower().Contains("medium") || prereq.ToLower().Contains("large") ||
@@ -919,9 +903,9 @@ namespace Solipstry_Character_Creator
 							return true;
 						}
 					}
-					else
+					else if(!character.abilities.Contains(prereq) && !character.talents.Contains(prereq))
 					{
-						Console.WriteLine(prereq); //Debug it just in case I missed something
+						return true;
 					}
 				}
 			} //end foreach
