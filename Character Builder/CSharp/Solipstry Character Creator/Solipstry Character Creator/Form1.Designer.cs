@@ -88,7 +88,6 @@
 			this.txtSkillInfo = new System.Windows.Forms.TextBox();
 			this.tabTalents = new System.Windows.Forms.TabPage();
 			this.talentsSplitContainer = new System.Windows.Forms.SplitContainer();
-			this.txtTalentsSearch = new TextBoxWithHint();
 			this.chkAllTalents = new System.Windows.Forms.CheckBox();
 			this.lblTalentsRemaining = new System.Windows.Forms.Label();
 			this.lblTalentsInstructions = new System.Windows.Forms.Label();
@@ -96,7 +95,6 @@
 			this.txtTalentInfo = new System.Windows.Forms.TextBox();
 			this.tabAbilities = new System.Windows.Forms.TabPage();
 			this.abilitiesSplitContainer = new System.Windows.Forms.SplitContainer();
-			this.txtAbilitiesSearch = new TextBoxWithHint();
 			this.chkAllAbilities = new System.Windows.Forms.CheckBox();
 			this.lblRestorationRemaining = new System.Windows.Forms.Label();
 			this.lblCreationRemaining = new System.Windows.Forms.Label();
@@ -152,6 +150,8 @@
 			this.sendBugReportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewSourceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.creditsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.txtTalentsSearch = new Solipstry_Character_Creator.TextBoxWithHint();
+			this.txtAbilitiesSearch = new Solipstry_Character_Creator.TextBoxWithHint();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -230,7 +230,7 @@
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickConstitution);
 			this.splitContainer1.Panel2.Controls.Add(this.lblQuickCharisma);
 			this.splitContainer1.Size = new System.Drawing.Size(798, 428);
-			this.splitContainer1.SplitterDistance = 597;
+			this.splitContainer1.SplitterDistance = 596;
 			this.splitContainer1.SplitterWidth = 5;
 			this.splitContainer1.TabIndex = 0;
 			// 
@@ -246,7 +246,7 @@
 			this.tabExport.Location = new System.Drawing.Point(0, 0);
 			this.tabExport.Name = "tabExport";
 			this.tabExport.SelectedIndex = 0;
-			this.tabExport.Size = new System.Drawing.Size(597, 428);
+			this.tabExport.Size = new System.Drawing.Size(596, 428);
 			this.tabExport.TabIndex = 0;
 			this.tabExport.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
@@ -277,7 +277,7 @@
 			this.tabInfo.Location = new System.Drawing.Point(4, 23);
 			this.tabInfo.Name = "tabInfo";
 			this.tabInfo.Padding = new System.Windows.Forms.Padding(3);
-			this.tabInfo.Size = new System.Drawing.Size(589, 401);
+			this.tabInfo.Size = new System.Drawing.Size(588, 401);
 			this.tabInfo.TabIndex = 0;
 			this.tabInfo.Text = "Info";
 			this.tabInfo.UseVisualStyleBackColor = true;
@@ -502,10 +502,10 @@
 			this.tabAttributes.Controls.Add(this.txtCharisma);
 			this.tabAttributes.Controls.Add(this.txtConstitution);
 			this.tabAttributes.Controls.Add(this.txtDexterity);
-			this.tabAttributes.Location = new System.Drawing.Point(4, 22);
+			this.tabAttributes.Location = new System.Drawing.Point(4, 23);
 			this.tabAttributes.Name = "tabAttributes";
 			this.tabAttributes.Padding = new System.Windows.Forms.Padding(3);
-			this.tabAttributes.Size = new System.Drawing.Size(589, 402);
+			this.tabAttributes.Size = new System.Drawing.Size(588, 401);
 			this.tabAttributes.TabIndex = 1;
 			this.tabAttributes.Text = "Attributes";
 			this.tabAttributes.UseVisualStyleBackColor = true;
@@ -795,9 +795,9 @@
 			// 
 			this.tabSkills.Controls.Add(this.skillsSplitContainer);
 			this.tabSkills.Controls.Add(this.txtSkillInfo);
-			this.tabSkills.Location = new System.Drawing.Point(4, 22);
+			this.tabSkills.Location = new System.Drawing.Point(4, 23);
 			this.tabSkills.Name = "tabSkills";
-			this.tabSkills.Size = new System.Drawing.Size(589, 402);
+			this.tabSkills.Size = new System.Drawing.Size(588, 401);
 			this.tabSkills.TabIndex = 2;
 			this.tabSkills.Text = "Skills";
 			this.tabSkills.UseVisualStyleBackColor = true;
@@ -819,7 +819,7 @@
 			// skillsSplitContainer.Panel2
 			// 
 			this.skillsSplitContainer.Panel2.Controls.Add(this.clbSkills);
-			this.skillsSplitContainer.Size = new System.Drawing.Size(589, 309);
+			this.skillsSplitContainer.Size = new System.Drawing.Size(588, 309);
 			this.skillsSplitContainer.SplitterDistance = 30;
 			this.skillsSplitContainer.TabIndex = 4;
 			// 
@@ -848,7 +848,7 @@
 			this.clbSkills.FormattingEnabled = true;
 			this.clbSkills.Location = new System.Drawing.Point(0, 0);
 			this.clbSkills.Name = "clbSkills";
-			this.clbSkills.Size = new System.Drawing.Size(589, 275);
+			this.clbSkills.Size = new System.Drawing.Size(588, 275);
 			this.clbSkills.TabIndex = 2;
 			this.clbSkills.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbSkills_ItemCheck);
 			this.clbSkills.SelectedIndexChanged += new System.EventHandler(this.clbSkills_SelectedIndexChanged);
@@ -861,7 +861,7 @@
 			this.txtSkillInfo.Name = "txtSkillInfo";
 			this.txtSkillInfo.ReadOnly = true;
 			this.txtSkillInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtSkillInfo.Size = new System.Drawing.Size(589, 93);
+			this.txtSkillInfo.Size = new System.Drawing.Size(588, 93);
 			this.txtSkillInfo.TabIndex = 3;
 			// 
 			// tabTalents
@@ -870,7 +870,7 @@
 			this.tabTalents.Controls.Add(this.txtTalentInfo);
 			this.tabTalents.Location = new System.Drawing.Point(4, 23);
 			this.tabTalents.Name = "tabTalents";
-			this.tabTalents.Size = new System.Drawing.Size(589, 401);
+			this.tabTalents.Size = new System.Drawing.Size(588, 401);
 			this.tabTalents.TabIndex = 3;
 			this.tabTalents.Text = "Talents";
 			this.tabTalents.UseVisualStyleBackColor = true;
@@ -894,17 +894,9 @@
 			// talentsSplitContainer.Panel2
 			// 
 			this.talentsSplitContainer.Panel2.Controls.Add(this.clbTalents);
-			this.talentsSplitContainer.Size = new System.Drawing.Size(589, 308);
+			this.talentsSplitContainer.Size = new System.Drawing.Size(588, 308);
 			this.talentsSplitContainer.SplitterDistance = 57;
 			this.talentsSplitContainer.TabIndex = 7;
-			// 
-			// txtTalentsSearch
-			// 
-			this.txtTalentsSearch.Location = new System.Drawing.Point(399, 35);
-			this.txtTalentsSearch.Name = "txtTalentsSearch";
-			this.txtTalentsSearch.Size = new System.Drawing.Size(187, 20);
-			this.txtTalentsSearch.TabIndex = 8;
-			this.txtTalentsSearch.TextChanged += new System.EventHandler(this.txtTalentsSearch_TextChanged);
 			// 
 			// chkAllTalents
 			// 
@@ -943,7 +935,7 @@
 			this.clbTalents.FormattingEnabled = true;
 			this.clbTalents.Location = new System.Drawing.Point(0, 0);
 			this.clbTalents.Name = "clbTalents";
-			this.clbTalents.Size = new System.Drawing.Size(589, 247);
+			this.clbTalents.Size = new System.Drawing.Size(588, 247);
 			this.clbTalents.TabIndex = 3;
 			this.clbTalents.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbTalents_ItemCheck);
 			this.clbTalents.SelectedIndexChanged += new System.EventHandler(this.clbTalents_SelectedIndexChanged);
@@ -956,16 +948,16 @@
 			this.txtTalentInfo.Name = "txtTalentInfo";
 			this.txtTalentInfo.ReadOnly = true;
 			this.txtTalentInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtTalentInfo.Size = new System.Drawing.Size(589, 93);
+			this.txtTalentInfo.Size = new System.Drawing.Size(588, 93);
 			this.txtTalentInfo.TabIndex = 6;
 			// 
 			// tabAbilities
 			// 
 			this.tabAbilities.Controls.Add(this.abilitiesSplitContainer);
 			this.tabAbilities.Controls.Add(this.txtAbilityInfo);
-			this.tabAbilities.Location = new System.Drawing.Point(4, 22);
+			this.tabAbilities.Location = new System.Drawing.Point(4, 23);
 			this.tabAbilities.Name = "tabAbilities";
-			this.tabAbilities.Size = new System.Drawing.Size(589, 402);
+			this.tabAbilities.Size = new System.Drawing.Size(588, 401);
 			this.tabAbilities.TabIndex = 4;
 			this.tabAbilities.Text = "Abilities";
 			this.tabAbilities.UseVisualStyleBackColor = true;
@@ -994,17 +986,9 @@
 			// abilitiesSplitContainer.Panel2
 			// 
 			this.abilitiesSplitContainer.Panel2.Controls.Add(this.clbAbilities);
-			this.abilitiesSplitContainer.Size = new System.Drawing.Size(589, 309);
+			this.abilitiesSplitContainer.Size = new System.Drawing.Size(588, 309);
 			this.abilitiesSplitContainer.SplitterDistance = 107;
 			this.abilitiesSplitContainer.TabIndex = 8;
-			// 
-			// txtAbilitiesSearch
-			// 
-			this.txtAbilitiesSearch.Location = new System.Drawing.Point(393, 82);
-			this.txtAbilitiesSearch.Name = "txtAbilitiesSearch";
-			this.txtAbilitiesSearch.Size = new System.Drawing.Size(194, 20);
-			this.txtAbilitiesSearch.TabIndex = 12;
-			this.txtAbilitiesSearch.TextChanged += new System.EventHandler(this.txtAbilitiesSearch_TextChanged);
 			// 
 			// chkAllAbilities
 			// 
@@ -1093,7 +1077,7 @@
 			this.clbAbilities.FormattingEnabled = true;
 			this.clbAbilities.Location = new System.Drawing.Point(0, 0);
 			this.clbAbilities.Name = "clbAbilities";
-			this.clbAbilities.Size = new System.Drawing.Size(589, 198);
+			this.clbAbilities.Size = new System.Drawing.Size(588, 198);
 			this.clbAbilities.TabIndex = 2;
 			this.clbAbilities.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbAbilities_ItemCheck);
 			this.clbAbilities.SelectedIndexChanged += new System.EventHandler(this.clbAbilities_SelectedIndexChanged);
@@ -1106,17 +1090,17 @@
 			this.txtAbilityInfo.Name = "txtAbilityInfo";
 			this.txtAbilityInfo.ReadOnly = true;
 			this.txtAbilityInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-			this.txtAbilityInfo.Size = new System.Drawing.Size(589, 93);
+			this.txtAbilityInfo.Size = new System.Drawing.Size(588, 93);
 			this.txtAbilityInfo.TabIndex = 7;
 			// 
 			// tabPage1
 			// 
 			this.tabPage1.Controls.Add(this.chkOpenSheet);
 			this.tabPage1.Controls.Add(this.btnExport);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
+			this.tabPage1.Location = new System.Drawing.Point(4, 23);
 			this.tabPage1.Name = "tabPage1";
 			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(589, 402);
+			this.tabPage1.Size = new System.Drawing.Size(588, 401);
 			this.tabPage1.TabIndex = 5;
 			this.tabPage1.Text = "Export Character";
 			this.tabPage1.UseVisualStyleBackColor = true;
@@ -1138,7 +1122,7 @@
 			this.btnExport.BackColor = System.Drawing.Color.DeepSkyBlue;
 			this.btnExport.Location = new System.Drawing.Point(3, 3);
 			this.btnExport.Name = "btnExport";
-			this.btnExport.Size = new System.Drawing.Size(596, 331);
+			this.btnExport.Size = new System.Drawing.Size(579, 331);
 			this.btnExport.TabIndex = 0;
 			this.btnExport.Text = "Export Character";
 			this.btnExport.UseVisualStyleBackColor = false;
@@ -1521,6 +1505,22 @@
 			this.creditsToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
 			this.creditsToolStripMenuItem.Text = "Credits";
 			this.creditsToolStripMenuItem.Click += new System.EventHandler(this.creditsToolStripMenuItem_Click);
+			// 
+			// txtTalentsSearch
+			// 
+			this.txtTalentsSearch.Location = new System.Drawing.Point(399, 35);
+			this.txtTalentsSearch.Name = "txtTalentsSearch";
+			this.txtTalentsSearch.Size = new System.Drawing.Size(187, 20);
+			this.txtTalentsSearch.TabIndex = 8;
+			this.txtTalentsSearch.TextChanged += new System.EventHandler(this.txtTalentsSearch_TextChanged);
+			// 
+			// txtAbilitiesSearch
+			// 
+			this.txtAbilitiesSearch.Location = new System.Drawing.Point(393, 82);
+			this.txtAbilitiesSearch.Name = "txtAbilitiesSearch";
+			this.txtAbilitiesSearch.Size = new System.Drawing.Size(194, 20);
+			this.txtAbilitiesSearch.TabIndex = 12;
+			this.txtAbilitiesSearch.TextChanged += new System.EventHandler(this.txtAbilitiesSearch_TextChanged);
 			// 
 			// Window
 			// 
