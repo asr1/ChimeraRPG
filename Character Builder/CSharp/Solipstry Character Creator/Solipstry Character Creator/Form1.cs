@@ -713,6 +713,16 @@ namespace Solipstry_Character_Creator
 			//Check each talent
 			foreach(string talent in character.talents)
 			{
+				DataSet ds = PerformQuery(talentsConnection, "SELECT prereq FROM Talents WHERE talent_name = '" + talent + "'", "Talents");
+				DataRow row = ds.Tables["Talents"].Rows[0];
+
+				if(row[0] == null)
+				{
+					continue;
+				}
+
+				string prereq = row[0].ToString();
+
 				if(CheckTalentHomebrew(talent))
 				{
 					hb = true;
@@ -798,18 +808,15 @@ namespace Solipstry_Character_Creator
 		/// </summary>
 		/// <param name="talent">Talent to check</param>
 		/// <returns>True if the character is homebrewed, false otherwise</returns>
-		private bool CheckTalentHomebrew(string talent)
+		private bool CheckTalentHomebrew(string prerequisite)
 		{
-			DataSet ds = PerformQuery(talentsConnection, "SELECT prereq FROM Talents WHERE talent_name = '" + talent + "'", "Talents");
-			DataRow row = ds.Tables["Talents"].Rows[0];
-
 			//Check if there are any prereqs to check
-			if(row[0].ToString().Equals(""))
+			if(prerequisite.ToString().Equals(""))
 			{
 				return false;
 			}
 
-			string[] prereqs = row[0].ToString().Split(',');
+			string[] prereqs = prerequisite.ToString().Split(',');
 
 			foreach(string p in prereqs)
 			{
@@ -1849,14 +1856,14 @@ namespace Solipstry_Character_Creator
 			clbTalents.Items.Clear();
 
 			//Query the talent database for all talents
-			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name, short_desc FROM Talents", "Talents");
+			DataSet ds = PerformQuery(talentsConnection, "SELECT talent_name, short_desc, prereq FROM Talents", "Talents");
 
 			//Add only eligible talents
 			foreach(DataRow row in ds.Tables["Talents"].Rows)
 			{
 				string talentName = row[0].ToString();
 
-				if(!CheckTalentHomebrew(talentName))
+				if(row[2] == null || !CheckTalentHomebrew(row[2].ToString()))
 				{
 					clbTalents.Items.Add(String.Format("{0,-" + TALENT_DESC_SPACING + "} {1}", talentName, row[1].ToString()));
 				}
@@ -2563,14 +2570,14 @@ namespace Solipstry_Character_Creator
 			{
 				clbTalents.Items.Clear();
 
-				string query = "SELECT talent_name FROM Talents WHERE desc LIKE '%" + search + "%' OR talent_name LIKE '%" + search + "%'";
+				string query = "SELECT talent_name, prereq FROM Talents WHERE desc LIKE '%" + search + "%' OR talent_name LIKE '%" + search + "%'";
 				DataSet ds = PerformQuery(talentsConnection, query, "Talents");
 
 				foreach (DataRow row in ds.Tables["Talents"].Rows)
 				{
 					string talentName = row[0].ToString();
 
-					if (chkAllTalents.Checked && CheckTalentHomebrew(talentName))
+					if (chkAllTalents.Checked && row[1] != null && CheckTalentHomebrew(row[1].ToString()))
 					{
 						continue;
 					}
