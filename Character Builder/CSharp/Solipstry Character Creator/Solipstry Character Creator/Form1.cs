@@ -2601,7 +2601,7 @@ namespace Solipstry_Character_Creator
 				{
 					string talentName = row[0].ToString();
 
-					if (chkAllTalents.Checked && row[1] != null && CheckTalentHomebrew(row[1].ToString()))
+					if (!chkAllTalents.Checked && row[1] != null && CheckTalentHomebrew(row[1].ToString()))
 					{
 						continue;
 					}
