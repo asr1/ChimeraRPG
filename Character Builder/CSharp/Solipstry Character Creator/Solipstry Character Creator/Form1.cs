@@ -2500,7 +2500,7 @@ namespace Solipstry_Character_Creator
 				{
 					string abilityName = row[0].ToString();
 
-					if (chkAllAbilities.Checked && row[2] != null && CheckAbilityHomebrew(row[2].ToString(), row[0].ToString()))
+					if (!chkAllAbilities.Checked && row[2] != null && CheckAbilityHomebrew(row[2].ToString(), row[0].ToString()))
 					{
 						continue;
 					}
