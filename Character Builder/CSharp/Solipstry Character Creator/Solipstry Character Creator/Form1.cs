@@ -2465,7 +2465,7 @@ namespace Solipstry_Character_Creator
 		}
 
 		#region Searching talents/abilities
-		private void btnAbilitiesSearch_Click(object sender, EventArgs e)
+		private void txtAbilitiesSearch_TextChanged(object sender, EventArgs e)
 		{
 			string search = txtAbilitiesSearch.Text;
 
@@ -2486,17 +2486,17 @@ namespace Solipstry_Character_Creator
 				{
 					string abilityName = row[0].ToString();
 
-					if(chkAllAbilities.Checked && CheckAbilityHomebrew(abilityName))
+					if (chkAllAbilities.Checked && CheckAbilityHomebrew(abilityName))
 					{
 						continue;
 					}
 
 					//Only display an ability if it has the same school as what the user selected
-					if(abilityDisplay != DISPLAY_ALL_ABILITIES)
+					if (abilityDisplay != DISPLAY_ALL_ABILITIES)
 					{
 						string schoolToDisplay = null;
 
-						switch(abilityDisplay)
+						switch (abilityDisplay)
 						{
 							case DISPLAY_ALTERATION:
 								schoolToDisplay = "Alteration";
@@ -2515,7 +2515,7 @@ namespace Solipstry_Character_Creator
 								break;
 						}
 
-						if(!schoolToDisplay.Equals(row[1].ToString()))
+						if (!schoolToDisplay.Equals(row[1].ToString()))
 						{
 							continue;
 						}
@@ -2532,7 +2532,7 @@ namespace Solipstry_Character_Creator
 			{
 				//Truncate the string if it contains the ability's school
 				string abilityName = clbAbilities.Items[n].ToString();
-				if(abilityName.Length > ABILITY_SPACING)
+				if (abilityName.Length > ABILITY_SPACING)
 				{
 					abilityName = abilityName.Substring(0, ABILITY_SPACING);
 				}
@@ -2549,7 +2549,7 @@ namespace Solipstry_Character_Creator
 			sorting = false;
 		}
 
-		private void btnTalentsSearch_Click(object sender, EventArgs e)
+		private void txtTalentsSearch_TextChanged(object sender, EventArgs e)
 		{
 			string search = txtTalentsSearch.Text;
 
@@ -2566,11 +2566,11 @@ namespace Solipstry_Character_Creator
 				string query = "SELECT talent_name FROM Talents WHERE desc LIKE '%" + search + "%' OR talent_name LIKE '%" + search + "%'";
 				DataSet ds = PerformQuery(talentsConnection, query, "Talents");
 
-				foreach(DataRow row in ds.Tables["Talents"].Rows)
+				foreach (DataRow row in ds.Tables["Talents"].Rows)
 				{
 					string talentName = row[0].ToString();
 
-					if(chkAllTalents.Checked && CheckTalentHomebrew(talentName))
+					if (chkAllTalents.Checked && CheckTalentHomebrew(talentName))
 					{
 						continue;
 					}
@@ -2585,8 +2585,8 @@ namespace Solipstry_Character_Creator
 			for (int n = 0; n < clbTalents.Items.Count; ++n)
 			{
 				string talentName = clbTalents.Items[n].ToString();
-				
-				if(talentName.Length > TALENT_DESC_SPACING)
+
+				if (talentName.Length > TALENT_DESC_SPACING)
 				{
 					talentName = talentName.Substring(0, TALENT_DESC_SPACING).Trim();
 				}
@@ -2606,22 +2606,6 @@ namespace Solipstry_Character_Creator
 			SortCheckedListBox(clbTalents);
 
 			sorting = false;
-		}
-
-		private void txtTalentsSearch_KeyDown(object sender, KeyEventArgs e)
-		{
-			if(e.KeyCode == Keys.Enter)
-			{
-				btnTalentsSearch.PerformClick();
-			}
-		}
-
-		private void txtAbilitiesSearch_KeyDown(object sender, KeyEventArgs e)
-		{
-			if (e.KeyCode == Keys.Enter)
-			{
-				btnAbilitiesSearch.PerformClick();
-			}
 		}
 		#endregion
 	}
