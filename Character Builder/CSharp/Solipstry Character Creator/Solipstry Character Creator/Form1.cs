@@ -324,6 +324,16 @@ namespace Solipstry_Character_Creator
 			UpdateInformation();
 
 			CheckHomebrew();
+
+			//Refresh the talents and abilities tabs before they are selected so anything the character now qualifies for is shown
+			if(tabControl.SelectedTab == tabTalents && !chkAllTalents.Checked)
+			{
+				DisplayEligibleTalents();
+			}
+			if(tabControl.SelectedTab == tabAbilities && !chkAllAbilities.Checked)
+			{
+				DisplayEligibleAbilities();
+			}
         }
 
         private void cmbSize_SelectedIndexChanged(object sender, EventArgs e)
