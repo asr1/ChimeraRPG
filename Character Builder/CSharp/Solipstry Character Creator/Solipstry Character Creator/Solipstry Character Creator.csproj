@@ -24,7 +24,7 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>false</MapFileExtensions>
     <PublisherName>Solipstry</PublisherName>
-    <ApplicationRevision>17</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -133,6 +133,9 @@
       <DependentUpon>SelectionDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="SmtpCredentials.cs" />
+    <Compile Include="TextBoxWithHint.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="BugReportDialog.resx">
       <DependentUpon>BugReportDialog.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +215,8 @@
     <Content Include="NOTICE.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\search.png" />
+    <None Include="search_hint.png" />
     <Content Include="Skills.accdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

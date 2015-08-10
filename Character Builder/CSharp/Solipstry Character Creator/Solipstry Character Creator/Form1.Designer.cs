@@ -88,7 +88,7 @@
 			this.txtSkillInfo = new System.Windows.Forms.TextBox();
 			this.tabTalents = new System.Windows.Forms.TabPage();
 			this.talentsSplitContainer = new System.Windows.Forms.SplitContainer();
-			this.txtTalentsSearch = new System.Windows.Forms.TextBox();
+			this.txtTalentsSearch = new TextBoxWithHint();
 			this.chkAllTalents = new System.Windows.Forms.CheckBox();
 			this.lblTalentsRemaining = new System.Windows.Forms.Label();
 			this.lblTalentsInstructions = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
 			this.txtTalentInfo = new System.Windows.Forms.TextBox();
 			this.tabAbilities = new System.Windows.Forms.TabPage();
 			this.abilitiesSplitContainer = new System.Windows.Forms.SplitContainer();
-			this.txtAbilitiesSearch = new System.Windows.Forms.TextBox();
+			this.txtAbilitiesSearch = new TextBoxWithHint();
 			this.chkAllAbilities = new System.Windows.Forms.CheckBox();
 			this.lblRestorationRemaining = new System.Windows.Forms.Label();
 			this.lblCreationRemaining = new System.Windows.Forms.Label();
@@ -1701,8 +1701,8 @@
 		private System.Windows.Forms.CheckBox chkAllAbilities;
 		private System.Windows.Forms.ToolStripMenuItem creditsToolStripMenuItem;
 		private System.Windows.Forms.CheckBox chkOpenSheet;
-		private System.Windows.Forms.TextBox txtAbilitiesSearch;
-		private System.Windows.Forms.TextBox txtTalentsSearch;
+		private Solipstry_Character_Creator.TextBoxWithHint txtAbilitiesSearch;
+		private Solipstry_Character_Creator.TextBoxWithHint txtTalentsSearch;
     }
 }
 
