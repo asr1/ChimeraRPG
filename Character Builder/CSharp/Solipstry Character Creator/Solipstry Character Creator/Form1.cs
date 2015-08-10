@@ -1085,8 +1085,13 @@ namespace Solipstry_Character_Creator
 
 			if(!chkAllAbilities.Checked)
 			{
+				object selectedItem = clbAbilities.SelectedItem;
+
 				//Refresh the display in case the character now qualifies for new abilities (or doesn't qualify for others)
+				DisplayEligibleAbilities();
 				txtAbilitiesSearch_TextChanged(null, null); //This method is called so it preserves any search made by the user
+
+				clbAbilities.SelectedItem = selectedItem;
 			}
 
 			CheckHomebrew();
@@ -1502,12 +1507,6 @@ namespace Solipstry_Character_Creator
 
 					--talentsTaken;
 				}
-
-				if (!chkAllTalents.Checked)
-				{
-					//Refresh the display in case the character now qualifies for new talents (or doesn't qualify for others)
-					txtTalentsSearch_TextChanged(null, null); //This method is called so it preserves any search made by the user
-				}
 			}
 
 			//Show how many talents over/under the homebrew limit the user is
@@ -1528,6 +1527,17 @@ namespace Solipstry_Character_Creator
 			UpdateInformation();
 			
 			CheckHomebrew();
+
+			if (!chkAllTalents.Checked)
+			{
+				object selectedItem = clbTalents.SelectedItem;
+
+				//Refresh the display in case the character now qualifies for new talents (or doesn't qualify for others)
+				DisplayEligibleTalents();
+				txtTalentsSearch_TextChanged(null, null); //This method is called so it preserves any search made by the user
+
+				clbTalents.SelectedItem = selectedItem;
+			}
 		}
 		#endregion
 
