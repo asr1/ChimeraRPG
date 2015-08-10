@@ -30,7 +30,7 @@
         {
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.tabExport = new System.Windows.Forms.TabControl();
+			this.tabControl = new System.Windows.Forms.TabControl();
 			this.tabInfo = new System.Windows.Forms.TabPage();
 			this.lblHeavyLightArmor = new System.Windows.Forms.Label();
 			this.rdoHeavyArmor = new System.Windows.Forms.RadioButton();
@@ -105,7 +105,7 @@
 			this.lblAbilitiesInstructions = new System.Windows.Forms.Label();
 			this.clbAbilities = new System.Windows.Forms.CheckedListBox();
 			this.txtAbilityInfo = new System.Windows.Forms.TextBox();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.tabExport = new System.Windows.Forms.TabPage();
 			this.chkOpenSheet = new System.Windows.Forms.CheckBox();
 			this.btnExport = new System.Windows.Forms.Button();
 			this.lblHomebrewed = new System.Windows.Forms.Label();
@@ -156,7 +156,7 @@
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
-			this.tabExport.SuspendLayout();
+			this.tabControl.SuspendLayout();
 			this.tabInfo.SuspendLayout();
 			this.tabAttributes.SuspendLayout();
 			this.tabSkills.SuspendLayout();
@@ -174,7 +174,7 @@
 			this.abilitiesSplitContainer.Panel1.SuspendLayout();
 			this.abilitiesSplitContainer.Panel2.SuspendLayout();
 			this.abilitiesSplitContainer.SuspendLayout();
-			this.tabPage1.SuspendLayout();
+			this.tabExport.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -188,7 +188,7 @@
 			// 
 			// splitContainer1.Panel1
 			// 
-			this.splitContainer1.Panel1.Controls.Add(this.tabExport);
+			this.splitContainer1.Panel1.Controls.Add(this.tabControl);
 			// 
 			// splitContainer1.Panel2
 			// 
@@ -234,21 +234,21 @@
 			this.splitContainer1.SplitterWidth = 5;
 			this.splitContainer1.TabIndex = 0;
 			// 
-			// tabExport
+			// tabControl
 			// 
-			this.tabExport.Controls.Add(this.tabInfo);
-			this.tabExport.Controls.Add(this.tabAttributes);
-			this.tabExport.Controls.Add(this.tabSkills);
-			this.tabExport.Controls.Add(this.tabTalents);
-			this.tabExport.Controls.Add(this.tabAbilities);
-			this.tabExport.Controls.Add(this.tabPage1);
-			this.tabExport.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tabExport.Location = new System.Drawing.Point(0, 0);
-			this.tabExport.Name = "tabExport";
-			this.tabExport.SelectedIndex = 0;
-			this.tabExport.Size = new System.Drawing.Size(596, 428);
-			this.tabExport.TabIndex = 0;
-			this.tabExport.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+			this.tabControl.Controls.Add(this.tabInfo);
+			this.tabControl.Controls.Add(this.tabAttributes);
+			this.tabControl.Controls.Add(this.tabSkills);
+			this.tabControl.Controls.Add(this.tabTalents);
+			this.tabControl.Controls.Add(this.tabAbilities);
+			this.tabControl.Controls.Add(this.tabExport);
+			this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tabControl.Location = new System.Drawing.Point(0, 0);
+			this.tabControl.Name = "tabControl";
+			this.tabControl.SelectedIndex = 0;
+			this.tabControl.Size = new System.Drawing.Size(596, 428);
+			this.tabControl.TabIndex = 0;
+			this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
 			// 
 			// tabInfo
 			// 
@@ -986,7 +986,7 @@
 			// abilitiesSplitContainer.Panel2
 			// 
 			this.abilitiesSplitContainer.Panel2.Controls.Add(this.clbAbilities);
-			this.abilitiesSplitContainer.Size = new System.Drawing.Size(588, 309);
+			this.abilitiesSplitContainer.Size = new System.Drawing.Size(588, 308);
 			this.abilitiesSplitContainer.SplitterDistance = 107;
 			this.abilitiesSplitContainer.TabIndex = 8;
 			// 
@@ -1077,7 +1077,7 @@
 			this.clbAbilities.FormattingEnabled = true;
 			this.clbAbilities.Location = new System.Drawing.Point(0, 0);
 			this.clbAbilities.Name = "clbAbilities";
-			this.clbAbilities.Size = new System.Drawing.Size(588, 198);
+			this.clbAbilities.Size = new System.Drawing.Size(588, 197);
 			this.clbAbilities.TabIndex = 2;
 			this.clbAbilities.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.clbAbilities_ItemCheck);
 			this.clbAbilities.SelectedIndexChanged += new System.EventHandler(this.clbAbilities_SelectedIndexChanged);
@@ -1085,7 +1085,7 @@
 			// txtAbilityInfo
 			// 
 			this.txtAbilityInfo.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.txtAbilityInfo.Location = new System.Drawing.Point(0, 309);
+			this.txtAbilityInfo.Location = new System.Drawing.Point(0, 308);
 			this.txtAbilityInfo.Multiline = true;
 			this.txtAbilityInfo.Name = "txtAbilityInfo";
 			this.txtAbilityInfo.ReadOnly = true;
@@ -1095,15 +1095,15 @@
 			// 
 			// tabPage1
 			// 
-			this.tabPage1.Controls.Add(this.chkOpenSheet);
-			this.tabPage1.Controls.Add(this.btnExport);
-			this.tabPage1.Location = new System.Drawing.Point(4, 23);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(588, 401);
-			this.tabPage1.TabIndex = 5;
-			this.tabPage1.Text = "Export Character";
-			this.tabPage1.UseVisualStyleBackColor = true;
+			this.tabExport.Controls.Add(this.chkOpenSheet);
+			this.tabExport.Controls.Add(this.btnExport);
+			this.tabExport.Location = new System.Drawing.Point(4, 23);
+			this.tabExport.Name = "tabExport";
+			this.tabExport.Padding = new System.Windows.Forms.Padding(3);
+			this.tabExport.Size = new System.Drawing.Size(588, 401);
+			this.tabExport.TabIndex = 5;
+			this.tabExport.Text = "Export Character";
+			this.tabExport.UseVisualStyleBackColor = true;
 			// 
 			// chkOpenSheet
 			// 
@@ -1543,7 +1543,7 @@
 			this.splitContainer1.Panel2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
-			this.tabExport.ResumeLayout(false);
+			this.tabControl.ResumeLayout(false);
 			this.tabInfo.ResumeLayout(false);
 			this.tabInfo.PerformLayout();
 			this.tabAttributes.ResumeLayout(false);
@@ -1569,8 +1569,8 @@
 			this.abilitiesSplitContainer.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.abilitiesSplitContainer)).EndInit();
 			this.abilitiesSplitContainer.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
+			this.tabExport.ResumeLayout(false);
+			this.tabExport.PerformLayout();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
@@ -1581,7 +1581,7 @@
         #endregion
 
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.TabControl tabExport;
+        private System.Windows.Forms.TabControl tabControl;
         private System.Windows.Forms.TabPage tabInfo;
         private System.Windows.Forms.TabPage tabAttributes;
         private System.Windows.Forms.TabPage tabSkills;
@@ -1695,7 +1695,7 @@
 		private System.Windows.Forms.Label lblRestorationRemaining;
 		private System.Windows.Forms.ToolStripMenuItem viewSourceToolStripMenuItem;
 		private System.Windows.Forms.Label lblHomebrewed;
-		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.TabPage tabExport;
 		private System.Windows.Forms.Button btnExport;
 		private System.Windows.Forms.CheckBox chkAllTalents;
 		private System.Windows.Forms.CheckBox chkAllAbilities;
