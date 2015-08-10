@@ -2234,6 +2234,8 @@ namespace Solipstry_Character_Creator
 		{
 			UpdateInformation(); //Make sure the character's information is up to date
 
+			bool anyAsterisks = false; //Whether to prompt the user about filling out any talents on their own (these are marked with asterisks)
+
 			bool halfCostAbilities = false;
 			foreach (ModifiedScore mod in modifiedScores)
 			{
@@ -2243,9 +2245,6 @@ namespace Solipstry_Character_Creator
 					break;
 				}
 			}
-
-			//Notify the user about anything they need to mark on their own
-			MessageBox.Show("You need to write down the effects of talents marked with *");
 
 			//Load the pdf
 			PdfReader reader = new PdfReader("Editable Character Sheet.pdf");
@@ -2374,6 +2373,7 @@ namespace Solipstry_Character_Creator
 							if (modifiedScores[n].userMarks)
 							{
 								fieldValue += "*";
+								anyAsterisks = true;
 							}
 
 							//Indicate what the user took the talent for
@@ -2467,6 +2467,12 @@ namespace Solipstry_Character_Creator
 
 			stamper.FormFlattening = false;
 			stamper.Close();
+
+			if(anyAsterisks)
+			{
+				//Notify the user about anything they need to mark on their own
+				MessageBox.Show("You need to write down the effects of talents marked with *");
+			}
 
 			//Open the PDF if the user wants it opened
 			if (chkOpenSheet.Checked) 
