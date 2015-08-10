@@ -929,6 +929,11 @@ namespace Solipstry_Character_Creator
 		#region CheckListBox handlers
 		private void clbAbilities_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if(clbAbilities.SelectedItem == null)
+			{
+				return;
+			}
+
 			//Only use the substring if displaying the school
 			string abilityName = clbAbilities.SelectedItem.ToString();
 			if(abilityName.Length > ABILITY_SPACING)
@@ -1067,6 +1072,12 @@ namespace Solipstry_Character_Creator
 			}
 
 			UpdateAbilitiesRemainingLabels();
+
+			if(!chkAllAbilities.Checked)
+			{
+				//Refresh the display in case the character now qualifies for new abilities (or doesn't qualify for others)
+				txtAbilitiesSearch_TextChanged(null, null); //This method is called so it preserves any search made by the user
+			}
 
 			CheckHomebrew();
 		}
@@ -1480,6 +1491,12 @@ namespace Solipstry_Character_Creator
 					}
 
 					--talentsTaken;
+				}
+
+				if (!chkAllTalents.Checked)
+				{
+					//Refresh the display in case the character now qualifies for new talents (or doesn't qualify for others)
+					txtTalentsSearch_TextChanged(null, null); //This method is called so it preserves any search made by the user
 				}
 			}
 
