@@ -703,7 +703,17 @@ namespace Solipstry_Character_Creator
 			//Check each ability
 			foreach(string ability in character.abilities)
 			{
-				if(CheckAbilityHomebrew(ability))
+				DataSet ds = PerformQuery(abilitiesConnection, "SELECT prereq FROM Abilities WHERE ability_name = '" + ability + "'", "Abilities");
+				DataRow row = ds.Tables["Abilities"].Rows[0];
+
+				if (row[0] == null)
+				{
+					continue;
+				}
+
+				string prereq = row[0].ToString();
+
+				if (CheckAbilityHomebrew(prereq, ability))
 				{
 					hb = true;
 					goto finished;
@@ -739,24 +749,15 @@ namespace Solipstry_Character_Creator
 		/// </summary>
 		/// <param name="ability">Ability to check</param>
 		/// <returns>True if the character is homebrewed, false otherwise</returns>
-		private bool CheckAbilityHomebrew(string ability)
-		{
-			if(IsCustomAbility(ability))
-			{
-				return true;
-			}
-
-			//Get the prerequisites for the ability from the database
-			DataSet ds = PerformQuery(abilitiesConnection, "SELECT prereq FROM Abilities WHERE ability_name = '" + ability + "'", "Abilities");
-			DataRow row = ds.Tables["Abilities"].Rows[0];
-			
+		private bool CheckAbilityHomebrew(string prerequisite, string abilityName)
+		{			
 			//Don't need to check prereqs if there are none
-			if(row[0].ToString().Equals(""))
+			if(prerequisite.Equals(""))
 			{
 				return false;
 			}
-
-			string[] prereqs = row[0].ToString().Split(','); //Split the prerequisites into an array for easier parsing
+			
+			string[] prereqs = prerequisite.Split(','); //Split the prerequisites into an array for easier parsing
 
 			foreach(string pr in prereqs)
 			{
@@ -777,7 +778,7 @@ namespace Solipstry_Character_Creator
 				else if(pr.StartsWith("[Meta]"))
 				{
 					//If the character hasn't taken the ability and chosen a school for it, don't mark it as homebrewed
-					if(!character.abilities.Contains(ability))
+					if(!character.abilities.Contains(abilityName))
 					{
 						continue;
 					}
@@ -785,7 +786,7 @@ namespace Solipstry_Character_Creator
 					string[] split = pr.Split(' ');
 
 					//Check the skill value of the school associated with the meta magic ability
-					if(character.GetSkillValue(character.metaAbilities[ability]) < TryParseInteger(split[1]))
+					if(character.GetSkillValue(character.metaAbilities[abilityName]) < TryParseInteger(split[1]))
 					{
 						return true;
 					}
@@ -1286,19 +1287,21 @@ namespace Solipstry_Character_Creator
 								//Figure out which abilities the user can take
 								List<string> validAbilities = new List<string>();
 
-								foreach(string ability in clbAbilities.Items)
-								{
-									string abilityName = ability;
-									if(abilityName.Length > ABILITY_SPACING)
-									{
-										abilityName = abilityName.Substring(0, ABILITY_SPACING);
-									}
+								DataSet ds = PerformQuery(abilitiesConnection,
+									"SELECT prereq, ability_name FROM Abilities", "Abilities");
+								DataTable table = ds.Tables["Abilities"];
 
-									//Ability is valid if it is not homebrewed and the character meets the requirements
-									if(IsCustomAbility(abilityName) || !CheckAbilityHomebrew(abilityName))
+								foreach(DataRow row in table.Rows)
+								{
+									if(row[0] == null || !CheckAbilityHomebrew(row[0].ToString(), row[1].ToString()))
 									{
-										validAbilities.Add(abilityName);
+										validAbilities.Add(row[1].ToString());
 									}
+								}
+
+								foreach(CustomAbility customAbility in customAbilities)
+								{
+									validAbilities.Add(customAbility.name);
 								}
 
 								//Have the user select the ability they want
@@ -1880,37 +1883,57 @@ namespace Solipstry_Character_Creator
 		{
 			clbAbilities.Items.Clear();
 
-			List<string> abilities;
-		
+			DataSet ds = PerformQuery(abilitiesConnection, "SELECT ability_name, school, prereq FROM Abilities", "Abilities");
+			DataTable table = ds.Tables["Abilities"];
+
 			if(abilityDisplay == DISPLAY_ALL_ABILITIES)
 			{
-				abilities = new List<string>();
-
-				DataSet ds = PerformQuery(abilitiesConnection, "SELECT ability_name, school FROM Abilities", "Abilities");
-
-				foreach (DataRow row in ds.Tables["Abilities"].Rows)
+				foreach (DataRow row in table.Rows)
 				{
-					abilities.Add(String.Format("{0,-" + ABILITY_SPACING + "} {1}",
-						row[0].ToString(), row[1].ToString()));
+					if (row[2] != null && !CheckAbilityHomebrew(row[2].ToString(), row[0].ToString()))
+					{
+						//Display the ability name followed by spaces (to align with the other abilities) followed by the school
+						clbAbilities.Items.Add(String.Format("{0,-" + ABILITY_SPACING + "} {1}",
+							row[0].ToString(), row[1].ToString()));
+					}
 				}
 			}
 			else
 			{
-				abilities = GetAbilitiesBySchool();	
-			}
+				string school = null;
 
-			foreach(string ability in abilities)
-			{
-				//Only use the substring if displaying all school's of magic
-				string abilityName = ability;
-				if(abilityName.Length > ABILITY_SPACING)
+				switch(abilityDisplay)
 				{
-					abilityName = abilityName.Substring(0, ABILITY_SPACING);
+					case DISPLAY_ALTERATION:
+						school = "Alteration";
+						break;
+					case DISPLAY_CREATION:
+						school = "Creation";
+						break;
+					case DISPLAY_DESTRUCTION:
+						school = "Destruction";
+						break;
+					case DISPLAY_RESTORATION:
+						school = "Restoration";
+						break;
+					case DISPLAY_META:
+						school = "Meta";
+						break;
 				}
 
-				if(!CheckAbilityHomebrew(abilityName))
+				foreach(DataRow row in table.Rows)
 				{
-					clbAbilities.Items.Add(ability);
+					//Make sure the ability is the right school to display
+					if(!row[1].ToString().Equals(school))
+					{
+						continue;
+					}
+
+					if (row[2] != null && !CheckAbilityHomebrew(row[2].ToString(), row[0].ToString()))
+					{
+						//Only display the ability name
+						clbAbilities.Items.Add(row[0].ToString());
+					}
 				}
 			}
 
@@ -2470,14 +2493,14 @@ namespace Solipstry_Character_Creator
 			{
 				clbAbilities.Items.Clear();
 
-				string query = "SELECT ability_name, school FROM Abilities WHERE effect LIKE '%" + search + "%' OR ability_name LIKE '%" + search + "%'";
+				string query = "SELECT ability_name, school, prereq FROM Abilities WHERE effect LIKE '%" + search + "%' OR ability_name LIKE '%" + search + "%'";
 				DataSet ds = PerformQuery(abilitiesConnection, query, "Abilities");
 
 				foreach (DataRow row in ds.Tables["Abilities"].Rows)
 				{
 					string abilityName = row[0].ToString();
 
-					if (chkAllAbilities.Checked && CheckAbilityHomebrew(abilityName))
+					if (chkAllAbilities.Checked && row[2] != null && CheckAbilityHomebrew(row[2].ToString(), row[0].ToString()))
 					{
 						continue;
 					}
