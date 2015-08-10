@@ -1384,7 +1384,7 @@ namespace Solipstry_Character_Creator
 				} //endif new value == checked
 				else
 				{
-					character.talents.Remove(clbTalents.SelectedItem.ToString());
+					character.talents.Remove(talentName);
 
 					//Check if the talent modifies anything (attributes, skills, etc)
 					if (modifyingTalents.Contains(talentName))
