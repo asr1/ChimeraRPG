@@ -2451,7 +2451,7 @@ namespace Solipstry_Character_Creator
 
 				DataSet ds = PerformQuery(abilitiesConnection,
 					"SELECT cost, school, effect FROM Abilities WHERE ability_name='" + ability + "'",
-					"Ablilities");
+					"Abilities");
 				DataRow row = ds.Tables["Abilities"].Rows[0];
 
 				fields.SetField(strName, ability);
