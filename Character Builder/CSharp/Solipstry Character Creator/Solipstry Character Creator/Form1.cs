@@ -2101,8 +2101,6 @@ namespace Solipstry_Character_Creator
 			checkedAbilities.AddRange(character.abilities);
 			checkedAbilities.AddRange(character.customAbilities);
 
-			sorting = true; //Don't do anything when check states change
-
 			clbAbilities.Items.Clear();
 
 			if (chkAllAbilities.Checked)
@@ -2113,6 +2111,8 @@ namespace Solipstry_Character_Creator
 			{
 				DisplayEligibleAbilities();
 			}
+
+			sorting = true; //Don't do anything when check states change
 
 			//Re-check anything that needs to be checked
 			for (int n = 0; n < clbAbilities.Items.Count; ++n)
