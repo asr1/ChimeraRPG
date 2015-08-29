@@ -60,6 +60,10 @@ namespace Solipstry_Character_Creator
 		//Spacing between ability names and schools
 		private const int ABILITY_SPACING = 30;
 
+		//Minimum and maximum values for attributes (at first level)
+		private const int ABILITY_MIN = 9;
+		private const int ABILITY_MAX = 30;
+
 		//List of talents that modify attributes, skills, etc.
 		private List<string> modifyingTalents;
 
@@ -673,14 +677,14 @@ namespace Solipstry_Character_Creator
 				goto finished;
 			}
 
-			//Check if attributes are within [9,100]
-			if(character.charisma < 9 || character.charisma > 100 ||
-				character.constitution < 9 || character.constitution > 100 ||
-				character.dexterity < 9 || character.dexterity > 100 ||
-				character.intelligence < 9 || character.intelligence > 100 ||
-				character.luck < 9 || character.luck > 100 ||
-				character.strength < 9 || character.strength > 100 ||
-				character.wisdom < 9 || character.wisdom > 100)
+			//Check if attributes are within [ABILITY_MIN, ABILITY_MAX]
+			if(character.charisma < ABILITY_MIN || character.charisma >  ABILITY_MAX ||
+				character.constitution < ABILITY_MIN || character.constitution >  ABILITY_MAX ||
+				character.dexterity < ABILITY_MIN || character.dexterity >  ABILITY_MAX ||
+				character.intelligence < ABILITY_MIN || character.intelligence >  ABILITY_MAX ||
+				character.luck < ABILITY_MIN || character.luck >  ABILITY_MAX ||
+				character.strength < ABILITY_MIN || character.strength >  ABILITY_MAX ||
+				character.wisdom < ABILITY_MIN || character.wisdom >  ABILITY_MAX)
 			{
 				hb = true;
 				goto finished;
@@ -1126,12 +1130,12 @@ namespace Solipstry_Character_Creator
 				if (e.NewValue == CheckState.Unchecked)
 				{
 					--primarySkillCount;
-					character.skills[e.Index] = 10;
+					character.skills[e.Index] -= 15;
 				}
 				else
 				{
 					++primarySkillCount;
-					character.skills[e.Index] = 25;
+					character.skills[e.Index] += 15;
 				}
 			}
 
