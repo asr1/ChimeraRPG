@@ -2665,5 +2665,10 @@ namespace Solipstry_Character_Creator
 			sorting = false;
 		}
 		#endregion
+
+		private void txtAttributes_TextChanged(object sender, EventArgs e)
+		{
+			UpdateInformation();
+		}
 	}
 }
