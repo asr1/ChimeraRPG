@@ -40,15 +40,15 @@ namespace Solipstry_Character_Creator
 		public const int LIGHT_ARMOR = 16;
 		public const int MEDICINE = 17;
 		public const int MELEE_WEAPON = 18;
-		public const int SURVIVAL = 19;
-		public const int PERCEPTION = 20;
-		public const int RANGED_COMBAT = 21;
-		public const int RESTORATION = 22;
-		public const int RIDE_DRIVE = 23;
-		public const int SECURITY = 24;
-		public const int SENSE_MOTIVE = 25;
-		public const int SLEIGHT_OF_HAND = 26;
-		public const int STEALTH = 27;
+		public const int PERCEPTION = 19;
+		public const int RANGED_COMBAT = 20;
+		public const int RESTORATION = 21;
+		public const int RIDE_DRIVE = 22;
+		public const int SECURITY = 23;
+		public const int SENSE_MOTIVE = 24;
+		public const int SLEIGHT_OF_HAND = 25;
+		public const int STEALTH = 26;
+		public const int SURVIVAL = 27;
 		public const int UNARMED_COMBAT = 28;
 
 		public static string[] SKILLS = 
