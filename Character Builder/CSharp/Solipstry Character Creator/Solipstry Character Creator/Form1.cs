@@ -2447,7 +2447,7 @@ namespace Solipstry_Character_Creator
 			int abilityNum = 1;
 			foreach (string ability in character.abilities)
 			{
-				string strName = "spell" + abilityNum + "_name";
+				string strName = "spell_" + abilityNum + "_name";
 				string strCost = "spell_" + abilityNum + "_cost";
 				string strSchool = "spell_" + abilityNum + "_school";
 				string strEffect = "spell_" + abilityNum + "_effect";
