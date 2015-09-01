@@ -2316,6 +2316,11 @@ namespace Solipstry_Character_Creator
 
 			fields.SetField("enlightenment_total", character.enlightenment.ToString());
 
+			if(lblHomebrewed.Visible)
+			{
+				fields.SetField("homebrewed", "Homebrewed");
+			}
+
 			#region Export skills
 			foreach (string skillName in Skills.SKILLS)
 			{
