@@ -2327,6 +2327,12 @@ namespace Solipstry_Character_Creator
 				//Transform the skill name to the representation used in the character sheet
 				string skill = skillName.Replace(' ', '_').Replace('/', '_').ToLower();
 
+				//Temprary fix until I get the new character sheet
+				if(skill.Equals("creation"))
+				{
+					skill = "conjuration";
+				}
+
 				string strScore = skill + "_score";
 				string strMod = skill + "_mod";
 
@@ -2336,7 +2342,7 @@ namespace Solipstry_Character_Creator
 				DataRow row = ds.Tables["Skills"].Rows[0];
 				string governingAttr = row[0].ToString();
 
-				int score = character.GetSkillValue(skill);
+				int score = character.GetSkillValue(skillName.ToLower());
 
 				score += character.CalculateModifier(character.GetAttributeValue(governingAttr));
 
