@@ -4,4 +4,4 @@ Installation instructions:
 3. Ignore any errors about "System Update Required""
 4. Run the program Solipstry Character Creator.application
 5. Click 'Install' if prompted
-6. The program can now be run from the start menu or bu running Solipstry Character Creator.application
+6. The program can now be run from the start menu or by running Solipstry Character Creator.application
