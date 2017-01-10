@@ -1,3 +1,5 @@
+// Contact Form Scripts
+
 $(function() {
 
     $("#contactForm input,#contactForm textarea").jqBootstrapValidation({
@@ -10,7 +12,6 @@ $(function() {
             // get values from FORM
             var name = $("input#name").val();
             var email = $("input#email").val();
-            //var phone = $("input#phone").val();
             var message = $("textarea#message").val();
             var firstName = name; // For Success/Failure Message
             // Check for white space in name for Success/Fail message
@@ -27,25 +28,7 @@ $(function() {
                 },
                 cache: false,
                 success: function() {
-					var settings = {
-					  "async": true,
-					  "crossDomain": true,
-					  "dataType": "jsonp",
-					  "url": "https://api.sendgrid.com/api/mail.send.json?api_user=azure_4a85e6d827d40f1a6618214e611f355a%40azure.com&api_key=podidd53e&to%5B%5D=alexandersrinehart%40gmail.com&toname%5B%5D=alexandersrinehart%40gmail.com&subject=subject&text=testingtextbody&from=alexandersrinehart%40gmail.com",
-					  "method": "POST",
-					  "headers": {
-						"authorization": "Bearer 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",
-						"cache-control": "no-cache",
-						"postman-token": "9dbd20d7-4eca-894e-58f0-f019a570e1db"
-					  }
-					}
-
-					$.ajax(settings).done(function (response) {
-					  console.log(response);
-					});                  
-
-
-				  // Success message
+                    // Success message
                     $('#success').html("<div class='alert alert-success'>");
                     $('#success > .alert-success').html("<button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;")
                         .append("</button>");
@@ -67,7 +50,7 @@ $(function() {
                     //clear all fields
                     $('#contactForm').trigger("reset");
                 },
-            })
+            });
         },
         filter: function() {
             return $(this).is(":visible");
