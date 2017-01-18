@@ -15,5 +15,5 @@
 website/font-awesome
 website/fonts
 *.htaccess
-*.
+*.htpasswd
 *.mp3
