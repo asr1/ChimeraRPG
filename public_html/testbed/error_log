@@ -1,0 +1,26 @@
+[08-Feb-2017 02:18:32 UTC] PHP Notice:  Use of undefined constant PATHFINDO_EXTENSION - assumed 'PATHFINDO_EXTENSION' in /home/altrite/public_html/testbed/upload.php on line 8
+[08-Feb-2017 02:18:32 UTC] PHP Warning:  pathinfo() expects parameter 2 to be long, string given in /home/altrite/public_html/testbed/upload.php on line 8
+[08-Feb-2017 02:18:32 UTC] PHP Notice:  Undefined index: temp_name in /home/altrite/public_html/testbed/upload.php on line 20
+[08-Feb-2017 02:26:46 UTC] PHP Notice:  Use of undefined constant PATHFINDO_EXTENSION - assumed 'PATHFINDO_EXTENSION' in /home/altrite/public_html/testbed/upload.php on line 8
+[08-Feb-2017 02:26:46 UTC] PHP Warning:  pathinfo() expects parameter 2 to be long, string given in /home/altrite/public_html/testbed/upload.php on line 8
+[08-Feb-2017 02:26:46 UTC] PHP Notice:  Undefined index: temp_name in /home/altrite/public_html/testbed/upload.php on line 20
+[08-Feb-2017 02:28:12 UTC] PHP Notice:  Undefined index: temp_name in /home/altrite/public_html/testbed/upload.php on line 20
+[08-Feb-2017 03:13:52 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:14:08 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:15:21 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:16:27 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:18:27 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:19:01 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:19:03 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:19:05 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:19:55 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:47 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:48 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:49 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:49 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:49 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:50 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:50 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:50 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:24:50 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
+[08-Feb-2017 03:25:22 UTC] PHP Notice:  Undefined index: fileToUpload in /home/altrite/public_html/testbed/upload.php on line 6
