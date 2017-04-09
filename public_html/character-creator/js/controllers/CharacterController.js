@@ -1,3 +1,3 @@
-app.controller('CharacterController', function($scope, $http) {
-    
+app.controller('CharacterController', function($scope) {
+
 });
