@@ -18,8 +18,6 @@ public_html/resources
 /Character Builder/CSharp/Solipstry Character Creator/Solipstry Character Creator/publish
 /Character Builder/CSharp/Solipstry Character Creator/Solipstry Character Creator/publish.zip
 *.7z
-public_html/font-awesome
-public_html/fonts
 *.htaccess
 *.htpasswd
 *.htgroup
