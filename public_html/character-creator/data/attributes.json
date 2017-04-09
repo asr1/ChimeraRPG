@@ -1,0 +1,68 @@
+{
+    "attributes": [
+        {
+            "name": "Charisma",
+            "abbreviation": "CHA",
+            "description": "Charisma dictates how others perceive you, and how much they like you. It controls your ability to interact and communicate with individuals, as well as your ability to manipulate them.",
+            "governs": "Disguise, Enlightenment, and Interaction",
+            "other": null,
+            "value": 20
+        },
+        {
+            "name": "Constitution",
+            "abbreviation": "CON",
+            "description": "Constitution determines your total health, as well as how resistant you are to suffocation, intoxication, and poisoning.",
+            "governs": "Heavy Armor",
+            "other": ["CON x 1.5 = max hit points"],
+            "value": 20
+        },
+        {
+            "name": "Dexterity",
+            "abbreviation": "DEX",
+            "description": "Dexterity governs your ability to move quickly and silently, and contributes to your defense in light armor.",
+            "governs": "Acrobatics, Escape, Sleight of Hand, Ranged, Ride, and Stealth",
+            "other": null,
+            "value": 20
+        },
+        {
+            "name": "Intelligence",
+            "abbreviation": "INT",
+            "description": "Intelligence determines how quickly a character learns new concepts and governs all knowledge-based skills. The Ability Points you regain each round is equal to your Intelligence score.",
+            "governs": "Chemistry, Craft, Engineering, and Knowledge",
+            "other": null,
+            "value": 20
+        },
+        {
+            "name": "Luck",
+            "abbreviation": "LCK",
+            "description": "Luck controls the number of Fortune Points characters get. It also controls less specific bonuses, such as getting better loot, or fewer random encounters. These small turns of fate are perks a GM might grant to characters with high Luck. A low Luck might result in penalties as well. Luck divided by 10 is the number of Fortune Points per day a character starts with.",
+            "governs": "Luck doesn't govern any skills directly, but can influence all or any of them.",
+            "other": null,
+            "value": 20
+        },
+        {
+            "name": "Speed",
+            "abbreviation": "SPD",
+            "description": "Speed controls total movement (in squares), how quickly you can react in a combat setting, and the number of actions you get in a round.",
+            "governs": "Block and Light Armor",
+            "other": ["3 + (Speed Modifier) = number of squares you can move with one move action", "Speed Modifier = Initiative Modifier"],
+            "value": 20
+        },
+        {
+            "name": "Strength",
+            "abbreviation": "STR",
+            "description": "Strength controls accuracy and damage in combat. Your Strength score also determines how much equipment you can carry with you.",
+            "governs": "Athletics, Melee Weapon, and Unarmed Combat",
+            "other": ["Strength * 3 = Max load you can carry at full movement", "Strength * 6 = Max load you can carry and still move", "Anything between these two numbers halves your movement"],
+            "value": 20
+        },
+        {
+            "name": "Wisdom",
+            "abbreviation": "WIS",
+            "description": "Wisdom controls Ability usage, as well as how easily your character can figure out logic puzzles.",
+            "governs": "Control, Destruction, Enhancement, Medicine, Perception, Sense Motive, Survival, and Utility",
+            "other": ["5 x Wisdom score = total Ability Points"],
+            "value": 20
+        }
+    ]
+}
