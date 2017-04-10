@@ -1,0 +1,541 @@
+[
+    {
+        "name": "Adaptive Skin",
+		"prerequisite": [],
+		"description": "You gain resist 5 to one type of damage (electric, fire, cold, etc.). You may take this Talent multiple times, selecting a different damage type each time."
+	},
+    {
+        "name": "Annihilate",
+		"prerequisite": ["Ranged 30"],
+		"description": "Upgrade your ranged weapon’s damage die from a d4 to a d6."
+	},
+    {
+        "name": "Assassin’s Threat",
+		"prerequisite": [],
+		"description": "Your damage multiplier increases by 1 against creatures granting combat advantage to you."
+	},
+    {
+        "name": "Broad Side of the Barn",
+		"prerequisite": [],
+		"description": "You gain a +1 bonus to attack rolls when targeting a creature larger than you."
+	},
+    {
+        "name": "Brute",
+		"prerequisite": ["STR 30"],
+		"description": "Increase the damage of your unarmed attack from d2 to d4."
+	},
+    {
+        "name": "Careful Steps",
+		"prerequisite": [],
+		"description": "You do not provoke opportunity attacks from an enemy for moving, providing you remain adjacent to the enemy for the entire movement."
+	},
+    {
+        "name": "Cave Dweller",
+		"prerequisite": [],
+		"description": "You can see in the dark."
+	},
+    {
+        "name": "Commanding Presence",
+		"prerequisite": [],
+		"description": "You may mark one target within your Offensive Range as a minor action, or you may mark the target(s) of your next attack as a free action. All or any creatures marked in this way are marked until the end of your next turn."
+	},
+    {
+        "name": "Crippling Shot",
+		"prerequisite": ["Ranged 30"],
+		"description": "You may choose to take a -3 penalty to a Ranged attack roll. If you hit with an attack roll made in this way, the target is slowed until the end of your next turn. If the target was slowed, they are instead knocked prone."
+	},
+    {
+        "name": "Critical Block",
+		"prerequisite": [],
+		"description": "If you roll a critical hit when making a Block check, you may choose to daze the attacker or knock it prone."
+	},
+    {
+        "name": "Critical Threat",
+		"prerequisite": [],
+		"description": "If you score a critical hit when making an attack with a Combat Skill, the target takes a penalty to attack rolls equal to 1d4 until the end of its next turn."
+	},
+    {
+        "name": "Defensive Warrior",
+		"prerequisite": ["Block 25"],
+		"description": "You can expend a Fortune Point to block as a minor action. If you have 75 block, it becomes a free action with the cost of a Fortune Point instead."
+	},
+    {
+        "name": "Deflect and Serve",
+		"prerequisite": ["Block 25"],
+		"description": "If you are targeted with a Ranged attack while blocking, and your block roll exceeds the attack roll by 5 or more, you can reflect the projectile, making a Ranged attack on the attacking creature as a free action to send its own projectile back at it."
+	},
+    {
+        "name": "Devastating Block",
+		"prerequisite": [],
+		"description": "A successful block deals damage to the attacker equal to your block modifier."
+	},
+    {
+        "name": "Devoted Hunter",
+		"prerequisite": ["Commanding Presence"],
+		"description": "One target you have marked takes two damage each round."
+	},
+    {
+        "name": "Devout Follower",
+		"prerequisite": [],
+		"description": "Gain an additional 10 Enlightenment points. You may take this Talent multiple times."
+	},
+    {
+        "name": "Devout Gambler",
+		"prerequisite": ["Enlightenment 20"],
+		"description": "Add ½ of your Enlightenment Modifier to your number of Fortune Points per day."
+	},
+    {
+        "name": "Disciple of Destruction",
+		"prerequisite": [],
+		"description": "Increase the damage die on Destruction Abilities by 1."
+	},
+    {
+        "name": "Disciple of Enhancement",
+		"prerequisite": [],
+		"description": "Any Enhancement Abilities that restore hit points now restore 5 additional hit points."
+	},
+    {
+        "name": "Dominatrix",
+		"prerequisite": [],
+		"description": "All Control Abilities you use that have an effect lasting until the end of your next turn instead last until the target can make a successful saving throw."
+	},
+    {
+        "name": "Double Shot",
+		"prerequisite": ["Ranged 30"],
+		"description": "You may make two attacks with a Ranged Weapon as a single standard action, taking a -3 penalty to each attack roll."
+	},
+    {
+        "name": "Duelist",
+		"prerequisite": ["DEX 40"],
+		"description": "When you are wielding one weapon with two hands, you gain a +2 to Melee Weapon attack rolls."
+	},
+    {
+        "name": "Dumb Luck",
+		"prerequisite": ["LCK 20"],
+		"description": "Once per day, you can substitute your Luck score for the score of any skill, prior to making a check with that skill."
+	},
+    {
+        "name": "Echolocation",
+		"prerequisite": [],
+		"description": "As a minor action, you can emit a noise and know the location of each object and creature within 5 squares of you. Whenever you do this, you cannot benefit from cover or concealment and grant combat advantage until the end of your next turn."
+	},
+    {
+        "name": "Expert Medic",
+		"prerequisite": [],
+		"description": "When using the Medicine skill to perform first aid, instead of restoring hit points equal to 1d4 times your Medicine Modifier, restore hit points equal to 1d6 times your Medicine Modifier."
+	},
+    {
+        "name": "Extremely Lucky",
+		"prerequisite": ["LCK 100", "Really Lucky"],
+		"description": "You can score a critical hit on a 17, 18, 19 or 20."
+	},
+    {
+        "name": "Extremely Speedy",
+		"prerequisite": ["SPD 100", "Really Speedy"],
+		"description": "You can take an extra standard action per turn."
+	},
+    {
+        "name": "Faith Healing",
+		"prerequisite": ["Enlightenment 25"],
+		"description": "When determining prerequisites, you may substitute your Enlightenment score in place of your Enhancement score. Powers that reference your Enhancement score or Modifier are still based on Enhancement."
+	},
+    {
+        "name": "Far Shot",
+		"prerequisite": [],
+		"description": "Choose a skill that has an associated Range. Increase that Range by 2. You may take this Talent multiple times."
+	},
+    {
+        "name": "Fools’ Greed",
+		"prerequisite": [],
+		"description": "You are not encumbered by currency.\n Note: Depending on the campaign, and what the system of currency is, currency may not count towards encumbrance. Speak with your GM to see if this is necessary."
+	},
+    {
+        "name": "Fortunateness",
+		"prerequisite": [],
+		"description": "Gain an extra Fortune Point per day. You may take this Talent multiple times."
+	},
+    {
+        "name": "Fortune’s Child",
+		"prerequisite": ["LCK 20"],
+		"description": "After rolling any die, you may spend two Fortune Points to re-roll that die. You must take the second result."
+	},
+    {
+        "name": "Friendlier Fire",
+		"prerequisite": ["WIS 45"],
+		"description": "Whenever you use an Ability that targets each creature, you take a -5 to attack rolls when rolling against an ally."
+	},
+    {
+        "name": "Good Luck",
+		"prerequisite": ["LCK 50"],
+		"description": "Gain a +1 bonus to all d20 rolls."
+	},
+    {
+        "name": "Grappler",
+		"prerequisite": [],
+		"description": "You gain a +2 bonus to checks made to grab a target."
+	},
+    {
+        "name": "Greater Shifting",
+		"prerequisite": [["DEX 60", "SPD 60"], "Improved Shifting"],
+		"description": "You can shift one square as a minor action."
+	},
+    {
+        "name": "Healing Fighter",
+		"prerequisite": [],
+		"description": "Using Enhancement Abilities does not provoke opportunity attacks."
+	},
+    {
+        "name": "Helping Hand",
+		"prerequisite": ["Enhancement 20"],
+		"description": "Any Enhancement Ability which targets only you now targets you or one adjacent ally."
+	},
+    {
+        "name": "Improved Defense",
+		"prerequisite": [],
+		"description": "You gain a +1 bonus to a defense of your choice. You may take this Talent multiple times."
+	},
+    {
+        "name": "Improved Initiative",
+		"prerequisite": [],
+		"description": "You gain a +3 bonus to your initiative. You may take this Talent multiple times."
+	},
+    {
+        "name": "Improved Recharge",
+		"prerequisite": ["INT 25"],
+		"description": "Your Ability Point regeneration rate increases by 5."
+	},
+    {
+        "name": "Improved Rushing",
+		"prerequisite": [],
+		"description": "You gain a +2 bonus to Bull Rush attempts. You may take this Talent multiple times."
+	},
+    {
+        "name": "Improved Shifting",
+		"prerequisite": [["DEX 45", "SPD 45"]],
+		"description": "You can shift two squares as a single move action."
+	},
+    {
+        "name": "Improved Teleport",
+		"prerequisite": ["WIS 40"],
+		"description": "When an effect or Ability allows you to teleport more than one square, you can split the teleportation into two separate teleportations, and take a single action between them."
+	},
+    {
+        "name": "Improvised Weapon Expert",
+		"prerequisite": ["STR 40", "Improvised Weapon Handler"],
+		"description": "Improvised weapons you wield now deal 1d8 damage."
+	},
+    {
+        "name": "Improvised Weapon Handler",
+		"prerequisite": ["STR 25"],
+		"description": "Improvised weapons you wield now deal 1d6 damage"
+	},
+    {
+        "name": "Improvised Weapon Master",
+		"prerequisite": [],
+		"description": "You gain a +2 bonus to all attack rolls with improvised weapons."
+	},
+    {
+        "name": "Increased Teleportation",
+		"prerequisite": [],
+		"description": "When an effect or Ability allows you to teleport, you may teleport two additional squares. You may take this Talent multiple times."
+	},
+    {
+        "name": "Juggernaut",
+		"prerequisite": [["Size Medium", "Size Large"]],
+		"description": "You can attempt to bull rush multiple people in one straight line."
+	},
+    {
+        "name": "Lucky",
+		"prerequisite": ["LCK 40"],
+		"description": "You can score a critical hit on a roll of 19 or 20."
+	},
+    {
+        "name": "Lucky Break",
+		"prerequisite": [],
+		"description": "Once per encounter, you can add 1/2 of your Luck Modifier to a d20 roll. This can be done after the roll has been made."
+	},
+    {
+        "name": "Lucky Shot",
+		"prerequisite": [],
+		"description": "You may expend any number of Fortune Points after a roll has been made, rather than before."
+	},
+    {
+        "name": "Master of Fortune",
+		"prerequisite": ["LCK 30"],
+		"description": "When taking damage, you may expend 2 or more Fortune Points to divide the damage taken by the amount of Fortune Points spent."
+	},
+    {
+        "name": "Massive Range",
+		"prerequisite": [],
+		"description": "The maximum Range of your Ranged Attack Skill increases by 5."
+	},
+    {
+        "name": "More Efficient, Less Wasteful",
+		"prerequisite": ["WIS 100", "Ne’er the Twain"],
+		"description": "Abilities costs half as many Ability Points to use. This also applies to sustain costs."
+	},
+    {
+        "name": "Multifariousness",
+		"prerequisite": [],
+		"description": "Once per combat, you may add a damage type to any one weapon you are holding as a minor action. The first successful attack made with this weapon each round gains that damage type. This can apply to your own body in the case of Unarmed Combat attacks."
+	},
+    {
+        "name": "Natural Armor",
+		"prerequisite": [],
+		"description": "If you take 10 or more damage from a single attack, you may reduce the damage taken by your Constitution Modifier."
+	},
+    {
+        "name": "Ne’er the Twain",
+		"prerequisite": ["WIS 75", "Wise But Efficient"],
+		"description": "When at a fork or branching of paths, you know which paths, if any, lead directly to danger."
+	},
+    {
+        "name": "Nemesis",
+		"prerequisite": [],
+		"description": "Choose a specific type of enemy (equine, alien, undead, spirit, male, etc.). Whenever dealing damage to this enemy, increase your damage die by 1."
+	},
+    {
+        "name": "Power Word",
+		"prerequisite": [],
+		"description": "A character may bind an Ability to a word per the Power Word rules (p. 43). You may take this Talent multiple times, choosing a new Ability and a new word each time.\n This Talent may also be selected to re-bind an Ability to a new word. Doing this erases the old bind."
+	},
+    {
+        "name": "Power Word II",
+		"prerequisite": ["Power Word"],
+		"description": "A character may choose whether or not to use a bound Ability upon speaking their Power Word. You may take this Talent multiple times, selecting a new Ability you have a Power Word assigned to each time."
+	},
+    {
+        "name": "Power Word III",
+		"prerequisite": ["Power Word II"],
+		"description": "A character may use an Ability bound to a Power Word when they hear that word spoken. You may take this Talent multiple times, selecting a new Ability you have a Power Word assigned to each time."
+	},
+    {
+        "name": "Powerful Strike",
+		"prerequisite": ["STR 30"],
+		"description": "Increase damage die of Melee Weapon attacks from d4 to d6."
+	},
+    {
+        "name": "Powerful Strike II",
+		"prerequisite": ["STR 40", "Powerful Strike"],
+		"description": "Increase damage die of Melee Weapon attacks from d6 to d8."
+	},
+    {
+        "name": "Powerful Strike III",
+		"prerequisite": ["STR 50", "Powerful Strike II"],
+		"description": "Increase damage die of Melee Weapon attacks from 1d8 to d10."
+	},
+    {
+        "name": "Powerful Strike IV",
+		"prerequisite": ["STR 60", "Powerful Strike III"],
+		"description": "Increase damage die of Melee Weapon attacks from d10 to d12."
+	},
+    {
+        "name": "Premonition",
+		"prerequisite": [["LCK 30", "WIS 30"]],
+		"description": "Once per day you can re-roll any die roll or allow an ally that you can see within 3 squares of you to re-roll any die roll."
+	},
+    {
+        "name": "Profound Truths",
+		"prerequisite": ["WIS 35"],
+		"description": "Truths cost half as many Enlightenment points to invoke."
+	},
+    {
+        "name": "Protector",
+		"prerequisite": ["Block 25"],
+		"description": "Once per round when you are blocking, if an adjacent ally is targeted by a melee attack, you may become the target of the attack instead. Blocking rules apply as normal."
+	},
+    {
+        "name": "Quick Draw",
+		"prerequisite": ["SPD 30"],
+		"description": "As a single minor action, you may perform two minor actions— such as drawing and stowing a weapon, drawing and drinking a potion, or drawing two weapons."
+	},
+    {
+        "name": "Quick Steps",
+		"prerequisite": [],
+		"description": "Gain a +1 bonus to movement. You may take this Talent multiple times."
+	},
+    {
+        "name": "Quick Truth",
+		"prerequisite": ["Enlightenment 25"],
+		"description": "You can activate two Truths per round as a single minor action."
+	},
+    {
+        "name": "Raised by the Blind",
+		"prerequisite": [],
+		"description": "When making an attack against a target you cannot see, you take no penalties based on sight."
+	},
+    {
+        "name": "Re-Aimed Strike",
+		"prerequisite": [],
+		"description": "Each time you hit with an attack, you may re-roll your damage die, taking the second result even if it is lower."
+	},
+    {
+        "name": "Really Lucky",
+		"prerequisite": ["LCK 80", "Lucky"],
+		"description": "You can score a critical hit on an 18, 19, or 20."
+	},
+    {
+        "name": "Really Speedy",
+		"prerequisite": ["SPD 75", "Speedy"],
+		"description": "You can take an extra move action per turn."
+	},
+    {
+        "name": "Reprogrammable Augmentation",
+		"prerequisite": [],
+		"description": "You may augment one of your hands, limbs, or appendages with a single augment. This is permanent, and cannot be removed or changed.\n \n You may take this Talent multiple times, selecting a different body part each time. If you choose a body part that is already augmented, you may change the augmentation associated with that body part."
+	},
+    {
+        "name": "Resilience",
+		"prerequisite": [],
+		"description": "You gain a +1 bonus to all saving throws. You may take this Talent multiple times."
+	},
+    {
+        "name": "Resourcefulness",
+		"prerequisite": ["WIS 25"],
+		"description": "Your Ability Point total increases by 10. You may take this Talent multiple times."
+	},
+    {
+        "name": "Rooted in Faith",
+		"prerequisite": ["Enlightenment 25"],
+		"description": "Whenever you would be subject to forced movement, you may attempt a saving throw to cancel that movement."
+	},
+    {
+        "name": "Shapeshifter",
+		"prerequisite": ["Ability Morph"],
+		"description": "Use of the Morph Ability allows you to transform your appearance to a specific creature of a given race."
+	},
+    {
+        "name": "Share the Enlightenment",
+		"prerequisite": ["Enlightenment 25"],
+		"description": "When using a Truth, you can apply the benefit to yourself or one creature within your Enlightenment Range."
+	},
+    {
+        "name": "Share the Luck",
+		"prerequisite": [],
+		"description": "Before an adjacent ally makes a roll, you may spend any number of Fortune Points, giving the benefit to the adjacent ally."
+	},
+    {
+        "name": "Shielding Healer",
+		"prerequisite": [],
+		"description": "When you use an Enhancement Ability on yourself or a friendly creature, the target gains a bonus to all defenses equal to your Enhancement Modifier until the end of your next turn."
+	},
+    {
+        "name": "Shrug It Off",
+		"prerequisite": [],
+		"description": "At the beginning of your turn you may make one extra saving throw against an effect that a save can end."
+	},
+    {
+        "name": "Skill Specialization",
+		"prerequisite": [],
+		"description": "You gain a +6 bonus in any skill. You may take this Talent multiple times."
+	},
+    {
+        "name": "Skillful Archer",
+		"prerequisite": ["Ranged 40"],
+		"description": "You can choose to make your Ranged attacks target Reflex. Attacks made in this way do 1/2 damage."
+	},
+    {
+        "name": "Slippery Slope",
+		"prerequisite": ["Ability Permafrost"],
+		"description": "Any creature that is prone and under the effects of your Permafrost Ability must make a saving throw in order to stand."
+	},
+    {
+        "name": "Small Steps",
+		"prerequisite": ["Size Small"],
+		"description": "You may move through enemy squares. Doing so provokes an attack of opportunity."
+	},
+    {
+        "name": "Speedy",
+		"prerequisite": ["SPD 50"],
+		"description": "You can take an extra minor action per turn."
+	},
+    {
+        "name": "Spot the Opening",
+		"prerequisite": ["Commanding Presence"],
+		"description": "Creatures marked by you grant combat advantage to you."
+	},
+    {
+        "name": "Spring Step",
+		"prerequisite": [],
+		"description": "You can stand as a minor action."
+	},
+    {
+        "name": "Stretch",
+		"prerequisite": [],
+		"description": "All Abilities that have a target of one adjacent creature now instead target one creature within your Modifier for that Ability’s type (Control, Destruction, Enhancement, or Utility)."
+	},
+    {
+        "name": "Strong",
+		"prerequisite": ["STR 50"],
+		"description": "You can push a creature one square when you hit them with a melee or unarmed attack."
+	},
+    {
+        "name": "Studious",
+		"prerequisite": [],
+		"description": "You learn an additional Ability for which you meet the requirements. You may take this Talent multiple times."
+	},
+    {
+        "name": "Stunning Critical",
+		"prerequisite": ["Melee Weapon 75"],
+		"description": "When you score a critical hit with a melee weapon, the target is stunned until the end of your next turn."
+	},
+    {
+        "name": "Tar and Feather",
+		"prerequisite": [],
+		"description": "When you slow a target, that target takes a -2 penalty to its next attack roll."
+	},
+    {
+        "name": "Theft of Luck",
+		"prerequisite": [],
+		"description": "Choose an ally within 5 squares of you with at least one Fortune Point. That ally loses one Fortune Point and takes a -1 penalty to their next die roll. You gain a +1 to your next die roll."
+	},
+    {
+        "name": "Thick Skin",
+		"prerequisite": [],
+		"description": "Gain an additional 5 hit points. You may take this Talent multiple times."
+	},
+    {
+        "name": "Tricky Fighting",
+		"prerequisite": ["Size Small", "Tricky Steps"],
+		"description": "You can stand and fight in the same square as a small enemy.\n Any attacks that do not include the enemy whose square you are in provoke an opportunity attack from that enemy."
+	},
+    {
+        "name": "Tricky Steps",
+		"prerequisite": ["Size Small", "Small Steps"],
+		"description": "Your movement through enemy squares no longer provokes opportunity attacks."
+	},
+    {
+        "name": "Two Weapon Blocking",
+		"prerequisite": [],
+		"description": "You may count one off-hand weapon as a shield [+1 AC, +5 to Block score]."
+	},
+    {
+        "name": "Two Weapon Critical",
+		"prerequisite": ["Two Weapon Mastery"],
+		"description": "You may score a critical hit with an off-hand weapon on a 19 or 20."
+	},
+    {
+        "name": "Two Weapon Fighting",
+		"prerequisite": ["DEX 30", "SPD 20"],
+		"description": "You may make multiple Melee Weapon or Ranged attacks per turn, one with each weapon you wield, up to your Speed Modifier. \n All attacks after the first have a cumulative -4 penalty."
+	},
+    {
+        "name": "Two Weapon Mastery",
+		"prerequisite": ["DEX 60", "Two Weapon Fighting"],
+		"description": "If you chose to make multiple attacks per turn, attacks after the first suffer from a cumulative -2 penalty, rather than a -4."
+	},
+    {
+        "name": "Utilititarian",
+		"prerequisite": ["WIS 35"],
+		"description": "You may double the duration of any Utility Ability you use."
+	},
+    {
+        "name": "Versatility",
+		"prerequisite": [],
+		"description": "Choose one type of damage. Whenever you deal damage with an Ability, you may add the selected type."
+	},
+    {
+        "name": "Wise and Efficient",
+		"prerequisite": ["WIS 50"],
+		"description": "When you use the same Ability or Truth two rounds in a row, the second costs half as much as the original cost. The cost will never go below half the original cost."}
+]
