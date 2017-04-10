@@ -1,0 +1,610 @@
+{
+    "skills":  [   
+        {
+            "name":"Acrobatics",
+			"heavy_armor_penalty": true,
+			"attribute":"Dexterity",
+            "description": ["Balancing and coordination"],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You may substitute your Acrobatics score for Block when making Block checks. This does not apply when determining prerequisites for Talents or other purposes. When you do this, earn tallies in Acrobatics, rather than Block."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You may climb your movement up any vertical surface, but you must end your movement on a horizontal surface."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You may move your movement across non-dangerous liquid, such as water, as long as you end your movement on solid ground. If you end your turn on water, you will sink."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Athletics",
+			"heavy_armor_penalty": false,
+			"attribute":"Strength",
+            "description": ["Jumping, climbing, and other physical activity"],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain a +2 bonus to Interaction checks aiming to seduce or woo."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You gain a +2 bonus to Interaction checks aiming to intimidate."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You gain a +5 bonus to Speed or Constitution."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Block",
+			"heavy_armor_penalty": false,
+			"attribute":"Strength",
+            "description": ["Blocking attacks"],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "On a successful block, deal Strength Modifier damage to attacker."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "On a successful block, deal 5 + Strength Modifier damage to the attacker. This replaces the previous perk."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You can block as a minor action."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Chemistry",
+			"heavy_armor_penalty": false,
+			"attribute":"Intelligence",
+            "description": [
+                "Chemistry can represent everything from pharmacology to alchemy", 
+                "Creating chemicals, potions, pills (all referred to as compounds) with properties (healing, explosive, increased Charisma, causes confusion, etc)",
+                "Identifying unknown compounds"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You can create compounds that have mulitple properties."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "With a successful Chemistry check, you can negate the effect of specific properties of a compound."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You are immune to poison and poison damage."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Control",
+			"heavy_armor_penalty": true,
+			"attribute":"Wisdom",
+            "description": [
+                "Exerting your will upon friends, foes, and the battlefield using your Abilities",
+                "The number of Control Abilities you know is equal to your Control Modifier. When your Control Modifier increases, you can select a new Control Ability to learn"
+            ],
+            "benefits": null,
+            "value": 10
+        },
+        {
+            "name":"Craft",
+			"heavy_armor_penalty": false,
+			"attribute":"Intelligence",
+            "description": [
+                "Creating common objects",
+                "In a day's work, a novice can earn enough for an evening's meal. A master can make a comfortable living wage."
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain a +1 to attack rolls when using a weapon you crafted."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You gain a +2 AC when wearing armor you crafted."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You gain a +2 on all interaction checks when buying or selling crafted items or raw materials."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Destruction",
+			"heavy_armor_penalty": true,
+			"attribute":"Wisdom",
+            "description": [
+                "Using offensive Abilities, often controlling elements",
+                "The number of Destruction Abilities you know is equal to your Destruction Modifier. When your Destruction Modifier increases, you can select a new Destruction Ability to learn."
+            ],
+            "benefits": null,
+            "value": 10
+        },
+        {
+            "name":"Disguise",
+			"heavy_armor_penalty": false,
+			"attribute":"Charisma",
+            "description": ["Creating or implementing a disguise on yourself or a willing/helpless individual"],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain a +2 bonus to Interaction checks when disguised."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You take no penalty for disguising yourself (or others) as a differently sized creature."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You take no penalty for disguising yourself (or others) as a differently shaped creature (humanoid to non-humanoid, for example)."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Engineering",
+			"heavy_armor_penalty": false,
+			"attribute":"Intelligence",
+            "description": [
+                "Using a device, tool, or piece of technology",
+                "Setting up or disabling explosive mines or similar devices",
+                "Building technology, tools, mines, complex weaponry, contraptions, etc.",
+                "Understanding the use of unfamiliar devices",
+                "Identifying points of structural weakness"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You can figure out the use and design of a device or trap simply by noticing it."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "Once per day, you can bypass a trap without setting it off or disabling it."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "Once per day, you can collect a trap without having to disarm it. The trap will not go off until it is set again and triggered."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Enhancement",
+			"heavy_armor_penalty": true,
+			"attribute":"Wisdom",
+            "description": [
+                "Healing yourself or allies with Abilities",
+                "Creating defensive barrieres of protection",
+                "The number of Enhancement Abilities you know is equal to your Enhancement Modifier. When your Enhancement Modifier increases, you can select a new Enhancement Ability to learn."
+            ],
+            "benefits": null,
+            "value": 10
+        },
+        {
+            "name":"Enlightenment",
+			"heavy_armor_penalty": false,
+			"attribute":"Charisma",
+            "description": [
+                "Understanding of religions, prayers, beliefs, ceremonies, or rituals",
+                "Granting bonuses and special effects"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You can have 2 Truths active at one time."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You can have 3 Truths active at one time."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You can have 4 Truths active at one time."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Escape",
+			"heavy_armor_penalty": true,
+			"attribute":"Dexterity",
+            "description": [
+                "Slipping out of ropes, cages, or other constraints",
+                "Constraining others with bonds"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain a +2 bonus to checks made to secure or restrain another creature."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "Once per day, you can immediately escape from limb restraints."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "Upon simple inspection, you immediately identify weak points in cages, containers, and walls."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Heavy armor",
+			"heavy_armor_penalty":  false,
+			"attribute":"Constitution",
+            "description": ["Avoiding damage with heavy armor"],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "The penalties to skills incurred by wearing heavy armor are halved."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "The penalty to Speed incurred by wearing heavy armor is halved."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "Worn heavy armor doesn't contribute to encumbrance."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Interaction",
+			"heavy_armor_penalty": false,
+			"attribute":"Charisma",
+            "description": ["Lying, seducing, planting seeds of doubt, inspiring allies, intimidating enemies, persuading, and concealing secret messages in speech."],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "Allies within 5 squares of you gain a +1 bonus to initiative."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "Adjacent opponents take a -2 to attack rolls against you."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "Once per day, you may grant an adjacent ally a re-roll on any die roll."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Knowledge",
+			"heavy_armor_penalty": false,
+			"attribute":"Intelligence",
+            "description": [
+                "Knowledge of history, monsters, folklore, mathematics, or most other subjects taught by an education",
+                "Learning languages, interpreting and communicating in languages unfamiliar to you, deciphering foreign scripts"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain an extra Talent."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You gain an extra Talent."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You gain an extra Talent."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Light armor",
+			"heavy_armor_penalty": false,
+			"attribute":"Speed",
+            "description": ["Avoiding damage with light armor"],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "Once per day, while wearing light or no armor, you gain a +2 bonus to a skill check of any skill that would be penalized in heavy armor. This bonus can be applied after the check has been made."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You gain a +1 Reflex while in light armor."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "Worn light armor has no penalty for encumbrance."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Medicine",
+			"heavy_armor_penalty": false,
+			"attribute":"Wisdom",
+            "description": [
+                "Providing first aid and healing allies in combat",
+                "Examining corpses for cause of death",
+                "Curing disease or poison",
+                "Stabilizing a dying creature (bring them to 1 hp) so they can be healed",
+                "Stabilizing a dying creature requires a DC 15 medicine check"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain a +5 bonus to stabilize a  dying creature."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You may stabilize a dying creature as a minor action."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You gain a +2 bonus to identifying and curing diseases and poisons."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Melee Weapon",
+			"heavy_armor_penalty": false,
+			"attribute":"Strength",
+            "description": ["Accuracy and damage with melee weapons"],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "When you score a critical hit with a melee weapon, the target is slowed until the end of your next turn."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "When you score a critical hit with a melee weapon, you may choose whether the target is slowed or knocked prone."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "When you score a critical hit with a melee weapon, you may choose whether the target is slowed, knocked prone, or dazed."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Perception",
+			"heavy_armor_penalty": false,
+			"attribute":"Wisdom",
+            "description": [
+                "Hearing, seeing, feeling, or otherwise sensing that something is out of place",
+                "Detecting traps"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain a +2 bonus to checks made to locate hidden doors."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You gain a +5 bonus to Sense Motive."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You can follow any tracks made in the last two days, even over hard ground or made by a small creature."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Ranged",
+			"heavy_armor_penalty": false,
+			"attribute":"Dexterity",
+            "description": [
+                "Eliminating enemies at range throug hte use of thrown or launched projectiles",
+                "Throwing grabbed allies, enemies, or objects"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "When you score a critical hit with a ranged weapon, the target grants combat advantage until the end of your next turn."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "When you score a critical hit with a ranged weapon, you may choose whether the target grants combat advantage, or is slowed."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "When you score a critical hit with a ranged weapon, you may choose whether the target grants combat advantage, is slowed, or is stunned."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Ride/Drive",
+			"heavy_armor_penalty": false,
+			"attribute":"Dexterity",
+            "description": [
+                "Mounting and riding exotic animals",
+                "Driving or piloting a vehicle"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You can use your Ride skill in place of interaction to mount an unwilling creature."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You can use a vehicle or mount an animal that was not designed for creatures shaped like you."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You can ride creatures that are not normally considered mountable, provided they can physically support you."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Security",
+			"heavy_armor_penalty": false,
+			"attribute":"Intelligence",
+            "description": [
+                "Opening locks and determining access codes",
+                "Setting up or breaching security systems",
+                "Disabling traps"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "Once per day, you can use your Security score in place of your Stealthy score when making a check."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You can attempt to pick a lock from 5 squares away, providing you have a clear path to the lock. This is undetectable unless one is observing the lock in question."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You can immediately detect if you are being watched remotely (via cameras, scrying Abilities, etc.)"
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Sense Motive",
+			"heavy_armor_penalty": false,
+			"attribute":"Wisdom",
+            "description": [
+                "Sensing other's intentions, including lies, malice, etc.",
+                "Detecting best way to motivate individuals (money, threats, love, fame)"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain a +2 bonus to detect if a person you are speaking to  intends to harm you or your party."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You gain a +2 bonus to detect lies."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You instinctively know what motivates a person (greed, lust, power, etc.)"
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Sleight of Hand",
+			"heavy_armor_penalty": true,
+			"attribute":"Dexterity",
+            "description": ["Performing small tricks, prestidigitation, stealing a small item off a person, etc."],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You gain a +2 bonus to Interaction checks amde to entertain an audience."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You can lift up to 3 lbs. off a person without taking a penalty."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You can hide up to three items each no bigger than one cubic foot on your person. A perception check of 7 + your Sleight of Hand Modifier is required to find any of the items."
+                }
+            ],
+            "value": 10
+        },
+         {
+            "name":"Stealth",
+			"heavy_armor_penalty": true,
+			"attribute":"Dexterity",
+            "description": [
+                "Remaining hidden",
+                "Moving or performing actions without being noticed",
+                "Running gives a -5 penalty to any stealth check"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "Running incurs no penalties to stealth."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "When attacking enemies you are hidden from, increase your damage die by one."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "When attacking enemies you are hidden from, increase your damage die by two. This replaces the previous perk."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Survival",
+			"heavy_armor_penalty": false,
+			"attribute":"Wisdom",
+            "description": [
+                "Knowledge of nature: Plants, animals, edible mushrooms, poisonous herbs, etc.",
+                "Discerning habitats and weaknesses of natural creatures",
+                "Tracking animals",
+                "Determining location and time of day",
+                "Surviving in various environments"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You inherently know the Cardinal directions."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You know all natural resistances and vulnerabilities a creature has."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You can survive outside of civilization for a number of days equal to your Survival Modifier without having to make a check."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Unarmed Combat",
+			"heavy_armor_penalty": false,
+			"attribute":"Strength",
+            "description": [
+                "Accuracy and damage with melee weapons",
+                "An expert of unarmed combat is as likely to strike with a hand as to kick or even headbutt"
+            ],
+            "benefits": [
+                {
+                    "cost": 25,
+                    "benefit": "You may make two unarmed attacks per standard action."
+                },
+                {
+                    "cost": 50,
+                    "benefit": "You may make three unarmed attacks per standard action. This replaces the previous perk."
+                },
+                {
+                    "cost": 75,
+                    "benefit": "You may make four unarmed attacks per standard action. This replaces the previous perk."
+                }
+            ],
+            "value": 10
+        },
+        {
+            "name":"Utility",
+			"heavy_armor_penalty": true,
+			"attribute":"Wisdom",
+            "description": [
+                "Changing matter or reality to suit your needs",
+                "The number of Utility Abilities you know is equal to your Utility Modifier. When your Utility Modifier increases, you can select a new Utility Ability to learn."
+            ],
+            "benefits": null,
+            "value": 10
+        }
+    ]
+}
