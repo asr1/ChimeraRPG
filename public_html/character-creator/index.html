@@ -202,7 +202,7 @@
                 <div class="section-label center">Choose <strong>{{remaining}}</strong> talent{{remaining == 1 ? "" : "s"}}</div>
                 <div ng-repeat="talent in talents track by $index">
                    <div class="form-group">
-                       <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}"><input type="checkbox" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
+                       <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
                    </div>
                 </div>
             </div>
