@@ -183,7 +183,7 @@
                 <div ng-repeat="skill in skills track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
-                            <input type="checkbox" class="col-sm-1">
+                            <input type="checkbox" ng-click="skillSelected($event, $index)" class="col-sm-1">
                             <span class="col-sm-1">{{skill.value}}</span><span class="col-sm-8">{{skill.name}}</span>
                         </label>
                     </div>
