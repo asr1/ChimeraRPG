@@ -216,7 +216,7 @@
                 Abilities
             </div>
             <div class="panel-body">
-                <div class="col-sm-12 center">Choose <strong>{{controlRemaining}} Control</strong> {{controlRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div class="col-sm-12 section-label center">Choose <strong>{{controlRemaining}} Control</strong> {{controlRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}"><input type="checkbox" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span></label>
