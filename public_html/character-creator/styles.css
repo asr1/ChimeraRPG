@@ -6,6 +6,10 @@
     background-color: #ffffff;
 }
 
-.ability-label {
+.section-label {
     padding-top: 1em;
+}
+
+.center {
+    text-align: center;
 }
