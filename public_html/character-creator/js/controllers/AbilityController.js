@@ -8,4 +8,11 @@ app.controller('AbilityController', function($scope, $http) {
     }, err => {
         console.log(err);
     });
+
+    $scope.abilitySelected = function($event, index, type) {
+        const checkbox = $event.target;
+
+        $scope.abilities[type][index].selected = checkbox.checked;
+        $scope[type + "Remaining"] += (checkbox.checked ? -1 : 1);
+    };
 });

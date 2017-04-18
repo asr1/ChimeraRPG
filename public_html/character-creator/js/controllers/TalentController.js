@@ -11,5 +11,5 @@ app.controller('TalentController', function($scope, $http) {
 
         $scope.talents[index].selected = checkbox.checked;
         $scope.remaining += (checkbox.checked ? -1 : 1);
-    }
+    };
 });
