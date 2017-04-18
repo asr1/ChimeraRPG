@@ -1,756 +1,764 @@
-{
-    "abilities": [
-        {
-	    	"type": "Control",
-	    	"name": "Armistice",
-	    	"cost": "15",
-	    	"prereqs": [],
-	    	"effect": "Each creature within 1/2 your Control Range is disrupted until they are targeted by an attack (save ends).",
-	    	"flavor": "“I think I wil just... you know. Leave?”"
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Backfire",
-	    	"cost": "20",
-	    	"prereqs": ["Control 15"],
-	    	"effect": "Make an attack vs Will against one creature within 1/2 your Control Range. If the attack is successful, that creature gains backfire equal to your Control score.",
-	    	"flavor": "Whoops!"
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Decoy",
-	    	"cost": "175",
-	    	"prereqs": ["Control 30"],
-	    	"effect": "You create the image of a small creature with one hit point and defenses equal to 10+ your Control Modifier. While this creature exists, you cannot be targeted with an attack that does not also include this creature. As a move action you can move the creature a number of squares equal to your movement. As a standard action you can make a melee attack through the creature, using your Control score and a d2 for damage die. The creature must remain within your Control Range relative to you at all times (sustain 80).",
-	    	"flavor": "The bigger they are, the more loyal their subordinates are."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Demoralize",
-	    	"cost": "30",
-	    	"prereqs": ["Control 20"],
-	    	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If hit, the creature takes a penalty to attack rolls and saving throws equal to -1/2 your Control Modifier (save ends).",
-	    	"flavor": "You call your enemy a mean name. He’s sad."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Disorient",
-	    	"cost": "60",
-	    	"prereqs": ["Control 25"],
-	    	"effect": "Make an attack vs. Will against one creature within your Control Range. If it hits, the creatures is dazed and confused (save ends both).",
-	    	"flavor": "The brainwaves of an inept mind are so easy to hinder."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Dishearten",
-	    	"cost": "35",
-	    	"prereqs": ["Control 20"],
-	    	"effect": "Make an attack vs. Will against each creature within 1/2 your Control Range. Any creature hits takes a penalty to all attack rolls and saving throws equal to your Control Modifier until the end of your next turn.",
-	    	"flavor": "Remind your enemies that nothing they do will ever be good enough."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Drain Ability",
-	    	"cost": "0",
-	    	"prereqs": ["Control 20"],
-	    	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the target loses 20 Ability Points (miss: 10 Ability Points). You regain Ability Points equal to the amount lost.",
-	    	"flavor": "You leech energy off your enemies to replenish your own depleted stores."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Empulse",
-	    	"cost": "40",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Reflex against each creature within 1/2 your Control Range. Each creature hit is either knocked prone, slowed until the end of your next turn, or pushed back 2 squares (your choice).",
-	    	"flavor": "A burst of energy explodes from you, knocking your foes off balance."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Enthrall",
-	    	"cost": "120",
-	    	"prereqs": ["Control 30"],
-	    	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, you dominate the creature (save ends). You can only dominate one creature at a time with this Ability.",
-	    	"flavor": "You enter your enemy’s mind and you own it."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Infection",
-	    	"cost": "40",
-	    	"prereqs": ["Control 30"],
-	    	"effect": "Make an attack vs. Fortitude against one creature you can see within your Control Range. If the attack hits, the creature is affected by a poison. While affected, the character is weakened and blinded (save ends both). Each failed saving throw incurs a cumulative -1 to save, for maximum of -5.",
-	    	"flavor": "Pestilence bursts\n forth from you,\n causing great\n leaking boils and\n pustules to form\n on the bodies of\n your enemies."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Inspire Fear",
-	    	"cost": "90",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the target cannot attack you until the end of your next turn. This also gives you a bonus to Interaction equal to your Control Modifier.",
-	    	"flavor": "“It starts as a tendril of worry, creeping in the depths of your mind.”"
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Inspire Terror",
-	    	"cost": "120",
-	    	"prereqs": ["Control 40", "Inspire Fear"],
-	    	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the target is disrupted until the end of your next turn. This also gives you a bonus to Interaction equal to your Control Modifier.",
-	    	"flavor": "Fear. So powerful, so easy to instill."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Mass Deafen",
-	    	"cost": "45",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Will against each creature within 1/2 your Control Range. Each creature hit is deafened until the end of your next turn.",
-	    	"flavor": "A bang erupts from you, disorienting your foes."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Mass Inspire Fear",
-	    	"cost": "150",
-	    	"prereqs": ["Control 40", "Inspire Terror"],
-	    	"effect": "Make an attack vs. Will against each enemy within five squares of you. Each creature hit cannot attack you until the end of your next turn. (Sustain 20 points per target affected).",
-	    	"flavor": "Nightmares have nothing on me."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Mass Inspire Terror",
-	    	"cost": "200",
-	    	"prereqs": ["Control 50", "Mass inspire Fear"],
-	    	"effect": "Make an attack vs. Will against each enemy within five squares of you. Each target hit is disrupted until the end of your next turn.",
-	    	"flavor": "They can’t attack what they’re afraid to touch."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Permafrost",
-	    	"cost": "35",
-	    	"prereqs": [],
-	    	"effect": "You create a zone of ice over each square within 1/2 your Control Range. Choose one of the following effects (sustain 15): each square within the zone is difficult terrain or each creature who moves onto or through this zone must make a saving throw to avoid being knocked prone. Note that this save does not need to be made for each square if multiple are crossed.",
-	    	"flavor": "If you can’t beat ‘em, knock ‘em down."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Petrify",
-	    	"cost": "120",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Fortitude against an adjacent creature. If the attack hits, the creature is petrified, save ends. This attack does not provoke an attack of opportunity.",
-	    	"flavor": "*Serpents for hair sold separately."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Plague",
-	    	"cost": "250",
-	    	"prereqs": ["Control 55", "Infection"],
-	    	"effect": "Make an attack vs Fortitude against one creature you can see within your Control Range. If the attack hits, the creature is dazed, takes ongoing damage equal to your Control Modifier, and suffers from a -1 penalty to all die rolls (sustain minor). The target may attempt to save to end the effects of Plague, but each failed saving throw increases the penalty to all die rolls by 1.",
-	    	"flavor": "Green boils appear and burst, disorienting the target. Then the wheezing starts."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Push",
-	    	"cost": "90",
-	    	"prereqs": ["Control 40"],
-	    	"effect": "Make an attack vs. Reflex against one creature you can see within your Control Range. If the attack hits, the creature is pushed a number of squares equal to your Control Modifier and is dazed until the end of your next turn.",
-	    	"flavor": "Energy bursts from within you, knocking your enemy back."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Quell",
-	    	"cost": "30",
-	    	"prereqs": ["Control 20"],
-	    	"effect": "Make an attack vs. Will against one creature within your Control Range. If the attack hits, the target is debilitated (save ends).",
-	    	"flavor": "“Hush little baby, don’t say a word...”"
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Reversal",
-	    	"cost": "150",
-	    	"prereqs": ["Control 50"],
-	    	"effect": "Choose one creature within your Control Range. Whenever that creature deals damage before the end of your next turn, it takes damage equal to the damage it dealt.",
-	    	"flavor": "Unhappy with the results, you reverse time itself, nullifying the last few seconds."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Silence",
-	    	"cost": "80",
-	    	"prereqs": ["Control 20"],
-	    	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the creature cannot use any Abilities until the end of your next turn.",
-	    	"flavor": "You cease the ramblings and chanting of your foes."
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Stun",
-	    	"cost": "125",
-	    	"prereqs": ["Control 30"],
-	    	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the target is stunned until the end of your next turn. If the attack misses, the target is slowed until the end of your next turn.",
-	    	"flavor": "“Really, that’s close enough.”"
-	    },
-        {
-	    	"type": "Control",
-	    	"name": "Tempest",
-	    	"cost": "300",
-	    	"prereqs": ["Control 80"],
-	    	"effect": "Make an attack vs. Reflex against each enemy within 1/2 your Control Range. Each target hit takes damage equal to your Control Modifier, is pushed a number of squares equal to your Control Modifier, knocked prone, and stunned until the end of your next turn. If an attack misses, the target takes 1/2 damage, and no other effects.",
-	    	"flavor": "Lie down and acknowledge my power!"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Arc",
-	    	"cost": "90",
-	    	"prereqs": ["Destruction 30"],
-	    	"effect": "Make an attack vs. Reflex against each creature within blast 2. Each creature hit takes electrical damage equal to 1d6 times your Destruction Modifier (miss: 1/2 damage).",
-	    	"flavor": "Well, Mr. Orchestra, it looks like you really are a good conductor."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Bone Spikes",
-	    	"cost": "35",
-	    	"prereqs": ["Destruction 30"],
-	    	"effect": "Make an attack vs. Fortitude against one creature you can see within your Destruction Range. If the attack hits, the target is prone and takes ongoing 5 damage (save ends both).",
-	    	"flavor": "Small caltrops start growing in your enemy’s flesh, piercing and tearing whenever it moves."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Crush",
-	    	"cost": "60",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Fortitude against one creature you can see within your Destruction Range. If the attack hits, the target takes damage equal to 1d10 times your Destruction Modifier.",
-	    	"flavor": "Pressure flows from your hands, compressing your opponent’s body."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Curtain of Fire",
-	    	"cost": "145",
-	    	"prereqs": ["Destruction 25"],
-	    	"effect": "Make an attack vs. Reflex against each creature burst 1 within your Destruction Range. Each creature hit with the attack takes fire damage equal to 1d6 times your Destruction Modifier.",
-	    	"flavor": "Enemies are best served crispy."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Death Field",
-	    	"cost": "150",
-	    	"prereqs": ["Destruction 60"],
-	    	"effect": "Make an attack vs. Fortitude against each living enemy you can see within your Destruction Range. Each enemy hit takes damage equal to 1d4 times your Destruction Modifier (miss: 1/2 damage). You regain hit points equal to 2 times the damage dealt to a single target.",
-	    	"flavor": "A low whining hum emanates from the air around you as a glowing sphere expands outward from you, growing bright while stealing the lives of your foes."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Debris Slam",
-	    	"cost": "50",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Reflex against one creature you can see within 1/2 your Destruction Modifier. If the attack hits, the target takes damage equal to 1d8 times your Destruction Modifier.",
-	    	"flavor": "“Take THIS clump of garbage and THAT clump of garbage!”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Gambit",
-	    	"cost": "30",
-	    	"prereqs": [],
-	    	"effect": "Make 1d6 attacks. If the result on the d6 was even, these attacks target enemies. If the result was odd, this attack targets allies. You may distribute these attacks as you choose, in accordance with the die, provided you can see each target. Each attack deals damage equal to your Luck Modifier. You do not need to roll to hit.",
-	    	"flavor": "“I don’t need skill, I’ve got Luck on my side!”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Injure",
-	    	"cost": "80",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Fortitude against one creature you can see within your Destruction Range. If the attack hits, the creature takes ongoing damage equal to your Destruction Modifier (save ends).",
-	    	"flavor": "Tearing flesh, bones, and organs, you cause your foes to writhe in pain."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Kismet",
-	    	"cost": "200",
-	    	"prereqs": ["Destruction 45"],
-	    	"effect": "For each creature within 1/2 your Destruction Range, flip a coin. If it is heads, the next attack that creature makes will be a critical hit. If it is tails, that creature takes damage equal to 1/2 of its remaining hit points.",
-	    	"flavor": "Are you feeling lucky?"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Lottery",
-	    	"cost": "125",
-	    	"prereqs": ["Destruction 20"],
-	    	"effect": "Choose one creature within your Destruction Range. Roll 1d8. If the result is odd, the creature regains health equal to the result of the roll times your Luck Modifier. If the result is even, the creature takes damage equal to the result of the roll times your Luck Modifier.",
-	    	"flavor": "“Well, what are the odds of that?”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Maelstrom of Shards",
-	    	"cost": "80",
-	    	"prereqs": ["Destruction 20"],
-	    	"effect": "Make an attack vs Reflex against one creature within 1/2 your Destruction Range. If hit, the creature takes 1d4 times your Destruction Modifier and its space, along with each square adjacent to its space is filled with jagged shards until the end of your next turn. Any creature that enters into the shards or starts its turn there takes damage equal to your Destruction Modifier.",
-	    	"flavor": "“You’re going to want to plan your next steps very carefully.”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Pestilence",
-	    	"cost": "50",
-	    	"prereqs": [],
-	    	"effect": "You create a zone of noxious gas burst 3 centered within your Destruction Range. Each creature that starts its turn in this zone or moves into it takes damage equal to your Destruction Modifier (Sustain 20).",
-	    	"flavor": "“LET MY PEOPLE GO!”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Pulse",
-	    	"cost": "15",
-	    	"prereqs": [],
-	    	"effect": "One creature within 10 squares of you takes damage equal to your Destruction Modifier. You do not have to make an attack roll.",
-	    	"flavor": "You strike out with the simplest thing you know: A simple probe of light."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Ridicule",
-	    	"cost": "60",
-	    	"prereqs": ["Destruction 25", "Taunt"],
-	    	"effect": "Make an attack vs. Will against each enemy within 2 squares of you. If the attack hits, they are marked by you, and you may pull the target 1 square. Then you may make a Melee Weapon or Unarmed Combat attack against each enemy adjacent to you.",
-	    	"flavor": "“Bring it.”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Scatterbrain",
-	    	"cost": "175",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Will against each enemy within 1/2 your Destruction Range. Each creature hit takes damage equal to 1d6 times your Destruction Modifier.",
-	    	"flavor": "“Man, I just have the worst headache ever.”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Scream",
-	    	"cost": "60",
-	    	"prereqs": [],
-	    	"effect": "Make an attack vs. Will blast 2, targeting each creature. Each creature hit takes damage equal to 1d4 times your Destruction Modifier and suffers a -2 penalty to attack rolls until the end of your next turn.",
-	    	"flavor": "A deep call erupts from your throat, striking those around you."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Storm",
-	    	"cost": "120",
-	    	"prereqs": ["Destruction 50", "Arc"],
-	    	"effect": "Make an attack vs. Reflex against each creature burst 1 within your Destruction Range. Each creature hit takes electrical damage equal to 1d6 times your Destruction Modifier, and is debilitated until the end of your next turn (miss: 1/2 damage, no effects).",
-	    	"flavor": "“Sorry, Grog, it’s hard to aim the cosmos!”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Sunder",
-	    	"cost": "175",
-	    	"prereqs": [],
-	    	"effect": "You create a number of holes or cracks totaling no more than 35 cubic feet in volume in an object you are touching. This Ability takes three rounds (18 seconds) to use, and you must be constantly touching the object for the duration of the Ability.",
-	    	"flavor": "“This dam’s just for show, right?”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Taunt",
-	    	"cost": "25",
-	    	"prereqs": [],
-	    	"effect": "As a minor action, enemies within 1/2 your Destruction Range are marked by you.",
-	    	"flavor": "“Come and get me, you big, dumb... uh oh.”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Throw Weapon",
-	    	"cost": "75",
-	    	"prereqs": ["Destruction 30"],
-	    	"effect": "Must be holding a melee weapon to use\n. Make an attack vs. Reflex against one creature within 1/2 your Destruction Range. If the attack hits, the target takes damage equal to 1d6 times your Destruction Modifier, and you may make the same attack again against one additional creature within 1/2 your Destruction Range. The weapon returns to your hand after the second attack.",
-	    	"flavor": "After careful aim, a weapon flies towards its mark, striking true."
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Wallop",
-	    	"cost": "50",
-	    	"prereqs": [],
-	    	"effect": "The next time you roll damage, increase the damage die by 1. This Ability takes a minor action to use.",
-	    	"flavor": "“Take... THAT!”"
-	    },
-        {
-	    	"type": "Destruction",
-	    	"name": "Wreckage Zephyr",
-	    	"cost": "70",
-	    	"prereqs": ["Destruction 40"],
-	    	"effect": "Make an attack vs Reflex against each creature within blast 2. Each creature hit takes damage equal to 1d4 times your Destruction Modifier.",
-	    	"flavor": "I’m not sure the game designers know what “Zephyr” means."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Affinity",
-	    	"cost": "30",
-	    	"prereqs": [],
-	    	"effect": "You regain an extra ten Ability Points at the start of your turn (sustain minor).",
-	    	"flavor": "The candle that burns half as fast is the same candle that is going to kill you."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Armor",
-	    	"cost": "100",
-	    	"prereqs": ["Enhancement 60", "Shield"],
-	    	"effect": "You gain a +6 bonus to all\n defenses and saving throws\n (sustain 45).",
-	    	"flavor": "Glowing energy appears around you, forming to your body in a protective shell."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Aura",
-	    	"cost": "70",
-	    	"prereqs": [],
-	    	"effect": "You gain a +2 bonus to all defenses and saving throws (Sustain 30).",
-	    	"flavor": "You call forth a shimmering shield to deflect the blows aimed your way."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Awaken",
-	    	"cost": "10",
-	    	"prereqs": [],
-	    	"effect": "As a minor action, restore your Enlightenment Points to full.",
-	    	"flavor": "My soul shall be healed."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Barrier",
-	    	"cost": "40",
-	    	"prereqs": ["Enhancement 30"],
-	    	"effect": "For the next three rounds, you gain damage reduction equal to your Enhancement Modifier.",
-	    	"flavor": "You might not be able to see the wall, but you will know it is there."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Battle Focus",
-	    	"cost": "80",
-	    	"prereqs": ["Enhancement 40"],
-	    	"effect": "For the next three rounds, your melee damage die increases by one, and you gain a +2 bonus to attack rolls and saving throws.\n While this effect persists, you and allies adjacent to you gain regeneration 5.",
-	    	"flavor": "You steel your mind and focus on ending your enemies as soon as possible."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Battle Rage",
-	    	"cost": "200",
-	    	"prereqs": ["Enhancement 40"],
-	    	"effect": "While this effect lasts, you gain a + 2 bonus to all attack rolls, regeneration equal to 2 times your Enhancement Modifier, and you cannot be slowed, dazed, or stunned. Your multiplier for Melee Weapon and Unarmed Combat attacks increases by 1. This bonus to multiplier increases by 1 for each hostile creature you kill during this state, for a maximum of +4 (Sustain 60). Note: this Ability does not end the slowed, dazed, or stunned conditions.",
-	    	"flavor": "Channeling the rage, the lust for battle that would overcome most men, you transform into a beast of anger, ignoring heinous wounds, and making every strike count."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Bloodlust Frenzy",
-	    	"cost": "130",
-	    	"prereqs": ["Enhancement 40"],
-	    	"effect": "You can score a critical hit when you roll 15 or higher on a Combat Skill roll if your current hit point value is below half your total hit points. This effect ends when you are no longer bloodied, if you become unconscious, or after five minutes, whichever comes first.",
-	    	"flavor": "Dying men oft strike true."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Cleanse",
-	    	"cost": "35",
-	    	"prereqs": ["Enhancement 20"],
-	    	"effect": "Remove all status effects from yourself.",
-	    	"flavor": "“Be purged, friend!”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Do-over",
-	    	"cost": "30",
-	    	"prereqs": [],
-	    	"effect": "Before the end of your next turn, you may reroll any dice, but you must take the second result, even if it is worse.",
-	    	"flavor": "Well, let’s just try that again..."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Empower",
-	    	"cost": "40",
-	    	"prereqs": [],
-	    	"effect": "Roll damage twice and choose either result on your next successful Combat Skill roll before the end of your next turn.",
-	    	"flavor": "“You are a strong, independent brain slime, Jake! You can do this!”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Heal",
-	    	"cost": "70",
-	    	"prereqs": [],
-	    	"effect": "You regain hit points equal to 5 times your Enhancement Modifier.",
-	    	"flavor": "Your gentle touch mends cuts, bruises and bones."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Healing Fountain",
-	    	"cost": "150",
-	    	"prereqs": ["Enhancement 40", "Heal"],
-	    	"effect": "You and each ally within three squares of you regain hit points equal to 5 times your Enhancement Modifier.",
-	    	"flavor": "A soft white light emanates from you as you summon energy to aid the wounded."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Improved Revitalize",
-	    	"cost": "225",
-	    	"prereqs": ["Enhancement 50", "Revitalize"],
-	    	"effect": "All dying allies within your Enhancement Range are stabilized and regain 10 hit points.",
-	    	"flavor": "“You stand when I tell you to stand, and right now I’m telling you to FIGHT!”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Inspire",
-	    	"cost": "90",
-	    	"prereqs": [],
-	    	"effect": "While this effect persists, you gain a +1 bonus to attack rolls, saving throws, and damage multiplier (sustain 40).",
-	    	"flavor": "“I can probably sort of do this!.”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Invigorate",
-	    	"cost": "120",
-	    	"prereqs": ["Enhancement 40", "Inspire"],
-	    	"effect": "While this effect persists, you and each ally within 1/2 your Enhancement Mod squares who can hear you gain a +1 bonus to attack rolls, saving throws, and damage multiplier (sustain 55).",
-	    	"flavor": "“Guys, we are actually not terrible! Keep it up!.”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Lesser Heal",
-	    	"cost": "40",
-	    	"prereqs": [],
-	    	"effect": "You or an adjacent ally regains 5 hit points.",
-	    	"flavor": "“Am I going to need a scalpel for this?”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Mass Cleanse",
-	    	"cost": "70",
-	    	"prereqs": ["Enhancement 50", "Cleanse"],
-	    	"effect": "Remove all status effects from yourself and each ally within your Enhancement Range.",
-	    	"flavor": "“PUUURRGE!”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Reflect",
-	    	"cost": "55",
-	    	"prereqs": ["Enhancement 40"],
-	    	"effect": "Until the end of your next turn, you take 1/2 damage from attacks. Any creature that attacks you takes 1/2 of the damage they inflict on you.",
-	    	"flavor": "“I’m rubber, you’re glue.”."
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Reincarnate",
-	    	"cost": "300",
-	    	"prereqs": ["Enhancement 40"],
-	    	"effect": "You restore one creature that has died back to life with 10% of its total hit points. The creature must have died within a number of days equal to or less than your Enhancement Modifier.",
-	    	"flavor": "“Permission to die: denied.”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Revitalize",
-	    	"cost": "120",
-	    	"prereqs": ["Enhancement 30"],
-	    	"effect": "One dying ally adjacent to you is stabilized and restored to 10% of their total hit points.",
-	    	"flavor": "“Did I say it was nap time?”"
-	    },
-        {
-	    	"type": "Enhancement",
-	    	"name": "Shield",
-	    	"cost": "120",
-	    	"prereqs": ["Enhancement 30", "Aura"],
-	    	"effect": "You gain a +4 bonus to all defenses and saving throws equal to your Enhancement Modifier (sustain 55), and must mark one enemy adjacent to you.",
-	    	"flavor": "“Stop. Hitting. Me!”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Alter Self",
-	    	"cost": "100",
-	    	"prereqs": ["Utility 30"],
-	    	"effect": "You turn into one mundane object of your size such as a tree, bush, cabinet, or rock. While in this form, you cannot use items, move, or speak (sustain standard).",
-	    	"flavor": "Watch out for well-hydrated mammals."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Assault And",
-	    	"cost": "25",
-	    	"prereqs": [],
-	    	"effect": "For a number of rounds equal to your Utility Modifier, regain 15 extra Ability Points at the start of your turn.",
-	    	"flavor": "Battery."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Breath Control",
-	    	"cost": "175",
-	    	"prereqs": ["Utility 30"],
-	    	"effect": "You or an adjacent creature do not need to breathe for five minutes.",
-	    	"flavor": "You concentrate on your breathing for a moment, slowing it to a stop."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Combust",
-	    	"cost": "25",
-	    	"prereqs": [],
-	    	"effect": "You make a small explosion in 1 cubic foot within your Destruction Range, igniting any flammable material in the target area.",
-	    	"flavor": "“Step away from the cow!”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Conceal",
-	    	"cost": "45",
-	    	"prereqs": ["Utility 30"],
-	    	"effect": "An object you are touching becomes invisible. The object becomes visible 10 seconds after you cease to sustain this Ability. You must be touching the object to sustain the Ability (sustain 20).",
-	    	"flavor": "“I know I put that down around here somewhere...”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Enlarge",
-	    	"cost": "60",
-	    	"prereqs": [],
-	    	"effect": "One non-living, non-enlarged object you are touching grows to 5 times its volume. The weight of the object is unchanged. This Ability takes 3 rounds (18 seconds) to use, and you must be touching the object for the entire duration. The object stays grown for 24 hours or until this effect is removed.",
-	    	"flavor": "“Are you sure size doesn’t matter?”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Find",
-	    	"cost": "15",
-	    	"prereqs": [],
-	    	"effect": "As a minor action, you know the cardinal direction in which an object lies, relative to your current location.",
-	    	"flavor": "“Oh! There it is!”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Illuminate",
-	    	"cost": "15",
-	    	"prereqs": [],
-	    	"effect": "You create a bright light within your Utility Range. This light clearly illuminates everything within 5 squares of it (sustain 5). You must be within 1 mile to sustain.",
-	    	"flavor": "This is no place to be alone with the darkness."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Imbue",
-	    	"cost": "30",
-	    	"prereqs": [],
-	    	"effect": "One item you are touching or carrying gains or loses one of the following effects: Magnetism, heat or cold (enough to boil or freeze a gallon of water), or constant emission of a tone. This may add a damage type to attacks made with this object (sustain 10).",
-	    	"flavor": "“Is it supposed to do that?”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Invisibility",
-	    	"cost": "80",
-	    	"prereqs": ["Utility 30"],
-	    	"effect": "You cannot be seen by creatures and gain a +10 to stealth checks relating to being seen. Creatures using Echolocation are not affected (sustain standard).",
-	    	"flavor": "Why not…fade away?"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Lifeforce Affinity",
-	    	"cost": "0",
-	    	"prereqs": [],
-	    	"effect": "As a minor action, you may expend a number of hit points less than or equal to your Utility score to regain that many Ability Points.",
-	    	"flavor": "You know what makes me a better hacker? Resource management."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Morph",
-	    	"cost": "120",
-	    	"prereqs": ["Utility 40"],
-	    	"effect": "You transform into an animate creature of your size category with hit points and attributes equal to your Utility score and defenses equal to 10 + your Utility Modifier. You no longer benefit from healing, nor can you use Abilities or items. Unarmed attacks made in this form still use the Unarmed Combat skill (sustain 55).",
-	    	"flavor": "“You made a bear!”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Phasing",
-	    	"cost": "50",
-	    	"prereqs": [],
-	    	"effect": "You add phasing to yourself or a willing creature or object you are touching, rendering it intangible. If the target is an object, you determine which objects the target does and does not pass through (sustain 20). You may also remove phasing from yourself or a willing creature or object with this Ability.",
-	    	"flavor": "“Catch!”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Pooling Health",
-	    	"cost": "50",
-	    	"prereqs": [],
-	    	"effect": "For the next 5 rounds, all of your Abilities take half of their cost from your Ability Point total, and half from your hit point total.",
-	    	"flavor": "Wars have costs. Surviving is more important than surviving intact."
-	    },
-        {
-		    "type": "Utility",
-		    "name": "Read Object",
-		    "cost": "45",
-		    "prereqs": ["Utility 20"],
-		    "effect": "When you touch an object, you become aware of every person and thing that has come in contact with that object in the last . This lasts for a number of hours equal to your Utility Mod.",
-		    "flavor": "Memories flow through you, and you feel as the table felt, you see what it saw."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Relinquish",
-	    	"cost": "30",
-	    	"prereqs": [],
-	    	"effect": "One lock, bond, restraining device, or security terminal that you are touching fails, causing the associated door to open or unlock.",
-	    	"flavor": "No prison can hold me!"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Repair",
-	    	"cost": "30",
-	    	"prereqs": [],
-	    	"effect": "You can repair damage to one inanimate object that occupies one cubic foot or less.\n Alternatively, you can assemble one inanimate object from a complete set of materials, provided both the materials and the final object occupy one cubic foot or less. This Ability takes three rounds (18 seconds) to use, and you must be constantly touching the object for the duration of the Ability.",
-	    	"flavor": "“I thought you said this was broken?”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Shrink",
-	    	"cost": "60",
-	    	"prereqs": ["Utility 30"],
-	    	"effect": "One non-living, non-shrunk object you are touching shrinks to 1/5 its size. The weight of the object is unchanged. This Ability takes 3 rounds (18 seconds) to use, and you must be touching the object for the entire duration. The object stays shrunk for 24 hours or until this effect is removed.",
-	    	"flavor": "“How does that make you feel?”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Sight",
-	    	"cost": "50",
-	    	"prereqs": ["Utility 30"],
-	    	"effect": "Living creatures (including plants) within 10 squares of you appear to glow brightly and cannot benefit from cover, concealment, or invisibility from you. (They can still benefit from these effects where other creatures are concerned) You also gain a bonus to perception equal to your Utility Mod.ifier while this Ability is active (sustain 20).",
-	    	"flavor": "“THAT PLANT CAN’T HIDE FROM ME!”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Speak",
-	    	"cost": "30",
-	    	"prereqs": [],
-	    	"effect": "For the next Utility Mod rounds, you become fluent in every language, including the languages of plants, animals, and complex machines.",
-	    	"flavor": "“I didn’t think that the ship would be so chatty.”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Speed Burst",
-	    	"cost": "75",
-	    	"prereqs": [],
-	    	"effect": "You gain a +2 bonus to all defenses, and your movement is multiplied by 2 (sustain 35).",
-	    	"flavor": "You can move faster than one thought possible."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "State Change",
-	    	"cost": "200",
-	    	"prereqs": ["Utility 60"],
-	    	"effect": "You can change the physical state (solid, liquid, gas) of one non-living item you can touch. This Ability takes one minute to use, and you must be constantly touching the item for the entire time. (Sustain 95). You do not have to be touching the item to sustain.",
-	    	"flavor": "Magic? Magic is just applied physics."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Summon Bigger Fish",
-	    	"cost": "80",
-	    	"prereqs": [],
-	    	"effect": "If there is a creature within your Utility Range that was not summoned by this Ability, you may summon a creature of the same species that is large enough to eat the previous creature. The summoned creature must be within your Utility Range. Creatures summoned by this Ability are not under your control and cannot be dominated. Additionally, these creatures count as having been teleported here, and do not disappear when you fall unconscious.",
-	    	"flavor": "“There’s always a bigger fish.”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Superior Speed",
-	    	"cost": "250",
-	    	"prereqs": ["Speed Burst", "Destruction 80"],
-	    	"effect": "You gain a +4 bonus to all defenses, your movement is multiplied by 2, and you gain an extra standard action on your turn (Sustain 120).",
-	    	"flavor": "You become a blur of motion, a frenzied whirlwind of speed."
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Suppression",
-	    	"cost": "150",
-	    	"prereqs": ["Utility 40"],
-	    	"effect": "Make an attack vs. Will against one creature you can see within your Utility Range. If the attack hits, you may end all auras or effects on the target and its equipment.",
-	    	"flavor": "“How about we fight without the fancy technology?”"
-	    },
-        {
-	    	"type": "Utility",
-	    	"name": "Teleport",
-	    	"cost": "60",
-	    	"prereqs": ["Utility 30"],
-	    	"effect": "You teleport a number of squares equal to your Utility Modifier. This Ability takes a move action to use.",
-	    	"flavor": "Now you see me…"
-	    }
-    ]
+{   
+    "abilities": {
+        "control": [
+            {    
+	        	"type": "Control",
+	        	"name": "Armistice",
+	        	"cost": "15",
+	        	"prereqs": [],
+	        	"effect": "Each creature within 1/2 your Control Range is disrupted until they are targeted by an attack (save ends).",
+	        	"flavor": "“I think I wil just... you know. Leave?”"
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Backfire",
+	        	"cost": "20",
+	        	"prereqs": ["Control 15"],
+	        	"effect": "Make an attack vs Will against one creature within 1/2 your Control Range. If the attack is successful, that creature gains backfire equal to your Control score.",
+	        	"flavor": "Whoops!"
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Decoy",
+	        	"cost": "175",
+	        	"prereqs": ["Control 30"],
+	        	"effect": "You create the image of a small creature with one hit point and defenses equal to 10+ your Control Modifier. While this creature exists, you cannot be targeted with an attack that does not also include this creature. As a move action you can move the creature a number of squares equal to your movement. As a standard action you can make a melee attack through the creature, using your Control score and a d2 for damage die. The creature must remain within your Control Range relative to you at all times (sustain 80).",
+	        	"flavor": "The bigger they are, the more loyal their subordinates are."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Demoralize",
+	        	"cost": "30",
+	        	"prereqs": ["Control 20"],
+	        	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If hit, the creature takes a penalty to attack rolls and saving throws equal to -1/2 your Control Modifier (save ends).",
+	        	"flavor": "You call your enemy a mean name. He’s sad."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Disorient",
+	        	"cost": "60",
+	        	"prereqs": ["Control 25"],
+	        	"effect": "Make an attack vs. Will against one creature within your Control Range. If it hits, the creatures is dazed and confused (save ends both).",
+	        	"flavor": "The brainwaves of an inept mind are so easy to hinder."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Dishearten",
+	        	"cost": "35",
+	        	"prereqs": ["Control 20"],
+	        	"effect": "Make an attack vs. Will against each creature within 1/2 your Control Range. Any creature hits takes a penalty to all attack rolls and saving throws equal to your Control Modifier until the end of your next turn.",
+	        	"flavor": "Remind your enemies that nothing they do will ever be good enough."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Drain Ability",
+	        	"cost": "0",
+	        	"prereqs": ["Control 20"],
+	        	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the target loses 20 Ability Points (miss: 10 Ability Points). You regain Ability Points equal to the amount lost.",
+	        	"flavor": "You leech energy off your enemies to replenish your own depleted stores."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Empulse",
+	        	"cost": "40",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Reflex against each creature within 1/2 your Control Range. Each creature hit is either knocked prone, slowed until the end of your next turn, or pushed back 2 squares (your choice).",
+	        	"flavor": "A burst of energy explodes from you, knocking your foes off balance."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Enthrall",
+	        	"cost": "120",
+	        	"prereqs": ["Control 30"],
+	        	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, you dominate the creature (save ends). You can only dominate one creature at a time with this Ability.",
+	        	"flavor": "You enter your enemy’s mind and you own it."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Infection",
+	        	"cost": "40",
+	        	"prereqs": ["Control 30"],
+	        	"effect": "Make an attack vs. Fortitude against one creature you can see within your Control Range. If the attack hits, the creature is affected by a poison. While affected, the character is weakened and blinded (save ends both). Each failed saving throw incurs a cumulative -1 to save, for maximum of -5.",
+	        	"flavor": "Pestilence bursts\n forth from you,\n causing great\n leaking boils and\n pustules to form\n on the bodies of\n your enemies."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Inspire Fear",
+	        	"cost": "90",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the target cannot attack you until the end of your next turn. This also gives you a bonus to Interaction equal to your Control Modifier.",
+	        	"flavor": "“It starts as a tendril of worry, creeping in the depths of your mind.”"
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Inspire Terror",
+	        	"cost": "120",
+	        	"prereqs": ["Control 40", "Inspire Fear"],
+	        	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the target is disrupted until the end of your next turn. This also gives you a bonus to Interaction equal to your Control Modifier.",
+	        	"flavor": "Fear. So powerful, so easy to instill."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Mass Deafen",
+	        	"cost": "45",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Will against each creature within 1/2 your Control Range. Each creature hit is deafened until the end of your next turn.",
+	        	"flavor": "A bang erupts from you, disorienting your foes."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Mass Inspire Fear",
+	        	"cost": "150",
+	        	"prereqs": ["Control 40", "Inspire Terror"],
+	        	"effect": "Make an attack vs. Will against each enemy within five squares of you. Each creature hit cannot attack you until the end of your next turn. (Sustain 20 points per target affected).",
+	        	"flavor": "Nightmares have nothing on me."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Mass Inspire Terror",
+	        	"cost": "200",
+	        	"prereqs": ["Control 50", "Mass inspire Fear"],
+	        	"effect": "Make an attack vs. Will against each enemy within five squares of you. Each target hit is disrupted until the end of your next turn.",
+	        	"flavor": "They can’t attack what they’re afraid to touch."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Permafrost",
+	        	"cost": "35",
+	        	"prereqs": [],
+	        	"effect": "You create a zone of ice over each square within 1/2 your Control Range. Choose one of the following effects (sustain 15): each square within the zone is difficult terrain or each creature who moves onto or through this zone must make a saving throw to avoid being knocked prone. Note that this save does not need to be made for each square if multiple are crossed.",
+	        	"flavor": "If you can’t beat ‘em, knock ‘em down."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Petrify",
+	        	"cost": "120",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Fortitude against an adjacent creature. If the attack hits, the creature is petrified, save ends. This attack does not provoke an attack of opportunity.",
+	        	"flavor": "*Serpents for hair sold separately."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Plague",
+	        	"cost": "250",
+	        	"prereqs": ["Control 55", "Infection"],
+	        	"effect": "Make an attack vs Fortitude against one creature you can see within your Control Range. If the attack hits, the creature is dazed, takes ongoing damage equal to your Control Modifier, and suffers from a -1 penalty to all die rolls (sustain minor). The target may attempt to save to end the effects of Plague, but each failed saving throw increases the penalty to all die rolls by 1.",
+	        	"flavor": "Green boils appear and burst, disorienting the target. Then the wheezing starts."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Push",
+	        	"cost": "90",
+	        	"prereqs": ["Control 40"],
+	        	"effect": "Make an attack vs. Reflex against one creature you can see within your Control Range. If the attack hits, the creature is pushed a number of squares equal to your Control Modifier and is dazed until the end of your next turn.",
+	        	"flavor": "Energy bursts from within you, knocking your enemy back."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Quell",
+	        	"cost": "30",
+	        	"prereqs": ["Control 20"],
+	        	"effect": "Make an attack vs. Will against one creature within your Control Range. If the attack hits, the target is debilitated (save ends).",
+	        	"flavor": "“Hush little baby, don’t say a word...”"
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Reversal",
+	        	"cost": "150",
+	        	"prereqs": ["Control 50"],
+	        	"effect": "Choose one creature within your Control Range. Whenever that creature deals damage before the end of your next turn, it takes damage equal to the damage it dealt.",
+	        	"flavor": "Unhappy with the results, you reverse time itself, nullifying the last few seconds."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Silence",
+	        	"cost": "80",
+	        	"prereqs": ["Control 20"],
+	        	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the creature cannot use any Abilities until the end of your next turn.",
+	        	"flavor": "You cease the ramblings and chanting of your foes."
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Stun",
+	        	"cost": "125",
+	        	"prereqs": ["Control 30"],
+	        	"effect": "Make an attack vs. Will against one creature you can see within your Control Range. If the attack hits, the target is stunned until the end of your next turn. If the attack misses, the target is slowed until the end of your next turn.",
+	        	"flavor": "“Really, that’s close enough.”"
+	        },
+            {
+	        	"type": "Control",
+	        	"name": "Tempest",
+	        	"cost": "300",
+	        	"prereqs": ["Control 80"],
+	        	"effect": "Make an attack vs. Reflex against each enemy within 1/2 your Control Range. Each target hit takes damage equal to your Control Modifier, is pushed a number of squares equal to your Control Modifier, knocked prone, and stunned until the end of your next turn. If an attack misses, the target takes 1/2 damage, and no other effects.",
+	        	"flavor": "Lie down and acknowledge my power!"
+	        }
+        ],
+        "destruction": [
+            {
+	        	"type": "Destruction",
+	        	"name": "Arc",
+	        	"cost": "90",
+	        	"prereqs": ["Destruction 30"],
+	        	"effect": "Make an attack vs. Reflex against each creature within blast 2. Each creature hit takes electrical damage equal to 1d6 times your Destruction Modifier (miss: 1/2 damage).",
+	        	"flavor": "Well, Mr. Orchestra, it looks like you really are a good conductor."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Bone Spikes",
+	        	"cost": "35",
+	        	"prereqs": ["Destruction 30"],
+	        	"effect": "Make an attack vs. Fortitude against one creature you can see within your Destruction Range. If the attack hits, the target is prone and takes ongoing 5 damage (save ends both).",
+	        	"flavor": "Small caltrops start growing in your enemy’s flesh, piercing and tearing whenever it moves."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Crush",
+	        	"cost": "60",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Fortitude against one creature you can see within your Destruction Range. If the attack hits, the target takes damage equal to 1d10 times your Destruction Modifier.",
+	        	"flavor": "Pressure flows from your hands, compressing your opponent’s body."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Curtain of Fire",
+	        	"cost": "145",
+	        	"prereqs": ["Destruction 25"],
+	        	"effect": "Make an attack vs. Reflex against each creature burst 1 within your Destruction Range. Each creature hit with the attack takes fire damage equal to 1d6 times your Destruction Modifier.",
+	        	"flavor": "Enemies are best served crispy."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Death Field",
+	        	"cost": "150",
+	        	"prereqs": ["Destruction 60"],
+	        	"effect": "Make an attack vs. Fortitude against each living enemy you can see within your Destruction Range. Each enemy hit takes damage equal to 1d4 times your Destruction Modifier (miss: 1/2 damage). You regain hit points equal to 2 times the damage dealt to a single target.",
+	        	"flavor": "A low whining hum emanates from the air around you as a glowing sphere expands outward from you, growing bright while stealing the lives of your foes."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Debris Slam",
+	        	"cost": "50",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Reflex against one creature you can see within 1/2 your Destruction Modifier. If the attack hits, the target takes damage equal to 1d8 times your Destruction Modifier.",
+	        	"flavor": "“Take THIS clump of garbage and THAT clump of garbage!”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Gambit",
+	        	"cost": "30",
+	        	"prereqs": [],
+	        	"effect": "Make 1d6 attacks. If the result on the d6 was even, these attacks target enemies. If the result was odd, this attack targets allies. You may distribute these attacks as you choose, in accordance with the die, provided you can see each target. Each attack deals damage equal to your Luck Modifier. You do not need to roll to hit.",
+	        	"flavor": "“I don’t need skill, I’ve got Luck on my side!”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Injure",
+	        	"cost": "80",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Fortitude against one creature you can see within your Destruction Range. If the attack hits, the creature takes ongoing damage equal to your Destruction Modifier (save ends).",
+	        	"flavor": "Tearing flesh, bones, and organs, you cause your foes to writhe in pain."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Kismet",
+	        	"cost": "200",
+	        	"prereqs": ["Destruction 45"],
+	        	"effect": "For each creature within 1/2 your Destruction Range, flip a coin. If it is heads, the next attack that creature makes will be a critical hit. If it is tails, that creature takes damage equal to 1/2 of its remaining hit points.",
+	        	"flavor": "Are you feeling lucky?"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Lottery",
+	        	"cost": "125",
+	        	"prereqs": ["Destruction 20"],
+	        	"effect": "Choose one creature within your Destruction Range. Roll 1d8. If the result is odd, the creature regains health equal to the result of the roll times your Luck Modifier. If the result is even, the creature takes damage equal to the result of the roll times your Luck Modifier.",
+	        	"flavor": "“Well, what are the odds of that?”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Maelstrom of Shards",
+	        	"cost": "80",
+	        	"prereqs": ["Destruction 20"],
+	        	"effect": "Make an attack vs Reflex against one creature within 1/2 your Destruction Range. If hit, the creature takes 1d4 times your Destruction Modifier and its space, along with each square adjacent to its space is filled with jagged shards until the end of your next turn. Any creature that enters into the shards or starts its turn there takes damage equal to your Destruction Modifier.",
+	        	"flavor": "“You’re going to want to plan your next steps very carefully.”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Pestilence",
+	        	"cost": "50",
+	        	"prereqs": [],
+	        	"effect": "You create a zone of noxious gas burst 3 centered within your Destruction Range. Each creature that starts its turn in this zone or moves into it takes damage equal to your Destruction Modifier (Sustain 20).",
+	        	"flavor": "“LET MY PEOPLE GO!”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Pulse",
+	        	"cost": "15",
+	        	"prereqs": [],
+	        	"effect": "One creature within 10 squares of you takes damage equal to your Destruction Modifier. You do not have to make an attack roll.",
+	        	"flavor": "You strike out with the simplest thing you know: A simple probe of light."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Ridicule",
+	        	"cost": "60",
+	        	"prereqs": ["Destruction 25", "Taunt"],
+	        	"effect": "Make an attack vs. Will against each enemy within 2 squares of you. If the attack hits, they are marked by you, and you may pull the target 1 square. Then you may make a Melee Weapon or Unarmed Combat attack against each enemy adjacent to you.",
+	        	"flavor": "“Bring it.”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Scatterbrain",
+	        	"cost": "175",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Will against each enemy within 1/2 your Destruction Range. Each creature hit takes damage equal to 1d6 times your Destruction Modifier.",
+	        	"flavor": "“Man, I just have the worst headache ever.”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Scream",
+	        	"cost": "60",
+	        	"prereqs": [],
+	        	"effect": "Make an attack vs. Will blast 2, targeting each creature. Each creature hit takes damage equal to 1d4 times your Destruction Modifier and suffers a -2 penalty to attack rolls until the end of your next turn.",
+	        	"flavor": "A deep call erupts from your throat, striking those around you."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Storm",
+	        	"cost": "120",
+	        	"prereqs": ["Destruction 50", "Arc"],
+	        	"effect": "Make an attack vs. Reflex against each creature burst 1 within your Destruction Range. Each creature hit takes electrical damage equal to 1d6 times your Destruction Modifier, and is debilitated until the end of your next turn (miss: 1/2 damage, no effects).",
+	        	"flavor": "“Sorry, Grog, it’s hard to aim the cosmos!”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Sunder",
+	        	"cost": "175",
+	        	"prereqs": [],
+	        	"effect": "You create a number of holes or cracks totaling no more than 35 cubic feet in volume in an object you are touching. This Ability takes three rounds (18 seconds) to use, and you must be constantly touching the object for the duration of the Ability.",
+	        	"flavor": "“This dam’s just for show, right?”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Taunt",
+	        	"cost": "25",
+	        	"prereqs": [],
+	        	"effect": "As a minor action, enemies within 1/2 your Destruction Range are marked by you.",
+	        	"flavor": "“Come and get me, you big, dumb... uh oh.”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Throw Weapon",
+	        	"cost": "75",
+	        	"prereqs": ["Destruction 30"],
+	        	"effect": "Must be holding a melee weapon to use\n. Make an attack vs. Reflex against one creature within 1/2 your Destruction Range. If the attack hits, the target takes damage equal to 1d6 times your Destruction Modifier, and you may make the same attack again against one additional creature within 1/2 your Destruction Range. The weapon returns to your hand after the second attack.",
+	        	"flavor": "After careful aim, a weapon flies towards its mark, striking true."
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Wallop",
+	        	"cost": "50",
+	        	"prereqs": [],
+	        	"effect": "The next time you roll damage, increase the damage die by 1. This Ability takes a minor action to use.",
+	        	"flavor": "“Take... THAT!”"
+	        },
+            {
+	        	"type": "Destruction",
+	        	"name": "Wreckage Zephyr",
+	        	"cost": "70",
+	        	"prereqs": ["Destruction 40"],
+	        	"effect": "Make an attack vs Reflex against each creature within blast 2. Each creature hit takes damage equal to 1d4 times your Destruction Modifier.",
+	        	"flavor": "I’m not sure the game designers know what “Zephyr” means."
+	        }
+        ],
+        "enhancement": [
+            {
+	        	"type": "Enhancement",
+	        	"name": "Affinity",
+	        	"cost": "30",
+	        	"prereqs": [],
+	        	"effect": "You regain an extra ten Ability Points at the start of your turn (sustain minor).",
+	        	"flavor": "The candle that burns half as fast is the same candle that is going to kill you."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Armor",
+	        	"cost": "100",
+	        	"prereqs": ["Enhancement 60", "Shield"],
+	        	"effect": "You gain a +6 bonus to all\n defenses and saving throws\n (sustain 45).",
+	        	"flavor": "Glowing energy appears around you, forming to your body in a protective shell."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Aura",
+	        	"cost": "70",
+	        	"prereqs": [],
+	        	"effect": "You gain a +2 bonus to all defenses and saving throws (Sustain 30).",
+	        	"flavor": "You call forth a shimmering shield to deflect the blows aimed your way."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Awaken",
+	        	"cost": "10",
+	        	"prereqs": [],
+	        	"effect": "As a minor action, restore your Enlightenment Points to full.",
+	        	"flavor": "My soul shall be healed."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Barrier",
+	        	"cost": "40",
+	        	"prereqs": ["Enhancement 30"],
+	        	"effect": "For the next three rounds, you gain damage reduction equal to your Enhancement Modifier.",
+	        	"flavor": "You might not be able to see the wall, but you will know it is there."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Battle Focus",
+	        	"cost": "80",
+	        	"prereqs": ["Enhancement 40"],
+	        	"effect": "For the next three rounds, your melee damage die increases by one, and you gain a +2 bonus to attack rolls and saving throws.\n While this effect persists, you and allies adjacent to you gain regeneration 5.",
+	        	"flavor": "You steel your mind and focus on ending your enemies as soon as possible."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Battle Rage",
+	        	"cost": "200",
+	        	"prereqs": ["Enhancement 40"],
+	        	"effect": "While this effect lasts, you gain a + 2 bonus to all attack rolls, regeneration equal to 2 times your Enhancement Modifier, and you cannot be slowed, dazed, or stunned. Your multiplier for Melee Weapon and Unarmed Combat attacks increases by 1. This bonus to multiplier increases by 1 for each hostile creature you kill during this state, for a maximum of +4 (Sustain 60). Note: this Ability does not end the slowed, dazed, or stunned conditions.",
+	        	"flavor": "Channeling the rage, the lust for battle that would overcome most men, you transform into a beast of anger, ignoring heinous wounds, and making every strike count."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Bloodlust Frenzy",
+	        	"cost": "130",
+	        	"prereqs": ["Enhancement 40"],
+	        	"effect": "You can score a critical hit when you roll 15 or higher on a Combat Skill roll if your current hit point value is below half your total hit points. This effect ends when you are no longer bloodied, if you become unconscious, or after five minutes, whichever comes first.",
+	        	"flavor": "Dying men oft strike true."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Cleanse",
+	        	"cost": "35",
+	        	"prereqs": ["Enhancement 20"],
+	        	"effect": "Remove all status effects from yourself.",
+	        	"flavor": "“Be purged, friend!”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Do-over",
+	        	"cost": "30",
+	        	"prereqs": [],
+	        	"effect": "Before the end of your next turn, you may reroll any dice, but you must take the second result, even if it is worse.",
+	        	"flavor": "Well, let’s just try that again..."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Empower",
+	        	"cost": "40",
+	        	"prereqs": [],
+	        	"effect": "Roll damage twice and choose either result on your next successful Combat Skill roll before the end of your next turn.",
+	        	"flavor": "“You are a strong, independent brain slime, Jake! You can do this!”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Heal",
+	        	"cost": "70",
+	        	"prereqs": [],
+	        	"effect": "You regain hit points equal to 5 times your Enhancement Modifier.",
+	        	"flavor": "Your gentle touch mends cuts, bruises and bones."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Healing Fountain",
+	        	"cost": "150",
+	        	"prereqs": ["Enhancement 40", "Heal"],
+	        	"effect": "You and each ally within three squares of you regain hit points equal to 5 times your Enhancement Modifier.",
+	        	"flavor": "A soft white light emanates from you as you summon energy to aid the wounded."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Improved Revitalize",
+	        	"cost": "225",
+	        	"prereqs": ["Enhancement 50", "Revitalize"],
+	        	"effect": "All dying allies within your Enhancement Range are stabilized and regain 10 hit points.",
+	        	"flavor": "“You stand when I tell you to stand, and right now I’m telling you to FIGHT!”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Inspire",
+	        	"cost": "90",
+	        	"prereqs": [],
+	        	"effect": "While this effect persists, you gain a +1 bonus to attack rolls, saving throws, and damage multiplier (sustain 40).",
+	        	"flavor": "“I can probably sort of do this!.”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Invigorate",
+	        	"cost": "120",
+	        	"prereqs": ["Enhancement 40", "Inspire"],
+	        	"effect": "While this effect persists, you and each ally within 1/2 your Enhancement Mod squares who can hear you gain a +1 bonus to attack rolls, saving throws, and damage multiplier (sustain 55).",
+	        	"flavor": "“Guys, we are actually not terrible! Keep it up!.”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Lesser Heal",
+	        	"cost": "40",
+	        	"prereqs": [],
+	        	"effect": "You or an adjacent ally regains 5 hit points.",
+	        	"flavor": "“Am I going to need a scalpel for this?”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Mass Cleanse",
+	        	"cost": "70",
+	        	"prereqs": ["Enhancement 50", "Cleanse"],
+	        	"effect": "Remove all status effects from yourself and each ally within your Enhancement Range.",
+	        	"flavor": "“PUUURRGE!”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Reflect",
+	        	"cost": "55",
+	        	"prereqs": ["Enhancement 40"],
+	        	"effect": "Until the end of your next turn, you take 1/2 damage from attacks. Any creature that attacks you takes 1/2 of the damage they inflict on you.",
+	        	"flavor": "“I’m rubber, you’re glue.”."
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Reincarnate",
+	        	"cost": "300",
+	        	"prereqs": ["Enhancement 40"],
+	        	"effect": "You restore one creature that has died back to life with 10% of its total hit points. The creature must have died within a number of days equal to or less than your Enhancement Modifier.",
+	        	"flavor": "“Permission to die: denied.”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Revitalize",
+	        	"cost": "120",
+	        	"prereqs": ["Enhancement 30"],
+	        	"effect": "One dying ally adjacent to you is stabilized and restored to 10% of their total hit points.",
+	        	"flavor": "“Did I say it was nap time?”"
+	        },
+            {
+	        	"type": "Enhancement",
+	        	"name": "Shield",
+	        	"cost": "120",
+	        	"prereqs": ["Enhancement 30", "Aura"],
+	        	"effect": "You gain a +4 bonus to all defenses and saving throws equal to your Enhancement Modifier (sustain 55), and must mark one enemy adjacent to you.",
+	        	"flavor": "“Stop. Hitting. Me!”"
+	        }
+        ],
+        "utility": [
+            {
+	        	"type": "Utility",
+	        	"name": "Alter Self",
+	        	"cost": "100",
+	        	"prereqs": ["Utility 30"],
+	        	"effect": "You turn into one mundane object of your size such as a tree, bush, cabinet, or rock. While in this form, you cannot use items, move, or speak (sustain standard).",
+	        	"flavor": "Watch out for well-hydrated mammals."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Assault And",
+	        	"cost": "25",
+	        	"prereqs": [],
+	        	"effect": "For a number of rounds equal to your Utility Modifier, regain 15 extra Ability Points at the start of your turn.",
+	        	"flavor": "Battery."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Breath Control",
+	        	"cost": "175",
+	        	"prereqs": ["Utility 30"],
+	        	"effect": "You or an adjacent creature do not need to breathe for five minutes.",
+	        	"flavor": "You concentrate on your breathing for a moment, slowing it to a stop."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Combust",
+	        	"cost": "25",
+	        	"prereqs": [],
+	        	"effect": "You make a small explosion in 1 cubic foot within your Destruction Range, igniting any flammable material in the target area.",
+	        	"flavor": "“Step away from the cow!”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Conceal",
+	        	"cost": "45",
+	        	"prereqs": ["Utility 30"],
+	        	"effect": "An object you are touching becomes invisible. The object becomes visible 10 seconds after you cease to sustain this Ability. You must be touching the object to sustain the Ability (sustain 20).",
+	        	"flavor": "“I know I put that down around here somewhere...”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Enlarge",
+	        	"cost": "60",
+	        	"prereqs": [],
+	        	"effect": "One non-living, non-enlarged object you are touching grows to 5 times its volume. The weight of the object is unchanged. This Ability takes 3 rounds (18 seconds) to use, and you must be touching the object for the entire duration. The object stays grown for 24 hours or until this effect is removed.",
+	        	"flavor": "“Are you sure size doesn’t matter?”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Find",
+	        	"cost": "15",
+	        	"prereqs": [],
+	        	"effect": "As a minor action, you know the cardinal direction in which an object lies, relative to your current location.",
+	        	"flavor": "“Oh! There it is!”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Illuminate",
+	        	"cost": "15",
+	        	"prereqs": [],
+	        	"effect": "You create a bright light within your Utility Range. This light clearly illuminates everything within 5 squares of it (sustain 5). You must be within 1 mile to sustain.",
+	        	"flavor": "This is no place to be alone with the darkness."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Imbue",
+	        	"cost": "30",
+	        	"prereqs": [],
+	        	"effect": "One item you are touching or carrying gains or loses one of the following effects: Magnetism, heat or cold (enough to boil or freeze a gallon of water), or constant emission of a tone. This may add a damage type to attacks made with this object (sustain 10).",
+	        	"flavor": "“Is it supposed to do that?”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Invisibility",
+	        	"cost": "80",
+	        	"prereqs": ["Utility 30"],
+	        	"effect": "You cannot be seen by creatures and gain a +10 to stealth checks relating to being seen. Creatures using Echolocation are not affected (sustain standard).",
+	        	"flavor": "Why not…fade away?"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Lifeforce Affinity",
+	        	"cost": "0",
+	        	"prereqs": [],
+	        	"effect": "As a minor action, you may expend a number of hit points less than or equal to your Utility score to regain that many Ability Points.",
+	        	"flavor": "You know what makes me a better hacker? Resource management."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Morph",
+	        	"cost": "120",
+	        	"prereqs": ["Utility 40"],
+	        	"effect": "You transform into an animate creature of your size category with hit points and attributes equal to your Utility score and defenses equal to 10 + your Utility Modifier. You no longer benefit from healing, nor can you use Abilities or items. Unarmed attacks made in this form still use the Unarmed Combat skill (sustain 55).",
+	        	"flavor": "“You made a bear!”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Phasing",
+	        	"cost": "50",
+	        	"prereqs": [],
+	        	"effect": "You add phasing to yourself or a willing creature or object you are touching, rendering it intangible. If the target is an object, you determine which objects the target does and does not pass through (sustain 20). You may also remove phasing from yourself or a willing creature or object with this Ability.",
+	        	"flavor": "“Catch!”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Pooling Health",
+	        	"cost": "50",
+	        	"prereqs": [],
+	        	"effect": "For the next 5 rounds, all of your Abilities take half of their cost from your Ability Point total, and half from your hit point total.",
+	        	"flavor": "Wars have costs. Surviving is more important than surviving intact."
+	        },
+            {
+		        "type": "Utility",
+		        "name": "Read Object",
+		        "cost": "45",
+		        "prereqs": ["Utility 20"],
+		        "effect": "When you touch an object, you become aware of every person and thing that has come in contact with that object in the last . This lasts for a number of hours equal to your Utility Mod.",
+		        "flavor": "Memories flow through you, and you feel as the table felt, you see what it saw."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Relinquish",
+	        	"cost": "30",
+	        	"prereqs": [],
+	        	"effect": "One lock, bond, restraining device, or security terminal that you are touching fails, causing the associated door to open or unlock.",
+	        	"flavor": "No prison can hold me!"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Repair",
+	        	"cost": "30",
+	        	"prereqs": [],
+	        	"effect": "You can repair damage to one inanimate object that occupies one cubic foot or less.\n Alternatively, you can assemble one inanimate object from a complete set of materials, provided both the materials and the final object occupy one cubic foot or less. This Ability takes three rounds (18 seconds) to use, and you must be constantly touching the object for the duration of the Ability.",
+	        	"flavor": "“I thought you said this was broken?”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Shrink",
+	        	"cost": "60",
+	        	"prereqs": ["Utility 30"],
+	        	"effect": "One non-living, non-shrunk object you are touching shrinks to 1/5 its size. The weight of the object is unchanged. This Ability takes 3 rounds (18 seconds) to use, and you must be touching the object for the entire duration. The object stays shrunk for 24 hours or until this effect is removed.",
+	        	"flavor": "“How does that make you feel?”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Sight",
+	        	"cost": "50",
+	        	"prereqs": ["Utility 30"],
+	        	"effect": "Living creatures (including plants) within 10 squares of you appear to glow brightly and cannot benefit from cover, concealment, or invisibility from you. (They can still benefit from these effects where other creatures are concerned) You also gain a bonus to perception equal to your Utility Mod.ifier while this Ability is active (sustain 20).",
+	        	"flavor": "“THAT PLANT CAN’T HIDE FROM ME!”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Speak",
+	        	"cost": "30",
+	        	"prereqs": [],
+	        	"effect": "For the next Utility Mod rounds, you become fluent in every language, including the languages of plants, animals, and complex machines.",
+	        	"flavor": "“I didn’t think that the ship would be so chatty.”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Speed Burst",
+	        	"cost": "75",
+	        	"prereqs": [],
+	        	"effect": "You gain a +2 bonus to all defenses, and your movement is multiplied by 2 (sustain 35).",
+	        	"flavor": "You can move faster than one thought possible."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "State Change",
+	        	"cost": "200",
+	        	"prereqs": ["Utility 60"],
+	        	"effect": "You can change the physical state (solid, liquid, gas) of one non-living item you can touch. This Ability takes one minute to use, and you must be constantly touching the item for the entire time. (Sustain 95). You do not have to be touching the item to sustain.",
+	        	"flavor": "Magic? Magic is just applied physics."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Summon Bigger Fish",
+	        	"cost": "80",
+	        	"prereqs": [],
+	        	"effect": "If there is a creature within your Utility Range that was not summoned by this Ability, you may summon a creature of the same species that is large enough to eat the previous creature. The summoned creature must be within your Utility Range. Creatures summoned by this Ability are not under your control and cannot be dominated. Additionally, these creatures count as having been teleported here, and do not disappear when you fall unconscious.",
+	        	"flavor": "“There’s always a bigger fish.”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Superior Speed",
+	        	"cost": "250",
+	        	"prereqs": ["Speed Burst", "Destruction 80"],
+	        	"effect": "You gain a +4 bonus to all defenses, your movement is multiplied by 2, and you gain an extra standard action on your turn (Sustain 120).",
+	        	"flavor": "You become a blur of motion, a frenzied whirlwind of speed."
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Suppression",
+	        	"cost": "150",
+	        	"prereqs": ["Utility 40"],
+	        	"effect": "Make an attack vs. Will against one creature you can see within your Utility Range. If the attack hits, you may end all auras or effects on the target and its equipment.",
+	        	"flavor": "“How about we fight without the fancy technology?”"
+	        },
+            {
+	        	"type": "Utility",
+	        	"name": "Teleport",
+	        	"cost": "60",
+	        	"prereqs": ["Utility 30"],
+	        	"effect": "You teleport a number of squares equal to your Utility Modifier. This Ability takes a move action to use.",
+	        	"flavor": "Now you see me…"
+	        }
+        ]
+    }
 }   
