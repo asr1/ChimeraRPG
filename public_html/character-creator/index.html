@@ -207,6 +207,22 @@
         </div>
     </div>
 
+    <!-- Abilities -->
+    <div class="container" ng-controller="AbilityController">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Abilities
+            </div>
+            <div class="panel-body">
+                <div ng-repeat="ability in abilities track by $index">
+                    <div class="form-group">
+                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}"><input type="checkbox" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="bg-light-gray">
         <div class="container">
             <div class="row">
@@ -222,6 +238,7 @@
     <script src="js/controllers/AttributeController.js"></script>
     <script src="js/controllers/SkillController.js"></script>
     <script src="js/controllers/TalentController.js"></script>
+    <script src="js/controllers/AbilityController.js"></script>
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
