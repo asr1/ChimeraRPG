@@ -160,11 +160,12 @@
                 Attributes
             </div>
             <div class="panel-body">
+                <div ng-show="showHomebrew" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="attr in attributes track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">{{attr.name}}</label>
+                        <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}">{{attr.name}}</label>
                         <div class="col-sm-3">
-                            <input type="number" class="form-control" ng-model="attributes[$index].value">
+                            <input type="number" ng-change="textChange()" class="form-control {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}" ng-model="attributes[$index].value">
                         </div>
                     </div>
                 </div>
@@ -180,6 +181,7 @@
             </div>
             <div class="panel-body">
                 <div class="section-label center">Choose <strong>{{remaining}}</strong> skill{{remaining == 1 ? "" : "s"}} to gain a +15</div>
+                <div ng-if="remaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="skill in skills track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
@@ -200,6 +202,7 @@
             </div>
             <div class="panel-body">
                 <div class="section-label center">Choose <strong>{{remaining}}</strong> talent{{remaining == 1 ? "" : "s"}}</div>
+                <div ng-if="remaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="talent in talents track by $index">
                    <div class="form-group">
                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
@@ -217,6 +220,7 @@
             </div>
             <div class="panel-body">
                 <div class="col-sm-12 section-label center">Choose <strong>{{controlRemaining}} Control</strong> {{controlRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div ng-if="controlRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
@@ -225,6 +229,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 section-label center">Choose <strong>{{destructionRemaining}} Destruction</strong> {{destructionRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div ng-if="destructionRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.destruction track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
@@ -233,6 +238,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 section-label center">Choose <strong>{{enhancementRemaining}} Enhancement</strong> {{enhancementRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div ng-if="enhancementRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.enhancement track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
@@ -241,6 +247,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 section-label center">Choose <strong>{{utilityRemaining}} Utility</strong> {{utilityRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div ng-if="utilityRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.utility track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
