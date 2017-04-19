@@ -49,41 +49,26 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Solipstry</a>
+                <a class="navbar-brand page-scroll" href="../index.html">Solipstry</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="../index.html#page-top"></a>
+                    <li>
+                        <a class="page-scroll" href="#info">Basic Information</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="../index.html#about">About</a>
+                        <a class="page-scroll" href="#attributes">Attributes</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="../index.html#resources">Resources</a>
-                    </li>
-					<li>
-                        <a class="page-scroll" href="../index.html#forum">Forum</a>
+                        <a class="page-scroll" href="#skills">Skills</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="../index.html#newsletter">Newsletter</a>
+                        <a class="page-scroll" href="#talents">Talents</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="../index.html#contact">Contact</a>
-                    </li>
-					<li>
-                        <a class="page-scroll" href="../index.html#faq">FAQ</a>
-                    </li>
-					<li>
-                        <a class="page-scroll" href="../index.html#errata">Errata</a>
-                    </li>
-					<li>
-                        <a class="page-scroll" href="../index.html#generators">Generators</a>
-                    </li>	
-                    <li>
-                        <a>Character Creator</a>
+                        <a class="page-scroll" href="#abilities">Abilities</a>
                     </li>
                 </ul>
             </div>
@@ -93,7 +78,7 @@
     </nav>
 
     <!-- Basic Information -->
-    <div class="container" style="padding-top:70px" ng-controller="CharacterController">
+    <div id="info" class="container" style="padding-top:70px" ng-controller="CharacterController">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Basic Information
@@ -154,7 +139,7 @@
     </div>
 
     <!-- Attributes -->
-    <div class="container" ng-controller="AttributeController">
+    <div id="attributes" class="container" ng-controller="AttributeController">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Attributes
@@ -174,7 +159,7 @@
     </div>
 	
     <!-- Skills -->
-    <div class="container" ng-controller="SkillController">
+    <div id="skills" class="container" ng-controller="SkillController">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Skills
@@ -195,7 +180,7 @@
     </div>
 
     <!-- Talents -->
-    <div class="container" ng-controller="TalentController">
+    <div id="talents" class="container" ng-controller="TalentController">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Talents
@@ -213,7 +198,7 @@
     </div>
 
     <!-- Abilities -->
-    <div class="container" ng-controller="AbilityController">
+    <div id="abilities" class="container" ng-controller="AbilityController">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Abilities
