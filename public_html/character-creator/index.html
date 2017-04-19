@@ -153,7 +153,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}">{{attr.name}}</label>
                         <div class="col-sm-3">
-                            <input type="number" ng-change="textChange()" class="form-control {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}" ng-model="attributes[$index].value">
+                            <input type="number" ng-change="textChange({{attr.value}}, attr.name)" class="form-control {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}" ng-model="attributes[$index].value">
                         </div>
                     </div>
                 </div>

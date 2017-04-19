@@ -19,7 +19,7 @@
                     "benefit": "You may move your movement across non-dangerous liquid, such as water, as long as you end your movement on solid ground. If you end your turn on water, you will sink."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Athletics",
@@ -40,7 +40,7 @@
                     "benefit": "You gain a +5 bonus to Speed or Constitution."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Block",
@@ -61,7 +61,7 @@
                     "benefit": "You can block as a minor action."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Chemistry",
@@ -86,7 +86,7 @@
                     "benefit": "You are immune to poison and poison damage."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Control",
@@ -97,7 +97,7 @@
                 "The number of Control Abilities you know is equal to your Control Modifier. When your Control Modifier increases, you can select a new Control Ability to learn"
             ],
             "benefits": null,
-            "value": 10
+            "value": 12
         },
         {
             "name":"Craft",
@@ -121,7 +121,7 @@
                     "benefit": "You gain a +2 on all interaction checks when buying or selling crafted items or raw materials."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Destruction",
@@ -132,7 +132,7 @@
                 "The number of Destruction Abilities you know is equal to your Destruction Modifier. When your Destruction Modifier increases, you can select a new Destruction Ability to learn."
             ],
             "benefits": null,
-            "value": 10
+            "value": 12
         },
         {
             "name":"Disguise",
@@ -153,7 +153,7 @@
                     "benefit": "You take no penalty for disguising yourself (or others) as a differently shaped creature (humanoid to non-humanoid, for example)."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Engineering",
@@ -180,7 +180,7 @@
                     "benefit": "Once per day, you can collect a trap without having to disarm it. The trap will not go off until it is set again and triggered."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Enhancement",
@@ -192,7 +192,7 @@
                 "The number of Enhancement Abilities you know is equal to your Enhancement Modifier. When your Enhancement Modifier increases, you can select a new Enhancement Ability to learn."
             ],
             "benefits": null,
-            "value": 10
+            "value": 12
         },
         {
             "name":"Enlightenment",
@@ -216,7 +216,7 @@
                     "benefit": "You can have 4 Truths active at one time."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Escape",
@@ -240,7 +240,7 @@
                     "benefit": "Upon simple inspection, you immediately identify weak points in cages, containers, and walls."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Heavy armor",
@@ -261,7 +261,7 @@
                     "benefit": "Worn heavy armor doesn't contribute to encumbrance."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Interaction",
@@ -282,7 +282,7 @@
                     "benefit": "Once per day, you may grant an adjacent ally a re-roll on any die roll."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Knowledge",
@@ -306,7 +306,7 @@
                     "benefit": "You gain an extra Talent."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Light armor",
@@ -327,7 +327,7 @@
                     "benefit": "Worn light armor has no penalty for encumbrance."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Medicine",
@@ -354,7 +354,7 @@
                     "benefit": "You gain a +2 bonus to identifying and curing diseases and poisons."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Melee Weapon",
@@ -375,7 +375,7 @@
                     "benefit": "When you score a critical hit with a melee weapon, you may choose whether the target is slowed, knocked prone, or dazed."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Perception",
@@ -399,7 +399,7 @@
                     "benefit": "You can follow any tracks made in the last two days, even over hard ground or made by a small creature."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Ranged",
@@ -423,7 +423,7 @@
                     "benefit": "When you score a critical hit with a ranged weapon, you may choose whether the target grants combat advantage, is slowed, or is stunned."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Ride/Drive",
@@ -447,7 +447,7 @@
                     "benefit": "You can ride creatures that are not normally considered mountable, provided they can physically support you."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Security",
@@ -472,7 +472,7 @@
                     "benefit": "You can immediately detect if you are being watched remotely (via cameras, scrying Abilities, etc.)"
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Sense Motive",
@@ -496,7 +496,7 @@
                     "benefit": "You instinctively know what motivates a person (greed, lust, power, etc.)"
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Sleight of Hand",
@@ -517,7 +517,7 @@
                     "benefit": "You can hide up to three items each no bigger than one cubic foot on your person. A perception check of 7 + your Sleight of Hand Modifier is required to find any of the items."
                 }
             ],
-            "value": 10
+            "value": 12
         },
          {
             "name":"Stealth",
@@ -542,7 +542,7 @@
                     "benefit": "When attacking enemies you are hidden from, increase your damage die by two. This replaces the previous perk."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Survival",
@@ -569,7 +569,7 @@
                     "benefit": "You can survive outside of civilization for a number of days equal to your Survival Modifier without having to make a check."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Unarmed Combat",
@@ -593,7 +593,7 @@
                     "benefit": "You may make four unarmed attacks per standard action. This replaces the previous perk."
                 }
             ],
-            "value": 10
+            "value": 12
         },
         {
             "name":"Utility",
@@ -604,7 +604,7 @@
                 "The number of Utility Abilities you know is equal to your Utility Modifier. When your Utility Modifier increases, you can select a new Utility Ability to learn."
             ],
             "benefits": null,
-            "value": 10
+            "value": 12
         }
     ]
 }

@@ -1,4 +1,4 @@
-app.controller('SkillController', function($scope, $http) {
+app.controller('SkillController', function($scope, $http, $rootScope) {
     $scope.remaining = 5;
     $http.get('data/skills.json').then(success => {
         $scope.skills = success.data.skills;
@@ -12,4 +12,17 @@ app.controller('SkillController', function($scope, $http) {
         $scope.skills[index].value += (checkbox.checked ? 15 : -15);
         $scope.remaining += (checkbox.checked ? -1 : 1);
     };
+
+    $rootScope.$on('attributeUpdated', (event, args) => {
+        for(var index in $scope.skills) {
+            let s = $scope.skills[index];
+
+            if(s.attribute !== args.attribute) {
+                continue;
+            }
+
+            s.value -= args.oldValue;
+            s.value += args.newValue;
+        }
+    });
 });
