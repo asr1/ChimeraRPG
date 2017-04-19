@@ -137,6 +137,31 @@
                         <input type="text" class="form-control" placeholder="Background" ng-model="background">
                     </div>
                 </div>
+                <div class="form-group row-dark">
+                    <label class="col-sm-3 control-label">Hit Points: {{hp}}</label>
+                    <label class="col-sm-3 control-label">Movement: {{movement}}</label>
+                    <label class="col-sm-3 control-label">Initiative Bonus: {{initiative}}</label>
+                </div>
+                <div class="form-group row-light">
+                    <label class="col-sm-3 control-label">Ability Points: {{ap}}</label>
+                    <label class="col-sm-3 control-label">Ability Regen: {{apRegen}}</label>
+                    <label class="col-sm-3 control-label">Enlightenment Points: {{ep}}</label>
+                </div>
+                <div class="form-group row-dark">
+                    <label class="col-sm-3 control-label">Fortitude: {{fort}}</label>
+                    <label class="col-sm-3 control-label">Reflex: {{reflex.value}}</label>
+                    <label class="col-sm-3 control-label">Will: {{will}}</label>
+                </div>
+                <div class="form-group row-light">
+                    <label class="col-sm-3 control-label">Fortune Points: {{fp}}</label>
+                    <label class="col-sm-3 control-label">Armor Class: {{ac.value}}</label>
+                </div>
+                <div class="form-group row-dark">
+                    <label class="col-sm-4 control-label">Use a shield? <input type="checkbox" ng-change="shieldChange()" ng-model="useShield"></label>
+                    <label class="col-sm-4 control-label">Armor Type:</label>
+                    <label class="radio-inline"><input type="radio" name="armor-radio" ng-change="armorChange('Light')" value="Light" ng-model="armorType">Light</label>
+                    <label class="radio-inline"><input type="radio" name="armor-radio" ng-change="armorChange('Heavy')" value="Heavy" ng-model="armorType">Heavy</label>
+                </div>
             </div>
         </div>
     </div>
