@@ -21,8 +21,12 @@ app.controller('SkillController', function($scope, $http, $rootScope) {
                 continue;
             }
 
-            s.value -= args.oldValue;
-            s.value += args.newValue;
+            s.value -= calculateModifier(args.oldValue);
+            s.value += calculateModifier(args.newValue);
         }
+    });
+
+    $rootScope.$on('shieldChange', (event, args) => {
+        $scope.skills.filter(s => s.name === 'Block')[0].value += (args.shield ? 5 : -5);
     });
 });

@@ -19,8 +19,8 @@ app.controller('AttributeController', function($scope, $http, $rootScope) {
         
         const modifiedAttr = $scope.attributes.filter(a => a.name === name)[0];
         const data = {
-            newValue: calculateModifier(modifiedAttr.value),
-            oldValue: calculateModifier(lastValue),
+            newValue: modifiedAttr.value,
+            oldValue: lastValue,
             attribute: modifiedAttr.name
         };
 
