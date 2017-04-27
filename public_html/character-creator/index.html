@@ -36,7 +36,7 @@
 
 </head>
 
-<body class="index" ng-app="solipstryApp">
+<body class="index" ng-app="solipstryApp" ng-controller="CharacterController">
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -81,7 +81,7 @@
     </nav>
 
     <!-- Basic Information -->
-    <div id="info" class="container" style="padding-top:70px" ng-controller="CharacterController">
+    <div id="info" class="container" style="padding-top:70px">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Basic Information
@@ -138,22 +138,22 @@
                     </div>
                 </div>
                 <div class="form-group row-dark">
-                    <label class="col-sm-3 control-label">Hit Points: {{hp}}</label>
-                    <label class="col-sm-3 control-label">Movement: {{movement}}</label>
-                    <label class="col-sm-3 control-label">Initiative Bonus: {{initiative}}</label>
+                    <label class="col-sm-3 control-label">Hit Points: {{hp.value}}</label>
+                    <label class="col-sm-3 control-label">Movement: {{movement.value}}</label>
+                    <label class="col-sm-3 control-label">Initiative Bonus: {{initiative.value}}</label>
                 </div>
                 <div class="form-group row-light">
-                    <label class="col-sm-3 control-label">Ability Points: {{ap}}</label>
-                    <label class="col-sm-3 control-label">Ability Regen: {{apRegen}}</label>
-                    <label class="col-sm-3 control-label">Enlightenment Points: {{ep}}</label>
+                    <label class="col-sm-3 control-label">Ability Points: {{ap.value}}</label>
+                    <label class="col-sm-3 control-label">Ability Regen: {{apRegen.value}}</label>
+                    <label class="col-sm-3 control-label">Enlightenment Points: {{ep.value}}</label>
                 </div>
                 <div class="form-group row-dark">
-                    <label class="col-sm-3 control-label">Fortitude: {{fort}}</label>
+                    <label class="col-sm-3 control-label">Fortitude: {{fort.value}}</label>
                     <label class="col-sm-3 control-label">Reflex: {{reflex.value}}</label>
-                    <label class="col-sm-3 control-label">Will: {{will}}</label>
+                    <label class="col-sm-3 control-label">Will: {{will.value}}</label>
                 </div>
                 <div class="form-group row-light">
-                    <label class="col-sm-3 control-label">Fortune Points: {{fp}}</label>
+                    <label class="col-sm-3 control-label">Fortune Points: {{fp.value}}</label>
                     <label class="col-sm-3 control-label">Armor Class: {{ac.value}}</label>
                 </div>
                 <div class="form-group row-dark">
@@ -167,18 +167,18 @@
     </div>
 
     <!-- Attributes -->
-    <div id="attributes" class="container" ng-controller="AttributeController">
+    <div id="attributes" class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Attributes
             </div>
             <div class="panel-body">
-                <div ng-show="showHomebrew" class="homebrew-warning center">This makes your character homebrewed!</div>
+                <div ng-if="attributeHomebrewCount > 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="attr in attributes track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}">{{attr.name}}</label>
                         <div class="col-sm-3">
-                            <input type="number" ng-change="textChange({{attr.value}}, attr.name)" class="form-control {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}" ng-model="attributes[$index].value">
+                            <input type="number" ng-change="attributeChange({{attr.value}}, attr.name)" class="form-control {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}" ng-model="attributes[$index].value">
                         </div>
                     </div>
                 </div>
@@ -187,14 +187,14 @@
     </div>
 	
     <!-- Skills -->
-    <div id="skills" class="container" ng-controller="SkillController">
+    <div id="skills" class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Skills
             </div>
             <div class="panel-body">
-                <div class="section-label center">Choose <strong>{{remaining}}</strong> skill{{remaining == 1 ? "" : "s"}} to gain a +15</div>
-                <div ng-if="remaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
+                <div class="section-label center">Choose <strong>{{skillsRemaining}}</strong> skill{{skillsRemaining == 1 ? "" : "s"}} to gain a +15</div>
+                <div ng-if="skillsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="skill in skills track by $index">
                     <div class="form-group">
                         <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
@@ -208,14 +208,14 @@
     </div>
 
     <!-- Talents -->
-    <div id="talents" class="container" ng-controller="TalentController">
+    <div id="talents" class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Talents
             </div>
             <div class="panel-body">
-                <div class="section-label center">Choose <strong>{{remaining}}</strong> talent{{remaining == 1 ? "" : "s"}}</div>
-                <div ng-if="remaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
+                <div class="section-label center">Choose <strong>{{talentsRemaining}}</strong> talent{{talentsRemaining == 1 ? "" : "s"}}</div>
+                <div ng-if="talentsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="talent in talents track by $index">
                    <div class="form-group">
                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
@@ -226,7 +226,7 @@
     </div>
 
     <!-- Abilities -->
-    <div id="abilities" class="container" ng-controller="AbilityController">
+    <div id="abilities" class="container">
         <div class="panel panel-default">
             <div class="panel-heading">
                 Abilities
@@ -283,11 +283,7 @@
     </footer>
 
     <script src="js/solipstryApp.js"></script>
-    <script src="js/controllers/CharacterController.js"></script>
-    <script src="js/controllers/AttributeController.js"></script>
-    <script src="js/controllers/SkillController.js"></script>
-    <script src="js/controllers/TalentController.js"></script>
-    <script src="js/controllers/AbilityController.js"></script>
+    <script src="js/CharacterController.js"></script>
 
     <!-- jQuery -->
     <script src="../js/jquery.js"></script>
