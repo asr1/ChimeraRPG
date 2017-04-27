@@ -89,13 +89,35 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
         }
 
         switch(name) {
+            case 'Charisma':
+                const enlightenment = $scope.skills.filter(s => s.name === 'Enlightenment')[0];
+                $scope.ep.fromSkill = enlightenment.value;
+                calculateValue($scope.ep);
+
+                break;
             case 'Constitution':
                 $scope.hp.fromAttr = Math.floor(1.5 * value);
                 calculateValue($scope.hp);
 
+                $scope.fort.fromAttr = mod;
+                calculateValue($scope.fort);
+
+                if($scope.armorType === 'Heavy') {
+                    $scope.ac.fromAttr = mod;
+                    calculateValue($scope.ac);
+                }
 
                 break;
             case 'Dexterity':
+                if($scope.reflex.fromAttr < mod) {
+                    $scope.reflex.fromAttr = mod;
+                    calculateValue($scope.reflex);
+                }
+
+                if($scope.armorType === 'Light' && $scope.ac.fromAttr < mod) {
+                    $scope.ac.fromAttr = mod;
+                    calculateValue($scope.ac);
+                }
 
                 break;
             case 'Intelligence':
@@ -115,6 +137,16 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
                 $scope.initiative.fromAttr = mod;
                 calculateValue($scope.initiative);
 
+                if($scope.reflex.fromAttr < mod) {
+                    $scope.reflex.fromAttr = mod;
+                    calculateValue($scope.reflex);
+                }
+                
+                if($scope.armorType === 'Light' && $scope.ac.fromAttr < mod) {
+                    $scope.ac.fromAttr = mod;
+                    calculateValue($scope.ac);
+                }
+
                 break;
             case 'Strength':
 
@@ -123,6 +155,8 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
                 $scope.ap.fromAttr = 5 * value;
                 calculateValue($scope.ap);
 
+                $scope.will.fromAttr = mod;
+                calculateValue($scope.will);
                 break;
         }
     };
@@ -196,7 +230,37 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
 
     $scope.armorType = 'Light';
     $scope.armorChange = function(choice) {
-       
+        const dex = calculateModifier($scope.attributes.filter(a => a.name === 'Dexterity')[0].value);
+        const spd = calculateModifier($scope.attributes.filter(a => a.name === 'Speed')[0].value);
+
+        switch($scope.armorType) {
+            case 'Heavy':
+                const heavyMod = calculateModifier($scope.skills.filter(s => s.name === 'Heavy armor')[0].value);
+                $scope.ac.base = 12;
+                $scope.ac.fromSkill = heavyMod;
+                $scope.ac.fromAttr = calculateModifier($scope.attributes.filter(a => a.name === 'Constitution')[0].value);
+
+                $scope.reflex.base = 5;
+                $scope.reflex.fromAttr = Math.max(dex, spd);
+                $scope.reflex.fromSkill = Math.floor(heavyMod / 2);
+                
+                break;
+            case 'Light':
+                $scope.ac.base = 7;
+                $scope.ac.fromSkill = calculateModifier($scope.skills.filter(s => s.name === 'Light armor')[0].value);
+
+                
+                $scope.ac.fromAttr = Math.max(dex, spd);
+
+                $scope.reflex.base = 10;
+                $scope.reflex.fromSkill = 0;
+                $scope.reflex.fromAttr = Math.max(dex, spd);
+
+                break;
+        }
+
+        calculateValue($scope.ac);
+        calculateValue($scope.reflex);
     };
 
     $scope.useShield = false;
