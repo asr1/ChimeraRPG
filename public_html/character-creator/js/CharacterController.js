@@ -247,12 +247,12 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
 
     $scope.sizes = ['Small', 'Medium', 'Large'],
     $scope.size = $scope.sizes[1];
-    $scope.sizeChange = function(choice) {
+    $scope.sizeChange = function() {
         let stealth = filterArrayByName($scope.skills, 'Stealth');
         stealth.value -= $scope.sizeChange.lastStealthMod;
 
         let stealthMod = 0;
-        switch(choice) {
+        switch($scope.size) {
             case 'Small':
                 $scope.reflex.fromSize = 1;
                 stealthMod = 5;
