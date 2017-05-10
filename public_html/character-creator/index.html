@@ -94,7 +94,7 @@
                     </div>
                     <label class="col-sm-1 control-label">Size</label>
                     <div class="col-sm-5">
-                        <select class="form-control" data-ng-options="s  for s in sizes" data-ng-model="size"></select>
+                        <select class="form-control" ng-change="sizeChange()" data-ng-options="s for s in sizes" data-ng-model="size"></select>
                     </div>
                 </div>
                 <div class="form-group">
