@@ -24,7 +24,7 @@ let skillChange = function(scope, name) {
     }
 }
 
-app.controller('CharacterController', function($scope, $rootScope, $http) {
+app.controller('CharacterController', function($scope, $rootScope, $http) {    
     //Skills
     $scope.skillsRemaining = 5;
     $http.get('data/skills.json').then(success => {
@@ -177,6 +177,46 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
                 calculateValue($scope.will);
                 break;
         }
+    };
+
+    $scope.canTake = function(itemName) {
+        console.log(itemName);
+        let item = filterArrayByName($scope.talents, itemName);
+        if(!item) {
+            item = findAbility($scope, itemName);
+        }
+
+        if(!item) {
+            return false;
+        }
+
+        for(let i in item.prereqs) {
+            const p = item.prereqs[i];
+
+            let req = filterArrayByName($scope.talents, p);
+            if(!req) {
+                req = findAbility($scope, p);
+            }
+            if(req) {
+                if(req.selected) {
+                    continue;
+                } else {
+                    return false;
+                }
+            }
+
+            const split = p.split(' ');
+
+            req = filterArrayByName($scope.attributes, split[0]);
+            if(!req) {
+                req = filterArrayByName($scope.skills, split[0]);
+            }
+            if(req && req.value < parseInt(split[1])) {
+                return false;
+            }
+        }
+
+        return true;
     };
 
     //Basic character info
