@@ -1,5 +1,3 @@
-"use strict";
-
 let skillChange = function(scope, name) {
     let skill = scope.skills.filter(s => s.name === name)[0];
     const value = skill.value;
@@ -180,7 +178,6 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
     };
 
     $scope.canTake = function(itemName) {
-        console.log(itemName);
         let item = filterArrayByName($scope.talents, itemName);
         if(!item) {
             item = findAbility($scope, itemName);
@@ -358,4 +355,6 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
         let blockSkill = $scope.skills.filter(s => s.name === 'Block')[0];
         blockSkill.value += $scope.useShield ? 5 : -5;
     };
+
+    $scope.showQualified = true;
 });

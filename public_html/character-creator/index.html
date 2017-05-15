@@ -157,10 +157,13 @@
                     <label class="col-sm-3 control-label">Armor Class: {{ac.value}}</label>
                 </div>
                 <div class="form-group row-dark">
-                    <label class="col-sm-4 control-label">Use a shield? <input type="checkbox" ng-change="shieldChange()" ng-model="useShield"></label>
-                    <label class="col-sm-4 control-label">Armor Type:</label>
+                    <label class="col-sm-3 control-label">Use a shield? <input type="checkbox" ng-change="shieldChange()" ng-model="useShield"></label>
+                    <label class="col-sm-3 control-label">Armor Type:</label>
                     <label class="radio-inline"><input type="radio" name="armor-radio" ng-change="armorChange('Light')" value="Light" ng-model="armorType">Light</label>
                     <label class="radio-inline"><input type="radio" name="armor-radio" ng-change="armorChange('Heavy')" value="Heavy" ng-model="armorType">Heavy</label>
+                </div>
+                <div class="form-group row-light text-center">
+                    <label class="control-label">Show only items you qualify for? <input type="checkbox" ng-model="showQualified"></label>
                 </div>
             </div>
         </div>
@@ -217,9 +220,9 @@
                 <div class="section-label center">Choose <strong>{{talentsRemaining}}</strong> talent{{talentsRemaining == 1 ? "" : "s"}}</div>
                 <div ng-if="talentsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="talent in talents track by $index">
-                   <div class="form-group">
-                       <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
-                   </div>
+                    <div class="form-group">
+                        <label ng-if="!showQualified || canTake(talent.name)" class="col-sm-3"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
+                    </div>
                 </div>
             </div>
         </div>
@@ -236,7 +239,7 @@
                 <div ng-if="controlRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'control')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -245,7 +248,7 @@
                 <div ng-if="destructionRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.destruction track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'destruction')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -254,7 +257,7 @@
                 <div ng-if="enhancementRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.enhancement track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'enhancement')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -263,7 +266,7 @@
                 <div ng-if="utilityRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.utility track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'utility')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -283,7 +286,6 @@
     </footer>
 
     <script src="js/helper.js"></script>
-    <script src="js/prereq.js"></script>
     <script src="js/solipstryApp.js"></script>
     <script src="js/CharacterController.js"></script>
 
