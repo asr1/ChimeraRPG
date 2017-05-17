@@ -175,7 +175,10 @@
             <div class="panel-heading">
                 Attributes
             </div>
-            <div class="panel-body">
+            <div ng-if="loading < 4" class="panel-body">
+                Loading, please wait
+            </div>
+            <div ng-if="loading === 4" class="panel-body">
                 <div ng-if="attributeHomebrewCount > 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="attr in attributes track by $index">
                     <div class="form-group">
@@ -195,7 +198,10 @@
             <div class="panel-heading">
                 Skills
             </div>
-            <div class="panel-body">
+            <div ng-if="loading < 4" class="panel-body">
+                Loading, please wait
+            </div>
+            <div ng-if="loading === 4" class="panel-body">
                 <div class="section-label center">Choose <strong>{{skillsRemaining}}</strong> skill{{skillsRemaining == 1 ? "" : "s"}} to gain a +15</div>
                 <div ng-if="skillsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="skill in skills track by $index">
@@ -216,7 +222,10 @@
             <div class="panel-heading">
                 Talents
             </div>
-            <div class="panel-body">
+            <div ng-if="loading < 4" class="panel-body">
+                Loading, please wait
+            </div>
+            <div ng-if="loading === 4" class="panel-body">
                 <div class="section-label center">Choose <strong>{{talentsRemaining}}</strong> talent{{talentsRemaining == 1 ? "" : "s"}}</div>
                 <div ng-if="talentsRemaining < 0" class="homebrew-warning center">You have taken too many talents</div>
                 <div ng-if="homebrewTalents.length > 0" class="homebrew-warning center">
@@ -241,9 +250,19 @@
             <div class="panel-heading">
                 Abilities
             </div>
-            <div class="panel-body">
+            <div ng-if="loading < 4" class="panel-body">
+                Loading, please wait
+            </div>
+            <div ng-if="loading === 4" class="panel-body">
+                <div ng-if="controlRemaining < 0 || destructionRemaining < 0 || enhancementRemaining < 0 || utilityRemaining < 0" class="homebrew-warning center">You have taken too many abilities</div>
+                <div ng-if="homebrewAbilities.length > 0" class="homebrew-warning center">
+                    You do not qualify for the following abilities: 
+                    <span ng-repeat="ability in homebrewAbilities track by $index">
+                        {{ability + ($index < homebrewAbilities.length - 1 ? ',' : '')}}
+                    </span>
+                </div>
+                <div ng-if="controlRemaining < 0 || destructionRemaining < 0 || enhancementRemaining < 0 || utilityRemaining < 0 || homebrewAbilities.length > 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div class="col-sm-12 section-label center">Choose <strong>{{controlRemaining}} Control</strong> {{controlRemaining == 1 ? "ability" : "abilities"}}</div>
-                <div ng-if="controlRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
@@ -252,7 +271,6 @@
                     </div>
                 </div>
                 <div class="col-sm-12 section-label center">Choose <strong>{{destructionRemaining}} Destruction</strong> {{destructionRemaining == 1 ? "ability" : "abilities"}}</div>
-                <div ng-if="destructionRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.destruction track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
@@ -261,7 +279,6 @@
                     </div>
                 </div>
                 <div class="col-sm-12 section-label center">Choose <strong>{{enhancementRemaining}} Enhancement</strong> {{enhancementRemaining == 1 ? "ability" : "abilities"}}</div>
-                <div ng-if="enhancementRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.enhancement track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
@@ -270,7 +287,6 @@
                     </div>
                 </div>
                 <div class="col-sm-12 section-label center">Choose <strong>{{utilityRemaining}} Utility</strong> {{utilityRemaining == 1 ? "ability" : "abilities"}}</div>
-                <div ng-if="utilityRemaining < 0" class="homebrew-warning center col-sm-12">This makes your character homebrewed!</div>
                 <div ng-repeat="ability in abilities.utility track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">

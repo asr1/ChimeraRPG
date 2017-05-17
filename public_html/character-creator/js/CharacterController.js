@@ -22,6 +22,49 @@ let skillChange = function(scope, name) {
     }
 }
 
+let checkHomebrew = function(scope) {
+    let newHomebrewTalents = [];
+    for(let i in scope.validTalents) {
+        const talentName = scope.validTalents[i];
+        if(!scope.canTake(talentName)) {
+            removeFromArray(scope.validTalents, talentName);
+            newHomebrewTalents.push(talentName);
+        }
+    }
+
+    let newValidTalents = [];
+    for(let i in scope.homebrewTalents) {
+        const talentName = scope.homebrewTalents[i];
+        if(scope.canTake(talentName)) {
+            removeFromArray(scope.homebrewTalents, talentName);
+            newValidTalents.push(talentName);
+        }
+    }
+
+    let newHomebrewAbilities = [];
+    for(let i in scope.validAbilities) {
+        const abilityName = scope.validAbilities[i];
+        if(!scope.canTake(abilityName)) {
+            removeFromArray(scope.validAbilities, abilityName);
+            newHomebrewAbilities.push(abilityName);
+        }
+    }
+
+    let newValidAbilities = [];
+    for(let i in scope.homebrewAbilities) {
+        const abilityName = scope.homebrewAbilities[i];
+        if(scope.canTake(abilityName)) {
+            removeFromArray(scope.homebrewAbilities, abilityName);
+            newValidAbilities.push(abilityName);
+        }
+    }
+
+    scope.homebrewTalents = scope.homebrewTalents.concat(newHomebrewTalents);
+    scope.validTalents = scope.validTalents.concat(newValidTalents);
+    scope.homebrewAbilities = scope.homebrewAbilities.concat(newHomebrewAbilities);
+    scope.validAbilities = scope.validAbilities.concat(newValidAbilities);
+}
+
 app.controller('CharacterController', function($scope, $http) {    
     init($scope, $http);
 
@@ -37,6 +80,8 @@ app.controller('CharacterController', function($scope, $http) {
         const mod = calculateModifier(value);
 
         skillChange($scope, skill.name);
+
+        checkHomebrew($scope);
     };
 
     $scope.talentSelected = function($event, index) {
@@ -58,16 +103,32 @@ app.controller('CharacterController', function($scope, $http) {
             removeFromArray($scope.validTalents, talent.name);
             removeFromArray($scope.homebrewTalents, talent.name);
         }
+
+        checkHomebrew($scope);
     };
 
     $scope.abilitySelected = function($event, index, type) {
         const checkbox = $event.target;
+        const ability = $scope.abilities[type][index];
 
-        $scope.abilities[type][index].selected = checkbox.checked;
+        ability.selected = checkbox.checked;
         $scope[type + 'Remaining'] += (checkbox.checked ? -1 : 1);
-    };
 
-    
+        if(checkbox.checked) {
+            const valid = $scope.canTake(ability.name);
+
+            if(valid) {
+                $scope.validAbilities.push(ability.name);
+            } else {
+                $scope.homebrewAbilities.push(ability.name);
+            }
+        } else {
+            removeFromArray($scope.validAbilities, ability.name);
+            removeFromArray($scope.homebrewAbilities, ability.name);
+        }
+
+        checkHomebrew($scope);
+    };
 
     $scope.attributeChange = function(lastValue, name) {
         const attr = $scope.attributes.filter(a => a.name === name)[0];
@@ -158,6 +219,8 @@ app.controller('CharacterController', function($scope, $http) {
                 calculateValue($scope.will);
                 break;
         }
+
+        checkHomebrew($scope);
     };
 
     $scope.canTake = function(itemName) {
@@ -170,8 +233,40 @@ app.controller('CharacterController', function($scope, $http) {
             return false;
         }
 
+        if(item instanceof Array) {
+            for(let i in item) {
+                const str = item[i];
+                if(str === $scope.size) {
+                    break;
+                }
+            }
+        }
+
+prereqLoop:
         for(let i in item.prereqs) {
             const p = item.prereqs[i];
+
+            if(p instanceof Array) {
+                for(let i in p) {
+                    const str = p[i];
+                    
+                    if(str === $scope.size) {
+                        continue prereqLoop;
+                    }
+
+                    const split = str.split(' ');
+                    const req = filterArrayByName($scope.attributes, split[0]);
+                    if(req.value >= parseInt(split[1])) {
+                        continue prereqLoop;
+                    }
+                }
+
+                return false;
+            }
+
+            if(p === $scope.size) {
+                continue;
+            }
 
             let req = filterArrayByName($scope.talents, p);
             if(!req) {
@@ -225,6 +320,8 @@ app.controller('CharacterController', function($scope, $http) {
         $scope.sizeChange.lastStealthMod = stealthMod;
 
         calculateValue($scope.reflex);
+
+        checkHomebrew($scope);
     }
     $scope.sizeChange.lastStealthMod = 0;
 
@@ -259,6 +356,8 @@ app.controller('CharacterController', function($scope, $http) {
 
         calculateValue($scope.ac);
         calculateValue($scope.reflex);
+
+        checkHomebrew($scope); //Not sure this one is needed?
     };
 
     $scope.shieldChange = function() {
@@ -267,5 +366,7 @@ app.controller('CharacterController', function($scope, $http) {
 
         let blockSkill = $scope.skills.filter(s => s.name === 'Block')[0];
         blockSkill.value += $scope.useShield ? 5 : -5;
+
+        checkHomebrew($scope); //Not sure this one is needed?
     };
 });

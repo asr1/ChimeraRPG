@@ -1,8 +1,12 @@
 let init = function($scope, $http) {
+    $scope.loading = 0;
+    
     //Skills
     $scope.skillsRemaining = 5;
+    $scope.skillsLoading = true;
     $http.get('data/skills.json').then(success => {
         $scope.skills = success.data.skills;
+        $scope.loading++;
     }, err => {
         console.log(err);
     });
@@ -13,17 +17,21 @@ let init = function($scope, $http) {
     $scope.talentsRemaining = 1;
     $http.get('data/talents.json').then(success => {
         $scope.talents = success.data.talents;
+        $scope.loading++;
     }, err => {
         console.log(err);
     });
 
     //Abilities
+    $scope.homebrewAbilities = [];
+    $scope.validAbilities = [];
     $scope.controlRemaining = 1;
     $scope.destructionRemaining = 1;
     $scope.enhancementRemaining = 1;
     $scope.utilityRemaining = 1;
     $http.get('data/abilities.json').then(success => {
         $scope.abilities = success.data.abilities;
+        $scope.loading++;
     }, err => {
         console.log(err);
     });
@@ -32,6 +40,7 @@ let init = function($scope, $http) {
     $scope.attributeHomebrew = 0;
     $http.get('data/attributes.json').then(success => {
         $scope.attributes = success.data.attributes;
+        $scope.loading++;
     }, err => {
         console.log(err);
     });

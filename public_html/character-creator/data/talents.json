@@ -291,7 +291,7 @@
 	    },
         {
             "name": "Juggernaut",
-	    	"prereqs": [["Size Medium", "Size Large"]],
+	    	"prereqs": [["Medium", "Large"]],
 	    	"description": "You can attempt to bull rush multiple people in one straight line.",
 			"selected": false
 	    },
@@ -531,7 +531,7 @@
 	    },
         {
             "name": "Small Steps",
-	    	"prereqs": ["Size Small"],
+	    	"prereqs": ["Small"],
 	    	"description": "You may move through enemy squares. Doing so provokes an attack of opportunity.",
 			"selected": false
 	    },
@@ -597,13 +597,13 @@
 	    },
         {
             "name": "Tricky Fighting",
-	    	"prereqs": ["Size Small", "Tricky Steps"],
+	    	"prereqs": ["Small", "Tricky Steps"],
 	    	"description": "You can stand and fight in the same square as a small enemy.\n Any attacks that do not include the enemy whose square you are in provoke an opportunity attack from that enemy.",
 			"selected": false
 	    },
         {
             "name": "Tricky Steps",
-	    	"prereqs": ["Size Small", "Small Steps"],
+	    	"prereqs": ["Small", "Small Steps"],
 	    	"description": "Your movement through enemy squares no longer provokes opportunity attacks.",
 			"selected": false
 	    },
