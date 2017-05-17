@@ -22,3 +22,4 @@ public_html/resources
 *.htpasswd
 *.htgroup
 *.mp3
+sheet-app/node_modules
