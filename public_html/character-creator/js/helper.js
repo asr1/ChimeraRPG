@@ -17,10 +17,13 @@ let filterArrayByName = function(array, name) {
     let items = array.filter(a => a.name === name);
     
     if(items.length === 0) {
-        return null;
-    } else {
-        return items[0];
-    }
+        items = array.filter(a => a.abbreviation === name);
+        if(items.length === 0) {
+            return null;
+        }
+    } 
+
+    return items[0]
 }
 
 let findAbility = function(scope, abilityName) {
