@@ -107,5 +107,4 @@ let init = function($scope, $http) {
     $scope.armorType = 'Light';
     $scope.showQualified = true;
     $scope.useShield = false;
-
 }
