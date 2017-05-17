@@ -22,14 +22,8 @@ let skillChange = function(scope, name) {
     }
 }
 
-app.controller('CharacterController', function($scope, $rootScope, $http) {    
-    //Skills
-    $scope.skillsRemaining = 5;
-    $http.get('data/skills.json').then(success => {
-        $scope.skills = success.data.skills;
-    }, err => {
-        console.log(err);
-    });
+app.controller('CharacterController', function($scope, $http) {    
+    init($scope, $http);
 
     $scope.skillSelected = function($event, index) {
         const checkbox = $event.target;
@@ -45,31 +39,26 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
         skillChange($scope, skill.name);
     };
 
-    //Talents
-    $scope.talentsRemaining = 1;
-    $http.get('data/talents.json').then(success => {
-        $scope.talents = success.data.talents;
-    }, err => {
-        console.log(err);
-    });
-
     $scope.talentSelected = function($event, index) {
         const checkbox = $event.target;
+        const talent = $scope.talents[index];
 
-        $scope.talents[index].selected = checkbox.checked;
+        talent.selected = checkbox.checked;
         $scope.talentsRemaining += (checkbox.checked ? -1 : 1);
+
+        if(checkbox.checked) {
+            const valid = $scope.canTake(talent.name);
+
+            if(valid) {
+                $scope.validTalents.push(talent.name);
+            } else {
+                $scope.homebrewTalents.push(talent.name);
+            }
+        } else {
+            removeFromArray($scope.validTalents, talent.name);
+            removeFromArray($scope.homebrewTalents, talent.name);
+        }
     };
-    
-    //Abilities
-    $scope.controlRemaining = 1;
-    $scope.destructionRemaining = 1;
-    $scope.enhancementRemaining = 1;
-    $scope.utilityRemaining = 1;
-    $http.get('data/abilities.json').then(success => {
-        $scope.abilities = success.data.abilities;
-    }, err => {
-        console.log(err);
-    });
 
     $scope.abilitySelected = function($event, index, type) {
         const checkbox = $event.target;
@@ -78,13 +67,7 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
         $scope[type + 'Remaining'] += (checkbox.checked ? -1 : 1);
     };
 
-    //Attributes
-    $scope.attributeHomebrew = 0;
-    $http.get('data/attributes.json').then(success => {
-        $scope.attributes = success.data.attributes;
-    }, err => {
-        console.log(err);
-    });
+    
 
     $scope.attributeChange = function(lastValue, name) {
         const attr = $scope.attributes.filter(a => a.name === name)[0];
@@ -215,75 +198,7 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
 
         return true;
     };
-
-    //Basic character info
-    $scope.hp = {
-        value: 30,
-        fromAttr: 30,
-        fromTalents: 0
-    };
-    $scope.movement = {
-        value: 5,
-        fromAttr: 2,
-        fromTalents: 0,
-        base: 3
-    };
-    $scope.ap = {
-        value: 100,
-        fromAttr: 100,
-        fromTalents: 0
-    };
-    $scope.apRegen = {
-        value: 20,
-        fromAttr: 20,
-        fromTalents: 0
-    };
-    $scope.fp = {
-        value: 2,
-        fromAttr: 20,
-        fromTalents: 0
-    };
-    $scope.initiative = {
-        value: 2,
-        fromAttr: 2,
-        fromTalents: 0
-    };
-    $scope.ep = {
-        value: 12,
-        fromSkill: 12,
-        fromTalents: 0
-    };
-    $scope.ac = {
-        value: 10,
-        fromAttr: 2,
-        fromSkill: 1,
-        fromTalents: 0,
-        shield: 0,
-        base: 7
-    };
-    $scope.fort = {
-        value: 12,
-        fromAttr: 2,
-        fromTalents: 0,
-        base: 10
-    };
-    $scope.reflex = {
-        value: 12,
-        fromAttr: 2,
-        fromSkill: 0,
-        fromTalents: 0,
-        fromSize: 0,
-        base: 10
-    };
-    $scope.will = {
-        value: 12,
-        fromAttr: 2,
-        fromTalents: 0,
-        base: 10
-    };
-
-    $scope.sizes = ['Small', 'Medium', 'Large'],
-    $scope.size = $scope.sizes[1];
+    
     $scope.sizeChange = function() {
         let stealth = filterArrayByName($scope.skills, 'Stealth');
         stealth.value -= $scope.sizeChange.lastStealthMod;
@@ -313,7 +228,6 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
     }
     $scope.sizeChange.lastStealthMod = 0;
 
-    $scope.armorType = 'Light';
     $scope.armorChange = function(choice) {
         const dex = calculateModifier($scope.attributes.filter(a => a.name === 'Dexterity')[0].value);
         const spd = calculateModifier($scope.attributes.filter(a => a.name === 'Speed')[0].value);
@@ -347,7 +261,6 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
         calculateValue($scope.reflex);
     };
 
-    $scope.useShield = false;
     $scope.shieldChange = function() {
         $scope.ac.shield = +$scope.useShield;
         calculateValue($scope.ac);
@@ -355,6 +268,4 @@ app.controller('CharacterController', function($scope, $rootScope, $http) {
         let blockSkill = $scope.skills.filter(s => s.name === 'Block')[0];
         blockSkill.value += $scope.useShield ? 5 : -5;
     };
-
-    $scope.showQualified = true;
 });
