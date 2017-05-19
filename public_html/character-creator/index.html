@@ -239,7 +239,7 @@
                 <div ng-if="homebrewTalents.length > 0 || talentsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="talent in talents track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(talent.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{talent.name}}"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
+                        <label ng-if="!showQualified || canTake(talent.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{talent.name + ':\n' + talent.description}}" uib-tooltip-class="tooltip-inner"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
                     </div>
                 </div>
             </div>
