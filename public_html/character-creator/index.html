@@ -12,6 +12,8 @@
 
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.3/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 
     <!-- Bootstrap Core CSS -->
     <link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -182,7 +184,7 @@
                 <div ng-if="attributeHomebrewCount > 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="attr in attributes track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}">{{attr.name}}</label>
+                        <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}"  tooltip-placement="top-left" uib-tooltip="{{attr.description}}">{{attr.name}}</label>
                         <div class="col-sm-3">
                             <input type="number" ng-change="attributeChange({{attr.value}}, attr.name)" class="form-control {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}" ng-model="attributes[$index].value">
                         </div>
@@ -206,7 +208,7 @@
                 <div ng-if="skillsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="skill in skills track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}">
+                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}" tooltip-placement="top" uib-tooltip="{{skill.name + ':\n' + skill.description}}" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-click="skillSelected($event, $index)" class="col-sm-1">
                             <span class="col-sm-1">{{skill.value}}</span><span class="col-sm-8">{{skill.name}}</span>
                         </label>
@@ -237,7 +239,7 @@
                 <div ng-if="homebrewTalents.length > 0 || talentsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="talent in talents track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(talent.name)" class="col-sm-3"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
+                        <label ng-if="!showQualified || canTake(talent.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{talent.name}}"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
                     </div>
                 </div>
             </div>
@@ -265,7 +267,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{controlRemaining}} Control</strong> {{controlRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name}}">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'control')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -273,7 +275,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{destructionRemaining}} Destruction</strong> {{destructionRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.destruction track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name}}">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'destruction')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -281,7 +283,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{enhancementRemaining}} Enhancement</strong> {{enhancementRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.enhancement track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name}}">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'enhancement')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -289,7 +291,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{utilityRemaining}} Utility</strong> {{utilityRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.utility track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.description}}">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'utility')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>

@@ -4,7 +4,7 @@
             "name":"Acrobatics",
 			"heavy_armor_penalty": true,
 			"attribute":"Dexterity",
-            "description": ["Balancing and coordination"],
+            "description": "▪ Balancing and coordination",
             "benefits": [
                 {
                     "cost": 25,
@@ -25,7 +25,7 @@
             "name":"Athletics",
 			"heavy_armor_penalty": false,
 			"attribute":"Strength",
-            "description": ["Jumping, climbing, and other physical activity"],
+            "description": "▪ Jumping, climbing, and other physical activity",
             "benefits": [
                 {
                     "cost": 25,
@@ -46,7 +46,7 @@
             "name":"Block",
 			"heavy_armor_penalty": false,
 			"attribute":"Strength",
-            "description": ["Blocking attacks"],
+            "description": "▪ Blocking attacks",
             "benefits": [
                 {
                     "cost": 25,
@@ -92,10 +92,7 @@
             "name":"Control",
 			"heavy_armor_penalty": true,
 			"attribute":"Wisdom",
-            "description": [
-                "Exerting your will upon friends, foes, and the battlefield using your Abilities",
-                "The number of Control Abilities you know is equal to your Control Modifier. When your Control Modifier increases, you can select a new Control Ability to learn"
-            ],
+            "description": "▪ Exerting your will upon friends, foes, and the battlefield using your Abilities\n▪ The number of Control Abilities you know is equal to your Control Modifier\n▪ When your Control Modifier increases, you can select a new Control Ability to learn",
             "benefits": null,
             "value": 12
         },
@@ -103,10 +100,7 @@
             "name":"Craft",
 			"heavy_armor_penalty": false,
 			"attribute":"Intelligence",
-            "description": [
-                "Creating common objects",
-                "In a day's work, a novice can earn enough for an evening's meal. A master can make a comfortable living wage."
-            ],
+            "description": "▪ Creating common objects\n▪ In a day's work, a novice can earn enough for an evening's meal\n▪ A master can make a comfortable living wage.",
             "benefits": [
                 {
                     "cost": 25,
@@ -127,10 +121,7 @@
             "name":"Destruction",
 			"heavy_armor_penalty": true,
 			"attribute":"Wisdom",
-            "description": [
-                "Using offensive Abilities, often controlling elements",
-                "The number of Destruction Abilities you know is equal to your Destruction Modifier. When your Destruction Modifier increases, you can select a new Destruction Ability to learn."
-            ],
+            "description": "▪ Using offensive Abilities, often controlling elements\n▪ The number of Destruction Abilities you know is equal to your Destruction Modifier\n▪ When your Destruction Modifier increases, you can select a new Destruction Ability to learn.",
             "benefits": null,
             "value": 12
         },
@@ -138,7 +129,7 @@
             "name":"Disguise",
 			"heavy_armor_penalty": false,
 			"attribute":"Charisma",
-            "description": ["Creating or implementing a disguise on yourself or a willing/helpless individual"],
+            "description": "▪ Creating or implementing a disguise on yourself or a willing/helpless individual",
             "benefits": [
                 {
                     "cost": 25,
@@ -159,13 +150,7 @@
             "name":"Engineering",
 			"heavy_armor_penalty": false,
 			"attribute":"Intelligence",
-            "description": [
-                "Using a device, tool, or piece of technology",
-                "Setting up or disabling explosive mines or similar devices",
-                "Building technology, tools, mines, complex weaponry, contraptions, etc.",
-                "Understanding the use of unfamiliar devices",
-                "Identifying points of structural weakness"
-            ],
+            "description": "▪ Using a device, tool, or piece of technology\n▪ Setting up or disabling explosive mines or similar devices\n▪ Building technology, tools, mines, complex weaponry, contraptions, etc.\n▪ Understanding the use of unfamiliar devices\n▪ Identifying points of structural weakness",
             "benefits": [
                 {
                     "cost": 25,
@@ -186,11 +171,7 @@
             "name":"Enhancement",
 			"heavy_armor_penalty": true,
 			"attribute":"Wisdom",
-            "description": [
-                "Healing yourself or allies with Abilities",
-                "Creating defensive barrieres of protection",
-                "The number of Enhancement Abilities you know is equal to your Enhancement Modifier. When your Enhancement Modifier increases, you can select a new Enhancement Ability to learn."
-            ],
+            "description": "▪ Healing yourself or allies with Abilities\n▪ Creating defensive barrieres of protection\n▪ The number of Enhancement Abilities you know is equal to your Enhancement Modifier\n▪ When your Enhancement Modifier increases, you can select a new Enhancement Ability to learn.",
             "benefits": null,
             "value": 12
         },
@@ -198,10 +179,7 @@
             "name":"Enlightenment",
 			"heavy_armor_penalty": false,
 			"attribute":"Charisma",
-            "description": [
-                "Understanding of religions, prayers, beliefs, ceremonies, or rituals",
-                "Granting bonuses and special effects"
-            ],
+            "description": "▪ Understanding of religions, prayers, beliefs, ceremonies, or rituals\n▪ Granting bonuses and special effects",
             "benefits": [
                 {
                     "cost": 25,
@@ -222,10 +200,7 @@
             "name":"Escape",
 			"heavy_armor_penalty": true,
 			"attribute":"Dexterity",
-            "description": [
-                "Slipping out of ropes, cages, or other constraints",
-                "Constraining others with bonds"
-            ],
+            "description": "▪ Slipping out of ropes, cages, or other constraints\n▪ Constraining others with bonds",
             "benefits": [
                 {
                     "cost": 25,
@@ -246,7 +221,7 @@
             "name":"Heavy armor",
 			"heavy_armor_penalty":  false,
 			"attribute":"Constitution",
-            "description": ["Avoiding damage with heavy armor"],
+            "description": "▪ Avoiding damage with heavy armor",
             "benefits": [
                 {
                     "cost": 25,
@@ -267,7 +242,7 @@
             "name":"Interaction",
 			"heavy_armor_penalty": false,
 			"attribute":"Charisma",
-            "description": ["Lying, seducing, planting seeds of doubt, inspiring allies, intimidating enemies, persuading, and concealing secret messages in speech."],
+            "description": "▪ Lying, seducing, planting seeds of doubt, inspiring allies, intimidating enemies, persuading, and concealing secret messages in speech.",
             "benefits": [
                 {
                     "cost": 25,
@@ -288,10 +263,7 @@
             "name":"Knowledge",
 			"heavy_armor_penalty": false,
 			"attribute":"Intelligence",
-            "description": [
-                "Knowledge of history, monsters, folklore, mathematics, or most other subjects taught by an education",
-                "Learning languages, interpreting and communicating in languages unfamiliar to you, deciphering foreign scripts"
-            ],
+            "description": "▪ Knowledge of history, monsters, folklore, mathematics, or most other subjects taught by an education\n▪ Learning languages, interpreting and communicating in languages unfamiliar to you, deciphering foreign scripts",
             "benefits": [
                 {
                     "cost": 25,
@@ -312,7 +284,7 @@
             "name":"Light armor",
 			"heavy_armor_penalty": false,
 			"attribute":"Speed",
-            "description": ["Avoiding damage with light armor"],
+            "description": "▪ Avoiding damage with light armor",
             "benefits": [
                 {
                     "cost": 25,
@@ -333,13 +305,7 @@
             "name":"Medicine",
 			"heavy_armor_penalty": false,
 			"attribute":"Wisdom",
-            "description": [
-                "Providing first aid and healing allies in combat",
-                "Examining corpses for cause of death",
-                "Curing disease or poison",
-                "Stabilizing a dying creature (bring them to 1 hp) so they can be healed",
-                "Stabilizing a dying creature requires a DC 15 medicine check"
-            ],
+            "description": "▪ Providing first aid and healing allies in combat\n▪ Examining corpses for cause of death\n▪ Curing disease or poison\n▪ Stabilizing a dying creature (bring them to 1 hp) so they can be healed\n▪ Stabilizing a dying creature requires a DC 15 medicine check",
             "benefits": [
                 {
                     "cost": 25,
@@ -360,7 +326,7 @@
             "name":"Melee Weapon",
 			"heavy_armor_penalty": false,
 			"attribute":"Strength",
-            "description": ["Accuracy and damage with melee weapons"],
+            "description": "▪ Accuracy and damage with melee weapons",
             "benefits": [
                 {
                     "cost": 25,
@@ -381,10 +347,7 @@
             "name":"Perception",
 			"heavy_armor_penalty": false,
 			"attribute":"Wisdom",
-            "description": [
-                "Hearing, seeing, feeling, or otherwise sensing that something is out of place",
-                "Detecting traps"
-            ],
+            "description": "▪ Hearing, seeing, feeling, or otherwise sensing that something is out of place\n▪ Detecting traps",
             "benefits": [
                 {
                     "cost": 25,
@@ -405,10 +368,7 @@
             "name":"Ranged",
 			"heavy_armor_penalty": false,
 			"attribute":"Dexterity",
-            "description": [
-                "Eliminating enemies at range throug hte use of thrown or launched projectiles",
-                "Throwing grabbed allies, enemies, or objects"
-            ],
+            "description": "▪ Eliminating enemies at range throug hte use of thrown or launched projectiles\n▪ Throwing grabbed allies, enemies, or objects",
             "benefits": [
                 {
                     "cost": 25,
@@ -429,10 +389,7 @@
             "name":"Ride/Drive",
 			"heavy_armor_penalty": false,
 			"attribute":"Dexterity",
-            "description": [
-                "Mounting and riding exotic animals",
-                "Driving or piloting a vehicle"
-            ],
+            "description": "▪ Mounting and riding exotic animals\n▪ Driving or piloting a vehicle",
             "benefits": [
                 {
                     "cost": 25,
@@ -453,11 +410,7 @@
             "name":"Security",
 			"heavy_armor_penalty": false,
 			"attribute":"Intelligence",
-            "description": [
-                "Opening locks and determining access codes",
-                "Setting up or breaching security systems",
-                "Disabling traps"
-            ],
+            "description": "▪ Opening locks and determining access codes\n▪ Setting up or breaching security systems\n▪ Disabling traps",
             "benefits": [
                 {
                     "cost": 25,
@@ -478,10 +431,7 @@
             "name":"Sense Motive",
 			"heavy_armor_penalty": false,
 			"attribute":"Wisdom",
-            "description": [
-                "Sensing other's intentions, including lies, malice, etc.",
-                "Detecting best way to motivate individuals (money, threats, love, fame)"
-            ],
+            "description": "▪ Sensing other's intentions, including lies, malice, etc.\n▪ Detecting best way to motivate individuals (money, threats, love, fame)",
             "benefits": [
                 {
                     "cost": 25,
@@ -502,7 +452,7 @@
             "name":"Sleight of Hand",
 			"heavy_armor_penalty": true,
 			"attribute":"Dexterity",
-            "description": ["Performing small tricks, prestidigitation, stealing a small item off a person, etc."],
+            "description": "▪ Performing small tricks, prestidigitation, stealing a small item off a person, etc.",
             "benefits": [
                 {
                     "cost": 25,
@@ -523,11 +473,7 @@
             "name":"Stealth",
 			"heavy_armor_penalty": true,
 			"attribute":"Dexterity",
-            "description": [
-                "Remaining hidden",
-                "Moving or performing actions without being noticed",
-                "Running gives a -5 penalty to any stealth check"
-            ],
+            "description": "▪ Remaining hidden\n▪ Moving or performing actions without being noticed\n▪ Running gives a -5 penalty to any stealth check",
             "benefits": [
                 {
                     "cost": 25,
@@ -548,13 +494,7 @@
             "name":"Survival",
 			"heavy_armor_penalty": false,
 			"attribute":"Wisdom",
-            "description": [
-                "Knowledge of nature: Plants, animals, edible mushrooms, poisonous herbs, etc.",
-                "Discerning habitats and weaknesses of natural creatures",
-                "Tracking animals",
-                "Determining location and time of day",
-                "Surviving in various environments"
-            ],
+            "description": "▪ Knowledge of nature: Plants, animals, edible mushrooms, poisonous herbs, etc.\n▪ Discerning habitats and weaknesses of natural creatures\n▪ Tracking animals\n▪ Determining location and time of day\n▪ Surviving in various environments",
             "benefits": [
                 {
                     "cost": 25,
@@ -575,10 +515,7 @@
             "name":"Unarmed Combat",
 			"heavy_armor_penalty": false,
 			"attribute":"Strength",
-            "description": [
-                "Accuracy and damage with melee weapons",
-                "An expert of unarmed combat is as likely to strike with a hand as to kick or even headbutt"
-            ],
+            "description": "▪ Accuracy and damage with melee weapons\n▪ An expert of unarmed combat is as likely to strike with a hand as to kick or even headbutt",
             "benefits": [
                 {
                     "cost": 25,
@@ -599,10 +536,7 @@
             "name":"Utility",
 			"heavy_armor_penalty": true,
 			"attribute":"Wisdom",
-            "description": [
-                "Changing matter or reality to suit your needs",
-                "The number of Utility Abilities you know is equal to your Utility Modifier. When your Utility Modifier increases, you can select a new Utility Ability to learn."
-            ],
+            "description": "▪ Changing matter or reality to suit your needs\n▪ The number of Utility Abilities you know is equal to your Utility Modifier\n▪ When your Utility Modifier increases, you can select a new Utility Ability to learn.",
             "benefits": null,
             "value": 12
         }

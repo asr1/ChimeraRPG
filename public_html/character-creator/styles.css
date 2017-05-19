@@ -19,3 +19,8 @@
     color: red;
     font-weight: bold;
 }
+
+.tooltip-inner {
+    white-space:pre-wrap;
+    text-align: left;
+}
