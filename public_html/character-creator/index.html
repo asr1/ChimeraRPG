@@ -267,7 +267,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{controlRemaining}} Control</strong> {{controlRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name}}">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'control')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -275,7 +275,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{destructionRemaining}} Destruction</strong> {{destructionRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.destruction track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name}}">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'destruction')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -283,7 +283,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{enhancementRemaining}} Enhancement</strong> {{enhancementRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.enhancement track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name}}">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'enhancement')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -291,7 +291,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{utilityRemaining}} Utility</strong> {{utilityRemaining == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.utility track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.description}}">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-click="abilitySelected($event, $index, 'utility')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
