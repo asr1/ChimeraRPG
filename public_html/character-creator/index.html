@@ -184,7 +184,7 @@
                 <div ng-if="attributeHomebrewCount > 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="attr in attributes track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}"  tooltip-placement="top-left" uib-tooltip="{{attr.description}}">{{attr.name}}</label>
+                        <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}"  tooltip-placement="top-left" uib-tooltip="{{attr.description + '\n\nGoverns: ' + attr.governs}}" uib-tooltip-class="tooltip-inner">{{attr.name}}</label>
                         <div class="col-sm-3">
                             <input type="number" ng-change="attributeChange({{attr.value}}, attr.name)" class="form-control {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}" ng-model="attributes[$index].value">
                         </div>
