@@ -24,3 +24,7 @@
     white-space:pre-wrap;
     text-align: left;
 }
+
+.create-button {
+    margin-bottom: 1em;
+}
