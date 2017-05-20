@@ -116,4 +116,13 @@ let init = function($scope, $http) {
     $scope.armorType = 'Light';
     $scope.showQualified = true;
     $scope.useShield = false;
+    $scope.name = '';
+    $scope.class = '';
+    $scope.race = '';
+    $scope.height = '';
+    $scope.weight = '';
+    $scope.age = '';
+    $scope.occupation = '';
+    $scope.aspiration = '';
+    $scope.background = '';
 }
