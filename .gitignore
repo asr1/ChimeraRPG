@@ -22,3 +22,4 @@ public_html/resources
 *.htpasswd
 *.htgroup
 *.mp3
+public_html/character-creator/vendor
