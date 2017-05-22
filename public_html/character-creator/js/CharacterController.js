@@ -68,6 +68,71 @@ let checkHomebrew = function(scope) {
 app.controller('CharacterController', function($scope, $http) {    
     init($scope, $http);
 
+    $scope.submit = function() {
+        let abilities = [];
+        const takenAbilities = $scope.homebrewAbilities.concat($scope.validAbilities);
+        for(let i in takenAbilities) {
+            const ability = findAbility($scope, takenAbilities[i]);
+            abilities.push({
+                name: ability.name,
+                cost: ability.cost,
+                effect: ability.flavor,
+                school: ability.type
+            });
+        }
+
+        let talents = $scope.homebrewTalents.concat($scope.validTalents);
+
+        let skills = {};
+        for(let i in $scope.skills) {
+            const skill = $scope.skills[i];
+            skills[skill.name.replace(' ', '_').replace(' ', '_').replace('/', '_')] = {
+                score: skill.value,
+                mod: calculateModifier(skill.value)
+            };
+        }
+
+        let attributes = {};
+        for(let i in $scope.attributes) {
+            const attr = $scope.attributes[i];
+            attributes[attr.abbreviation] = {
+                score: attr.value,
+                mod: calculateModifier(attr.value)
+            };
+        }
+
+        let data = {
+            name: $scope.name,
+            size: $scope.size,
+            class: $scope.class,
+            race: $scope.race,
+            height: $scope.height,
+            weight: $scope.weight,
+            age: $scope.age,
+            occupation: $scope.occupation,
+            aspiration: $scope.aspiration,
+            background: $scope.background,
+            hp: $scope.hp.value,
+            movement: $scope.movement.value,
+            initiative: $scope.initiative.value,
+            ap: $scope.ap.value,
+            apRegen: $scope.apRegen.value,
+            ep: $scope.ep.value,
+            fort: $scope.fort.value,
+            reflex: $scope.reflex.value,
+            will: $scope.will.value,
+            ac: $scope.ac.value,
+            fp: $scope.fp.value,
+            skills: skills,
+            abilities: abilities,
+            talents: talents,
+            attributes: attributes
+        };
+        $http.get('create-sheet.php?character=' + JSON.stringify(data)).then(res => {
+            window.open(res.data);
+        });
+    }
+
     $scope.skillSelected = function($event, index) {
         const checkbox = $event.target;
 
@@ -256,6 +321,9 @@ prereqLoop:
 
                     const split = str.split(' ');
                     const req = filterArrayByName($scope.attributes, split[0]);
+                    if(!req) {
+                        continue;
+                    }
                     if(req.value >= parseInt(split[1])) {
                         continue prereqLoop;
                     }
