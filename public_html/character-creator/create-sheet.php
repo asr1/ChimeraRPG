@@ -114,11 +114,13 @@ foreach($data->abilities as $value) {
     $count = $count + 1;
 }
 
+$filename = $data->name . '_sheet.pdf';
+
 $pdf = new Pdf(__DIR__ . '/data/Editable Character Sheet.pdf');
 $pdf->fillForm($fill_data)
     ->needAppearances()
-    ->saveAs($data->name . '_sheet.pdf');
+    ->saveAs($filename);
 
-echo $data->name . '_sheet.pdf';
+echo $filename;
 
 ?>
