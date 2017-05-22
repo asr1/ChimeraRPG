@@ -45,7 +45,7 @@
         {
             "name":"Block",
 			"heavy_armor_penalty": false,
-			"attribute":"Strength",
+			"attribute":"Speed",
             "description": "▪ Blocking attacks",
             "benefits": [
                 {
