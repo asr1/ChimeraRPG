@@ -125,6 +125,4 @@ let init = function($scope, $http) {
     $scope.occupation = '';
     $scope.aspiration = '';
     $scope.background = '';
-
-    $scope.email = 'solipstry.creator@gmail.com';
 }
