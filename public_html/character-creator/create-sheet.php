@@ -114,7 +114,7 @@ foreach($data->abilities as $value) {
     $count = $count + 1;
 }
 
-$filename = $data->name . '_sheet.pdf';
+$filename = $data->name . '_' . date("Y-m-d-h-i-sa") . '_sheet.pdf';
 
 $pdf = new Pdf(__DIR__ . '/data/Editable Character Sheet.pdf');
 $pdf->fillForm($fill_data)
