@@ -95,6 +95,7 @@
             "name": "Devout Follower",
 	    	"prereqs": [],
 	    	"description": "Gain an additional 10 Enlightenment points. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -173,6 +174,7 @@
             "name": "Far Shot",
 	    	"prereqs": [],
 	    	"description": "Choose a skill that has an associated Range. Increase that Range by 2. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -185,6 +187,7 @@
             "name": "Fortunateness",
 	    	"prereqs": [],
 	    	"description": "Gain an extra Fortune Point per day. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -233,12 +236,14 @@
             "name": "Improved Defense",
 	    	"prereqs": [],
 	    	"description": "You gain a +1 bonus to a defense of your choice. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
             "name": "Improved Initiative",
 	    	"prereqs": [],
 	    	"description": "You gain a +3 bonus to your initiative. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -251,6 +256,7 @@
             "name": "Improved Rushing",
 	    	"prereqs": [],
 	    	"description": "You gain a +2 bonus to Bull Rush attempts. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -287,6 +293,7 @@
             "name": "Increased Teleportation",
 	    	"prereqs": [],
 	    	"description": "When an effect or Ability allows you to teleport, you may teleport two additional squares. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -425,6 +432,7 @@
             "name": "Quick Steps",
 	    	"prereqs": [],
 	    	"description": "Gain a +1 bonus to movement. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -467,12 +475,14 @@
             "name": "Resilience",
 	    	"prereqs": [],
 	    	"description": "You gain a +1 bonus to all saving throws. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
             "name": "Resourcefulness",
 	    	"prereqs": ["WIS 25"],
 	    	"description": "Your Ability Point total increases by 10. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -515,6 +525,7 @@
             "name": "Skill Specialization",
 	    	"prereqs": [],
 	    	"description": "You gain a +6 bonus in any skill. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -569,6 +580,7 @@
             "name": "Studious",
 	    	"prereqs": [],
 	    	"description": "You learn an additional Ability for which you meet the requirements. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {
@@ -593,6 +605,7 @@
             "name": "Thick Skin",
 	    	"prereqs": [],
 	    	"description": "Gain an additional 5 hit points. You may take this Talent multiple times.",
+			"multiple": true,
 			"selected": false
 	    },
         {

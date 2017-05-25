@@ -169,11 +169,14 @@ app.controller('CharacterController', function($scope, $http) {
         const checkbox = $event.target;
         const talent = $scope.talents[index];
 
-        talent.selected = checkbox.checked;
         $scope.talentsRemaining += (checkbox.checked ? -1 : 1);
 
         if(checkbox.checked) {
             const valid = $scope.canTake(talent.name);
+
+            if(talent.multiple) {
+                $scope.talents.splice(index, 0, talent);
+            }
 
             if(valid) {
                 $scope.validTalents.push(talent.name);
@@ -183,6 +186,10 @@ app.controller('CharacterController', function($scope, $http) {
         } else {
             removeFromArray($scope.validTalents, talent.name);
             removeFromArray($scope.homebrewTalents, talent.name);
+
+            if(talent.multiple) {
+                $scope.talents.splice(index, 1);
+            }
         }
 
         checkHomebrew($scope);
