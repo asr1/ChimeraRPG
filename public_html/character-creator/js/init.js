@@ -25,10 +25,14 @@ let init = function($scope, $http) {
     //Abilities
     $scope.homebrewAbilities = [];
     $scope.validAbilities = [];
-    $scope.controlRemaining = 1;
-    $scope.destructionRemaining = 1;
-    $scope.enhancementRemaining = 1;
-    $scope.utilityRemaining = 1;
+    $scope.controlMax = 1;
+    $scope.destructionMax = 1;
+    $scope.enhancementMax = 1;
+    $scope.utilityMax = 1;
+    $scope.controlTaken = 0;
+    $scope.destructionTaken = 0;
+    $scope.enhancementTaken = 0;
+    $scope.utilityTaken = 0;
     $http.get('data/abilities.json').then(success => {
         $scope.abilities = success.data.abilities;
         $scope.loading++;

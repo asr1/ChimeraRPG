@@ -256,15 +256,15 @@
                 Loading, please wait
             </div>
             <div ng-if="loading === 4" class="panel-body">
-                <div ng-if="controlRemaining < 0 || destructionRemaining < 0 || enhancementRemaining < 0 || utilityRemaining < 0" class="homebrew-warning center">You have taken too many abilities</div>
+                <div ng-if="(controlMax - controlTaken) < 0 || (destructionMax - destructionTaken) < 0 || (enhancementMax - enhancementTaken) < 0 || (utilityMax - utilityTaken) < 0" class="homebrew-warning center">You have taken too many abilities</div>
                 <div ng-if="homebrewAbilities.length > 0" class="homebrew-warning center">
                     You do not qualify for the following abilities: 
                     <span ng-repeat="ability in homebrewAbilities track by $index">
                         {{ability + ($index < homebrewAbilities.length - 1 ? ',' : '')}}
                     </span>
                 </div>
-                <div ng-if="controlRemaining < 0 || destructionRemaining < 0 || enhancementRemaining < 0 || utilityRemaining < 0 || homebrewAbilities.length > 0" class="homebrew-warning center">This makes your character homebrewed!</div>
-                <div class="col-sm-12 section-label center">Choose <strong>{{controlRemaining}} Control</strong> {{controlRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div ng-if="(controlMax - controlTaken) < 0 || (destructionMax - destructionTaken) < 0 || (enhancementMax - enhancementTaken) maining < 0 || (utilityMax - utilityTaken) < 0 || homebrewAbilities.length > 0" class="homebrew-warning center">This makes your character homebrewed!</div>
+                <div class="col-sm-12 section-label center">Choose <strong>{{controlMax - controlTaken}} Control</strong> {{controlMax - controlTaken == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
@@ -272,7 +272,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-12 section-label center">Choose <strong>{{destructionRemaining}} Destruction</strong> {{destructionRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div class="col-sm-12 section-label center">Choose <strong>{{destructionMax - destructionTaken}} Destruction</strong> {{destructionMax - destructionTaken == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.destruction track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
@@ -280,7 +280,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-12 section-label center">Choose <strong>{{enhancementRemaining}} Enhancement</strong> {{enhancementRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div class="col-sm-12 section-label center">Choose <strong>{{enhancementMax - enhancementTaken}} Enhancement</strong> {{enhancementMax - enhancementTaken == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.enhancement track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
@@ -288,7 +288,7 @@
                         </label>
                     </div>
                 </div>
-                <div class="col-sm-12 section-label center">Choose <strong>{{utilityRemaining}} Utility</strong> {{utilityRemaining == 1 ? "ability" : "abilities"}}</div>
+                <div class="col-sm-12 section-label center">Choose <strong>{{utilityMax - utilityTaken}} Utility</strong> {{utilityMax - utilityTaken == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.utility track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">

@@ -19,6 +19,22 @@ let skillChange = function(scope, name) {
             calculateValue(scope.ac);
 
             break;
+        case 'Control':
+            scope.controlMax = mod;
+
+            break;
+        case 'Destruction':
+            scope.destructionMax = mod;
+
+            break;
+        case 'Enhancement':
+            scope.enhancementMax = mod;
+
+            break;
+        case 'Utility':
+            scope.utilityMax = mod;
+
+            break;
     }
 }
 
@@ -177,7 +193,7 @@ app.controller('CharacterController', function($scope, $http) {
         const ability = $scope.abilities[type][index];
 
         ability.selected = checkbox.checked;
-        $scope[type + 'Remaining'] += (checkbox.checked ? -1 : 1);
+        $scope[type + 'Taken'] += (checkbox.checked ? 1 : -1);
 
         if(checkbox.checked) {
             const valid = $scope.canTake(ability.name);
