@@ -92,7 +92,7 @@ app.controller('CharacterController', function($scope, $http) {
             abilities.push({
                 name: ability.name,
                 cost: ability.cost,
-                effect: ability.flavor,
+                effect: ability.short,
                 school: ability.type
             });
         }
@@ -190,6 +190,90 @@ app.controller('CharacterController', function($scope, $http) {
             if(talent.multiple) {
                 $scope.talents.splice(index, 1);
             }
+        }
+
+        let update;
+
+        switch(talent.name) {
+            case 'Devout Follower':
+                $scope.ep.fromTalents += (checkbox.checked ? 10 : -10);
+                calculateValue($scope.ep);
+
+                break;
+            case 'Devout Gambler':
+                if(checkbox.checked) {
+                    //TODO - Need to also have fortune points updated when the enlightenment skill changes
+                    //TODO - This, but later
+                } else {
+
+                }
+
+                break;
+            case 'Improved Defense':
+                //TODO - Need to select which defense
+                //Also record which defense in the individual talent thingy or a list or something
+
+                break;
+            case 'Skill Specialization':
+                //TODO - Same as improved defense
+
+                break;
+            case 'Improved Initiative':
+                $scope.initiative.fromTalents += (checkbox.checked ? 3 : -3);
+                calculateValue($scope.initiative);
+
+                break;
+            case 'Improved Recharge':
+                $scope.apRegen.fromTalents += (checkbox.checked ? 5 : -5);
+                calculateValue($scope.apRegen);
+
+                break;
+            case 'More Efficient, Less Wasteful':
+                update = a => a.cost *= (checkbox.checked ? 0.5 : 2);
+
+                for(let i in $scope.abilities.control) {
+                    update($scope.abilities.control[i]);
+                }
+                for(let i in $scope.abilities.destruction) {
+                    update($scope.abilities.destruction[i]);
+                }
+                for(let i in $scope.abilities.enhancement) {
+                    update($scope.abilities.enhancement[i]);
+                }
+                for(let i in $scope.abilities.utility) {
+                    update($scope.abilities.utility[i]);
+                }
+
+                break;
+            case 'Quick Steps':
+                $scope.movement.fromTalents += (checkbox.checked ? 1 : -1);
+                calculateValue($scope.movement);
+
+                break;
+            case 'Resilience':
+                const change = (checkbox.checked ? 1 : -1);
+                update = d => {
+                    d.fromTalents += change;
+                    calculateValue(d);
+                };
+                update($scope.fort);
+                update($scope.reflex);
+                update($scope.will);
+
+                break;
+            case 'Resourcefulness':
+                $scope.ap += (checkbox.checked ? 10 : -10);
+                calculateValue($scope.ap);
+
+                break;
+            case 'Studious':
+                //TODO - Modal to select which ability
+                //don't forget to update the max for the school
+
+                break;
+            case 'Thick Skin':
+                $scope.hp += (checkbox.checked ? 5 : -5);
+                calculateValue($scope.hp);
         }
 
         checkHomebrew($scope);
