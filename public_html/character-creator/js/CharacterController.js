@@ -81,7 +81,7 @@ let checkHomebrew = function(scope) {
     scope.validAbilities = scope.validAbilities.concat(newValidAbilities);
 }
 
-app.controller('CharacterController', function($scope, $http) {    
+app.controller('CharacterController', ['$scope', '$http', '$rootScope', 'ModalService', function($scope, $http, $rootScope) {    
     init($scope, $http);
 
     $scope.submit = function() {
@@ -218,6 +218,11 @@ app.controller('CharacterController', function($scope, $http) {
                 //TODO - Same as improved defense
 
                 break;
+            case 'Studious':
+                //TODO - Modal to select which ability
+                //don't forget to update the max for the school
+
+                break;
             case 'Improved Initiative':
                 $scope.initiative.fromTalents += (checkbox.checked ? 3 : -3);
                 calculateValue($scope.initiative);
@@ -264,11 +269,6 @@ app.controller('CharacterController', function($scope, $http) {
             case 'Resourcefulness':
                 $scope.ap += (checkbox.checked ? 10 : -10);
                 calculateValue($scope.ap);
-
-                break;
-            case 'Studious':
-                //TODO - Modal to select which ability
-                //don't forget to update the max for the school
 
                 break;
             case 'Thick Skin':
@@ -544,4 +544,4 @@ prereqLoop:
 
         checkHomebrew($scope); //Not sure this one is needed?
     };
-});
+}]);
