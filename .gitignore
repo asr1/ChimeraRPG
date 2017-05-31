@@ -23,3 +23,4 @@ public_html/resources
 *.htgroup
 *.mp3
 public_html/character-creator/vendor
+public_html/character-creator/bower_components
