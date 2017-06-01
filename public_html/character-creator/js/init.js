@@ -135,6 +135,8 @@ let init = function($scope, $http) {
     $scope.background = '';
 
     $scope.skillSpecialization = [];
+    $scope.improvedDefense = [];
+    $scope.studious = [];
     
     $scope.skillNames = [];
 }

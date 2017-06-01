@@ -217,16 +217,48 @@ app.controller('CharacterController', function($scope, $http, $uibModal) {
 
                 break;
             case 'Improved Defense':
-                //You gain a +1 bonus to a defense of your choice. You may take this Talent multiple times.
-                //TODO - Need to select which defense
-                //Also record which defense in the individual talent thingy or a list or something
+                let defenseList = checkbox.checked ? ['Armor Class', 'Fortitude', 'Reflex', 'Will'] : $scope.improvedDefense;
+
+                $uibModal.open({
+                    templateUrl: 'selector-modal.html',
+                    size: 'sm',
+                    controller: function($scope) {
+                        $scope.title = 'Improved Defense';
+                        $scope.list = defenseList;
+                        $scope.selected = function(item) {
+                            $scope.$close(item);
+                        }
+                    }
+                }).result.then(item => {
+                    let def;
+                    switch(item) {
+                        case 'Armor Class':
+                            def = 'ac';
+                            break;
+                        case 'Fortitude':
+                            def = 'fort';
+                            break;
+                        case 'Reflex':
+                            def = 'reflex';
+                            break;
+                        case 'Will':
+                            def = 'will';
+                            break;
+                    }
+
+                    $scope[def].fromTalents += checkbox.checked ? 1 : -1;
+                    calculateValue($scope[def]);
+
+                    if(checkbox.checked) {
+                        $scope.improvedDefense.push(item);
+                    } else {
+                        removeFromArray($scope.improvedDefense, item);
+                    }
+                });
 
                 break;
-            case 'Skill Specialization':
-                //TODO: Input should be previously selected skills if checkbox is not checked
-                
+            case 'Skill Specialization':                
                 let skillList = checkbox.checked ? $scope.skillNames : $scope.skillSpecialization;
-                console.log(skillList);
 
                 $uibModal.open({
                     templateUrl: 'selector-modal.html',
@@ -253,9 +285,49 @@ app.controller('CharacterController', function($scope, $http, $uibModal) {
                 
                 break;
             case 'Studious':
-                //You learn an additional Ability for which you meet the requirements. You may take this Talent multiple times.
-                //TODO - Modal to select which ability
-                //don't forget to update the max for the school
+                let abilities;
+
+                if(checkbox.checked) { 
+                    abilities = [];
+                    let addToList = type => {
+                        for(let i in type) {
+                            if(!type[i].selected && $scope.canTake(type[i].name)) {
+                                abilities.push(type[i].name);
+                            }
+                        }
+                    };
+                    addToList($scope.abilities.control);
+                    addToList($scope.abilities.enhancement);
+                    addToList($scope.abilities.destruction);
+                    addToList($scope.abilities.utility);
+                } else {
+                    abilities = $scope.studious;
+                }
+
+                $uibModal.open({
+                    templateUrl: 'selector-modal.html',
+                    size: 'sm',
+                    controller: function($scope) {
+                        $scope.title = 'Studious';
+                        $scope.list = abilities;
+                        $scope.selected = function(item) {
+                            $scope.$close(item);
+                        }
+                    }
+                }).result.then(item => {
+                    let a = findAbility($scope, item);
+                    $scope[a.type + 'Taken'] += (checkbox.checked ? 1 : -1);
+                    a.selected = checkbox.checked;
+                    a.studious = checkbox.checked ? true : undefined;
+                    
+                    if(checkbox.checked) {
+                        $scope.studious.push(a.name);
+                        $scope.validAbilities.push(a.name);
+                    } else {
+                        removeFromArray($scope.studious, a.name);
+                        removeFromArray($scope.validAbilities, a.name);
+                    }   
+                });
 
                 break;
             case 'Improved Initiative':
