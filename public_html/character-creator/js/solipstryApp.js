@@ -1,1 +1,1 @@
-var app = angular.module("solipstryApp", ['ui.bootstrap', 'angularModalService']);
+var app = angular.module("solipstryApp", ['ui.bootstrap']);

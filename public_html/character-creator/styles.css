@@ -28,3 +28,7 @@
 .create-button {
     margin-bottom: 1em;
 }
+
+.wide {
+    width: 100%;
+}

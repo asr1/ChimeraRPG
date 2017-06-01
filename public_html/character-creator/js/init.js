@@ -7,6 +7,10 @@ let init = function($scope, $http) {
     $http.get('data/skills.json').then(success => {
         $scope.skills = success.data.skills;
         $scope.loading++;
+
+        for(let i in $scope.skills) {
+            $scope.skillNames.push($scope.skills[i].name);
+        }
     }, err => {
         console.log(err);
     });
@@ -129,4 +133,8 @@ let init = function($scope, $http) {
     $scope.occupation = '';
     $scope.aspiration = '';
     $scope.background = '';
+
+    $scope.skillSpecialization = [];
+    
+    $scope.skillNames = [];
 }

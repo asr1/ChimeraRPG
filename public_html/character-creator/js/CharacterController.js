@@ -8,6 +8,11 @@ let skillChange = function(scope, name) {
             scope.ep.fromSkill = value;
             calculateValue(scope.ep);
             
+            if(scope.fp.fromTalents !== 0) {
+                scope.fp.fromTalents = Math.floor(mod / 2.0);
+                calculateValue(scope.fp);
+            }
+            
             break;
         case 'Light armor':
             scope.ac.fromSkill = mod;
@@ -81,7 +86,7 @@ let checkHomebrew = function(scope) {
     scope.validAbilities = scope.validAbilities.concat(newValidAbilities);
 }
 
-app.controller('CharacterController', ['$scope', '$http', '$rootScope', 'ModalService', function($scope, $http, $rootScope) {    
+app.controller('CharacterController', function($scope, $http, $uibModal) {    
     init($scope, $http);
 
     $scope.submit = function() {
@@ -202,23 +207,53 @@ app.controller('CharacterController', ['$scope', '$http', '$rootScope', 'ModalSe
                 break;
             case 'Devout Gambler':
                 if(checkbox.checked) {
-                    //TODO - Need to also have fortune points updated when the enlightenment skill changes
-                    //TODO - This, but later
+                    const mod = calculatMod(filterArrayByName($scope.skills, 'Enlightenment').value);
+                    $scope.fp.fromTalents = Math.floor(mod / 2.0);
+                    calculateValue($scope.fp);
                 } else {
-
+                    $scope.fp.fromTalents = 0;
+                    calculateValue($scope.fp);
                 }
 
                 break;
             case 'Improved Defense':
+                //You gain a +1 bonus to a defense of your choice. You may take this Talent multiple times.
                 //TODO - Need to select which defense
                 //Also record which defense in the individual talent thingy or a list or something
 
                 break;
             case 'Skill Specialization':
-                //TODO - Same as improved defense
+                //TODO: Input should be previously selected skills if checkbox is not checked
+                
+                let skillList = checkbox.checked ? $scope.skillNames : $scope.skillSpecialization;
+                console.log(skillList);
 
+                $uibModal.open({
+                    templateUrl: 'selector-modal.html',
+                    size: 'sm',
+                    controller: function($scope) {
+                        $scope.title = 'Skill Specialization';
+                        $scope.list = skillList;
+                        $scope.selected = function(item) {
+                            $scope.$close(item);
+                        }
+                    }
+                }).result.then(item => {
+                    let skill = filterArrayByName($scope.skills, item);
+                    skill.value += checkbox.checked ? 6 : -6;
+
+                    if(checkbox.checked) {
+                        $scope.skillSpecialization.push(item);
+                    } else {
+                        removeFromArray($scope.skillSpecialization, item);
+                    }
+
+                    skillChange($scope, item);
+                });
+                
                 break;
             case 'Studious':
+                //You learn an additional Ability for which you meet the requirements. You may take this Talent multiple times.
                 //TODO - Modal to select which ability
                 //don't forget to update the max for the school
 
@@ -544,4 +579,4 @@ prereqLoop:
 
         checkHomebrew($scope); //Not sure this one is needed?
     };
-}]);
+});
