@@ -97,7 +97,7 @@
                     <div class="col-sm-5">
                         <input type="text" class="form-control"placeholder="Character's Name" ng-model="name">
                     </div>
-                    <label class="col-sm-1 control-label" tooltip-placement="bottom" uib-tooltip="{{'Small:\n+1 to Reflex\n+5 to Stealth\nOne damage die smaller\n\nMedium: No penalties or bonuses\n\nLarge:\n-1 to Reflex\n-5 to Stealth\nOne damage die higher'}}">Size</label>
+                    <label class="col-sm-1 control-label" tooltip-placement="bottom" tooltip-popup-delay="1000" uib-tooltip="{{'Small:\n+1 to Reflex\n+5 to Stealth\nOne damage die smaller\n\nMedium: No penalties or bonuses\n\nLarge:\n-1 to Reflex\n-5 to Stealth\nOne damage die higher'}}">Size</label>
                     <div class="col-sm-5">
                         <select class="form-control" ng-change="sizeChange()" data-ng-options="s for s in sizes" data-ng-model="size"></select>
                     </div>
@@ -143,32 +143,32 @@
                     </div>
                 </div>
                 <div class="form-group row-dark">
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="1.5 * CON mod" >Hit Points: {{hp.value}}</label>
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="3 + SPD mod">Movement: {{movement.value}}</label>
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="SPD mod">Initiative Bonus: {{initiative.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="1.5 * CON mod" >Hit Points: {{hp.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="3 + SPD mod">Movement: {{movement.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="SPD mod">Initiative Bonus: {{initiative.value}}</label>
                 </div>
                 <div class="form-group row-light">
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="5 * WIS score">Ability Points: {{ap.value}}</label>
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="INT score">Ability Regen: {{apRegen.value}}</label>
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="Enlightenment score">Enlightenment Points: {{ep.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="5 * WIS score">Ability Points: {{ap.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="INT score">Ability Regen: {{apRegen.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="Enlightenment score">Enlightenment Points: {{ep.value}}</label>
                 </div>
                 <div class="form-group row-dark">
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="10 + CON mod">Fortitude: {{fort.value}}</label>
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="{{'Heavy armor: 5 + the higher of SPD mod or DEX mod + 1/2 Heavy Armor mod\n\nLight armor: 10 + the higher of SPD mod or DEX mod'}}">Reflex: {{reflex.value}}</label>
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="10 + WIS mod">Will: {{will.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="10 + CON mod">Fortitude: {{fort.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="{{'Heavy armor: 5 + the higher of SPD mod or DEX mod + 1/2 Heavy Armor mod\n\nLight armor: 10 + the higher of SPD mod or DEX mod'}}">Reflex: {{reflex.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="10 + WIS mod">Will: {{will.value}}</label>
                 </div>
                 <div class="form-group row-light">
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="LCK mod">Fortune Points: {{fp.value}}</label>
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="{{'Heavy armor: 12 + Heavy Armor mod + CON mod\n\nLight armor: 7 + the higher of SPD mod or DEX mod + Light Armor mod'}}">Armor Class: {{ac.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="LCK mod">Fortune Points: {{fp.value}}</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="{{'Heavy armor: 12 + Heavy Armor mod + CON mod\n\nLight armor: 7 + the higher of SPD mod or DEX mod + Light Armor mod'}}">Armor Class: {{ac.value}}</label>
                 </div>
                 <div class="form-group row-dark">
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="{{'+1 to AC\n+5 to Block skill'}}">Use a shield? <input type="checkbox" ng-change="shieldChange()" ng-model="useShield"></label>
-                    <label class="col-sm-3 control-label" tooltip-placement="top-right" uib-tooltip="Effects AC and Reflex">Armor Type:</label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="{{'+1 to AC\n+5 to Block skill'}}">Use a shield? <input type="checkbox" ng-change="shieldChange()" ng-model="useShield"></label>
+                    <label class="col-sm-3 control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="Effects AC and Reflex">Armor Type:</label>
                     <label class="radio-inline"><input type="radio" name="armor-radio" ng-change="armorChange('Light')" value="Light" ng-model="armorType">Light</label>
                     <label class="radio-inline"><input type="radio" name="armor-radio" ng-change="armorChange('Heavy')" value="Heavy" ng-model="armorType">Heavy</label>
                 </div>
                 <div class="form-group row-light center">
-                    <label class="control-label" tooltip-placement="top-right" uib-tooltip="Checking this will only show talents and abilities you meet the requirements for. Unchecking will show all talents and abilities.">Show only items you qualify for? <input type="checkbox" ng-model="showQualified"></label>
+                    <label class="control-label" tooltip-placement="top-right" tooltip-popup-delay="1000" uib-tooltip="Checking this will only show talents and abilities you meet the requirements for. Unchecking will show all talents and abilities.">Show only items you qualify for? <input type="checkbox" ng-model="showQualified"></label>
                 </div>
             </div>
         </div>
@@ -187,7 +187,7 @@
                 <div ng-if="attributeHomebrewCount > 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="attr in attributes track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}"  tooltip-placement="top-left" uib-tooltip="{{attr.description + '\n\nGoverns: ' + attr.governs}}" uib-tooltip-class="tooltip-inner">{{attr.name}}</label>
+                        <label class="col-sm-3 control-label {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}"  tooltip-placement="top-left" tooltip-popup-delay="1000" uib-tooltip="{{attr.description + '\n\nGoverns: ' + attr.governs}}" tooltip-popup-delay="1000" uib-tooltip-class="tooltip-inner">{{attr.name}}</label>
                         <div class="col-sm-3">
                             <input type="number" ng-change="attributeChange({{attr.value}}, attr.name)" class="form-control {{attr.value < 10 || attr.value > 30 ? 'homebrew-warning' : ''}}" ng-model="attributes[$index].value">
                         </div>
@@ -211,7 +211,7 @@
                 <div ng-if="skillsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="skill in skills track by $index">
                     <div class="form-group">
-                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}" tooltip-placement="top" uib-tooltip="{{skill.name + ':\n' + skill.description}}" uib-tooltip-class="tooltip-inner">
+                        <label class="col-sm-3 {{['row-light', 'row-dark'][$index%2]}}" tooltip-placement="top" tooltip-popup-delay="1000" uib-tooltip="{{skill.name + ':\n' + skill.description}}" tooltip-popup-delay="1000" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-click="skillSelected($event, $index)" class="col-sm-1">
                             <span class="col-sm-1">{{skill.value}}</span><span class="col-sm-8">{{skill.name}}</span>
                         </label>
@@ -242,7 +242,7 @@
                 <div ng-if="homebrewTalents.length > 0 || talentsRemaining < 0" class="homebrew-warning center">This makes your character homebrewed!</div>
                 <div ng-repeat="talent in talents track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(talent.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{talent.name + ':\n' + talent.description}}" uib-tooltip-class="tooltip-inner"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
+                        <label ng-if="!showQualified || canTake(talent.name)" class="col-sm-3" tooltip-placement="top" tooltip-popup-delay="1000" uib-tooltip="{{talent.name + ':\n' + talent.description}}" tooltip-popup-delay="1000" uib-tooltip-class="tooltip-inner"><input type="checkbox" ng-click="talentSelected($event, $index)" class="col-sm-1"><span style="padding-left:1em">{{talent.name}}</span></label>
                     </div>
                 </div>
             </div>
@@ -270,7 +270,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{controlMax - controlTaken}} Control</strong> {{controlMax - controlTaken == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" tooltip-popup-delay="1000" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" tooltip-popup-delay="1000" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-disabled="ability.studious" ng-click="abilitySelected($event, $index, 'control')" ng-model="ability.selected" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -278,7 +278,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{destructionMax - destructionTaken}} Destruction</strong> {{destructionMax - destructionTaken == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.destruction track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" tooltip-popup-delay="1000" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" tooltip-popup-delay="1000" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-disabled="ability.studious" ng-click="abilitySelected($event, $index, 'destruction')" ng-model="ability.selected" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -286,7 +286,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{enhancementMax - enhancementTaken}} Enhancement</strong> {{enhancementMax - enhancementTaken == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.enhancement track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" tooltip-popup-delay="1000" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" tooltip-popup-delay="1000" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-disabled="ability.studious" ng-click="abilitySelected($event, $index, 'enhancement')" ng-model="ability.selected" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
@@ -294,7 +294,7 @@
                 <div class="col-sm-12 section-label center">Choose <strong>{{utilityMax - utilityTaken}} Utility</strong> {{utilityMax - utilityTaken == 1 ? "ability" : "abilities"}}</div>
                 <div ng-repeat="ability in abilities.utility track by $index">
                     <div class="form-group">
-                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
+                        <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" tooltip-popup-delay="1000" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" tooltip-popup-delay="1000" uib-tooltip-class="tooltip-inner">
                             <input type="checkbox" ng-disabled="ability.studious" ng-click="abilitySelected($event, $index, 'utility')" ng-model="ability.selected" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
