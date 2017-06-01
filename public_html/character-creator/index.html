@@ -271,7 +271,7 @@
                 <div ng-repeat="ability in abilities.control track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
-                            <input type="checkbox" ng-click="abilitySelected($event, $index, 'control')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
+                            <input type="checkbox" ng-disabled="ability.studious" ng-click="abilitySelected($event, $index, 'control')" ng-model="ability.selected" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
                 </div>
@@ -279,7 +279,7 @@
                 <div ng-repeat="ability in abilities.destruction track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
-                            <input type="checkbox" ng-click="abilitySelected($event, $index, 'destruction')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
+                            <input type="checkbox" ng-disabled="ability.studious" ng-click="abilitySelected($event, $index, 'destruction')" ng-model="ability.selected" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
                 </div>
@@ -287,7 +287,7 @@
                 <div ng-repeat="ability in abilities.enhancement track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
-                            <input type="checkbox" ng-click="abilitySelected($event, $index, 'enhancement')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
+                            <input type="checkbox" ng-disabled="ability.studious" ng-click="abilitySelected($event, $index, 'enhancement')" ng-model="ability.selected" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
                 </div>
@@ -295,7 +295,7 @@
                 <div ng-repeat="ability in abilities.utility track by $index">
                     <div class="form-group">
                         <label ng-if="!showQualified || canTake(ability.name)" class="col-sm-3" tooltip-placement="top" uib-tooltip="{{ability.name + ':\n' + ability.effect + '\n\n' + ability.flavor}}" uib-tooltip-class="tooltip-inner">
-                            <input type="checkbox" ng-click="abilitySelected($event, $index, 'utility')" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
+                            <input type="checkbox" ng-disabled="ability.studious" ng-click="abilitySelected($event, $index, 'utility')" ng-model="ability.selected" class="col-sm-1"><span style="padding-left:1em">{{ability.name}}</span>
                         </label>
                     </div>
                 </div>
@@ -305,7 +305,7 @@
 
     <center>
         <input type="button" ng-click="submit()" class="btn btn-lg create-button" value="Create Character" />
-        <p>You may need to allow popups from solipstry.com</p>
+        <p>Creating the sheet may take a moment. You may need to allow popups from solipstry.com</p>
     </center>
 
     <footer class="bg-light-gray">
